@@ -1,11 +1,14 @@
 body{
+      font-family: 'Satoshi', sans-serif;
+}
+
+#testimonial{
       background: #fbf0ff; 
 }
 
 .Testimonial {
-  margin: 0px 40px;
-  /* justify-content: center; */
-  background: #fbf0ff; 
+  margin: 0px 78px;
+  background: #fbf0ff;
 }
 
 #testicol{
@@ -55,7 +58,7 @@ color: #130C2A;
 
 .content {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   color: #130c2a;
 }
 
