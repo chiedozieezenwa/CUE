@@ -1,0 +1,68 @@
+body{
+      background: #fbf0ff; 
+}
+
+.Testimonial {
+  margin: 0px 40px;
+  /* justify-content: center; */
+  background: #fbf0ff; 
+}
+
+#testicol{
+font-size: 32px;
+font-weight: 700; 
+color: #130C2A;
+position: relative;
+top: 20px;
+}
+
+.Testimonial h2{
+font-size: 48px;
+font-weight: 700; 
+color: #130C2A;
+}
+
+ .TestCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.images {
+  width: 128px;
+  height: 128px;
+} 
+
+.stars {
+      display: block;
+  width: 96px;
+  height: 24px;
+  margin-top: 20px;
+}
+
+.TestCards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 332px;
+  height: 192px;
+  padding: 24px 20px;
+  gap: 16px;
+  border-radius: 8px 0px 0px 0px;
+  background: #e0e0e080;
+}
+
+.content {
+  font-size: 16px;
+  font-weight: 400;
+  color: #130c2a;
+}
+
+.testiName{
+font-size: 16px;
+font-weight: 500;
+color: #130C2A;
+position: relative;
+bottom: 10px;
+}
