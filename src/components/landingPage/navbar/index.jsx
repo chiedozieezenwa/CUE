@@ -1,9 +1,9 @@
-import design from './navbar.module.css'
-import Logo from '../../../assets/images/Logo.png'
-import searchIcon from '../../../assets/icons/search.svg'
-import divider from '../../../assets/images/divider.png'
-import { Link } from 'react-router-dom';
-import { Button } from '../../button';
+import design from "./navbar.module.css";
+import Logo from "../../../assets/images/Logo.png";
+import searchIcon from "../../../assets/icons/search.svg";
+import divider from "../../../assets/images/divider.png";
+import { NavLink } from "react-router-dom";
+import { Button } from "../../button";
 
 export const Navbar = () => {
   return (
@@ -11,41 +11,83 @@ export const Navbar = () => {
       <nav className={design.nav}>
         <section className={design["left-section"]}>
           <img src={Logo} alt="Logo Image" />
-          <span><img src={divider} alt="divider-line" /></span>
+          <span className={design.divider}>
+            <img src={divider} alt="divider-line" />
+          </span>
         </section>
 
         <section className={design["middle-section"]}>
           <ul className={design.links}>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? design.active : undefined
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/">Travel Guide</Link>
+              <NavLink
+                to="/travel-guide"
+                className={({ isActive }) =>
+                  isActive ? design.active : undefined
+                }
+              >
+                Travel Guide
+              </NavLink>
             </li>
             <li>
-              <Link to="/">Discover</Link>
+              <NavLink
+                to="/discover"
+                className={({ isActive }) =>
+                  isActive ? design.active : undefined
+                }
+              >
+                Discover
+              </NavLink>
             </li>
             <li>
-              <Link to="/">Trip Itinerary</Link>
+              <NavLink
+                to="/trip-itinerary"
+                className={({ isActive }) =>
+                  isActive ? design.active : undefined
+                }
+              >
+                Trip Itinerary
+              </NavLink>
             </li>
           </ul>
 
           <div className={design["search-bar"]}>
             <input type="text" placeholder="Discover by location" />
-            <span className={design["search-icon"]}>
-              <img src={searchIcon} alt="Search" />
-            </span>
+            <button className={design["search-icon-button"]}>
+              <img
+                src={searchIcon}
+                alt="Search"
+                className={design["search-icon"]}
+              />
+            </button>
           </div>
         </section>
 
         <section className={design["onboard"]}>
-          <span><Link to="/login">Log in</Link></span>
+          <span className={design.divider}>
+            <img src={divider} alt="divider-line" />
+          </span>
+          <Button
+            link="/login"
+            content="Log in"
+            className={design["logIn-btn"]}
+          />
+          <Button
+            link="/signup"
+            content="Sign up"
+            className={design["signUp-btn"]}
+          />
         </section>
-        <Button 
-          content="Sign up"
-          className="signup-btn"
-        />
       </nav>
     </header>
   );
-}
+};

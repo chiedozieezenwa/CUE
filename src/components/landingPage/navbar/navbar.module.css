@@ -1,68 +1,137 @@
 body {
-    font-family: 'Satoshi', sans-serif;
+  font-family: 'Satoshi', sans-serif;
 }
 
 .container {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid red;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav {
-    display: flex;
-    align-items: center;
-    width: 1188px;
-    padding: 0 26px;
-    border: 2px solid green;
+  display: flex;
+  align-items: center;
+  width: 1188px;
+  padding: 0 26px;
 }
 
 .left-section {
-    width: 94px;
-    display: flex;
-    justify-content: space-between;
+  width: 94px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
 }
 
-.left-section > span {
-    width: 1px;
-    align-self: stretch;
-    background-color: #666;
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: #666;
 }
 
 .middle-section {
-    width: 881px;
-    display: flex;
-    gap: 68px;
-    border: 2px solid black;
+  width: 881px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 75px;
 }
 
 .middle-section > ul {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  margin-left: 2.5rem;
+  gap: 30px;
 }
 
 .links > li {
-    list-style-type: none;
+  list-style-type: none;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.25px;
 }
 
 .links > li a {
-    color: black;
-    text-decoration: none;
+  text-decoration: none;
+  color: #130C2A;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.links > li a.active {
+  color: #5D3BE9;
+  border-bottom: 2px solid #5D3BE9;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
 }
 
 .search-bar > input {
-    width: 165px;
-    height: 24px;
-    border-radius: 8px;
-    border: 1px solid #000;
-    opacity: 0.5;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 200px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  opacity: 0.5;
+  padding: 8px 12px 8px 48px; /* Ensure space for the icon */
+  box-sizing: border-box;
 }
 
 .search-bar > input::placeholder {
-    text-align: center;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  text-align: end;
+  color: #130C2A;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.search-icon-button {
+  position: absolute;
+  left: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: rgba(19, 12, 42, 1);
+  opacity: 0.5;
+}
+
+.search-icon {
+  height: 16px;
+}
+
+.onboard {
+  display: flex;
+  align-items: center;
+}
+
+.logIn-btn {
+  margin-left: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 14px;
+  font-family: 'Satoshi', sans-serif;
+  color: #5D3BE9;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.signUp-btn {
+  background-color: #5D3BE9;
+  border: none;
+  width: 92px;
+  height: 36px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
 }
