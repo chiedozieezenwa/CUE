@@ -1,0 +1,129 @@
+.container {
+    font-family: 'Satoshi', sans-serif;
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup_inner {
+    position: relative;
+    width: 672px;
+    height: 581px;
+    background: #FFF;
+    border-radius: 52px;
+    display: grid;
+    place-items: center;
+  }
+
+  .popup-card {
+    margin-top: -2rem;
+    width: 542px;
+    height: 437px;
+    display: grid;
+    place-items: center;
+    gap: 24px;
+  }
+
+  .popup-card > .signup-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .headertxt  {
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .signup-form {
+        margin-top: -2rem;
+  }
+
+  .signup-form > input, 
+  .password-container > input {
+    padding: 0 1rem;
+    width: 100%;
+    height: 56px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 1px solid #7C8493;
+  }
+
+::placeholder {
+    color: #7C8493;
+    font-family: Satoshi;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  .signUpbtn {
+    width: 100%;
+    height: 56px;
+    border-radius: 20px;
+    background-color: #5D3BE9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .popup-card > p {
+    color: #7C8493;
+    font-family: Satoshi;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  .popup-card > p a {
+    text-decoration: none;
+    color: #5D3BE9;
+  }
+
+  .toggle-icon {
+    width: 542px;
+    display: flex;
+    justify-content: end;
+  }
+
+  .toggle-icon > img:hover {
+    cursor: pointer;
+  }
+
+  .signInlink {
+    margin-top: -2rem;
+  }
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
