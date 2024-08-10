@@ -142,7 +142,7 @@ export const Discover = () => {
         <div className={styles.tripPlan1}>
           <div>
             <p id={styles.trips}>Recently Viewed and Upcoming Trips Plan new trip</p>
-            <p id={styles.trips1}>You haven’t created anythin yet. <span>Plan a new trip.</span></p>
+            <p id={styles.trips1}>You haven’t created anything yet. <span>Plan a new trip.</span></p>
           </div>
           <Button
             img={leading}
