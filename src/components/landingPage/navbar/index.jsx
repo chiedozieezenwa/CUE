@@ -4,8 +4,16 @@ import searchIcon from "../../../assets/icons/search.svg";
 import divider from "../../../assets/images/divider.png";
 import { NavLink } from "react-router-dom";
 import { Button } from "../../button";
+import { useState } from "react";
+import { Signup } from "../../../pages/Onboarding/Signup";
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className={design.container}>
       <nav className={design.nav}>
@@ -82,10 +90,11 @@ export const Navbar = () => {
             className={design["logIn-btn"]}
           />
           <Button
-            link="/signup"
+            onClick={togglePopup}
             content="Sign up"
             className={design["signUp-btn"]}
           />
+          {isOpen && <Signup handleClose={togglePopup} />}
         </section>
       </nav>
     </header>
