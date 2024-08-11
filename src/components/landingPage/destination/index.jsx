@@ -22,10 +22,3 @@ export const Destination = (destinationList) => {
     </div>
   );
 };
-
-{/* <div className={styles.ratingReview}>
-             <img src={destinationList.rating} alt="" className={styles.rating}/>
-             <p> {destinationList.review}</p>
-             </div> */}
-
-            //  className={styles.rating}

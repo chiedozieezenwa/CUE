@@ -1,6 +1,19 @@
-import { heart, ogbudu, ogbunike, rating, ratingStars, yankari } from "../../assets"
-import { Destination, Footer, Hero, Navbar, Testimonial } from "../../components"
-import styles from "./styles.module.css"
+import {
+  heart,
+  ogbudu,
+  ogbunike,
+  rating,
+  ratingStars,
+  yankari,
+} from "../../assets";
+import {
+  Destination,
+  Footer,
+  Hero,
+  Navbar,
+  Testimonial,
+} from "../../components";
+import styles from "./styles.module.css";
 
 const destinationLists = [
   {
@@ -30,37 +43,36 @@ const destinationLists = [
     review: "5.0 (109 Reviews)",
     destinationImg: heart,
   },
-]
+];
 
 export const Home = () => {
   return (
     <div>
-        <Navbar />
-        <Hero />
+      <Navbar />
+      <Hero />
 
-        <div className={styles.explore}>
-          <h1>Explore The Hidden Wonders Of Nigeria.</h1>
+      <div className={styles.explore}>
+        <h1>Explore The Hidden Wonders Of Nigeria.</h1>
         <div className={styles.homeCards}>
           {destinationLists.map((destinationList, index) => {
-            return(
+            return (
               <Destination
-              key={index}
-              destinationImage={destinationList.destinationImage}
-              subject={destinationList.subject}
-              title={destinationList.title}
-              description={destinationList.description}
-              rating={destinationList.rating} 
-              review={destinationList.review}
-              destinationImg={destinationList.destinationImg}
+                key={index}
+                destinationImage={destinationList.destinationImage}
+                subject={destinationList.subject}
+                title={destinationList.title}
+                description={destinationList.description}
+                rating={destinationList.rating}
+                review={destinationList.review}
+                destinationImg={destinationList.destinationImg}
               />
-            )
+            );
           })}
         </div>
-        </div>
+      </div>
 
-
-        <Testimonial/>
-        <Footer/>
+      <Testimonial />
+      <Footer />
     </div>
   );
 };
