@@ -25,9 +25,47 @@ import river from "./river.png";
 import sacred from "./sacred.png";
 import yankari from "./yankari.png";
 import heart from "./heart.png";
-import rating from "./Rating Stars1.png"
-import rating5 from "./Rating Stars.png"
-import ratingStars from "./Rating Stars2.png"
+import rating from "./Rating Stars1.png";
+import rating5 from "./Rating Stars.png";
+import ratingStars from "./Rating Stars2.png";
+import plane from "./plane.png";
+import hero1 from "./hero1.png";
+import hero2 from "./hero2.png";
+import hero3 from "./hero3.png";
 
-
-export {logo, lady, man, lady1, stars, line1, line2, apple, google, hotelIcon, rentalIcon, searchIcon, securityIcon, todoIcon, image, leading, ballon, lake, surfing, zuma, kambari, ogbudu, ogbunike, river, sacred, yankari, heart, rating, rating5, ratingStars}
+export {
+  logo,
+  lady,
+  man,
+  lady1,
+  stars,
+  line1,
+  line2,
+  apple,
+  google,
+  hotelIcon,
+  rentalIcon,
+  searchIcon,
+  securityIcon,
+  todoIcon,
+  image,
+  leading,
+  ballon,
+  lake,
+  surfing,
+  zuma,
+  kambari,
+  ogbudu,
+  ogbunike,
+  river,
+  sacred,
+  yankari,
+  heart,
+  rating,
+  rating5,
+  ratingStars,
+  plane,
+  hero1,
+  hero2,
+  hero3,
+};
