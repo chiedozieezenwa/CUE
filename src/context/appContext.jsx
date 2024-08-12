@@ -6,15 +6,12 @@ export const UserProvider = ({ children }) => {
 
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isSigninOpen, setIsSigninOpen] = useState(false);
+  const [isRecoverOpen, setIsRecoverOpen] = useState (false);
 
   // functions to manage signup and signin modals
-  const toggleSignupPopup = () => {
-    setIsSignupOpen(!isSignupOpen);
-  };
-
-  const toggleSigninPopup = () => {
-    setIsSigninOpen(!isSigninOpen);
-  };
+  const toggleSignupPopup = () => {setIsSignupOpen(!isSignupOpen)};
+  const toggleSigninPopup = () => {setIsSigninOpen(!isSigninOpen)};
+  const toggleRecoverPopup = () => {setIsRecoverOpen(!isRecoverOpen)}
 
   return (
     <UserContext.Provider
@@ -23,6 +20,8 @@ export const UserProvider = ({ children }) => {
         toggleSignupPopup,
         isSigninOpen,
         toggleSigninPopup,
+        isRecoverOpen,
+        toggleRecoverPopup
       }}
     >
       {children}

@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,3 +142,12 @@
   cursor: pointer;
 }
 
+.logIn-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
+  color: #5D3BE9;
+  font-weight: 700;
+  font-size: 16px;
+}

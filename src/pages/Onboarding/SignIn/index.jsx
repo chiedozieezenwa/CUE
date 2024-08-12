@@ -1,12 +1,18 @@
 import design from "./signin.module.css";
 import { Button } from "../../../components/button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../context/appContext";
+import Modal from "react-modal";
+import { Recover } from "../Recover";
+
+Modal.setAppElement("#root");
 
 export const Signin = () => {
+  const { toggleRecoverPopup, isRecoverOpen } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -54,8 +60,10 @@ export const Signin = () => {
   };
 
   return (
-    isOpen && (
-      <div className={design.popup}>
+   <Modal className={design.popup}
+        isOpen={isOpen}
+        onRequestClose={togglePopUp}
+      >
         <div className={design.popup_inner}>
           {loading && (
             <div className={design.loaderOverlay}>
@@ -113,11 +121,16 @@ export const Signin = () => {
 
             <p className={design["signInlink"]}>
               Forgot Password?
-              <Link to="./login"> Recover</Link>
+              <Button
+                onClick={toggleRecoverPopup}
+                content="Recover"
+                className={design["logIn-btn"]}
+              />
             </p>
           </section>
         </div>
-      </div>
+
+        {isRecoverOpen && <Recover />}
+      </Modal>
     )
-  );
 };
