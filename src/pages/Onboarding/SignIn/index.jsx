@@ -1,25 +1,19 @@
-import { useContext, useState } from "react";
 import design from "./signin.module.css";
 import { Button } from "../../../components/button";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../../context/appContext";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
+import { FadeLoader } from "react-spinners";
+import { useState } from "react";
 
 export const Signin = () => {
-  const { user, setUser } = useContext(UserContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [showP, setShowP] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
-  };
 
   const togglePasswordVisibility = () => {
     setShowP(!showP);
@@ -27,33 +21,55 @@ export const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/signin",
-        {
-          email: user.email,
-          password: user.password,
-        }
+        "https://cue-api-3tyr.onrender.com/api/v1/users/signin",
+        { email, password },
+        { withCredentials: true }
       );
+      console.log(response.data);
       if (response.status === 200) {
-        // Handle successful login
-        navigate("/dashboard"); // Navigate to the dashboard
+        navigate("/"); // Navigate to the dashboard
       }
     } catch (error) {
-      // Handle error
-      setError("Login failed. Please check your email and password.");
+      if (error.response) {
+        setError(
+          error.response.data.message || "Signup failed. Please try again."
+        );
+      } else if (error.request) {
+        setError("No response from the server. Please try again later.");
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const togglePopUp = () => {
-    return setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
     isOpen && (
       <div className={design.popup}>
         <div className={design.popup_inner}>
+          {loading && (
+            <div className={design.loaderOverlay}>
+              <FadeLoader
+                color="#1516a5"
+                loading={loading}
+                height={15}
+                width={5}
+                radius={2}
+                margin={2}
+              />
+            </div>
+          )}
+
           <div className={design["toggle-icon"]} onClick={togglePopUp}>
             <img src={closeIcon} alt="Click to close" />
           </div>
@@ -67,8 +83,7 @@ export const Signin = () => {
               <input
                 type="email"
                 name="email"
-                value={user.email}
-                onChange={handleInputChange}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 required
               />
@@ -76,8 +91,7 @@ export const Signin = () => {
                 <input
                   type={showP ? "text" : "password"}
                   name="password"
-                  value={user.password}
-                  onChange={handleInputChange}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter Password"
                   required
                 />
@@ -89,7 +103,12 @@ export const Signin = () => {
                 />
               </div>
 
-              <Button content="Log in" className={design["signUpbtn"]} />
+              <Button
+                content="Log in"
+                className={design["signUpbtn"]}
+                onClick={handleSubmit}
+                disabled={loading} // Disable the button when loading
+              />
             </form>
 
             <p className={design["signInlink"]}>
