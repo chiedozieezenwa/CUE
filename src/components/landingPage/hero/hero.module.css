@@ -67,21 +67,21 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 2; 
+    z-index: 0; 
 }
 
 .left-col {
     display: grid;
     gap: 24px;
     width: 356px;
-    z-index: 2;
+    z-index: 0;
 }
 
 .airplane-path {
     position: absolute;
     top: 180px; 
     left: 960px; 
-    z-index: 1;
+    z-index: -1;
 }
 
 .airplane-icon {
@@ -94,7 +94,7 @@
     position: absolute;
     top: 580px; 
     left: 880px; 
-    z-index: 1;
+    z-index: -1;
 }
 
 @media (max-width: 768px) {
