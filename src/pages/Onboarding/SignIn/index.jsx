@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
-import design from "./signup.module.css";
+import design from "./signin.module.css";
 import { Button } from "../../../components/button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/appContext";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 
-export const Signup = () => {
-  const { user, setUser, toggleSigninPopup } = useContext(UserContext);
+export const Signin = () => {
+  const { user, setUser } = useContext(UserContext);
   const [error, setError] = useState(null);
-  const [isOpen, setIsOpen] = useState (true)
-  const [showP, setShowP] = useState (false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [showP, setShowP] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -30,26 +30,25 @@ export const Signup = () => {
 
     try {
       const response = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/signup",
+        "https://cue-api-3tyr.onrender.com/api/v1/signin",
         {
           email: user.email,
           password: user.password,
         }
       );
-      console.log(response.data);
-      
       if (response.status === 200) {
-        navigate("/");
+        // Handle successful login
+        navigate("/dashboard"); // Navigate to the dashboard
       }
     } catch (error) {
-      setError("Signup failed. Please try again.");
+      // Handle error
+      setError("Login failed. Please check your email and password.");
     }
-     
   };
 
-  const togglePopUp =() => {
-    return setIsOpen (!isOpen)
-  }
+  const togglePopUp = () => {
+    return setIsOpen(!isOpen);
+  };
 
   return (
     isOpen && (
@@ -60,9 +59,7 @@ export const Signup = () => {
           </div>
 
           <section className={design["popup-card"]}>
-            <div className={design.headertxt}>
-              Sign up to take your trip planning to the next level
-            </div>
+            <div className={design.headertxt}>Log in</div>
 
             {error && <p className={design.error}>{error}</p>}
 
@@ -81,7 +78,7 @@ export const Signup = () => {
                   name="password"
                   value={user.password}
                   onChange={handleInputChange}
-                  placeholder="Create Password"
+                  placeholder="Enter Password"
                   required
                 />
                 <img
@@ -92,16 +89,12 @@ export const Signup = () => {
                 />
               </div>
 
-              <Button content="Sign up" className={design["signUpbtn"]} />
+              <Button content="Log in" className={design["signUpbtn"]} />
             </form>
 
             <p className={design["signInlink"]}>
-              Already have an account?
-              <Button
-                onClick={toggleSigninPopup}
-                content="Log in"
-                className={design["logIn-btn"]}
-              />
+              Forgot Password?
+              <Link to="./login"> Recover</Link>
             </p>
           </section>
         </div>

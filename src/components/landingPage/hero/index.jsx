@@ -1,8 +1,12 @@
 import design from './hero.module.css'
 import {hero1, hero2, hero3, plane} from '../../../assets/images'
 import { Button } from '../../button';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/appContext';
 
 export const Hero = () => {
+  const {toggleSignupPopup} = useContext(UserContext)
+
   return (
     <div className={design.container}>
       <section className={design["left-section"]}>
@@ -15,7 +19,7 @@ export const Hero = () => {
             designed for stress free vacation planning.
           </p>
 
-          <Button content="Get Started" className={design["hero-btn"]} />
+          <Button content="Get Started" className={design["hero-btn"]} onClick={toggleSignupPopup}/>
         </div>
       </section>
 

@@ -1,18 +1,16 @@
+import { useContext } from "react";
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
 import divider from "../../../assets/images/divider.png";
 import { NavLink } from "react-router-dom";
 import { Button } from "../../button";
-import { useState } from "react";
-import { Signup } from "../../../pages/Onboarding/Signup";
+import { Signup, Signin } from "../../../pages/Onboarding";
+import { UserContext } from "../../../context/appContext";
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
+  const { isSignupOpen, toggleSignupPopup, isSigninOpen, toggleSigninPopup } =
+    useContext(UserContext);
 
   return (
     <header className={design.container}>
@@ -85,18 +83,20 @@ export const Navbar = () => {
             <img src={divider} alt="divider-line" />
           </span>
           <Button
-            link="/login"
+            onClick={toggleSigninPopup}
             content="Log in"
             className={design["logIn-btn"]}
           />
           <Button
-            onClick={togglePopup}
+            onClick={toggleSignupPopup}
             content="Sign up"
             className={design["signUp-btn"]}
           />
-          {isOpen && <Signup handleClose={togglePopup} />}
         </section>
       </nav>
+
+      {isSignupOpen && <Signup />}
+      {isSigninOpen && <Signin />}
     </header>
   );
 };
