@@ -59,6 +59,7 @@ export const Signup = () => {
     setIsOpen(!isOpen);
   };
 
+  
   return (
       <Modal className={design.popup}
         isOpen={isOpen}
