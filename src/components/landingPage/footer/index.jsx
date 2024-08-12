@@ -1,15 +1,15 @@
-import { apple, google, line1, line2, logo } from "../../../assets";
+import { apple, google, logo } from "../../../assets";
 import styles from "./styles.module.css";
 
 export const Footer = () => {
   return (
     <footer>
-      <div className={styles.aboutUS}>
+      {/* <div className={styles.aboutUS}>
         <h3>
           {" "}
           <img src={line1} alt="" className={styles.line1} /><span> ABOUT US </span><img src={line2} alt="" className={styles.line1}/>
         </h3>
-      </div>
+      </div> */}
 
       <div className={styles.footterDetails}>
         <div className={styles.footerCue}>

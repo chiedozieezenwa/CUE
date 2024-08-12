@@ -1,0 +1,24 @@
+.explore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "satoshi";
+}
+
+.homeCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.explore h1 {
+  font-family: Satoshi;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: start;
+  padding-left: 58px;
+  color: #130c2a;
+}

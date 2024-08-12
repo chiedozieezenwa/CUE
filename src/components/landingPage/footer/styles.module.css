@@ -10,7 +10,7 @@ footer {
   margin-top: 90px;
 }
 
-.aboutUS {
+/* .aboutUS {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,9 +19,9 @@ footer {
 .line1 {
   width: 100px;
   border: 3px 0px 0px 0px;
-}
+} */
 
-.aboutUS h3 {
+/* .aboutUS h3 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,12 +33,13 @@ footer {
 
 .aboutUS span {
   padding: 0 10px;
-}
+} */
 
 .footterDetails {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 63px;
 }
 
 .footterDetailsList {
