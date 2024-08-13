@@ -10,5 +10,6 @@ import { UserProvider } from './context/appContext'
       </UserProvider>
     );
  }
+ 
 
 export default App

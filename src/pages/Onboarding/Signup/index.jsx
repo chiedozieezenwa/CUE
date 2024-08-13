@@ -1,24 +1,20 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import design from "./signup.module.css";
-import { Button } from "../../../components/button";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../context/appContext";
+// import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
-import Modal from "react-modal";
-
-Modal.setAppElement("#root");
+import { Signin } from "../SignIn";
 
 export const Signup = () => {
-  const { toggleSigninPopup } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
-  const [showP, setShowP] = useState(false); // Show or hide password state
-  const [loading, setLoading] = useState(false); // Loading state
-  const navigate = useNavigate();
+  const [showP, setShowP] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showSignin, setShowSignin] = useState(false); // To control the Signin popup visibility
+  // const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowP(!showP);
@@ -29,16 +25,15 @@ export const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         "https://cue-api-3tyr.onrender.com/api/v1/users/signup",
         { email, password },
         { withCredentials: true }
       );
-      console.log(response.data);
-
-      if (response.status === 200) {
-        navigate("/signin");
-      }
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      console.log(res.data);
+      setIsOpen(false); // Close signup popup
+      setShowSignin(true); // Show signin popup
     } catch (error) {
       if (error.response) {
         setError(
@@ -56,15 +51,13 @@ export const Signup = () => {
   };
 
   const togglePopUp = () => {
-    setIsOpen(!isOpen);
+    return setIsOpen(!isOpen);
   };
 
-  
   return (
-      <Modal className={design.popup}
-        isOpen={isOpen}
-        onRequestClose={togglePopUp}
-      >
+    <>
+      {isOpen && (
+        <div className={design.popup}>
           <div className={design.popup_inner}>
             {loading && (
               <div className={design.loaderOverlay}>
@@ -115,23 +108,29 @@ export const Signup = () => {
                   />
                 </div>
 
-                <Button
-                  content="Sign up"
-                  className={design["signUpbtn"]}
-                  onClick={handleSubmit}
-                />
+                <button className={design["signUpbtn"]} type="submit">
+                  Sign up
+                </button>
               </form>
 
               <p className={design["signInlink"]}>
                 Already have an account?
-                <Button
-                  onClick={toggleSigninPopup}
-                  content="Log in"
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setShowSignin(true);
+                  }}
                   className={design["logIn-btn"]}
-                />
+                >
+                  Log in
+                </button>
               </p>
             </section>
           </div>
-      </Modal>
+        </div>
+      )}
+      {showSignin && <Signin />}{" "}
+      {/* Render the Signin component if showSignin is true */}
+    </>
   );
 };
