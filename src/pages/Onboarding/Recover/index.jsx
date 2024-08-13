@@ -3,7 +3,6 @@ import { Button } from "../../../components/button";
 import { closeIcon } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import axios from "../../../api/axios";
-import Modal from "react-modal";
 import { useState } from "react";
 
 export const Recover = () => {
@@ -46,53 +45,51 @@ export const Recover = () => {
 
 
   return (
-    <Modal
-      className={design.popup}
-      isOpen={isOpen}
-      onRequestClose={togglePopUp}
-    >
-      <div className={design.popup_inner}>
-        {loading && (
-          <div className={design.loaderOverlay}>
-            <FadeLoader
-              color="#1516a5"
-              loading={loading}
-              height={15}
-              width={5}
-              radius={2}
-              margin={2}
-            />
+    isOpen && (
+      <div className={design.popup}>
+        <div className={design.popup_inner}>
+          {loading && (
+            <div className={design.loaderOverlay}>
+              <FadeLoader
+                color="#1516a5"
+                loading={loading}
+                height={15}
+                width={5}
+                radius={2}
+                margin={2}
+              />
+            </div>
+          )}
+
+          <div className={design["toggle-icon"]} onClick={togglePopUp}>
+            <img src={closeIcon} alt="Click to close" />
           </div>
-        )}
 
-        <div className={design["toggle-icon"]} onClick={togglePopUp}>
-          <img src={closeIcon} alt="Click to close" />
+          <section className={design["popup-card"]}>
+            <div className={design.headertxt}>Forgot your password?</div>
+
+            {error && <p className={design.error}>{error}</p>}
+
+            <form className={design["signup-form"]} onSubmit={handleSubmit}>
+              <input
+                type="email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+              />
+
+              <Button
+                content="Continue"
+                className={design["signUpbtn"]}
+                onClick={handleSubmit}
+              />
+            </form>
+
+            <p>Reset password</p>
+          </section>
         </div>
-
-        <section className={design["popup-card"]}>
-          <div className={design.headertxt}>Forgot your password?</div>
-
-          {error && <p className={design.error}>{error}</p>}
-
-          <form className={design["signup-form"]} onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              required
-            />
-
-            <Button
-              content="Continue"
-              className={design["signUpbtn"]}
-              onClick={handleSubmit}
-            />
-          </form>
-
-          <p>Reset password</p>
-        </section>
       </div>
-    </Modal>
+    )
   );
 };
