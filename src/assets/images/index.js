@@ -7,6 +7,12 @@ import line1 from "./Line 1.png"
 import line2 from "./Line 2.png"
 import apple from "./apple.png"
 import google from "./google.png"
+import darkman from "./darkman.png"
+import schedule from "./schedule.png"
+import event from "./event.png"
+import lock04 from "./lock04.png"
+import Framebottomleft from './Framebottomleft.png'
+import Frametopright from "./Frametopright.png"
 
 
-export {logo, lady, man, lady1, stars, line1, line2, apple, google}
+export {logo, lady, man, lady1, stars, line1, line2, apple, google, darkman, schedule, event, lock04, Framebottomleft, Frametopright }
