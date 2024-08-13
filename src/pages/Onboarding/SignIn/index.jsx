@@ -6,10 +6,8 @@ import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../context/appContext";
-import Modal from "react-modal";
 import { Recover } from "../Recover";
 
-Modal.setAppElement("#root");
 
 export const Signin = () => {
   const { toggleRecoverPopup, isRecoverOpen } = useContext(UserContext);
@@ -60,10 +58,9 @@ export const Signin = () => {
   };
 
   return (
-   <Modal className={design.popup}
-        isOpen={isOpen}
-        onRequestClose={togglePopUp}
-      >
+
+        isOpen && (
+        <div className={design.popup}>
         <div className={design.popup_inner}>
           {loading && (
             <div className={design.loaderOverlay}>
@@ -111,18 +108,16 @@ export const Signin = () => {
                 />
               </div>
 
-              <Button
-                content="Log in"
-                className={design["signUpbtn"]}
-                onClick={handleSubmit}
-                disabled={loading} // Disable the button when loading
-              />
+              <button className={design["signUpbtn"]} type="submit" disabled={loading}>Log in</button>
             </form>
 
             <p className={design["signInlink"]}>
               Forgot Password?
               <Button
-                onClick={toggleRecoverPopup}
+                onClick={() => {
+                  togglePopUp();
+                  toggleRecoverPopup();
+                }}
                 content="Recover"
                 className={design["logIn-btn"]}
               />
@@ -131,6 +126,7 @@ export const Signin = () => {
         </div>
 
         {isRecoverOpen && <Recover />}
-      </Modal>
-    )
+        </div>
+)
+)
 };

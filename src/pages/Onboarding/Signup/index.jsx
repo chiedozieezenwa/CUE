@@ -1,14 +1,10 @@
 import { useContext, useState } from "react";
 import design from "./signup.module.css";
-import { Button } from "../../../components/button";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/appContext";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
-import Modal from "react-modal";
-
-Modal.setAppElement("#root");
 
 export const Signup = () => {
   const { toggleSigninPopup } = useContext(UserContext);
@@ -24,21 +20,20 @@ export const Signup = () => {
     setShowP(!showP);
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         "https://cue-api-3tyr.onrender.com/api/v1/users/signup",
         { email, password },
         { withCredentials: true }
       );
-      console.log(response.data);
-
-      if (response.status === 200) {
-        navigate("/signin");
-      }
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      console.log(res.data);
+      navigate("/signin");
     } catch (error) {
       if (error.response) {
         setError(
@@ -50,88 +45,84 @@ export const Signup = () => {
         setError("An unexpected error occurred. Please try again.");
       }
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
   const togglePopUp = () => {
-    setIsOpen(!isOpen);
+    return setIsOpen(!isOpen);
   };
 
   
   return (
-      <Modal className={design.popup}
-        isOpen={isOpen}
-        onRequestClose={togglePopUp}
-      >
-          <div className={design.popup_inner}>
-            {loading && (
-              <div className={design.loaderOverlay}>
-                <FadeLoader
-                  color="#1516a5"
-                  visible={true}
-                  loading={loading}
-                  height={15}
-                  width={5}
-                  radius={2}
-                  margin={2}
-                />
-              </div>
-            )}
+    isOpen && (
+      <div className={design.popup}>
+        <div className={design.popup_inner}>
+          {loading && (
+            <div className={design.loaderOverlay}>
+              <FadeLoader
+                color="#1516a5"
+                visible={true}
+                loading={loading}
+                height={15}
+                width={5}
+                radius={2}
+                margin={2}
+              />
+            </div>
+          )}
 
-            <div className={design["toggle-icon"]} onClick={togglePopUp}>
-              <img src={closeIcon} alt="Click to close" />
+          <div className={design["toggle-icon"]} onClick={togglePopUp}>
+            <img src={closeIcon} alt="Click to close" />
+          </div>
+
+          <section className={design["popup-card"]}>
+            <div className={design.headertxt}>
+              Sign up to take your trip planning to the next level
             </div>
 
-            <section className={design["popup-card"]}>
-              <div className={design.headertxt}>
-                Sign up to take your trip planning to the next level
-              </div>
+            {error && <p className={design.error}>{error}</p>}
 
-              {error && <p className={design.error}>{error}</p>}
-
-              <form className={design["signup-form"]} onSubmit={handleSubmit}>
+            <form className={design["signup-form"]} onSubmit={handleSubmit}>
+              <input
+                type="email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+              />
+              <div className={design["password-container"]}>
                 <input
-                  type="email"
-                  name="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
+                  type={showP ? "text" : "password"}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Create Password"
                   required
                 />
-                <div className={design["password-container"]}>
-                  <input
-                    type={showP ? "text" : "password"}
-                    name="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Create Password"
-                    required
-                  />
-                  <img
-                    src={showP ? hidePassword : showPassword}
-                    alt="Toggle Password Visibility"
-                    onClick={togglePasswordVisibility}
-                    className={design["eye-icon"]}
-                  />
-                </div>
-
-                <Button
-                  content="Sign up"
-                  className={design["signUpbtn"]}
-                  onClick={handleSubmit}
+                <img
+                  src={showP ? hidePassword : showPassword}
+                  alt="Toggle Password Visibility"
+                  onClick={togglePasswordVisibility}
+                  className={design["eye-icon"]}
                 />
-              </form>
+              </div>
 
-              <p className={design["signInlink"]}>
-                Already have an account?
-                <Button
-                  onClick={toggleSigninPopup}
-                  content="Log in"
-                  className={design["logIn-btn"]}
-                />
-              </p>
-            </section>
-          </div>
-      </Modal>
+              <button className={design["signUpbtn"]} type="submit">
+                Sign up
+              </button>
+            </form>
+
+            <p className={design["signInlink"]}>
+              Already have an account?
+              <button
+                onClick={toggleSigninPopup}
+                className={design["logIn-btn"]}
+              >
+                Log in
+              </button>
+            </p>
+          </section>
+        </div>
+      </div>
+    )
   );
 };
