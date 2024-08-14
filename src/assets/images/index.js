@@ -32,8 +32,10 @@ import plane from "./plane.png";
 import hero1 from "./hero1.png";
 import hero2 from "./hero2.png";
 import hero3 from "./hero3.png";
+import ai from "./ai.png"
 
 export {
+  ai,
   logo,
   lady,
   man,
