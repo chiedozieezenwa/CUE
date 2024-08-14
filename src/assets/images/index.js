@@ -32,6 +32,21 @@ import plane from "./plane.png";
 import hero1 from "./hero1.png";
 import hero2 from "./hero2.png";
 import hero3 from "./hero3.png";
+import calender from "./calendar-date.png";
+import AIlogo from "./AIlogo.png";
+import component from "./Component .png";
+import component2 from "./Component 2.png";
+import marker01 from "./marker01.png";
+import enuguLogo from "./enuguLogo.png";
+import frame1 from "./Frame1.png";
+import art from "./art.png";
+import bar from "./bar.png";
+import outdoor from "./outdoor.png";
+import lodge from "./lodge.png";
+import car from "./car.png";
+import time from "./time.png";
+import plus from "./plus.png";
+import amico from "./amico.png"
 
 export {
   logo,
@@ -68,4 +83,7 @@ export {
   hero1,
   hero2,
   hero3,
+  calender,
+  AIlogo,
+  component, component2, marker01, enuguLogo, frame1, art, bar, outdoor, lodge, car, time, plus, amico
 };
