@@ -2,6 +2,8 @@
   justify-content: center;
   align-items: center;
   font-family: "satoshi";
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .heroSection {
@@ -93,14 +95,13 @@ input::placeholder {
   margin-top: 28px;
 }
 
-.eventsFrame {
+/* .eventsFrame {
   display: flex;
   justify-content: center;
 }
 
 .eventFrame {
   background: #5d3be933;
-  /* background: linear-gradient(180.1deg, #718AEB -26.56%, rgba(0, 0, 0, 0) 99.91%); */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -108,9 +109,9 @@ input::placeholder {
   width: 74rem;
   height: 303px;
   border-radius: 24px;
-}
+} */
 
-.Eventbutton {
+/* .Eventbutton {
   width: 121px;
   height: 34px;
   padding: 8px 12px 8px 12px;
@@ -128,9 +129,9 @@ input::placeholder {
   top: 20px;
   gap: 32px;
   margin-right: 40px;
-}
+} */
 
-.eventinfo h4 {
+/* .eventinfo h4 {
   font-size: 40px;
   font-weight: 900;
   line-height: 48px;
@@ -144,7 +145,7 @@ input::placeholder {
   color: #130c2a;
   position: relative;
   bottom: 40px;
-}
+} */
 
 .tripSection {
   display: flex;
@@ -163,7 +164,8 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 473px;
+  width: 1236px;
+  height: 182px;
   padding: 32px;
   border-radius: 8px;
   box-shadow: 2px 2px 12px 0px #0000000a;
@@ -302,9 +304,12 @@ input::placeholder {
 .tripPlan1 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   column-gap: 74px;
+  width: 1243px;
+height: 263px;
+border-radius: 24px;
 }
 
 #trips {
@@ -323,7 +328,7 @@ input::placeholder {
 }
 
 #trips1 span {
-  color: #d83535;
+  color: #028000;
 }
 
 .tripsBTN {
@@ -341,6 +346,10 @@ input::placeholder {
   cursor: pointer;
 }
 
+.tripsBTN img{
+   margin-right: 12px;
+}
+
 .exploreDiscover{
   display: flex;
   flex-direction: column;
@@ -353,7 +362,12 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 1300px;
   gap: 18px;
+  margin-left: 60px;
+  /* padding-right: 0; 
+  max-width: 100%; 
+  overflow: hidden;  */
 }
 
 .exploreDiscover h1 {

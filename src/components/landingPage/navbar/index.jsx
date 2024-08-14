@@ -36,7 +36,7 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/travel-guide"
+                to="/itineary"
                 className={({ isActive }) =>
                   isActive ? design.active : undefined
                 }
