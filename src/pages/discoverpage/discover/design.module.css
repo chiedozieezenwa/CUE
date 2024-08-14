@@ -1,0 +1,13 @@
+.container {
+    box-sizing: border-box;
+}
+
+.titleMessage {
+    color: var(--Light-Greyscale-Text-primary, #130C2A);
+    text-align: center;
+    font-family: 'Satoshi';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 40px;
+}
