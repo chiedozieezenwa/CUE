@@ -1,20 +1,21 @@
-import { useState } from "react";
-import design from "./signup.module.css";
-// import { useNavigate } from "react-router-dom";
+import design from "./signin.module.css";
+import { Button } from "../../../components/button";
+import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
-import { Signin } from "../SignIn";
+import { useState } from "react";
+import { Recover } from "../Recover";
 
-export const Signup = () => {
+export const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [showP, setShowP] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showSignin, setShowSignin] = useState(false); // To control the Signin popup visibility
-  // const navigate = useNavigate();
+  const [isRecoverOpen, setIsRecoverOpen] = useState(false); // To control the Recover popup visibility
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowP(!showP);
@@ -25,15 +26,15 @@ export const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/users/signup",
+      const response = await axios.post(
+        "https://cue-api-3tyr.onrender.com/api/v1/users/signin",
         { email, password },
         { withCredentials: true }
       );
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
-      console.log(res.data);
-      setIsOpen(false); // Close signup popup
-      setShowSignin(true); // Show signin popup
+      console.log(response.data);
+      if (response.status === 200) {
+        navigate("/");
+      }
     } catch (error) {
       if (error.response) {
         setError(
@@ -51,7 +52,7 @@ export const Signup = () => {
   };
 
   const togglePopUp = () => {
-    return setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -63,7 +64,6 @@ export const Signup = () => {
               <div className={design.loaderOverlay}>
                 <FadeLoader
                   color="#1516a5"
-                  visible={true}
                   loading={loading}
                   height={15}
                   width={5}
@@ -78,13 +78,11 @@ export const Signup = () => {
             </div>
 
             <section className={design["popup-card"]}>
-              <div className={design.headertxt}>
-                Sign up to take your trip planning to the next level
-              </div>
+              <div className={design.headertxt}>Log in</div>
 
               {error && <p className={design.error}>{error}</p>}
 
-              <form className={design["signup-form"]} onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className={design["signup-form"]}>
                 <input
                   type="email"
                   name="email"
@@ -97,7 +95,7 @@ export const Signup = () => {
                     type={showP ? "text" : "password"}
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Create Password"
+                    placeholder="Enter Password"
                     required
                   />
                   <img
@@ -108,29 +106,32 @@ export const Signup = () => {
                   />
                 </div>
 
-                <button className={design["signUpbtn"]} type="submit">
-                  Sign up
+                <button
+                  className={design["signUpbtn"]}
+                  type="submit"
+                  disabled={loading}
+                >
+                  Log in
                 </button>
               </form>
 
               <p className={design["signInlink"]}>
-                Already have an account?
-                <button
+                Forgot Password?
+                <Button
                   onClick={() => {
-                    setIsOpen(false);
-                    setShowSignin(true);
+                    setIsOpen(false); // Close signin popup
+                    setIsRecoverOpen(true); // Show recover popup
                   }}
+                  content="Recover"
                   className={design["logIn-btn"]}
-                >
-                  Log in
-                </button>
+                />
               </p>
             </section>
           </div>
         </div>
       )}
-      {showSignin && <Signin />}{" "}
-      {/* Render the Signin component if showSignin is true */}
+      {isRecoverOpen && <Recover />}{" "}
+      
     </>
   );
 };

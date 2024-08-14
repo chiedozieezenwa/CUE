@@ -47,8 +47,11 @@ import car from "./car.png";
 import time from "./time.png";
 import plus from "./plus.png";
 import amico from "./amico.png"
+import ai from "./ai.png"
+
 
 export {
+  ai,
   logo,
   lady,
   man,

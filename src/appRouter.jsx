@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Discover, Home, Itineary, Trip } from "./pages";
+
+import { Ai, Discover, Home, Itineary, Trip, Recover, Signin } from "./pages";
+
 import { Signup } from "./pages/Onboarding/Signup";
 
 const router = createBrowserRouter ([
@@ -23,6 +25,18 @@ const router = createBrowserRouter ([
         path: "/itineary",
         element: <Itineary/>
     },
+        path: "/signin",
+        element: <Signin />
+    },
+    {
+        path: "/recover",
+        element: <Recover />
+    },
+    {
+        path: "/ai",
+        element: <Ai />
+    }
+
 ])
 
 export default router;

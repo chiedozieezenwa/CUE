@@ -1,6 +1,9 @@
 .container {
     display: flex;
     margin-top: 4rem;
+    box-sizing: border-box;
+    padding: 0 70px;
+    gap: 10px;
 }
 
 .left-section {
@@ -8,7 +11,7 @@
     font-family: 'Satoshi', sans-serif; 
     display: flex;
     justify-content: flex-end;
-    width: 536px;
+    width: 469px;
 }
 
 .left-section > div {
@@ -50,7 +53,8 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
-    line-height: 18px
+    line-height: 18px;
+    cursor: pointer;
 }
 
 .right-section {
@@ -61,46 +65,50 @@
 
 .right-col {
     width: 356px;
-    height: 700px;
+    height: 624px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 2; 
+    z-index: 0; 
 }
 
 .left-col {
     display: grid;
     gap: 24px;
     width: 356px;
-    z-index: 2;
+    z-index: 0;
 }
 
 .airplane-path {
     position: absolute;
     top: 180px; 
-    left: 960px; 
-    z-index: 1;
+    left: 980px; 
+    z-index: -1;
 }
 
 .airplane-icon {
     position: absolute;
     top: 150px; 
-    left: 900px; 
+    left: 920px; 
 }
 
 .airplane-path2 {
     position: absolute;
-    top: 580px; 
-    left: 880px; 
-    z-index: 1;
+    top: 530px; 
+    left: 920px; 
+    z-index: -1;
+}
+
+.grid {
+    width: 356px;
+    height: 300px;
 }
 
 @media (max-width: 768px) {
     .container {
         margin-top: 2rem;
         flex-direction: column;
-        border: 2px solid green;
     }
 
     .left-section {
