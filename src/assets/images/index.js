@@ -90,3 +90,5 @@ export {
   AIlogo,
   component, component2, marker01, enuguLogo, frame1, art, bar, outdoor, lodge, car, time, plus, amico
 };
+
+export * from "./features"
