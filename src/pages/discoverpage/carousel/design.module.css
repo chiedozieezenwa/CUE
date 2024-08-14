@@ -1,0 +1,22 @@
+.discoveryHomeCards{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1236px;
+  gap: 18px;
+}
+
+.exploreDiscover{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Satoshi';
+}
+
+.exploreDiscover > p {
+  font-family: 'Satoshi';
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #130c2a;
+}

@@ -1,15 +1,14 @@
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import {
   heart,
   hotelIcon,
-  // image,
+  image,
   kambari,
   leading,
   ogbudu,
   ogbunike,
-  plus,
   rating,
   ratingStars,
   rentalIcon,
@@ -26,15 +25,15 @@ import styles from "./styles.module.css";
 
 const DestinationCarousel = ({ destinationLists }) => {
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3.1,
-    slidesToScroll: 3,
-    swipeToSlide: true,
-    touchMove: true,
-    focusOnSelect: true,
-    responsive: [
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      swipeToSlide: true,
+      touchMove: true,
+      focusOnSelect: true, 
+      responsive: [
       {
         breakpoint: 1024,
         settings: {
@@ -59,7 +58,6 @@ const DestinationCarousel = ({ destinationLists }) => {
         {destinationLists.map((destinationList, index) => (
           <Destination
             key={index}
-            hasTag={true}
             destinationImage={destinationList.destinationImage}
             subject={destinationList.subject}
             title={destinationList.title}
@@ -150,43 +148,23 @@ export const Discover = () => {
           <h2>Where To?</h2>
           <ul>
             <li>
-              <img
-                src={searchIcon}
-                alt="Search Icon"
-                className={styles.Sectionimage}
-              />
+              <img src={searchIcon} alt="Search Icon" className={styles.Sectionimage} /> 
               Search All
             </li>
             <li>
-              <img
-                src={hotelIcon}
-                alt="Hotel Icon"
-                className={styles.Sectionimage}
-              />
+              <img src={hotelIcon} alt="Hotel Icon" className={styles.Sectionimage} /> 
               Hotels
             </li>
             <li>
-              <img
-                src={todoIcon}
-                alt="Things To Do Icon"
-                className={styles.Sectionimage}
-              />
+              <img src={todoIcon} alt="Things To Do Icon" className={styles.Sectionimage} /> 
               Things To Do
             </li>
             <li>
-              <img
-                src={rentalIcon}
-                alt="Vacation Rentals Icon"
-                className={styles.Sectionimage}
-              />
+              <img src={rentalIcon} alt="Vacation Rentals Icon" className={styles.Sectionimage} /> 
               Vacation Rentals
             </li>
             <li>
-              <img
-                src={securityIcon}
-                alt="Security Icon"
-                className={styles.Sectionimage}
-              />
+              <img src={securityIcon} alt="Security Icon" className={styles.Sectionimage} /> 
               Security
             </li>
           </ul>
@@ -198,31 +176,28 @@ export const Discover = () => {
                 placeholder="Places to go, things to do, hotels..."
                 className={styles.input}
               />
-              <Button content="Search" className={styles.button} link="/" />
+              <Button
+                content="Search"
+                className={styles.button}
+                link="/"
+              />
             </div>
           </div>
 
-          {/* <div className={styles.eventsFrame}>
-             <div className={styles.eventFrame}>
+          <div className={styles.eventsFrame}>
+            <div className={styles.eventFrame}>
               <div className={styles.eventinfo}>
                 <Button
                   content="Coming Soon"
                   className={styles.Eventbutton}
-                  link="/trip"
+                  link="/"
                 />
                 <h4>Live Events Near You</h4>
-                <p>
-                  Find events near you easily to spice up your travel
-                  experience.
-                </p>
+                <p>Find events near you easily to spice up your travel experience.</p>
               </div>
-              <img
-                src={image}
-                alt="Events Image"
-                className={styles.eventsBTN}
-              />
-            </div> 
-          </div> */}
+              <img src={image} alt="Events Image" className={styles.eventsBTN} />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -237,10 +212,9 @@ export const Discover = () => {
               img={leading}
               className={styles.guideBTN}
               content="Plan new trip"
-              link="/trip"
             />
           </div>
-          {/* <div className={styles.guide}>
+          <div className={styles.guide}>
             <div>
               <p id={styles.guide}>Your Guides</p>
               <p id={styles.guide1}>You don’t have any guides yet.</p>
@@ -250,7 +224,7 @@ export const Discover = () => {
               className={styles.guideBTN}
               content="Create new guide"
             />
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -277,12 +251,10 @@ export const Discover = () => {
         <div className={styles.tripPlan1}>
           <div>
             <p id={styles.trips}>Recently Viewed and Upcoming Trips</p>
-            <p id={styles.trips1}>
-              You haven’t created anything yet. <span>Plan a new trip.</span>
-            </p>
+            <p id={styles.trips1}>You haven’t created anything yet. <span>Plan a new trip.</span></p>
           </div>
           <Button
-            img={plus}
+            img={leading}
             className={styles.tripsBTN}
             content="Plan new trip"
           />

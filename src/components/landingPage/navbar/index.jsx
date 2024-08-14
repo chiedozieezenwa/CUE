@@ -46,7 +46,7 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/discover"
+                to="/disc"
                 className={({ isActive }) =>
                   isActive ? design.active : undefined
                 }
