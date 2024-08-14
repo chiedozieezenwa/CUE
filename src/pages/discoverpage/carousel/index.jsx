@@ -7,16 +7,17 @@ import { Destination } from "../../../components";
 
 export const DestinationCarousel = ({ destinationLists }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 3,
     slidesToScroll: 1,
     swipeToSlide: true,
     touchMove: true,
     focusOnSelect: true,
-    autoplay: true, 
-    autoplaySpeed: 3000,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: "linear",
     responsive: [
       {
         breakpoint: 1024,
