@@ -1,15 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Ai, Discover, Home, Recover, Signin } from "./pages";
+import { Ai, Disc, Discover, Home, Recover, Signin } from "./pages";
 import { Signup } from "./pages/Onboarding/Signup";
 
 const router = createBrowserRouter ([
     {
         path: "/",
         element: <Home />
-    },
-    {
-        path: "/discover",
-        element: <Discover />
     },
     {
         path: "/signup",
@@ -26,6 +22,14 @@ const router = createBrowserRouter ([
     {
         path: "/ai",
         element: <Ai />
+    },
+    {
+        path: "/discover",
+        element: <Discover />
+    },
+    {
+        path: "/disc",
+        element: <Disc />
     }
 ])
 
