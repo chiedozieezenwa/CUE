@@ -71,3 +71,5 @@ export {
   hero2,
   hero3,
 };
+
+export * from "./features"

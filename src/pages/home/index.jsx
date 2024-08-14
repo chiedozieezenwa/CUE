@@ -10,6 +10,7 @@ import {
   Destination,
   Footer,
   Hero,
+  Keyfeatures,
   Navbar,
   Testimonial,
 } from "../../components";
@@ -70,7 +71,7 @@ export const Home = () => {
           })}
         </div>
       </div>
-
+      <Keyfeatures />
       <Testimonial />
       <Footer />
     </div>
