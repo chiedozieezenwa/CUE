@@ -1,0 +1,102 @@
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "satoshi";
+}
+
+.plan h2 {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  color: #130c2a;
+}
+
+.planInput {
+  width: 40.25rem;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  height: Fixed 68px;
+  padding: 12px 20px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #000;
+  opacity: 0.5;
+  padding-left: 112px;
+  margin-right: 150px;
+}
+
+.planInput::placeholder {
+  color: #888;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 24px;
+  padding-left: 30px;
+  position: relative;
+  left: 106px;
+  color: black;
+}
+
+.datePicker{
+      width: 106px;
+height: 20px;
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+padding: 12px 20px;
+padding-left: 34px;
+gap: 32px;
+border-radius: 12px;
+border: 1px #000 solid;
+position: relative;
+bottom: 12px;
+color: red;
+} 
+
+.calenderDate{
+      display: flex;
+      gap: 48px;
+}
+
+.dateLabel {
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+color: #130C2A;
+margin-left: 20px;
+    }
+
+    .dateLabel img{
+      width: 18px;
+height: 20px;
+margin-right: 6px;
+margin-top: 5px;
+border: 2px;
+    }
+
+    .planBTN{
+      width: 183px;
+height: 56px;
+padding: 16px 24px;
+border-radius: 20px;
+font-family: Satoshi;
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+background: #5D3BE9;
+color: #fff;
+border: none;
+margin-top: 30px;
+cursor: pointer;
+    }
+    
+
+ 
