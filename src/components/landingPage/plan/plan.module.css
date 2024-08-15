@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Satoshi', sans-serif;
+}
+
+body {
+    background-color: #f8f1fc;
+    font-family: 'Satoshi', sans-serif;
+    color: #333;
+}
+
+
+.container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: -20px; /* Adjust as needed to move the content higher */
+}
+
+.search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    width: 250px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #655af3;
+    outline: none;
+}
+
+.btn-plan {
+    background-color: #655af3;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-plan:hover {
+    background-color: #5347c8;
+}
+
+
+.features-section {
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+.features-section p {
+    margin-bottom: 40px;
+    font-family: Roboto;
+    font-size: 1.5em;
+    /* font-weight: 200; */
+    /* line-height: 56px; */
+    text-align: center;
+
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.feature {
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.feature p {
+    font-size: 0.7em;
+    color: #777;
+    font-family: 'Satoshi', sans-serif;
+
+}

@@ -14,6 +14,7 @@ import {
   Navbar,
   Testimonial,
 } from "../../components";
+import { Plan } from "../../components/landingPage/plan";
 import styles from "./styles.module.css";
 
 const destinationLists = [
@@ -51,7 +52,7 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
-
+      <Plan/>
       <div className={styles.explore}>
         <h1>Explore The Hidden Wonders Of Nigeria.</h1>
         <div className={styles.homeCards}>

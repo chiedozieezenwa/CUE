@@ -33,7 +33,6 @@ export const Keyfeatures = () => {
         </div>
     </div>
     <div className={styles["features-section"]}>
-        <div className={styles["features-content"]}>
             <div className={styles["features-text"]}>
                 <h3>Key Features</h3>
                 <h2>We Offer The Best Services</h2>
@@ -56,8 +55,8 @@ export const Keyfeatures = () => {
                             <p>Get Events Updates And Personalized Recommendation.</p>
                         </div>
                     </div>
-                    <div className="feature-item">
-                        <div className="icon">
+                    <div className={styles["feature-item"]}>
+                    <div className={styles["icon"]}>
                             <img src={lock04} alt="Security Icon" />
                         </div>
                         <div className={styles["feature-details"]}>
@@ -67,11 +66,11 @@ export const Keyfeatures = () => {
                     </div>
                 </div>
             </div>
+            
             <div className={styles["features-images"]}>
-                <img src={Framebottomleft} alt="Image 1" />
-                <img src={Frametopright} alt="Image 2" />
-            </div>
-        </div>
+            <img src={Framebottomleft} alt="Image 1" />
+            <img src={Frametopright} alt="Image 2" />
+            </div>   
     </div>
 </div>
 )
