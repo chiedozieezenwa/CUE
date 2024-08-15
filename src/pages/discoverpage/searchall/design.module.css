@@ -1,8 +1,9 @@
 .container {
     box-sizing: border-box;
-    display: grid;
-    place-items: center;
-    gap: 62px;
+    display: flex;
+    flex-direction: column;
+    place-items: center;  
+    gap: 62px; 
 }
 
 .inputContainer > input {
@@ -117,7 +118,7 @@ input::placeholder {
 }
 
 .adventure1 {
-  background-image: url(../../assets/images/surfing.png);
+  background-image: url(../../../assets/images/surfing.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100%;
@@ -127,7 +128,7 @@ input::placeholder {
 }
 
 .adventure2 {
-  background-image: url(../../assets/images/lake.png);
+  background-image: url(../../../assets/images/lake.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100%;
@@ -136,7 +137,7 @@ input::placeholder {
   border-radius: 48px;
 }
 .adventure3 {
-  background-image: url(../../assets/images/ballon.png);
+  background-image: url(../../../assets/images/ballon.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100%;

@@ -29,7 +29,7 @@ export const Disc = () => {
   const message = {
     searchall: "Select Destination",
    lodging: "Explore the best Lodging options!",
-    rentals: "Find the perfect Vacation Rental!",
+    rentals: "Unlock Unique Rentals for Every Adventure!",
     security: "Your security is our top priority!",
   };
 
