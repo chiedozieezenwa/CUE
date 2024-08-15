@@ -103,6 +103,12 @@
 .grid {
     width: 356px;
     height: 300px;
+    transition: 2s ease-in-out; 
+    opacity: 0;
+}
+
+.grid.active {
+  opacity: 5; 
 }
 
 @media (max-width: 768px) {
