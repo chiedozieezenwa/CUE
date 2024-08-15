@@ -41,16 +41,17 @@ export const DestinationCarousel = ({ destinationLists }) => {
       <p>Popular Destinations</p>
       <Slider {...settings} className={design.discoveryHomeCards}>
         {destinationLists.map((destinationList, index) => (
-          <Destination
-            key={index}
-            destinationImage={destinationList.destinationImage}
-            subject={destinationList.subject}
-            title={destinationList.title}
-            description={destinationList.description}
-            rating={destinationList.rating}
-            review={destinationList.review}
-            destinationImg={destinationList.destinationImg}
-          />
+          <div key={index} className={design.sliderItem}>
+            <Destination
+              destinationImage={destinationList.destinationImage}
+              subject={destinationList.subject}
+              title={destinationList.title}
+              description={destinationList.description}
+              rating={destinationList.rating}
+              review={destinationList.review}
+              // destinationImg={destinationList.destinationImg}
+            />
+          </div>
         ))}
       </Slider>
     </div>
