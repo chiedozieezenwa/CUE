@@ -9,7 +9,7 @@ export const Destination = ({ destinationImage, description, title, subject, rat
           <img
             src={destinationImage}
             alt=""
-            className={hasTag ? styles.destIMG : styles.destImage}
+            className={hasTag ? styles.destIMG:styles.destImage}
           />
           {hasTag && (
             <div className={styles.subject}>

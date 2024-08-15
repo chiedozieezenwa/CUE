@@ -142,6 +142,7 @@ export const SearchAll = () => {
           
         </div>
       </section>
+      {/* <Footer/> */}
     </div>
   );
 };

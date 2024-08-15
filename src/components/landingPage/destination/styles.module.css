@@ -6,22 +6,21 @@
   margin: 0;
 }
 
-/* .destinationCards {
+.destinationCards {
   display: flex;
   gap: 25px;
-  border: 2px solid red;
-} */
+}
 
-/* .destIMG {
+ .destIMG {
   width: 400px;
   height: 280px;
   border-radius: 48px 48px 0px 0px;
-} */
+} 
 
 .destImage {
-  width: 400px;
-  height: 280px;
-  border-radius: 48px 48px 0px 0px;
+  width: 250px;
+  height: 180px;
+  border-radius: 48px 48px 0px 0px; 
 }
 
 
@@ -40,6 +39,7 @@
   background: #ffffff;
 }
 
+
 .subject {
   width: 219px;
   height: 41px;
@@ -54,16 +54,16 @@
   letter-spacing: 0.15000000596046448px;
   text-align: center;
   position: relative;
-  /* bottom: 300px; */
+  bottom: 300px;
 }
 
 
-.cardDetail2 {
+/* .cardDetail2 {
   width: 400px;
   height: 99px;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .destLocation {
   font-family: 'Satoshi';
