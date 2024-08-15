@@ -25,7 +25,7 @@ const router = createBrowserRouter ([
         path: "/itineary",
         element: <Itineary/>
     },
-        path: "/signin",
+    {    path: "/signin",
         element: <Signin />
     },
     {
