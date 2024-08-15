@@ -46,11 +46,17 @@ import lodge from "./lodge.png";
 import car from "./car.png";
 import time from "./time.png";
 import plus from "./plus.png";
-import amico from "./amico.png"
-import ai from "./ai.png"
+import amico from "./amico.png";
+import ai from "./ai.png";
+import slider1 from "./slider1.png";
+import slider2 from "./slider1.png";
+import slider3 from "./slider1.png";
 
 
 export {
+  slider1,
+  slider2,
+  slider3,
   ai,
   logo,
   lady,
@@ -90,3 +96,5 @@ export {
   AIlogo,
   component, component2, marker01, enuguLogo, frame1, art, bar, outdoor, lodge, car, time, plus, amico
 };
+
+export * from "./features"

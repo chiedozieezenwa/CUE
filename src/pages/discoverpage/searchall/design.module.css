@@ -1,0 +1,236 @@
+.container {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    gap: 62px;
+}
+
+.inputContainer > input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 1236px;
+  height: 92px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.40);
+  box-shadow: 0px 9px 20px 0px rgba(132, 132, 132, 0.20);
+  color: #130c2a;
+  position: relative;
+}
+
+input::placeholder {
+  color: #130c2a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  opacity: 0.5;
+}
+
+.button {
+  background: #5d3be9;
+  color: #ffffff;
+  width: 154px;
+  height: 68px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  border: none;
+  position: absolute;
+  right: 80px;
+  top: 18.5rem;
+}
+
+.guide {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  width: 1236px;
+  height: 182px;
+  padding: 32px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.04);
+  background-color: rgba(124, 132, 147, 0.05);
+}
+
+.guideBTN {
+  width: 166px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  border: 1px;
+  background: transparent;
+  color: #5d3be9;
+  border: 1px solid #5d3be9;
+  cursor: pointer;
+}
+
+.guideBTN img {
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+#guide {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #130c2a;
+}
+
+#guide1 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #130c2a;
+}
+
+.explore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.exploreLIST h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: left;
+  color: #130c2a;
+}
+
+.LIST {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  column-gap: 30px;
+}
+
+.adventure1 {
+  background-image: url(../../assets/images/surfing.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  width: 374px;
+  height: 450px;
+  border-radius: 48px;
+}
+
+.adventure2 {
+  background-image: url(../../assets/images/lake.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  width: 374px;
+  height: 450px;
+  border-radius: 48px;
+}
+.adventure3 {
+  background-image: url(../../assets/images/ballon.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  width: 374px;
+  height: 450px;
+  border-radius: 48px;
+}
+
+.adventure1 p {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  text-align: left;
+  color: #ffffff;
+  padding-top: 330px;
+  display: flex;
+  justify-content: center;
+}
+
+.adventure2 p {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  text-align: left;
+  color: #ffffff;
+  padding-top: 330px;
+  display: flex;
+  justify-content: center;
+}
+
+.adventure3 p {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  text-align: left;
+  color: #ffffff;
+  padding-top: 330px;
+  display: flex;
+  justify-content: center;
+}
+
+.tripPlan {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+}
+
+.tripPlan1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 74px;
+  width: 1243px;
+height: 263px;
+border-radius: 24px;
+}
+
+#trips {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #130c2a;
+  padding-right: 110px;
+}
+
+#trips1 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #130c2a;
+}
+
+#trips1 span {
+  color: #028000;
+}
+
+.tripsBTN {
+  width: 166px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  border: 1px;
+  color: #ffffff;
+  background-color: #5d3be9;
+  border: none;
+  cursor: pointer;
+}
+
+.tripsBTN img{
+   margin-right: 12px;
+}

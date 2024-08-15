@@ -36,17 +36,17 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/travel-guide"
+                to="/itineary"
                 className={({ isActive }) =>
                   isActive ? design.active : undefined
                 }
               >
-                Travel Guide
+                Trip Itinerary
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/discover"
+                to="/disc"
                 className={({ isActive }) =>
                   isActive ? design.active : undefined
                 }
@@ -56,12 +56,12 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/trip-itinerary"
+                to="/ai"
                 className={({ isActive }) =>
                   isActive ? design.active : undefined
                 }
               >
-                Trip Itinerary
+                AI Assistant
               </NavLink>
             </li>
           </ul>

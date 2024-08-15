@@ -1,7 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-
-import { Ai, Discover, Home, Itineary, Trip, Recover, Signin } from "./pages";
-
+import { Ai, Disc, Discover, Home, Itineary, Recover, Signin, Trip } from "./pages";
 import { Signup } from "./pages/Onboarding/Signup";
 
 const router = createBrowserRouter ([
@@ -10,22 +8,19 @@ const router = createBrowserRouter ([
         element: <Home />
     },
     {
-        path: "/discover",
-        element: <Discover />
-    },
-    {
         path: "/signup",
         element: <Signup />
     },
     {
         path: "/trip",
-        element: <Trip/>
+        element: <Trip />
     },
     {
         path: "/itineary",
-        element: <Itineary/>
+        element: <Itineary />
     },
-    {    path: "/signin",
+    {
+        path: "/signin",
         element: <Signin />
     },
     {
@@ -35,8 +30,15 @@ const router = createBrowserRouter ([
     {
         path: "/ai",
         element: <Ai />
+    },
+    {
+        path: "/discover",
+        element: <Discover />
+    },
+    {
+        path: "/disc",
+        element: <Disc />
     }
-
 ])
 
 export default router;
