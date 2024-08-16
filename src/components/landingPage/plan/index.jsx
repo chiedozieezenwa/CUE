@@ -3,6 +3,7 @@ import styles from './plan.module.css';
 export const Plan = () => {
     return (
     <div className={styles.container}>
+      
       {/* Search Section */}
       <div className={styles.searchSection}>
         <div className={styles.inputGroup}>
@@ -17,7 +18,7 @@ export const Plan = () => {
       </div>
 
       {/* Features Section */}
-      <div className={styles.featuresSection}>
+      <div className={styles["features-section"]}>
         <h2>Plan Like A Pro</h2>
         <p>
           Unlock premium features like offline access, todo list, events updates, security, and much more.

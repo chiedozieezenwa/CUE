@@ -16,20 +16,22 @@ body {
         max-width: 1200px;
         margin: 0 auto;
         padding-top: -20px; /* Adjust as needed to move the content higher */
+        margin-bottom: 50px;
+        margin-top: 30px;
 }
 
-.search-section {
+.searchSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    padding: 40px;
-    border-radius: 7px;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.input-group {
+.inputGroup {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
@@ -51,18 +53,18 @@ input[type="date"]:focus {
     outline: none;
 }
 
-.btn-plan {
+.btnPlan {
     background-color: #655af3;
     color: #fff;
     padding: 12px 20px;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
-.btn-plan:hover {
+.btnPlan:hover {
     background-color: #5347c8;
 }
 
