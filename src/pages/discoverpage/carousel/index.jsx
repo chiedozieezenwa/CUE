@@ -43,6 +43,8 @@ export const DestinationCarousel = ({ destinationLists }) => {
         {destinationLists.map((destinationList, index) => (
           <div key={index} className={design.sliderItem}>
             <Destination
+            key={index}
+            hasTag={true}
               destinationImage={destinationList.destinationImage}
               subject={destinationList.subject}
               title={destinationList.title}

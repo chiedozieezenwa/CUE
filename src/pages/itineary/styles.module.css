@@ -1,16 +1,16 @@
-.ItinearyHome {
+ .ItinearyHome {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-family: Satoshi;
+  font-family: "Satoshi";
 }
 
 .itinearyInfo {
   width: 398px;
   height: 450px;
   position: relative;
-  bottom: 804px;
+  bottom: 1104px;
   padding: 2px 0px 42px 0px;
   margin-left: 46px;
 }
@@ -53,7 +53,7 @@
   color: #fefefe;
   width: 354px;
   border-radius: 16px;
-}
+} 
 
 .enuguCity {
   background-image: url(../../assets/images/enuguLogo.png);
@@ -103,12 +103,13 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: center;  
+      background-color: red;
 }
 
 .itinearyCards{
-      display: flex;
-      gap: 14px;
+       display: flex;
+      gap: 14px; 
 }
 
 h1{
@@ -283,4 +284,4 @@ font-size: 16px;
 font-weight: 400;
 line-height: 20px;
 color: #130C2A;
-}
+} 

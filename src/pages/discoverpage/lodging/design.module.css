@@ -1,4 +1,67 @@
 .container {
     box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 48px;
+    margin: 0;
 }
 
+.bookingCont {
+    width: 1238px;
+    box-sizing: border-box;
+}
+
+.filter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 38px;
+}
+
+.filter > p {
+    font-family: 'Satoshi';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    width: 80px;
+    text-align: center;
+}
+
+.filterReset {
+    color: rgba(93, 59, 233, 1);
+}
+
+/* -----------------------------------------------Booking Form------------------------------------------------ */
+
+.bookingSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookingForm {
+    width: 439px;
+}
+
+.bookingReview {
+    width: 694px;
+    border: 1px solid yellow;
+}
+
+.priceRange {
+    display: flex;
+    gap: 24px;
+}
+
+.priceRange > .priceInput {
+    width: 207px;
+    height: 102px;
+    border-radius: 6px;
+    border: 1px solid var(--Grey-300, #D0D5DD);
+    background: var(--Shade-White, #FFF);
+}

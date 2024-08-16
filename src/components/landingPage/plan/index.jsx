@@ -3,7 +3,6 @@ import styles from './plan.module.css';
 export const Plan = () => {
     return (
     <div className={styles.container}>
-      
       {/* Search Section */}
       <div className={styles.searchSection}>
         <div className={styles.inputGroup}>

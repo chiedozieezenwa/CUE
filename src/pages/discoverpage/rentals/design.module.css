@@ -1,3 +1,159 @@
 .container {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.containerRental {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+}
+
+#leaving {
+  margin-left: 16px;
+}
+
+.containerRentals {
+  justify-content: center;
+  align-items: center;
+  width: 205px;
+  height: 56px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+.containerRentals1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 173px;
+  height: 56px;
+  padding: 4px 10px;
+  gap: 14px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+.containerRentals2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 193px;
+  height: 56px;
+  padding: 4px 10px;
+  gap: 14px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+
+.containerCalender {
+  display: flex;
+}
+
+.containerCalender img {
+  width: 24px;
+  height: 26px;
+  top: 2px;
+  left: 3px;
+  border: 2px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.containerCalender p {
+  margin-top: 20px;
+}
+.containerTime {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #130c2a;
+  position: relative;
+  bottom: 10px;
+}
+
+.containerDate {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  padding-left: 30px;
+}
+
+.BTN {
+  width: 144px;
+  height: 56px;
+  padding: 16px 24px;
+  gap: 0px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  background: #5d3be9;
+  border: none;
+  margin-top: 6px;
+}
+
+.datepicker {
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
+.datepicker::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.datepicker2 {
+  width: 105px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
+.datepicker2::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.datepicker2 img {
+  position: relative;
+  right: 40px;
+}
+
+#date1 {
+  position: relative;
+  top: 8px;
+  margin-left: 15px;
+}
+
+#date2 {
+  position: relative;
+  top: 8px;
+  margin-left: 15px;
+}
+
+.containerImage {
+  margin-right: 14px;
 }
