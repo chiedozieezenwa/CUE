@@ -50,18 +50,206 @@
 
 .bookingReview {
     width: 694px;
-    border: 1px solid yellow;
 }
 
-.priceRange {
+/* -----------section containers-------------- */
+.priceRange,
+.propertyType, 
+.numOfGuests, 
+.convenience {
+    display: flex;
+    flex-direction: column;
+}
+
+/*----------------Labels------------------- */
+.priceRange > p,
+.propertyType > p,
+.numOfGuests > p,
+.convenience > p {
+    font-family: 'Satoshi';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    color: #101928;
+}
+
+.priceRange > div {
     display: flex;
     gap: 24px;
 }
 
-.priceRange > .priceInput {
+.priceRange > div > input {
+    box-sizing: border-box;
+    padding: 16px;
     width: 207px;
-    height: 102px;
+    height: 56px;
     border-radius: 6px;
     border: 1px solid var(--Grey-300, #D0D5DD);
     background: var(--Shade-White, #FFF);
 }
+
+/* -------------------------Property type---------------------- */
+
+.proptypelist, .convenienceList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.proptypelist > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 129.664px;
+    height: 60.238px;
+    padding: 12.623px;
+    border-radius: 10.21px;
+    border: 1.052px solid rgba(93, 59, 233, 0.20);
+    background: #FFF;
+}
+
+.proptypelist > div > p {
+    color: #2E2D2D;
+    font-family: 'Satoshi';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+}
+
+.proptypelist > div > img {
+    margin: 0;
+    width: 24px;
+    height: 24px;
+}
+
+/* --------------number of guests-------------- */
+.numOfGuests > div {
+    box-sizing: border-box;
+    padding: 16px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #D0D5DD;
+    border-radius: 6px;
+}
+
+.numOfGuests > div > button {
+    border: none;
+    font-size: 24px;
+    color: #5D3BE9;
+}
+
+/* -----------Convenience------------ */
+.convenienceList > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7.5px;
+    height: 60px;
+    border-radius: 13.519px;
+    background: var(--Light-Greyscale-White, #FEFEFE);
+    box-shadow: 0px 0px 9.012px 0px rgba(132, 132, 132, 0.15);
+}
+
+.convenienceList > div > p {
+    color: #130C2A;
+    font-family: 'Satoshi';
+    font-size: 12.617px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16.222px;
+}
+
+/* ---------Submit Button--------- */
+.submitBtn {
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.submitBtn > button {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 20px;
+    background: #5D3BE9;
+    color: white;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+/* ----------------Right Section --------------------- */
+.bookingReview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    gap: 46px;
+}
+
+.hotelCard {
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.hotelCard > img {
+    border-radius: 12px 12px 0 0;
+}
+
+.hotelCard > p {
+    margin: 0;
+    font-family: 'Satoshi', sans-serif;
+    font-style: normal;
+    padding-left: 10px;
+}
+
+.hotelCard > .titleField {
+    font-size: 11.115px;
+    font-weight: 900;
+    line-height: 13.894px;
+}
+
+.hotelCard > .location,
+.hotelCard > .review {
+    color: var(--Global-Content-Medium, #666);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 8.336px;
+}
+
+.hotelCard > .status {
+    color: #5D3BE9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14.82px;
+    height: 24px;
+    width: 74px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 9.263px;
+    letter-spacing: 0.116px;
+    background-color: rgba(71, 89, 255, 0.06);
+}
+
+.hotelCard > .price {
+    color: var(--Light-Greyscale-Text-primary, #130C2A);
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 9.263px;
+}
+
