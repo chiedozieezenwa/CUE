@@ -51,7 +51,15 @@ import ai from "./ai.png";
 import slider1 from "./slider1.png";
 import slider2 from "./slider1.png";
 import slider3 from "./slider1.png";
-
+import car5 from "./car 5.png";
+import car2 from "./car2.png"
+import bmw from "./BMW.png";
+import gle from "./GLE.png";
+import phone from "./phone.png";
+import fan from "./fan.png";
+import naira from "./naira.png";
+import visa from "./visa.png";
+import visa2 from "./visa2.png"
 
 export {
   slider1,
@@ -94,7 +102,28 @@ export {
   hero3,
   calender,
   AIlogo,
-  component, component2, marker01, enuguLogo, frame1, art, bar, outdoor, lodge, car, time, plus, amico
+  component,
+  component2,
+  marker01,
+  enuguLogo,
+  frame1,
+  art,
+  bar,
+  outdoor,
+  lodge,
+  car,
+  time,
+  plus,
+  amico,
+  car5,
+  bmw,
+  gle,
+  phone,
+  fan,
+  naira,
+  car2,
+  visa,
+  visa2
 };
 
-export * from "./features"
+export * from "./features";
