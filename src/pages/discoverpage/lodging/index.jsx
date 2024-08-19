@@ -1,28 +1,72 @@
-import { useContext, useState } from "react";
-import { SearchBar } from "../../../components/searchbar"
-import design from "./design.module.css"
-import { UserContext } from "../../../context/appContext";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { SearchBar } from "../../../components/searchbar";
+import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
 import { airBnB, Apartments, bathhub, bedAndBreakfast, Hotels, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
-import { items } from "./data";
 
 export const Lodging = () => {
-  const {loading} = useContext(UserContext);
-  const [count, setCount] = useState (1)
+  const [loading, setLoading] = useState(true);
+  const [hotels, setHotels] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState([]);
+  const [count, setCount] = useState(1);
+  const [filters, setFilters] = useState({
+    priceFrom: '',
+    priceTo: '',
+    propertyType: '',
+    convenience: [],
+  });
+
+  useEffect(() => {
+    axios.get('https://cue-api-3tyr.onrender.com/api/v1/hotels')
+      .then(response => {
+        const data = response.data.data || [];  // Ensure data is an array
+        setHotels(Array.isArray(data) ? data : []);
+        setFilteredHotels(Array.isArray(data) ? data : []);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("There was an error fetching the hotels!", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters({
+      ...filters,
+      [name]: value,
+    });
+  };
+
+  const handleFilterSubmit = (e) => {
+    e.preventDefault();
+
+    if (!Array.isArray(hotels)) {
+      console.error("Hotels data is not an array");
+      return;
+    }
+
+    const { priceFrom, priceTo, propertyType } = filters;
+    const filtered = hotels.filter(hotel => {
+      return (
+        (priceFrom === '' || hotel.price >= priceFrom) &&
+        (priceTo === '' || hotel.price <= priceTo) &&
+        (propertyType === '' || hotel.type.includes(propertyType))
+      );
+    });
+    setFilteredHotels(filtered);
+  };
 
   const decrement = (e) => {
-    e.preventDefault()
-    setCount (count - 1)
-  }
+    e.preventDefault();
+    setCount(count > 1 ? count - 1 : 1);
+  };
 
   const increment = (e) => {
-    e.preventDefault()
-    setCount (count + 1)
-  }
-
-  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    setCount(count + 1);
+  };
 
   return (
     <div className={design.container}>
@@ -48,70 +92,81 @@ export const Lodging = () => {
         </div>
 
         <div className={design.bookingSection}>       
-          <form className={design.bookingForm} onSubmit={handleSubmit}>
+          <form className={design.bookingForm} onSubmit={handleFilterSubmit}>
 
             {/* Price Range */}
             <div className={design.priceRange}>
               <p>Price</p>
               <div>
-                <input type="text" placeholder="From"/>
-                <input type="text" placeholder="To"/>
+                <input
+                  type="number"
+                  name="priceFrom"
+                  value={filters.priceFrom}
+                  onChange={handleFilterChange}
+                  placeholder="From"
+                />
+                <input
+                  type="number"
+                  name="priceTo"
+                  value={filters.priceTo}
+                  onChange={handleFilterChange}
+                  placeholder="To"
+                />
               </div>
             </div>
 
             {/* Property Type */}
-
             <div className={design.propertyType}>
               <p>Property Type</p>
               <div className={design["proptypelist"]}>
-                <div>
+                {/* Example Property Type Filter */}
+                <div onClick={() => setFilters({...filters, propertyType: 'Bed and Breakfast'})}>
                   <img src={bedAndBreakfast} alt="bNb" />
                   <p>Bed and Breakfast</p>
                 </div>
-                <div>
+                <div onClick={() => setFilters({...filters, propertyType: 'Apartments'})}>
                   <img src={Apartments} alt="Apartments" />
                   <p>Apartments</p>
                 </div>
-                <div>
+                <div onClick={() => setFilters({...filters, propertyType: 'Airbnb'})}>
                   <img src={airBnB} alt="Air BNB" />
                   <p>Airbnb</p>
                 </div>
-                <div>
+                <div onClick={() => setFilters({...filters, propertyType: 'Villas'})}>
                   <img src={Villas} alt="Villas" />
                   <p>Villas</p>
                 </div>
-                <div>
+                <div onClick={() => setFilters({...filters, propertyType: 'Hotels'})}>
                   <img src={Hotels} alt="Hotels" />
                   <p>Hotels</p>
                 </div>
-                <div>
+                <div onClick={() => setFilters({...filters, propertyType: 'Resorts'})}>
                   <img src={Resorts} alt="Resorts" />
                   <p>Resorts</p>
                 </div>
               </div>
             </div>
 
-            {/* Number of guests */}
+            {/* Number of Guests */}
             <div className={design.numOfGuests}>
               <p>Number of Guests</p>
               <div>
-                <button onClick={decrement}>--</button>
+                <button onClick={decrement}>-</button>
                 <p>{count}</p>
                 <button onClick={increment}>+</button>
               </div>
             </div>
 
             {/* Convenience */}
-
             <div className={design.convenience}>
-              <p>Property Type</p>
+              <p>Convenience</p>
               <div className={design["convenienceList"]}>
                 <div>
-                  <img src={waves} alt="bNb" />
+                  <img src={waves} alt="Beach View" />
                   <p>Beach View</p>
                 </div>
                 <div>
-                  <img src={tv} alt="Apartments" />
+                  <img src={tv} alt="TV" />
                   <p>TV</p>
                 </div>
                 <div>
@@ -138,24 +193,28 @@ export const Lodging = () => {
             </div>
 
             <div className={design.submitBtn}>
-              <button>Apply</button>
+              <button type="submit">Apply</button>
             </div>
           </form>
 
           <section className={design.bookingReview}>
-            {items.map(item => (
-              <div key={item.id} className={design.hotelCard}>
-                <img src={item.backgroundImg} alt="" />
-                <p className={design.titleField}>{item.title}</p>
-                <p className={design.location}>{item.location}</p>
-                <p className={design.review}>{item.rating}</p>
-                <p className={design.status}>{item.status}</p>
-                <p className={design.price}>{item.price}</p>
-              </div>
-            ))}
+            {Array.isArray(filteredHotels) && filteredHotels.length > 0 ? (
+              filteredHotels.map((hotel) => (
+                <div key={hotel.id} className={design.hotelCard}>
+                  <img src={hotel.image} alt={hotel.title} />
+                  <p className={design.titleField}>{hotel.title}</p>
+                  <p className={design.location}>{hotel.location}</p>
+                  <p className={design.review}>{hotel.rating}</p>
+                  <p className={design.status}>{hotel.status}</p>
+                  <p className={design.price}>From {hotel.price}/night</p>
+                </div>
+              ))
+            ) : (
+              <p>No hotels available</p>
+            )}
           </section>
         </div>
       </div>
     </div>
   );
-}
+};
