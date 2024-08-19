@@ -33,3 +33,5 @@ export {
   Resorts, 
   Villas 
 };
+
+export * from './convenience'
