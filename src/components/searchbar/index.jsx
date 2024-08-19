@@ -4,7 +4,8 @@ import { UserContext } from '../../context/appContext'
 
 export const SearchBar = ({onSearch}) => {
    const { query, setQuery, fetchSearchResults } = useContext(UserContext)
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+      e.preventDefault();
         if (onSearch && query.trim()) {
             fetchSearchResults(query)
         }
@@ -12,7 +13,7 @@ export const SearchBar = ({onSearch}) => {
 
 
   return (
-    <div className={design.container}>
+    <form className={design.container} onClick={handleSearch}>
       <div className={design.searchContainer}>
         <input
           type="text"
@@ -21,10 +22,10 @@ export const SearchBar = ({onSearch}) => {
           onChange={(e) => setQuery(e.target.value)}
           className={design.searchBar}
         />
-        <button onClick={handleSearch} className={design.searchBtn}>
+        <button className={design.searchBtn}>
           Search
         </button>
       </div>
-    </div>
+    </form>
   );
 }

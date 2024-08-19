@@ -10,12 +10,18 @@ export const Lodging = () => {
   const {loading} = useContext(UserContext);
   const [count, setCount] = useState (1)
 
-  const decrement = () => {
+  const decrement = (e) => {
+    e.preventDefault()
     setCount (count - 1)
   }
 
-  const increment = () => {
+  const increment = (e) => {
+    e.preventDefault()
     setCount (count + 1)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   }
 
   return (
@@ -42,7 +48,7 @@ export const Lodging = () => {
         </div>
 
         <div className={design.bookingSection}>       
-          <form className={design.bookingForm}>
+          <form className={design.bookingForm} onSubmit={handleSubmit}>
 
             {/* Price Range */}
             <div className={design.priceRange}>
