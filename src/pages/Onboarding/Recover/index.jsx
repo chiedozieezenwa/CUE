@@ -1,19 +1,24 @@
 import design from "./recover.module.css";
-import { Button } from "../../../components/button";
 import { closeIcon } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import axios from "../../../api/axios";
 import { useState } from "react";
+import { usePopUp } from "../../../context/usePopUp";
 
 export const Recover = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { currentPopup, closePopup } = usePopUp();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(""); 
+
+  console.log("Current Popup in Recover:", currentPopup); // Debug log
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+    setSuccess("");
 
     try {
       const response = await axios.post(
@@ -22,7 +27,7 @@ export const Recover = () => {
         { withCredentials: true }
       );
       if (response.status === 200) {
-        // Handle successful password recovery
+        setSuccess("A password recovery email has been sent. Please check your inbox.");
       }
     } catch (error) {
       if (error.response) {
@@ -39,57 +44,56 @@ export const Recover = () => {
     }
   };
 
-  const togglePopUp = () => {
-    setIsOpen(!isOpen);
-  };
-
-
   return (
-    isOpen && (
-      <div className={design.popup}>
-        <div className={design.popup_inner}>
-          {loading && (
-            <div className={design.loaderOverlay}>
-              <FadeLoader
-                color="#1516a5"
-                loading={loading}
-                height={15}
-                width={5}
-                radius={2}
-                margin={2}
-              />
+    <>
+      {currentPopup === "recover" && (
+        <div className={design.popup}>
+          <div className={design.popup_inner}>
+            {loading && (
+              <div className={design.loaderOverlay}>
+                <FadeLoader
+                  color="#1516a5"
+                  loading={loading}
+                  height={15}
+                  width={5}
+                  radius={2}
+                  margin={2}
+                />
+              </div>
+            )}
+
+            <div className={design["toggle-icon"]} onClick={closePopup}>
+              <img src={closeIcon} alt="Click to close" />
             </div>
-          )}
 
-          <div className={design["toggle-icon"]} onClick={togglePopUp}>
-            <img src={closeIcon} alt="Click to close" />
+            <section className={design["popup-card"]}>
+              <div className={design.headertxt}>Forgot your password?</div>
+
+              {error && <p className={design.error}>{error}</p>}
+              {success && <p className={design.success}>{success}</p>}
+
+              <form className={design["signup-form"]} onSubmit={handleSubmit}>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                />
+
+                <button
+                  className={design["signUpbtn"]}
+                  type="submit" 
+                  >
+                    Continue
+                  </button>
+              </form>
+
+              <p>Reset password</p>
+            </section>
           </div>
-
-          <section className={design["popup-card"]}>
-            <div className={design.headertxt}>Forgot your password?</div>
-
-            {error && <p className={design.error}>{error}</p>}
-
-            <form className={design["signup-form"]} onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required
-              />
-
-              <Button
-                content="Continue"
-                className={design["signUpbtn"]}
-                onClick={handleSubmit}
-              />
-            </form>
-
-            <p>Reset password</p>
-          </section>
         </div>
-      </div>
-    )
+      )}
+    </>
   );
 };

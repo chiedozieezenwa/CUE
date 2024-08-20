@@ -4,15 +4,15 @@ import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { Signin } from "../SignIn";
+import { usePopUp } from "../../../context/usePopUp"; // Named import
 
 export const Signup = () => {
+  const { currentPopup, openPopup, closePopup } = usePopUp(); // Destructure from usePopUp
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
   const [showP, setShowP] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showSignin, setShowSignin] = useState(false); // To control the Signin popup visibility
 
   const togglePasswordVisibility = () => {
     setShowP(!showP);
@@ -30,8 +30,8 @@ export const Signup = () => {
       );
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       console.log(res.data);
-      setIsOpen(false); // Close signup popup
-      setShowSignin(true); // Show signin popup
+      closePopup(); // Close signup popup
+      openPopup("signin"); // Open signin popup
     } catch (error) {
       if (error.response) {
         setError(
@@ -48,13 +48,9 @@ export const Signup = () => {
     }
   };
 
-  const togglePopUp = () => {
-    return setIsOpen(!isOpen);
-  };
-
   return (
     <>
-      {isOpen && (
+      {currentPopup === "signup" && (
         <div className={design.popup}>
           <div className={design.popup_inner}>
             {loading && (
@@ -71,7 +67,7 @@ export const Signup = () => {
               </div>
             )}
 
-            <div className={design["toggle-icon"]} onClick={togglePopUp}>
+            <div className={design["toggle-icon"]} onClick={closePopup}>
               <img src={closeIcon} alt="Click to close" />
             </div>
 
@@ -115,8 +111,8 @@ export const Signup = () => {
                 Already have an account?
                 <button
                   onClick={() => {
-                    setIsOpen(false);
-                    setShowSignin(true);
+                    closePopup();
+                    openPopup("signin");
                   }}
                   className={design["logIn-btn"]}
                 >
@@ -127,8 +123,7 @@ export const Signup = () => {
           </div>
         </div>
       )}
-      {showSignin && <Signin />}{" "}
-      {/* Render the Signin component if showSignin is true */}
+      {currentPopup === "signin" && <Signin />}
     </>
   );
 };
