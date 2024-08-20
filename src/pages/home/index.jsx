@@ -10,6 +10,7 @@ import {
   Destination,
   Footer,
   Hero,
+  Keyfeatures,
   Navbar,
   Testimonial,
 } from "../../components";
@@ -58,6 +59,7 @@ export const Home = () => {
             return (
               <Destination
                 key={index}
+                hasTag={true}
                 destinationImage={destinationList.destinationImage}
                 subject={destinationList.subject}
                 title={destinationList.title}
@@ -70,7 +72,7 @@ export const Home = () => {
           })}
         </div>
       </div>
-
+      <Keyfeatures />
       <Testimonial />
       <Footer />
     </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import design from "./signup.module.css";
-// import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
@@ -14,7 +13,6 @@ export const Signup = () => {
   const [showP, setShowP] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showSignin, setShowSignin] = useState(false); // To control the Signin popup visibility
-  // const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowP(!showP);

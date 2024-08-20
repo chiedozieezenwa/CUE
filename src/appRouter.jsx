@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Discover, Home, Recover, Signin } from "./pages";
+import { Ai, Disc, Home, Itineary, Recover, Signin, Trip } from "./pages";
 import { Signup } from "./pages/Onboarding/Signup";
 
 const router = createBrowserRouter ([
@@ -8,12 +8,16 @@ const router = createBrowserRouter ([
         element: <Home />
     },
     {
-        path: "/discover",
-        element: <Discover />
-    },
-    {
         path: "/signup",
         element: <Signup />
+    },
+    {
+        path: "/trip",
+        element: <Trip />
+    },
+    {
+        path: "/itineary",
+        element: <Itineary />
     },
     {
         path: "/signin",
@@ -22,6 +26,14 @@ const router = createBrowserRouter ([
     {
         path: "/recover",
         element: <Recover />
+    },
+    {
+        path: "/ai",
+        element: <Ai />
+    },
+    {
+        path: "/disc",
+        element: <Disc />
     }
 ])
 

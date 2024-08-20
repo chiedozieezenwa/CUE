@@ -33,7 +33,8 @@ export const Signin = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/");
+        navigate("/disc");
+        setIsOpen(false);
       }
     } catch (error) {
       if (error.response) {
