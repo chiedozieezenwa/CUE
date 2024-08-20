@@ -3,7 +3,21 @@ import axios from "axios";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-import { airBnB, Apartments, bathhub, bedAndBreakfast, Hotels, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
+import {
+  airBnB,
+  Apartments,
+  bathhub,
+  bedAndBreakfast,
+  Hotels,
+  panicButton,
+  Resorts,
+  smartHome,
+  surveillance,
+  tv,
+  Villas,
+  waves,
+  wifi,
+} from "../../../assets";
 
 export const Lodging = () => {
   const [loading, setLoading] = useState(true);
@@ -11,21 +25,22 @@ export const Lodging = () => {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [count, setCount] = useState(1);
   const [filters, setFilters] = useState({
-    priceFrom: '',
-    priceTo: '',
-    propertyType: '',
+    priceFrom: "",
+    priceTo: "",
+    propertyType: "",
     convenience: [],
   });
 
   useEffect(() => {
-    axios.get('https://cue-api-3tyr.onrender.com/api/v1/hotels')
-      .then(response => {
-        const data = response.data.data || [];  // Ensure data is an array
+    axios
+      .get("https://cue-api-3tyr.onrender.com/api/v1/hotels")
+      .then((response) => {
+        const data = response.data.data || [];
         setHotels(Array.isArray(data) ? data : []);
         setFilteredHotels(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the hotels!", error);
         setLoading(false);
       });
@@ -48,11 +63,11 @@ export const Lodging = () => {
     }
 
     const { priceFrom, priceTo, propertyType } = filters;
-    const filtered = hotels.filter(hotel => {
+    const filtered = hotels.filter((hotel) => {
       return (
-        (priceFrom === '' || hotel.price >= priceFrom) &&
-        (priceTo === '' || hotel.price <= priceTo) &&
-        (propertyType === '' || hotel.type.includes(propertyType))
+        (priceFrom === "" || hotel.price >= priceFrom) &&
+        (priceTo === "" || hotel.price <= priceTo) &&
+        (propertyType === "" || hotel.type.includes(propertyType))
       );
     });
     setFilteredHotels(filtered);
@@ -91,9 +106,8 @@ export const Lodging = () => {
           <p className={design.filterReset}>Reset</p>
         </div>
 
-        <div className={design.bookingSection}>       
+        <div className={design.bookingSection}>
           <form className={design.bookingForm} onSubmit={handleFilterSubmit}>
-
             {/* Price Range */}
             <div className={design.priceRange}>
               <p>Price</p>
@@ -120,27 +134,54 @@ export const Lodging = () => {
               <p>Property Type</p>
               <div className={design["proptypelist"]}>
                 {/* Example Property Type Filter */}
-                <div onClick={() => setFilters({...filters, propertyType: 'Bed and Breakfast'})}>
+                <div
+                  onClick={() =>
+                    setFilters({
+                      ...filters,
+                      propertyType: "Bed and Breakfast",
+                    })
+                  }
+                >
                   <img src={bedAndBreakfast} alt="bNb" />
                   <p>Bed and Breakfast</p>
                 </div>
-                <div onClick={() => setFilters({...filters, propertyType: 'Apartments'})}>
+                <div
+                  onClick={() =>
+                    setFilters({ ...filters, propertyType: "Apartments" })
+                  }
+                >
                   <img src={Apartments} alt="Apartments" />
                   <p>Apartments</p>
                 </div>
-                <div onClick={() => setFilters({...filters, propertyType: 'Airbnb'})}>
+                <div
+                  onClick={() =>
+                    setFilters({ ...filters, propertyType: "Airbnb" })
+                  }
+                >
                   <img src={airBnB} alt="Air BNB" />
                   <p>Airbnb</p>
                 </div>
-                <div onClick={() => setFilters({...filters, propertyType: 'Villas'})}>
+                <div
+                  onClick={() =>
+                    setFilters({ ...filters, propertyType: "Villas" })
+                  }
+                >
                   <img src={Villas} alt="Villas" />
                   <p>Villas</p>
                 </div>
-                <div onClick={() => setFilters({...filters, propertyType: 'Hotels'})}>
+                <div
+                  onClick={() =>
+                    setFilters({ ...filters, propertyType: "Hotels" })
+                  }
+                >
                   <img src={Hotels} alt="Hotels" />
                   <p>Hotels</p>
                 </div>
-                <div onClick={() => setFilters({...filters, propertyType: 'Resorts'})}>
+                <div
+                  onClick={() =>
+                    setFilters({ ...filters, propertyType: "Resorts" })
+                  }
+                >
                   <img src={Resorts} alt="Resorts" />
                   <p>Resorts</p>
                 </div>
