@@ -5,13 +5,13 @@ import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
 import divider from "../../../assets/images/divider.png";
 import { Button } from "../../button";
-import { Signup, Signin } from "../../../pages/Onboarding";
+import { Signup, Signin, Recover } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
 
 export const Navbar = () => {
   const { currentPopup, openPopup, closePopup } = useContext(PopupContext);
 
-  // Helper function to get active class for NavLink
+  // function to get active class for NavLink
   const getActiveClass = ({ isActive }) => isActive ? design.active : undefined;
 
   // Handlers to open specific popups
@@ -75,6 +75,7 @@ export const Navbar = () => {
       {/* Conditionally Render Popups */}
       {currentPopup === 'signup' && <Signup onClose={closePopup} />}
       {currentPopup === 'signin' && <Signin onClose={closePopup} />}
+      {currentPopup === 'Recover' && <Recover onClose={closePopup} />}
     </header>
   );
 };

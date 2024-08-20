@@ -12,7 +12,7 @@ export const Recover = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(""); 
 
-  console.log("Current Popup in Recover:", currentPopup); // Debug log
+  console.log("Current Popup in Recover:", currentPopup); // Debug
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -12,6 +12,7 @@ import {
   Hero,
   Keyfeatures,
   Navbar,
+  Proplan,
   Testimonial,
 } from "../../components";
 import styles from "./styles.module.css";
@@ -51,7 +52,8 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
-
+      <Proplan />
+      
       <div className={styles.explore}>
         <h1>Explore The Hidden Wonders Of Nigeria.</h1>
         <div className={styles.homeCards}>

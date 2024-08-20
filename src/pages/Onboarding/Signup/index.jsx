@@ -4,10 +4,10 @@ import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { Signin } from "../SignIn";
-import { usePopUp } from "../../../context/usePopUp"; // Named import
+import { usePopUp } from "../../../context/usePopUp";
 
 export const Signup = () => {
-  const { currentPopup, openPopup, closePopup } = usePopUp(); // Destructure from usePopUp
+  const { currentPopup, openPopup, closePopup } = usePopUp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -32,6 +32,7 @@ export const Signup = () => {
       console.log(res.data);
       closePopup(); // Close signup popup
       openPopup("signin"); // Open signin popup
+
     } catch (error) {
       if (error.response) {
         setError(
