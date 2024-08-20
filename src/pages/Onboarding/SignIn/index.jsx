@@ -4,8 +4,8 @@ import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { useState } from "react";
-// import { Recover } from "../Recover";
 import { usePopUp } from "../../../context/usePopUp";
+import { Recover } from "../Recover";
 
 export const Signin = () => {
   const { currentPopup, openPopup, closePopup } = usePopUp();
@@ -32,9 +32,10 @@ export const Signin = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
+        closePopup();
         navigate("/disc");
-        closePopup(); // Close signin popup
       }
+      
     } catch (error) {
       if (error.response) {
         setError(
@@ -108,6 +109,7 @@ export const Signin = () => {
                 >
                   Log in
                 </button>
+                </form>
 
                 <p className={design["signUp-link"]}>
                   Don’t have an account?
@@ -124,21 +126,22 @@ export const Signin = () => {
                 <p className={design["signUp-link"]}>
                   Forgot your password?
                   <button
-                    onClick={() => {
-                      closePopup();
-                      openPopup("recover");
-                    }}
+                      onClick={() => {
+                        console.log("Recover button clicked");
+                        closePopup();
+                        openPopup("recover");
+                      }}
                     className={design["logIn-btn"]}
                   >
                     Recover
                   </button>
                 </p>
-              </form>
+              
             </section>
           </div>
         </div>
       )}
-      {/* {currentPopup === "recover" && <Recover />} Render Recover if currentPopup is 'recover' */}
+      {currentPopup === 'recover' && <Recover />}
     </>
   );
 };
