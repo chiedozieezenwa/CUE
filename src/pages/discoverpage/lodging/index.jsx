@@ -3,7 +3,21 @@ import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-import { airBnB, Apartments, bathhub, bedAndBreakfast, Hotels, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
+import {
+  airBnB,
+  Apartments,
+  bathhub,
+  bedAndBreakfast,
+  Hotels,
+  panicButton,
+  Resorts,
+  smartHome,
+  surveillance,
+  tv,
+  Villas,
+  waves,
+  wifi,
+} from "../../../assets";
 
 export const Lodging = () => {
   const {
