@@ -38,6 +38,7 @@ export {
   bedAndBreakfast, 
   Hotels, 
   Resorts, 
+
   Villas,
   bathtub,
   panicButton,
@@ -47,3 +48,8 @@ export {
   waves,
   wifi
 };
+
+};
+
+export * from './convenience'
+

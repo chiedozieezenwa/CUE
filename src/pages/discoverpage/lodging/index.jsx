@@ -1,28 +1,47 @@
-import { useContext, useState } from "react";
-import { SearchBar } from "../../../components/searchbar"
-import design from "./design.module.css"
-import { UserContext } from "../../../context/appContext";
+import { useContext } from "react";
+import { LodgingContext } from "../../../context/LodgingContext.jsx";
+import { SearchBar } from "../../../components/searchbar";
+import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
+
 import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
 import { items } from "./data";
+// =======
+// import {
+//   airBnB,
+//   Apartments,
+//   bathhub,
+//   bedAndBreakfast,
+//   Hotels,
+//   panicButton,
+//   Resorts,
+//   smartHome,
+//   surveillance,
+//   tv,
+//   Villas,
+//   waves,
+//   wifi,
+// } from "../../../assets";
+// >>>>>>> develop
 
 export const Lodging = () => {
-  const {loading} = useContext(UserContext);
-  const [count, setCount] = useState (1)
-
-  const decrement = (e) => {
-    e.preventDefault()
-    setCount (count - 1)
-  }
-
-  const increment = (e) => {
-    e.preventDefault()
-    setCount (count + 1)
-  }
+  const {
+    loading,
+    count,
+    hotels,
+    filters,
+    setFilters,
+    handleFilterChange,
+    decrement,
+    increment,
+    fetchHotels,
+  } = useContext(LodgingContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    fetchHotels();
+  };
+  console.log(hotels);
 
   return (
     <div className={design.container}>
@@ -44,7 +63,7 @@ export const Lodging = () => {
       <div className={design.bookingCont}>
         <div className={design.filter}>
           <p>Filters</p>
-          <p className={design.filterReset}>Reset</p>
+          <p className={design.filterReset} onClick={() => setFilters({})}>Reset</p>
         </div>
 
         <div className={design.bookingSection}>       
@@ -54,13 +73,24 @@ export const Lodging = () => {
             <div className={design.priceRange}>
               <p>Price</p>
               <div>
-                <input type="text" placeholder="From"/>
-                <input type="text" placeholder="To"/>
+                <input
+                  type="text"
+                  name="minPrice"
+                  placeholder="From"
+                  value={filters.minPrice}
+                  onChange={handleFilterChange}
+                />
+                <input
+                  type="text"
+                  name="maxPrice"
+                  placeholder="To"
+                  value={filters.maxPrice}
+                  onChange={handleFilterChange}
+                />
               </div>
             </div>
 
             {/* Property Type */}
-
             <div className={design.propertyType}>
               <p>Property Type</p>
               <div className={design["proptypelist"]}>
@@ -102,16 +132,15 @@ export const Lodging = () => {
             </div>
 
             {/* Convenience */}
-
             <div className={design.convenience}>
-              <p>Property Type</p>
+              <p>Conveniences</p>
               <div className={design["convenienceList"]}>
                 <div>
-                  <img src={waves} alt="bNb" />
+                  <img src={waves} alt="Beach View" />
                   <p>Beach View</p>
                 </div>
                 <div>
-                  <img src={tv} alt="Apartments" />
+                  <img src={tv} alt="TV" />
                   <p>TV</p>
                 </div>
                 <div>
@@ -138,19 +167,20 @@ export const Lodging = () => {
             </div>
 
             <div className={design.submitBtn}>
-              <button>Apply</button>
+              <button type="submit">Apply</button>
             </div>
           </form>
 
           <section className={design.bookingReview}>
-            {items.map(item => (
-              <div key={item.id} className={design.hotelCard}>
-                <img src={item.backgroundImg} alt="" />
-                <p className={design.titleField}>{item.title}</p>
-                <p className={design.location}>{item.location}</p>
-                <p className={design.review}>{item.rating}</p>
-                <p className={design.status}>{item.status}</p>
-                <p className={design.price}>{item.price}</p>
+       
+            {hotels.map((hotel) => (
+              <div key={hotel._id} className={design.hotelCard}>
+                <img src={hotel.image_url[0]} alt={hotel.name} />
+                <p className={design.titleField}>{hotel.name}</p>
+                <p className={design.location}>{hotel.city}</p>
+                <p className={design.review}>Rating: {hotel.rating}</p>
+                <p className={design.status}>{hotel.type}</p>
+                <p className={design.price}>${hotel.price_per_night} per night</p>
               </div>
             ))}
           </section>
@@ -158,4 +188,4 @@ export const Lodging = () => {
       </div>
     </div>
   );
-}
+};
