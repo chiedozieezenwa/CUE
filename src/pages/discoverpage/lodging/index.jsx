@@ -5,7 +5,7 @@ import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
 
 import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
-import { items } from "./data";
+
 // =======
 // import {
 //   airBnB,

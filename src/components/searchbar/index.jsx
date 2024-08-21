@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import design from './design.module.css';
 import { SearchContext } from '../../context/searchContext';
 
-export const SearchBar = (placeholder) => {
+export const SearchBar = ({placeholder}) => {
   const { query, setQuery, setSearchResults } = useContext(SearchContext);
 
   const handleSearch = async (e) => {
