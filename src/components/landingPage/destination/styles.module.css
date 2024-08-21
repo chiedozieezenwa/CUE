@@ -4,6 +4,7 @@
   align-items: center;
   box-sizing: border-box;
   margin: 0;
+  font-family: "satoshi";
 }
 
 .destinationCards {
@@ -54,15 +55,24 @@
   letter-spacing: 0.15000000596046448px;
   text-align: center;
   position: relative;
-  bottom: 300px;
+  bottom: 305px;
 }
 
+.subject p{
+  padding-top: 6px;
+}
+
+.cardDetails{
+  position: relative;
+  bottom: 50px;
+}
 
 /* .cardDetail2 {
   width: 400px;
   height: 99px;
   display: flex;
   flex-direction: column;
+  background-color: red;
 } */
 
 .destLocation {
@@ -81,4 +91,15 @@
  align-items: center;
  gap: 16px;
  margin: 0;
+ color: yellow;
+ width: 300px;
+height: 19px;
+}
+
+.ratings2{
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0.25px;
+color: #666666;
 }

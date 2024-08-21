@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Destination } from "../../../components";
 
 
+// eslint-disable-next-line react/prop-types
 export const DestinationCarousel = ({ destinationLists }) => {
   const settings = {
     dots: false,
