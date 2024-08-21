@@ -1,31 +1,40 @@
-import { useContext } from 'react'
-import design from './design.module.css'
-import { UserContext } from '../../context/appContext'
+import { useContext } from 'react';
+import design from './design.module.css';
+import { SearchContext } from '../../context/searchContext';
+export const SearchBar = () => {
+  const { query, setQuery, setSearchResults } = useContext(SearchContext);
 
-export const SearchBar = ({onSearch}) => {
-   const { query, setQuery, fetchSearchResults } = useContext(UserContext)
-    const handleSearch = (e) => {
-      e.preventDefault();
-        if (onSearch && query.trim()) {
-            fetchSearchResults(query)
-        }
-    };
+  const handleSearch = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await fetch(`https://cue-api-3tyr.onrender.com/api/v1/hotels?search=${query}`);
+      const data = await response.json();
+    
+      if (response.ok) {
+        setSearchResults(data.hotels); 
+      } else {
+        console.error('Search failed:', data.message);
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching the search results:', error);
+    }
+  };
 
   return (
-    <form className={design.container} onClick={handleSearch}>
+    <form className={design.container} onSubmit={handleSearch}>
       <div className={design.searchContainer}>
         <input
           type="text"
-          placeholder="search hotels"
+          placeholder="Search hotels"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={design.searchBar}
         />
-        <button className={design.searchBtn}>
+        <button type="submit" className={design.searchBtn}>
           Search
         </button>
       </div>
     </form>
   );
-}
+};
