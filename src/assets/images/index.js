@@ -59,7 +59,10 @@ import phone from "./phone.png";
 import fan from "./fan.png";
 import naira from "./naira.png";
 import visa from "./visa.png";
-import visa2 from "./visa2.png"
+import visa2 from "./visa2.png";
+import ratingS from "./ratingStarts1.png";
+import blackPlus from "./blackPlus.png";
+import profile from "./profile.png"
 
 export {
   slider1,
@@ -82,6 +85,8 @@ export {
   todoIcon,
   image,
   leading,
+  blackPlus,
+  profile,
   ballon,
   lake,
   surfing,
@@ -123,7 +128,8 @@ export {
   naira,
   car2,
   visa,
-  visa2
+  visa2,
+  ratingS
 };
 
 export * from "./features";

@@ -3,21 +3,26 @@ import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-import {
-  airBnB,
-  Apartments,
-  bathhub,
-  bedAndBreakfast,
-  Hotels,
-  panicButton,
-  Resorts,
-  smartHome,
-  surveillance,
-  tv,
-  Villas,
-  waves,
-  wifi,
-} from "../../../assets";
+
+import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
+import { items } from "./data";
+// =======
+// import {
+//   airBnB,
+//   Apartments,
+//   bathhub,
+//   bedAndBreakfast,
+//   Hotels,
+//   panicButton,
+//   Resorts,
+//   smartHome,
+//   surveillance,
+//   tv,
+//   Villas,
+//   waves,
+//   wifi,
+// } from "../../../assets";
+// >>>>>>> develop
 
 export const Lodging = () => {
   const {
@@ -155,7 +160,7 @@ export const Lodging = () => {
                   <p>Surveillance</p>
                 </div>
                 <div>
-                  <img src={bathhub} alt="Outdoor Bathhub" />
+                  <img src={bathtub} alt="Outdoor Bathhub" />
                   <p>Outdoor Baths</p>
                 </div>
               </div>
