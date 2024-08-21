@@ -1,11 +1,9 @@
 import design from './hero.module.css'
 import {hero1, hero2, hero3, plane, slider1, slider2, slider3} from '../../../assets/images'
 import { Button } from '../../button';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../context/appContext';
+import { useEffect, useState } from 'react';
 
 export const Hero = () => {
-  const {toggleSignupPopup} = useContext(UserContext)
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [hero1, slider1, hero2, hero3, slider2, slider3];
@@ -33,7 +31,7 @@ export const Hero = () => {
           <Button
             content="Get Started"
             className={design["hero-btn"]}
-            onClick={toggleSignupPopup}
+            link='/disc'
           />
         </div>
       </section>
