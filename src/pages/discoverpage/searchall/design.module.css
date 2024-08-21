@@ -6,6 +6,11 @@
     gap: 62px; 
 }
 
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
 .inputContainer > input {
   display: flex;
   justify-content: center;
@@ -38,8 +43,8 @@ input::placeholder {
   border-radius: 20px;
   border: none;
   position: absolute;
-  right: 80px;
-  top: 18.5rem;
+  right: 10rem;
+  top: 17rem;
 }
 
 .guide {

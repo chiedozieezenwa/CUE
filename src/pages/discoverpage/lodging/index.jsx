@@ -85,7 +85,9 @@ export const Lodging = () => {
 
   return (
     <div className={design.container}>
-      <SearchBar />
+      <SearchBar 
+        placeholder="search hotels"
+      />
       {loading && (
         <div className={design.loaderOverlay}>
           <FadeLoader

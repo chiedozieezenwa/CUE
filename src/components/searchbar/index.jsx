@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import design from './design.module.css'
 import { UserContext } from '../../context/appContext'
 
-export const SearchBar = ({onSearch}) => {
+export const SearchBar = ({onSearch, placeholder}) => {
    const { query, setQuery, fetchSearchResults } = useContext(UserContext)
     const handleSearch = (e) => {
       e.preventDefault();
@@ -17,7 +17,7 @@ export const SearchBar = ({onSearch}) => {
       <div className={design.searchContainer}>
         <input
           type="text"
-          placeholder="search hotels"
+          placeholder={placeholder}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={design.searchBar}

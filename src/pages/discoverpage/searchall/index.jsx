@@ -15,6 +15,7 @@ import {
   kambari,
 } from "../../../assets";
 import { DestinationCarousel } from "../carousel";
+import { SearchBar } from "../../../components/searchbar";
 
 export const SearchAll = () => {
   const destinationLists = [
@@ -86,12 +87,16 @@ export const SearchAll = () => {
   return (
     <div className={design.container}>
             <div className={design.inputContainer}>
-              <input
+              {/* <input
                 type="text"
                 placeholder="Places to go, things to do, hotels..."
                 className={design.input}
               />
-              <Button content="Search" className={design.button} link="/" />
+              <Button content="Search" className={design.button} link="/" /> */}
+              <SearchBar 
+                placeholder="Places to go, things to do, hotels..."
+              />
+
             </div>
 
           <div className={design.guide}>
