@@ -1,6 +1,7 @@
+import Rating from "../rating";
 import styles from "./styles.module.css";
 
-export const Destination = ({ destinationImage, description, title, subject, rating, review, hasTag}) => {
+export const Destination = ({ destinationImage, description, title, subject, rating, review, hasTag, name}) => {
   console.log({hasTag})
   return (
     <div className={styles.destination}>
@@ -12,15 +13,16 @@ export const Destination = ({ destinationImage, description, title, subject, rat
             className={hasTag ? styles.destIMG:styles.destImage}
           />
           {hasTag && (
-            <div className={styles.subject}>
+            <div className={ styles.subject}>
               <p>{subject}</p>
             </div>
           )}
           <div className={hasTag ? styles.cardDetails : styles.cardDetail2}>
+            <p className={styles.destTitle}>{name}</p>
             <p className={styles.destTitle}>{title}</p>
             <p className={styles.destLocation}>{description}</p>
             <p className={styles.rating2}>
-              <img src={rating} alt="" /> <span>{review}</span>
+            <Rating rating={rating} /><span className={styles.ratings2}>{review}</span>
             </p>
           </div>
         </div>

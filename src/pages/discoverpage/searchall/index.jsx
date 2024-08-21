@@ -13,6 +13,7 @@ import {
   yankari,
   zuma,
   kambari,
+  plus,
 } from "../../../assets";
 import { DestinationCarousel } from "../carousel";
 import { SearchBar } from "../../../components/searchbar";
@@ -140,7 +141,7 @@ export const SearchAll = () => {
             </p>
           </div>
           <Button
-            img={leading}
+            img={plus}
             className={design.tripsBTN}
             content="Plan new trip"
           />

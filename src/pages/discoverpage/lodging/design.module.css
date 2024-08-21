@@ -193,9 +193,11 @@
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     gap: 46px;
+    row-gap: 46px;
 }
 
 .hotelCard {
+    width: 325px;
     border-radius: 12px;
     box-sizing: border-box;
     display: flex;
@@ -206,6 +208,7 @@
 
 .hotelCard > img {
     border-radius: 12px 12px 0 0;
+    height: 293px;
 }
 
 .hotelCard > p {
