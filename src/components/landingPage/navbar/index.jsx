@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
@@ -7,9 +7,16 @@ import divider from "../../../assets/images/divider.png";
 import { Button } from "../../button";
 import { Signup, Signin, Recover } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
+import { hamburgericon } from "../../../assets";
 
 export const Navbar = () => {
   const { currentPopup, openPopup, closePopup } = useContext(PopupContext);
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleIsOpen = () => {
+    setIsOpen (!isOpen)
+  }
 
   // function to get active class for NavLink
   const getActiveClass = ({ isActive }) => isActive ? design.active : undefined;
@@ -69,7 +76,18 @@ export const Navbar = () => {
             content="Sign up"
             className={design["signUp-btn"]}
           />
+           <div className={`${design['menu-icon']} ${isOpen ? design['open'] : ''}`}>
+            <img src={hamburgericon} alt="" className={design.togglemenu} onClick={toggleIsOpen}/>
+          </div>
         </section>
+
+       
+        <ul className={`${design["nav-links"]} ${isOpen ? 'active' : ''}`}>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
 
       {/* Conditionally Render Popups */}

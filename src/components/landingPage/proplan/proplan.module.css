@@ -44,6 +44,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 32px;
+    place-items: center;
 }
 
 .planGrid > div {
@@ -78,4 +79,14 @@
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 0.15px;
+}
+
+@media (max-width: 768px) {
+    .planGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .subTitle {
+        width: 100%;
+    }
 }

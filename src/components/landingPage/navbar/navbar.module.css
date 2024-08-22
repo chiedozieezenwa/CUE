@@ -139,3 +139,42 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
+
+.bar {
+  width: 25px;
+  height: 10px;
+}
+
+.togglemenu {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-links {
+  display: none;
+}
+
+@media screen and (max-width: 738px) {
+
+ .nav {
+  justify-content: space-between;
+ }
+
+  .middle-section {
+    display: none;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .divider, .signUp-btn, .logIn-btn {
+    display: none;
+  }
+
+  .togglemenu {
+    display: flex;
+  }
+}

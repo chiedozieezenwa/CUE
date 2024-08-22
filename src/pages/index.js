@@ -5,3 +5,4 @@ export * from "./trip"
 export * from "./itineary"
 export * from './AI'
 export * from './discoverpage'
+export * from './dashpages'
