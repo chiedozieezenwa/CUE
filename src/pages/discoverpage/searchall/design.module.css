@@ -7,6 +7,11 @@
     font-family: "satoshi";
 }
 
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
 .inputContainer > input {
   display: flex;
   justify-content: center;
@@ -20,14 +25,6 @@
   box-shadow: 0px 9px 20px 0px rgba(132, 132, 132, 0.20);
   color: #130c2a;
   position: relative;
-
-  /* width: 1236px;
-height: 56px;
-padding: 24px 6px ;
-border-radius: 12px ;
-border: 1px;
-justify-content: space-between;
-border: 1px solid #00000066 */
 }
 
 input::placeholder {
@@ -51,8 +48,8 @@ input::placeholder {
   border-radius: 20px;
   border: none;
   position: absolute;
-  right: 80px;
-  bottom: 20.8rem;
+  right: 10rem;
+  top: 17rem;
 }
 
 .guide {
