@@ -109,10 +109,12 @@
 .grid {
     width: 356px;
     height: 300px;
+    transition: 2s ease-in-out; 
+    opacity: 0;
 }
 
-.grid .active {
-  transition: 2s ease-in-out; 
+.grid.active {
+  opacity: 5; 
 }
 
 /* Media Queries */
