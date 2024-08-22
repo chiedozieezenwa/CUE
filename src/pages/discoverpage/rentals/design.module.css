@@ -341,3 +341,20 @@
     transform: rotate(360deg);
   }
 }
+
+.skipBtn{
+  width: 404px;
+height: 46px;
+padding: 16px 24px;
+border-radius: 20px;
+background: #5D3BE9;
+color: #ffffff;
+border: none;
+}
+
+#skipBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}

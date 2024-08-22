@@ -1,21 +1,24 @@
-import { useState } from "react";
-import { bmw, calender, car2, fan, gle, marker01, naira, phone } from "../../../assets";
-import { Button, PaymentModal } from "../../../components";
+import { useState, useEffect } from "react";
+import { calender, fan, marker01, naira, phone } from "../../../assets";
+import { Button } from "../../../components";
 import design from "./design.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { logo } from "../../../assets";
+import { useNavigate } from "react-router-dom";
 
 export const Rentals = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [isModalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(""); 
-  const [location, setLocation] = useState(""); 
-  const [carBrand, setCarBrand] = useState(""); 
-  const [seats, setSeats] = useState("4 Seats"); 
-  const [selectedCar, setSelectedCar] = useState(null); 
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const [location, setLocation] = useState("");
+  const [carBrand, setCarBrand] = useState("");
+  const [seats, setSeats] = useState("4 Seats");
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [rentals, setRentals] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -26,20 +29,34 @@ export const Rentals = () => {
   };
 
   const handleOpenModal = (car) => {
+    if (!selectedDate || !selectedTime) {
+      alert("Please select a date and time before booking.");
+      return;
+    }
+
     setSelectedCar(car);
     setIsLoading(true);
+
+    const bookingDetails = {
+      car: car.name,
+      price: car.price,
+      location,
+      date: selectedDate,
+      time: selectedTime,
+      image_url: car.image_url || "default-image-url.jpg",
+      seats: car.number_of_seats,
+      airConditioned: car.air_conditioned,
+      parking: true,
+    };
+
     setTimeout(() => {
       setIsLoading(false);
-      setModalOpen(true);
-    }, 2000); 
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
+      navigate("/booking", { state: bookingDetails });
+    }, 2000);
   };
 
   const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value); 
+    setSelectedFilter(event.target.value);
   };
 
   const handleLocationChange = (event) => {
@@ -54,21 +71,44 @@ export const Rentals = () => {
     setSeats(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const bookingDetails = {
-      car: selectedCar,
-      price: selectedCar.price,
-      location,
-      carBrand,
-      seats,
-      date: selectedDate,
-      time: selectedTime,
-      filter: selectedFilter,
-    };
+  useEffect(() => {
+    const url = "https://cue-api-3tyr.onrender.com/api/v1/rentals";
+    const params = new URLSearchParams();
 
-    console.log("Booking Details Submitted:", bookingDetails);
-    console.log(bookingDetails)
-  };
+    if (seats) {
+      params.append("seats", seats);
+    }
+    if (carBrand) {
+      params.append("brand", carBrand);
+    }
+    if (selectedFilter) {
+      if (selectedFilter === "AC") {
+        params.append("air_conditioned", "true");
+      } else if (selectedFilter === "New Car") {
+        params.append("is_new", "true");
+      }
+    }
+
+    const fetchUrl = `${url}?${params.toString()}`;
+
+    fetch(fetchUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((response) => {
+        console.log("API Response:", response);
+        console.log("API Response data:", response.data);
+        setRentals(response.data || []);
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  }, [seats, carBrand, selectedFilter]);
+
+  console.log("Rentals state:", rentals);
 
   return (
     <div>
@@ -77,12 +117,12 @@ export const Rentals = () => {
           <img src={logo} alt="Loading..." className={design.loaderImage} />
         </div>
       )}
-      
+
       <div className={design.container}>
         <div className={design.containerRental}>
           <div className={design.containerRentals}>
             <p className={design.containerDate} id={design.leaving}>
-              Leaving from
+              Leaving from {location}
             </p>
             <input
               type="text"
@@ -160,10 +200,9 @@ export const Rentals = () => {
             />
 
             <datalist id="cars">
-              <option value="Toyota Sienna" />
-              <option value="Mercedes-Benz C-Class" />
+              <option value="Toyota" />
+              <option value="Mercedes" />
               <option value="BMW" />
-              <option value="Mercedes-Benz GLE" />
               <option value="Acura" />
               <option value="Kia" />
               <option value="Jeep" />
@@ -207,119 +246,64 @@ export const Rentals = () => {
           <div className={design.sectionFilter1}>
             <p>Available</p>
           </div>
-          {/* Example Car 1 */}
-          <div className={design.sectionContainerDetails}>
-            <div>
-              <img src={car2} alt="" id={design.car2} />
-            </div>
-            <div>
-              <h2>Toyota Sienna</h2>
-              <div className={design.sectionDetails}>
-                <p>
-                  <img src={marker01} alt="" /> Parking
-                </p>
-                <p>
-                  <img src={phone} alt="" /> 4 Seats
-                </p>
-                <p>
-                  <img src={fan} alt="" /> Air-Conditioning
+          {rentals.slice(0, 3).map((rental) => (
+            <div key={rental._id} className={design.sectionContainerDetails}>
+              <div>
+                <img
+                  src={rental.image_url || "default-image-url.jpg"}
+                  alt={rental.brand}
+                  id={design.car2}
+                />
+              </div>
+              <div>
+                <h2>
+                  {rental.brand} {rental.model}
+                </h2>
+                <div className={design.sectionDetails}>
+                  <p>
+                    <img src={marker01} alt="" /> Parking
+                  </p>
+                  <p>
+                    <img src={phone} alt="" />{" "}
+                    {rental.number_of_seats + " " + "Seats" ||
+                      "Seats info not available"}
+                  </p>
+                  <p>
+                    <img src={fan} alt="" />{" "}
+                    {rental.air_conditioned
+                      ? "Air-Conditioning"
+                      : "No Air-Conditioning"}
+                  </p>
+                </div>
+                <p className={design.rentalNaira}>
+                  <img src={naira} alt="" />
+                  {rental.rental_amount
+                    ? rental.rental_amount.toLocaleString()
+                    : "Price not available"}
                 </p>
               </div>
-              <p className={design.rentalNaira}>
-                <img src={naira} alt="" />
-                100,000
-              </p>
-            </div>
-            <div className={design.pageContainer}>
-              <button
-                onClick={() => handleOpenModal({ name: "Toyota Sienna", price: 100000 })}
-                className={design.sectionBTN}
-              >
-                Book Now
-              </button>
-              <PaymentModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onSubmit={handleSubmit}
-              />
-            </div>
-          </div>
-          {/* Example Car 2 */}
-          <div className={design.sectionContainerDetails}>
-            <div>
-              <img src={bmw} alt="" />
-            </div>
-            <div>
-              <h2>BMW</h2>
-              <div className={design.sectionDetails}>
-                <p>
-                  <img src={marker01} alt="" /> Parking
-                </p>
-                <p>
-                  <img src={phone} alt="" /> 4 Seats
-                </p>
-                <p>
-                  <img src={fan} alt="" /> Air-Conditioning
-                </p>
+              <div className={design.pageContainer}>
+                <button
+                  onClick={() =>
+                    handleOpenModal({
+                      name: `${rental.brand} ${rental.model || ""}`,
+                      price: rental.rental_amount,
+                      image_url: rental.image_url,
+                    })
+                  }
+                  className={design.sectionBTN}
+                >
+                  Book Now
+                </button>
               </div>
-              <p className={design.rentalNaira}>
-                <img src={naira} alt="" />
-                150,000
-              </p>
             </div>
-            <div className={design.pageContainer}>
-              <button
-                onClick={() => handleOpenModal({ name: "BMW", price: 150000 })}
-                className={design.sectionBTN}
-              >
-                Book Now
-              </button>
-              <PaymentModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onSubmit={handleSubmit}
-              />
-            </div>
-          </div>
-          {/* Example Car 3 */}
-          <div className={design.sectionContainerDetails}>
-            <div>
-              <img src={gle} alt="" />
-            </div>
-            <div>
-              <h2>Mercedes-Benz GLE</h2>
-              <div className={design.sectionDetails}>
-                <p>
-                  <img src={marker01} alt="" /> Parking
-                </p>
-                <p>
-                  <img src={phone} alt="" /> 4 Seats
-                </p>
-                <p>
-                  <img src={fan} alt="" /> Air-Conditioning
-                </p>
-              </div>
-              <p className={design.rentalNaira}>
-                <img src={naira} alt="" />
-                200,000
-              </p>
-            </div>
-            <div className={design.pageContainer}>
-              <button
-                onClick={() => handleOpenModal({ name: "Mercedes-Benz GLE", price: 200000 })}
-                className={design.sectionBTN}
-              >
-                Book Now
-              </button>
-              <PaymentModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onSubmit={handleSubmit}
-              />
-            </div>
-          </div>
+          ))}
         </article>
       </section>
+
+      <div id={design.skipBtn}>
+        <Button content="Skip Rental" className={design.skipBtn} />
+      </div>
     </div>
   );
 };
