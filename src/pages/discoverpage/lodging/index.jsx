@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LodgingContext } from "../../../context/LodgingContext.jsx";
+import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
@@ -23,7 +24,6 @@ export const Lodging = () => {
   const {
     loading,
     count,
-    hotels,
     filters,
     setFilters,
     handleFilterChange,
@@ -32,15 +32,24 @@ export const Lodging = () => {
     fetchHotels,
   } = useContext(LodgingContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { searchResults } = useContext(SearchContext); // Get the search results from SearchContext
+
+  // Use searchResults if available, otherwise fall back to LodgingContext's hotels
+  const hotels = searchResults?.length ? searchResults : useContext(LodgingContext).hotels || [];
+
+  useEffect(() => {
+    console.log("Filters updated:", filters);
     fetchHotels();
-  };
-  console.log(hotels);
+  }, [filters]);
+
+  useEffect(() => {
+    console.log("Search results updated:", searchResults);
+  }, [searchResults]);
 
   return (
     <div className={design.container}>
-      <SearchBar />
+      <SearchBar /> 
+
       {loading && (
         <div className={design.loaderOverlay}>
           <FadeLoader
@@ -58,12 +67,13 @@ export const Lodging = () => {
       <div className={design.bookingCont}>
         <div className={design.filter}>
           <p>Filters</p>
-          <p className={design.filterReset} onClick={() => setFilters({})}>Reset</p>
+          <p className={design.filterReset} onClick={() => setFilters({})}>
+            Reset
+          </p>
         </div>
 
-        <div className={design.bookingSection}>       
-          <form className={design.bookingForm} onSubmit={handleSubmit}>
-
+        <div className={design.bookingSection}>
+          <form className={design.bookingForm} onSubmit={(e) => e.preventDefault()}>
             {/* Price Range */}
             <div className={design.priceRange}>
               <p>Price</p>
@@ -167,7 +177,6 @@ export const Lodging = () => {
           </form>
 
           <section className={design.bookingReview}>
-       
             {hotels.map((hotel) => (
               <div key={hotel._id} className={design.hotelCard}>
                 <img src={hotel.image_url[0]} alt={hotel.name} />
@@ -175,7 +184,9 @@ export const Lodging = () => {
                 <p className={design.location}>{hotel.city}</p>
                 <p className={design.review}>Rating: {hotel.rating}</p>
                 <p className={design.status}>{hotel.type}</p>
-                <p className={design.price}>${hotel.price_per_night} per night</p>
+                <p className={design.price}>
+                  ${hotel.price_per_night} per night
+                </p>
               </div>
             ))}
           </section>
