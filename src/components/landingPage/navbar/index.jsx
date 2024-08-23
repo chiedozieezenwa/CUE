@@ -1,5 +1,9 @@
 import { useContext, useState } from "react";
+<<<<<<< HEAD
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+=======
 import { NavLink } from "react-router-dom";
+>>>>>>> 06e71aecc9c4af7bfc3f86a5e118eb079b940414
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
@@ -7,10 +11,18 @@ import divider from "../../../assets/images/divider.png";
 import { Button } from "../../button";
 import { Signup, Signin, Recover } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
+<<<<<<< HEAD
+import { SearchContext } from "../../../context/searchContext";
+=======
 import { hamburgericon } from "../../../assets";
+>>>>>>> 06e71aecc9c4af7bfc3f86a5e118eb079b940414
 
 export const Navbar = () => {
   const { currentPopup, openPopup, closePopup } = useContext(PopupContext);
+  const { setQuery, setSearchResults } = useContext(SearchContext);
+  const [searchInput, setSearchInput] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -24,6 +36,36 @@ export const Navbar = () => {
   // Handlers to open specific popups
   const handleLoginClick = () => openPopup('signin');
   const handleSignupClick = () => openPopup('signup');
+
+  // Handle search form submission
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    
+    
+    setQuery(searchInput);
+
+    // Fetch results based on current page
+    try {
+      let endpoint = '';
+      if (location.pathname.includes('hotels')) {
+        endpoint = `https://cue-api-3tyr.onrender.com/api/v1/hotels?location=${searchInput}`;
+      } else if (location.pathname.includes('rentals')) {
+        endpoint = `https://cue-api-3tyr.onrender.com/api/v1/rentals?location=${searchInput}`;
+      }
+      
+      const response = await fetch(endpoint);
+      const data = await response.json();
+
+      if (response.ok) {
+        setSearchResults(data.data.hotels || data.data.rentals || []); 
+        navigate(location.pathname); 
+      } else {
+        console.error('Search failed:', data.message);
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching the search results:', error);
+    }
+  };
 
   return (
     <header className={design.container}>
@@ -53,12 +95,18 @@ export const Navbar = () => {
             </li>
           </ul>
 
-          <div className={design["search-bar"]}>
-            <input type="text" placeholder="Discover by location" />
-            <button className={design["search-icon-button"]}>
+          <form onSubmit={handleSearch} className={design["search-bar"]}>
+            <input
+              type="text"
+              placeholder="Discover by location"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <button type="submit" className={design["search-icon-button"]}>
               <img src={searchIcon} alt="Search Icon" className={design["search-icon"]} />
+            
             </button>
-          </div>
+          </form>
         </section>
 
         {/* Onboard Section */}
