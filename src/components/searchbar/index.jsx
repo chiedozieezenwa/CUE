@@ -2,8 +2,13 @@ import { useContext } from 'react';
 import design from './design.module.css';
 import { SearchContext } from '../../context/searchContext';
 
+<<<<<<< HEAD
 export const SearchBar = () => {
   const { query,location, setQuery, setSearchResults } = useContext(SearchContext);
+=======
+export const SearchBar = ({placeholder}) => {
+  const { query, setQuery, setSearchResults } = useContext(SearchContext);
+>>>>>>> 06e71aecc9c4af7bfc3f86a5e118eb079b940414
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -39,7 +44,7 @@ export const SearchBar = () => {
       <div className={design.searchContainer}>
         <input
           type="text"
-          placeholder="Search hotels"
+          placeholder={placeholder}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={design.searchBar}

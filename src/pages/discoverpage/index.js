@@ -5,3 +5,4 @@ export * from './searchall'
 export * from './security'
 export * from './discover'
 export * from './carousel'
+export * from "./bookingPage"

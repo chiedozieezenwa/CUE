@@ -4,12 +4,13 @@ import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
+
 import {
   airBnB,
   Apartments,
-  bathhub,
   bedAndBreakfast,
   Hotels,
+  bathtub,
   panicButton,
   Resorts,
   smartHome,
@@ -35,7 +36,9 @@ export const Lodging = () => {
   const { searchResults } = useContext(SearchContext); // Get the search results from SearchContext
 
   // Use searchResults if available, otherwise fall back to LodgingContext's hotels
-  const hotels = searchResults?.length ? searchResults : useContext(LodgingContext).hotels || [];
+  const hotels = searchResults?.length
+    ? searchResults
+    : useContext(LodgingContext).hotels || [];
 
   useEffect(() => {
     console.log("Filters updated:", filters);
@@ -48,8 +51,7 @@ export const Lodging = () => {
 
   return (
     <div className={design.container}>
-      <SearchBar /> 
-
+      <SearchBar placeholder="search hotels" />
       {loading && (
         <div className={design.loaderOverlay}>
           <FadeLoader
@@ -73,7 +75,10 @@ export const Lodging = () => {
         </div>
 
         <div className={design.bookingSection}>
-          <form className={design.bookingForm} onSubmit={(e) => e.preventDefault()}>
+          <form
+            className={design.bookingForm}
+            onSubmit={(e) => e.preventDefault()}
+          >
             {/* Price Range */}
             <div className={design.priceRange}>
               <p>Price</p>
@@ -165,7 +170,7 @@ export const Lodging = () => {
                   <p>Surveillance</p>
                 </div>
                 <div>
-                  <img src={bathhub} alt="Outdoor Bathhub" />
+                  <img src={bathtub} alt="Outdoor Bathhub" />
                   <p>Outdoor Baths</p>
                 </div>
               </div>

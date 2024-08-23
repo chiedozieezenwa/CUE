@@ -1,0 +1,117 @@
+.bookingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: "satoshi";
+}
+
+.BookingH1 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  text-align: center;
+  color: #130c2a;
+}
+
+.bookingDetailsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1062px;
+  top: 452px;
+  left: 189px;
+  padding: 20px 10px;
+  gap: 24px;
+}
+
+.bookingIMG {
+  width: 400px;
+  height: 370px;
+}
+
+.bookingCar {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  color: #130c2a;
+}
+
+.bookingCarDetails {
+  display: flex;
+  width: 501.25px;
+  gap: 20px;
+  color: #130c2a;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 0px;
+}
+
+.bookingCarDetails img {
+  width: 16px;
+  height: 20px;
+  top: 2px;
+  left: 4px;
+  border: 2px;
+  padding-right: 6px;
+}
+
+.BookingList {
+  width: 401px;
+  gap: 73px;
+}
+
+.bookingPrice {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  color: #130c2a;
+}
+
+.bookingDetails1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookingDetailsInfo {
+  width: 962px;
+  padding: 20px 11px;
+  gap: 40px;
+  border-radius: 10px;
+}
+
+.bookingDetailsInfo h3 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  text-align: center;
+  color: #130c2a;
+}
+
+.bookingDetailsInfo p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 34px;
+}
+
+.bookingButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.bookingBTN {
+  width: 970px;
+  height: 56px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  background-color: #5d3be9;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #ffffff;
+}

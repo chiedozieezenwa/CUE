@@ -1,0 +1,36 @@
+.customDateInput {
+  width: 19rem;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 12px 20px;
+  padding-left: 14px;
+  gap: 32px;
+  opacity: 0.5;
+  border: none;
+  border-radius: 12px;
+  border: 1px #000 solid;
+  color: #130c2a;
+  margin-top: 30px;
+  font-family: "satoshi";
+}
+
+.placeholderText {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  font-family: "satoshi";
+}
+
+.dateIcon {
+  width: 18px;
+  height: 20px;
+  border: 2px;
+  margin-right: 8px;
+  opacity: 2.5px;
+}
+
+.datePicker {
+  display: none; 
+}

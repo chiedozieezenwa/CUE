@@ -14,8 +14,17 @@ import bedAndBreakfast from './bedAndBreakfast.png';
 import Hotels from './Hotels.png';
 import Resorts from './Resorts.png';
 import Villas from './Villas.png';
+import bathtub from  "./Bathtub.png"
+import panicButton from './panicButton.png'
+import smartHome from './smartHome.png'
+import surveillance from './surveillance.png'
+import tv from './tv.png'
+import waves from './waves.png'
+import wifi from './wifi.png'
+import favicon from './favicon.svg'
 
 export { 
+  favicon,
   closeIcon, 
   hidePassword, 
   showPassword, 
@@ -31,7 +40,17 @@ export {
   bedAndBreakfast, 
   Hotels, 
   Resorts, 
-  Villas 
+
+  Villas,
+  bathtub,
+  panicButton,
+  smartHome,
+  surveillance,
+  tv,
+  waves,
+  wifi
 };
 
 export * from './convenience'
+export * from './sideIcons'
+

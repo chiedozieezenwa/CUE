@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Ai, Disc, Home, Itineary, Recover, Signin, Trip } from "./pages";
+import { AdminDashboard, Adminlodge, AdminRentals, Ai, BookingDetails, Disc, Home, Itineary, Recover, Signin, Trip, User } from "./pages";
 import { Signup } from "./pages/Onboarding/Signup";
+import { AdminDashboardLayout } from "./layout";
+import { AdminManagement } from "./pages/dashpages/adminManagement";
 
 const router = createBrowserRouter ([
     {
@@ -24,6 +26,10 @@ const router = createBrowserRouter ([
         element: <Signin />
     },
     {
+        path: "/booking",
+        element: <BookingDetails />
+    },
+    {
         path: "/recover",
         element: <Recover />
     },
@@ -34,6 +40,32 @@ const router = createBrowserRouter ([
     {
         path: "/disc",
         element: <Disc />
+    },
+    {
+        path: "/admin",
+        element: <AdminDashboardLayout />,
+        children: [
+            {
+                path: "dashboard",
+                element: <AdminDashboard />
+            },
+            {
+                path: "user",
+                element: <User />
+            },
+            {
+                path: "management",
+                element: <AdminManagement />
+            },
+            {
+                path: "lodge",
+                element: <Adminlodge />
+            },
+            {
+                path: "rental",
+                element: <AdminRentals />
+            }
+        ]
     }
 ])
 
