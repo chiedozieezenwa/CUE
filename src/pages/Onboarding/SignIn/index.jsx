@@ -1,20 +1,19 @@
 import design from "./signin.module.css";
-import { Button } from "../../../components/button";
 import { useNavigate } from "react-router-dom";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { useState } from "react";
+import { usePopUp } from "../../../context/usePopUp";
 import { Recover } from "../Recover";
 
 export const Signin = () => {
+  const { currentPopup, openPopup, closePopup } = usePopUp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
   const [showP, setShowP] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isRecoverOpen, setIsRecoverOpen] = useState(false); // To control the Recover popup visibility
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -33,12 +32,14 @@ export const Signin = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/");
+        closePopup();
+        navigate("/disc");
       }
+      
     } catch (error) {
       if (error.response) {
         setError(
-          error.response.data.message || "Signup failed. Please try again."
+          error.response.data.message || "Signin failed. Please try again."
         );
       } else if (error.request) {
         setError("No response from the server. Please try again later.");
@@ -51,13 +52,9 @@ export const Signin = () => {
     }
   };
 
-  const togglePopUp = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <>
-      {isOpen && (
+      {currentPopup === "signin" && (
         <div className={design.popup}>
           <div className={design.popup_inner}>
             {loading && (
@@ -73,7 +70,7 @@ export const Signin = () => {
               </div>
             )}
 
-            <div className={design["toggle-icon"]} onClick={togglePopUp}>
+            <div className={design["toggle-icon"]} onClick={closePopup}>
               <img src={closeIcon} alt="Click to close" />
             </div>
 
@@ -109,29 +106,42 @@ export const Signin = () => {
                 <button
                   className={design["signUpbtn"]}
                   type="submit"
-                  disabled={loading}
                 >
                   Log in
                 </button>
-              </form>
+                </form>
 
-              <p className={design["signInlink"]}>
-                Forgot Password?
-                <Button
-                  onClick={() => {
-                    setIsOpen(false); // Close signin popup
-                    setIsRecoverOpen(true); // Show recover popup
-                  }}
-                  content="Recover"
-                  className={design["logIn-btn"]}
-                />
-              </p>
+                <p className={design["signUp-link"]}>
+                  Don’t have an account?
+                  <button
+                    onClick={() => {
+                      closePopup();
+                      openPopup("signup");
+                    }}
+                    className={design["logIn-btn"]}
+                  >
+                    Sign up
+                  </button>
+                </p>
+                <p className={design["signUp-link"]}>
+                  Forgot your password?
+                  <button
+                      onClick={() => {
+                        console.log("Recover button clicked");
+                        closePopup();
+                        openPopup("recover");
+                      }}
+                    className={design["logIn-btn"]}
+                  >
+                    Recover
+                  </button>
+                </p>
+              
             </section>
           </div>
         </div>
       )}
-      {isRecoverOpen && <Recover />}{" "}
-      
+      {currentPopup === 'recover' && <Recover />}
     </>
   );
 };

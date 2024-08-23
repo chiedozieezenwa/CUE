@@ -1,0 +1,360 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-family: "satoshi";
+}
+
+.containerRental {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 64px;
+}
+
+#leaving {
+  margin-left: 16px;
+}
+
+#leavingInput{
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.containerRentals {
+  justify-content: center;
+  align-items: center;
+  width: 205px;
+  height: 56px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+.containerRentals1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 173px;
+  height: 56px;
+  padding: 4px 10px;
+  gap: 14px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+.containerRentals2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 193px;
+  height: 56px;
+  padding: 4px 10px;
+  gap: 14px;
+  border-radius: 10px;
+  border: 1px;
+  border: 1px solid #7c8493;
+}
+
+.containerCalender {
+  display: flex;
+}
+
+.containerCalender img {
+  width: 24px;
+  height: 26px;
+  top: 2px;
+  left: 3px;
+  border: 2px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.containerCalender p {
+  margin-top: 20px;
+}
+.containerTime {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #130c2a;
+  position: relative;
+  bottom: 10px;
+}
+
+.containerDate {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  padding-left: 30px;
+}
+
+.BTN {
+  width: 144px;
+  height: 56px;
+  padding: 16px 24px;
+  gap: 0px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  background: #5d3be9;
+  border: none;
+  margin-top: 6px;
+}
+
+.datepicker {
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
+.datepicker::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.datepicker2 {
+  width: 105px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
+.datepicker2::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.datepicker2 img {
+  position: relative;
+  right: 40px;
+}
+
+#date1 {
+  position: relative;
+  top: 8px;
+  margin-left: 15px;
+}
+
+#date2 {
+  position: relative;
+  top: 8px;
+  margin-left: 15px;
+}
+
+.containerImage {
+  margin-right: 14px;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 40px;
+  margin-right: 36px;
+}
+
+.sectionContainer1 {
+  width: 268px;
+  height: 729px;
+  padding: 0px 20px 20px 20px;
+  gap: 62px;
+  box-shadow: 0px 2px 5.6px 0px #84848480;
+}
+
+.sectionFilter {
+  width: 228px;
+  height: 96px;
+  padding: 10px 20px;
+  gap: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 28px;
+  background: #ececec;
+  color: #101928;
+}
+
+.sectionFilter p {
+  padding-top: 10px;
+}
+
+.sectionCategory {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #101928;
+  position: relative;
+  top: 10px;
+}
+
+.carSeat {
+  width: 228px;
+  height: 52px;
+  padding: 16px;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  border-radius: 6px;
+  border: 1px solid #d0d5dd;
+}
+
+#popular {
+  font-size: 17.86px;
+  font-weight: 500;
+  line-height: 21.44px;
+  letter-spacing: 0.1339694708585739px;
+}
+
+.sectionContainer2 {
+  width: 840px;
+  height: 742px;
+  gap: 38px;
+}
+
+.sectionFilter1 {
+  width: 840px;
+  height: 96px;
+  padding: 10px 20px;
+
+  gap: 425px;
+  border-radius: 10px;
+  background: #ececec;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 36px;
+  text-align: left;
+  color: #5d3be9;
+}
+
+.sectionContainerDetails {
+  display: flex;
+  width: 860px;
+  height: 172px;
+  padding: 20px 10px;
+  gap: 24px;
+  box-shadow: 0px 0px 30px 0px #84848440;
+}
+
+.rentalNaira {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 30px;
+  text-align: left;
+  color: #130c2a;
+  position: relative;
+  bottom: 60px;
+}
+
+.sectionContainerDetails h2 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  text-align: left;
+  color: #130c2a;
+}
+
+.sectionDetails {
+  display: flex;
+  width: 390px;
+  gap: 28px;
+  position: relative;
+  bottom: 30px;
+}
+
+.sectionDetails p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #130c2a;
+}
+
+.sectionBTN {
+  width: 125px;
+  height: 44px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #5d3be9;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #ffffff;
+  margin-top: 80px;
+}
+
+#car2 {
+  width: 220px;
+  height: auto;
+}
+
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.loaderImage {
+  width: 100px;
+  height: 100px;
+  animation: rotateClockwise 2.5s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.skipBtn{
+  width: 404px;
+height: 46px;
+padding: 16px 24px;
+border-radius: 20px;
+background: #5D3BE9;
+color: #ffffff;
+border: none;
+}
+
+#skipBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}

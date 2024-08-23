@@ -1,0 +1,109 @@
+.aiheader {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.aiheader > p {
+    font-family: 'Satoshi';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 40px;
+}
+
+.main {
+    padding: 0 100px;
+}
+
+.sampleqstn {
+    color: #130C2A;
+    font-family: 'Satoshi';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 30px;
+}
+
+.ai-search {
+    display: flex;
+    gap: 20px;
+}
+
+.search-result {
+    width: 100%;
+    border: 2px solid red;
+}
+
+.search-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-buttons > button {
+    box-sizing: border-box;
+    width: 421px;
+    height: 92px;
+    padding: 29px;
+    border-radius: 20px;
+    opacity: 0.8;
+    background: #E9ECEF;
+    border: none;
+    font-family: 'Satoshi';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    cursor: pointer;
+}
+
+.search-bar {
+    position: relative;
+    margin: 100px 0 100px 0;
+}
+
+.search-bar > input {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 19px 85px 19px 29px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 888px;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid #7C8493;
+    opacity: 0.8;
+}
+
+.search-bar > input::placeholder {
+    color: #7C8493;
+    font-family: 'Satoshi';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+}
+
+.search-icon-button {
+    position: absolute;
+    top: 0;
+    left: 1250px;
+    border: none;
+    background-color: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    opacity: 0.5;
+    padding-left: 5px;
+}

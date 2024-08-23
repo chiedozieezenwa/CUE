@@ -2,8 +2,8 @@
       font-family: 'Satoshi', sans-serif;
 } */
 
-footer {
-      font-family: "satoshi";
+.footer {
+  font-family: "satoshi";
   background: #130c2a;
   justify-content: center;
   align-items: center;

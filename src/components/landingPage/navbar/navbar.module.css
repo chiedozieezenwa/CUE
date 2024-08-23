@@ -14,8 +14,8 @@ body {
 .nav {
   display: flex;
   align-items: center;
-  width: 1188px;
-  padding: 0 26px;
+  width: 1238px;
+  padding: 0 20px;
 }
 
 .left-section {
@@ -77,7 +77,7 @@ body {
   border-radius: 8px;
   border: 1px solid #000;
   opacity: 0.5;
-  padding: 8px 12px 8px 48px; /* Ensure space for the icon */
+  padding: 8px 12px 8px 48px; 
   box-sizing: border-box;
 }
 
@@ -124,6 +124,7 @@ body {
   color: #5D3BE9;
   font-weight: 700;
   font-size: 16px;
+  width: 92px;
 }
 
 .signUp-btn {
@@ -137,4 +138,43 @@ body {
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 10px;
+}
+
+.togglemenu {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-links {
+  display: none;
+}
+
+@media screen and (max-width: 738px) {
+
+ .nav {
+  justify-content: space-between;
+ }
+
+  .middle-section {
+    display: none;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .divider, .signUp-btn, .logIn-btn {
+    display: none;
+  }
+
+  .togglemenu {
+    display: flex;
+  }
 }

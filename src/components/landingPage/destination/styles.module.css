@@ -2,19 +2,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "satoshi";
 }
 
-.destIMG {
+.destinationCards {
+  display: flex;
+  gap: 25px;
+}
+
+ .destIMG {
   width: 400px;
   height: 280px;
   border-radius: 48px 48px 0px 0px;
+} 
+
+.destImage {
+  width: 250px;
+  height: 180px;
+  border-radius: 48px 48px 0px 0px; 
 }
 
+
 .destTitle {
-  font-size: 24px;
-  font-weight: 400;
+  font-family: 'Satoshi';
+  font-size: 20px;
+  font-weight: 900;
   line-height: 32px;
   color: #191919;
+  margin: 0;
 }
 
 .cards {
@@ -22,6 +39,7 @@
   border-radius: 48px 26px;
   background: #ffffff;
 }
+
 
 .subject {
   width: 219px;
@@ -37,51 +55,51 @@
   letter-spacing: 0.15000000596046448px;
   text-align: center;
   position: relative;
-  bottom: 300px;
+  bottom: 305px;
 }
 
-.subject p {
-  padding: 10px;
-  padding-bottom: 10px;
+.subject p{
+  padding-top: 6px;
 }
 
-.cardDetails {
+.cardDetails{
   position: relative;
-  bottom: 64px;
-  padding-left: 10px;
+  bottom: 50px;
 }
 
-.destLocatio {
+/* .cardDetail2 {
+  width: 400px;
+  height: 99px;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+} */
+
+.destLocation {
+  font-family: 'Satoshi';
   font-size: 14px;
+  font-style: normal;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.25px;
-  color: #666666;
-  position: relative;
-  bottom: 14px;
+  margin: 0;
 }
 
 .rating2 {
-  position: relative;
-  bottom: 20px;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 16px;
+ margin: 0;
+ color: yellow;
+ width: 300px;
+height: 19px;
 }
 
-.cards span {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0.25px;
-  color: #666666;
-  position: relative;
-  bottom: 24px;
-  padding-left: 16px;
-}
-
-.heart {
-  width: 24px;
-  height: 24px;
-  padding: 2.82px 2px;
-  position: relative;
-  bottom: 22px;
-  margin-left: 10px;
+.ratings2{
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0.25px;
+color: #666666;
 }

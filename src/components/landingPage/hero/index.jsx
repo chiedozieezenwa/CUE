@@ -1,11 +1,20 @@
 import design from './hero.module.css'
-import {hero1, hero2, hero3, plane} from '../../../assets/images'
+import {hero1, hero2, hero3, plane, slider1, slider10, slider11, slider2, slider3, slider4, slider5, slider7, slider8, slider9} from '../../../assets/images'
 import { Button } from '../../button';
-import { useContext } from 'react';
-import { UserContext } from '../../../context/appContext';
+import { useEffect, useState } from 'react';
 
 export const Hero = () => {
-  const {toggleSignupPopup} = useContext(UserContext)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [hero1, slider1, hero2, slider4, hero3, slider2, slider3, slider5, slider7, slider8, slider9, slider10, slider11];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval); 
+  }, [images.length]);
 
   return (
     <div className={design.container}>
@@ -19,17 +28,33 @@ export const Hero = () => {
             designed for stress free vacation planning.
           </p>
 
-          <Button content="Get Started" className={design["hero-btn"]} onClick={toggleSignupPopup}/>
+          <Button
+            content="Get Started"
+            className={design["hero-btn"]}
+            link='/disc'
+          />
         </div>
       </section>
 
       <section className={design["right-section"]}>
         <div className={design["left-col"]}>
-          <img src={hero1} alt="hero img" className={design["grid"]} />
-          <img src={hero2} alt="hero img" className={design["grid"]} />
+          <img
+            src={images[currentImageIndex]}
+            alt="hero img"
+            className={`${design.grid} ${design.active}`}
+          />
+          <img
+            src={images[(currentImageIndex + 1) % images.length]}
+            alt="hero img"
+            className={`${design.grid} ${design.active}`}
+          />
         </div>
         <div className={design["right-col"]}>
-          <img src={hero3} alt="hero img" className={design["grid"]} />
+          <img
+            src={images[(currentImageIndex + 2) % images.length]}
+            alt="hero img"
+            className={`${design.grid} ${design.active}`}
+          />
         </div>
 
         <div className={design["airplane-container"]}>

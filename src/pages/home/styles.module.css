@@ -22,3 +22,24 @@
   padding-left: 58px;
   color: #130c2a;
 }
+
+.explore2{
+  display: flex;
+  justify-content: space-around;
+}
+
+.exploreBTN{
+  width: 113px;
+height: 52px;
+padding: 16px 24px;
+gap: 0px;
+border-radius: 8px;
+border: 1px;
+border: 1px solid #5D3BE9;
+color: #4759FF;
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+text-align: left;
+margin-top: 30px;
+}

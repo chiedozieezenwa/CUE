@@ -32,8 +32,57 @@ import plane from "./plane.png";
 import hero1 from "./hero1.png";
 import hero2 from "./hero2.png";
 import hero3 from "./hero3.png";
+import calender from "./calendar-date.png";
+import AIlogo from "./AIlogo.png";
+import component from "./Component .png";
+import component2 from "./Component 2.png";
+import marker01 from "./marker01.png";
+import enuguLogo from "./enuguLogo.png";
+import frame1 from "./Frame1.png";
+import art from "./art.png";
+import bar from "./bar.png";
+import outdoor from "./outdoor.png";
+import lodge from "./lodge.png";
+import car from "./car.png";
+import time from "./time.png";
+import plus from "./plus.png";
+import amico from "./amico.png";
+import ai from "./ai.png";
+import slider1 from "./slider1.png";
+import slider2 from "./slider1.png";
+import slider3 from "./slider1.png";
+import slider4 from "./slider4.png";
+import slider5 from "./slider5.png";
+import slider7 from "./slider7.png";
+import slider8 from "./slider8.png";
+import slider9 from "./slider9.png";
+import slider10 from "./slider10.png";
+import slider11 from "./slider11.png";
+import car5 from "./car 5.png";
+import car2 from "./car2.png"
+import bmw from "./BMW.png";
+import gle from "./GLE.png";
+import phone from "./phone.png";
+import fan from "./fan.png";
+import naira from "./naira.png";
+import visa from "./visa.png";
+import visa2 from "./visa2.png";
+import ratingS from "./ratingStarts1.png";
+import blackPlus from "./blackPlus.png";
+import profile from "./profile.png"
+import hamburgericon from "./hamburgericon.png"
 
 export {
+  hamburgericon,
+  slider1,
+  slider2,
+  slider3,
+  slider7,
+  slider8,
+  slider9,
+  slider10,
+  slider11,
+  ai,
   logo,
   lady,
   man,
@@ -50,6 +99,8 @@ export {
   todoIcon,
   image,
   leading,
+  blackPlus,
+  profile,
   ballon,
   lake,
   surfing,
@@ -68,4 +119,34 @@ export {
   hero1,
   hero2,
   hero3,
+  calender,
+  AIlogo,
+  component,
+  component2,
+  marker01,
+  enuguLogo,
+  frame1,
+  art,
+  bar,
+  outdoor,
+  lodge,
+  car,
+  time,
+  plus,
+  amico,
+  car5,
+  bmw,
+  gle,
+  phone,
+  fan,
+  naira,
+  car2,
+  visa,
+  visa2,
+  ratingS,
+  slider4,
+  slider5
 };
+
+export * from "./features";
+export * from "./proplan";

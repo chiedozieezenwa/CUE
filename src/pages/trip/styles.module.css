@@ -1,0 +1,193 @@
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "satoshi";
+}
+
+.plan h2 {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48px;
+  color: #130c2a;
+}
+
+.planInput {
+  width: 40.25rem;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  height: Fixed 68px;
+  padding: 12px 20px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #000;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.planInput::placeholder {
+  color: #888;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 24px;
+  padding-left: 30px;
+  position: relative;
+  left: 106px;
+  color: black;
+}
+
+.calenderDate {
+  display: flex;
+  padding: 12px 20px;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px;
+}
+
+/* .datePicker{
+  width: 17.5rem;
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+padding: 12px 20px;
+padding-left: 34px;
+gap: 32px;
+opacity: 0.5;
+border: none;
+border-radius: 12px; 
+border: 1px #000 solid;
+}  */
+
+/* .datePicker::placeholder{
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+color: red;
+} */
+
+.dateLabel {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #130c2a;
+  margin-left: 20px;
+}
+
+.dateLabel img {
+  width: 18px;
+  height: 20px;
+  margin-right: 6px;
+  margin-top: 5px;
+  border: 2px;
+}
+
+.planBTN {
+  width: 220px;
+  /* height: 26px; */
+  padding: 16px 24px;
+  border-radius: 20px;
+  font-family: Satoshi;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  background: #5d3be9;
+  color: #fff;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  /* padding-left: 60px; */
+  text-decoration: none;
+}
+
+.dropdownList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.dropdownItem {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdownItem:active {
+  background-color: #ddd;
+}
+
+.planInvite{
+  display: flex;
+  justify-content: space-between;
+  width: 45.25rem;
+}
+
+.inviteBTN{
+  width: 160px;
+height: 36px;
+padding: 8px 12px;
+border: none;
+margin-top: 30px;
+font-size: 14px;
+font-weight: 700;
+line-height: 16px;
+text-align: left;
+color: #130C2A;
+}
+
+.inviteBTN img{
+  width: 11.67px;
+  height: 11.67px;
+  top: 4.17px;
+  left: 4.17px;
+  padding-right: 10px;
+}
+
+#invitebtn{
+  padding-left: 70px;
+}
+
+/* styles.module.css */
+
+.emailInputContainer {
+  margin-top: 10px;
+}
+
+.emailInput {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.sendInviteBTN {
+  margin-top: 10px;
+  border: none;
+  /* Additional styles for the send button */
+}
