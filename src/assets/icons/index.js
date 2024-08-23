@@ -21,8 +21,10 @@ import surveillance from './surveillance.png'
 import tv from './tv.png'
 import waves from './waves.png'
 import wifi from './wifi.png'
+import favicon from './favicon.svg'
 
 export { 
+  favicon,
   closeIcon, 
   hidePassword, 
   showPassword, 
@@ -50,4 +52,5 @@ export {
 };
 
 export * from './convenience'
+export * from './sideIcons'
 
