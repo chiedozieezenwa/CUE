@@ -3,17 +3,18 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./styles.module.css";
-import {CustomDateInput} from '../../components'; 
+import { CustomDateInput } from "../../components"; 
 import { blackPlus, profile } from "../../assets";
 
 export const Trip = ({ data = [] }) => {
-  const [query, setQuery] = useState('Enugu'); // Set "Enugu" as the default state
+  const [query, setQuery] = useState('Enugu'); 
   const [filteredResults, setFilteredResults] = useState(data);
-  const [showDropdown, setShowDropdown] = useState(false); // To manage dropdown visibility
+  const [showDropdown, setShowDropdown] = useState(false); 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [email, setEmail] = useState('');
+  
 
   const states = [
     { id: 1, name: 'Enugu' },
@@ -30,23 +31,21 @@ export const Trip = ({ data = [] }) => {
       state.name.toLowerCase().includes(searchQuery)
     );
     setFilteredResults(results);
-    setShowDropdown(true); // Show dropdown when typing
+    setShowDropdown(true); 
   };
 
   const handleSelect = (name) => {
     setQuery(name);
-    setFilteredResults([]); // Clear the dropdown after selection
-    setShowDropdown(false); // Hide dropdown after selection
+    setFilteredResults([]); 
+    setShowDropdown(false);
   };
 
   const handleBlur = () => {
-    setTimeout(() => setShowDropdown(false), 200); // Delay to allow click event on the dropdown item
+    setTimeout(() => setShowDropdown(false), 200); 
   };
 
-  
-
   const handleInviteClick = () => {
-    setIsInputVisible(prev => !prev); // Toggle visibility
+    setIsInputVisible(prev => !prev); 
   };
 
   const handleEmailChange = (event) => {
@@ -54,10 +53,8 @@ export const Trip = ({ data = [] }) => {
   };
 
   const handleSendInvite = () => {
-    // Logic for sending invite can be added here
     console.log(`Sending invite to: ${email}`);
   };
-
 
   return (
     <div>
@@ -70,8 +67,8 @@ export const Trip = ({ data = [] }) => {
             type="text"
             value={query}
             onChange={handleSearch}
-            onFocus={() => setShowDropdown(true)} // Show dropdown on focus
-            onBlur={handleBlur} // Hide dropdown on blur
+            onFocus={() => setShowDropdown(true)}
+            onBlur={handleBlur} 
             placeholder="e.g. Kaduna, Enugu"
             className={styles.planInput}
           />
@@ -90,71 +87,62 @@ export const Trip = ({ data = [] }) => {
           )}
         </div>
 
-<div className={styles.calenderDate}>
-        <div>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            placeholderText="Start Date"
-            customInput={<CustomDateInput placeholder="Start Date" />}
-            className={styles.datePicker}
-          />
+        <div className={styles.calenderDate}>
+          <div>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              placeholderText="Start Date"
+              customInput={<CustomDateInput placeholder="Start Date" />}
+              className={styles.datePicker}
+            />
+          </div>
+          <div>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              placeholderText="End Date"
+              customInput={<CustomDateInput placeholder="End Date" />}
+              className={styles.datePicker}
+            />
+          </div>
         </div>
-        <div>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            placeholderText="End Date"
-            customInput={<CustomDateInput placeholder="End Date" />}
-            className={styles.datePicker}
-          />
+
+        <div className={styles.planInvite}>
+          <div>
+            <Button
+              img={blackPlus}
+              content="Invite Trip Mates"
+              className={styles.inviteBTN}
+              onClick={handleInviteClick}
+            />
+            {isInputVisible && (
+              <div className={styles.emailInputContainer}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Enter email address"
+                  className={styles.emailInput}
+                />
+                <Button
+                  content="Send Invite"
+                  className={styles.sendInviteBTN}
+                  onClick={handleSendInvite}
+                />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <Button
+              img={profile}
+              content="Friends"
+              className={styles.inviteBTN}
+              id={styles.invitebtn}
+            />
+          </div>
         </div>
-      </div>
-
-      <div className={styles.planInvite}>
-        {/* <div>
-        <Button
-        img={blackPlus}
-        content="Invite Trip Mtaes"
-        className={styles.inviteBTN}
-        />
-        </div> */}
-
-<div>
-      <Button
-        img={blackPlus}
-        content="Invite Trip Mates"
-        className={styles.inviteBTN}
-        onClick={handleInviteClick}
-      />
-
-      {isInputVisible && (
-        <div className={styles.emailInputContainer}>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="Enter email address"
-            className={styles.emailInput}
-          />
-          <Button
-            content="Send Invite"
-            className={styles.sendInviteBTN}
-            onClick={handleSendInvite}
-          />
-        </div>
-      )}
-    </div>
-
-        <div>
-        <Button
-        img={profile}
-        content="Friends"
-        className={styles.inviteBTN}
-        id={styles.invitebtn}
-        />
-        </div>
-      </div>
         <Button
           content="Start Planning"
           link="/itinerary"
@@ -166,4 +154,3 @@ export const Trip = ({ data = [] }) => {
     </div>
   );
 };
-
