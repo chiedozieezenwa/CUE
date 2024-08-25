@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchContext } from "../../../context/searchContext";
+import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
@@ -194,5 +195,4 @@ export const Lodging = () => {
       </div>
     </div>
   );
-};
 };
