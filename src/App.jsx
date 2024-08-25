@@ -5,16 +5,19 @@ import { UserProvider } from './context/appContext'
 import { PopupProvider } from './context/popupContext'
 import { LodgingProvider } from './context/LodgingContext'
 import { SearchProvider } from './context/searchContext'
+import { BookingProvider } from './context/bookingDetails'
 
  const App = () => {
     return (
       <UserProvider>
         <PopupProvider>
+        <BookingProvider>
           <LodgingProvider>
-            <SearchProvider>
+            <SearchProvider> 
               <RouterProvider router={router} />
             </SearchProvider>
           </LodgingProvider>
+          </BookingProvider>
         </PopupProvider>    
       </UserProvider>
     );

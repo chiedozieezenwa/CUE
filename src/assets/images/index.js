@@ -62,7 +62,11 @@ import visa from "./visa.png";
 import visa2 from "./visa2.png";
 import ratingS from "./ratingStarts1.png";
 import blackPlus from "./blackPlus.png";
-import profile from "./profile.png"
+import profile from "./profile.png";
+import ceramic from "./image.png";
+import best from "./image1.png";
+import lugard from "./lugard.png";
+import deleteBTN from "./deleteBTN.png"
 
 export {
   slider1,
@@ -129,7 +133,9 @@ export {
   car2,
   visa,
   visa2,
-  ratingS
+  ratingS,
+  ceramic,
+  best, lugard, deleteBTN
 };
 
 export * from "./features";

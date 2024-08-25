@@ -3,26 +3,9 @@ import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
+import { useBooking } from "../../../context/bookingDetails/index.jsx";
 
 import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
-
-// =======
-// import {
-//   airBnB,
-//   Apartments,
-//   bathhub,
-//   bedAndBreakfast,
-//   Hotels,
-//   panicButton,
-//   Resorts,
-//   smartHome,
-//   surveillance,
-//   tv,
-//   Villas,
-//   waves,
-//   wifi,
-// } from "../../../assets";
-// >>>>>>> develop
 
 export const Lodging = () => {
   const {
@@ -42,6 +25,12 @@ export const Lodging = () => {
     fetchHotels();
   };
   console.log(hotels);
+
+  const { bookingDetails, addBookingDetails } = useBooking(); 
+
+  const handleAddLodgingToCart = (lodgingDetails) => {
+    addBookingDetails({ lodging: lodgingDetails });
+    alert("Lodging details added to your cart!");
 
   return (
     <div className={design.container}>
@@ -190,4 +179,5 @@ export const Lodging = () => {
       </div>
     </div>
   );
+};
 };

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Ai, BookingDetails, Disc, Home, Itineary, Recover, Signin, Trip } from "./pages";
+import { Ai, BookingDetails, Disc, Home, Itineary, Lodging, Recover, Signin, Trip } from "./pages";
 import { Signup } from "./pages/Onboarding/Signup";
 
 const router = createBrowserRouter ([
@@ -38,6 +38,10 @@ const router = createBrowserRouter ([
     {
         path: "/disc",
         element: <Disc />
+    },
+    {
+        path: "/lodging",
+        element: <Lodging/>
     }
 ])
 
