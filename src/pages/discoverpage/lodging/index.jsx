@@ -4,22 +4,11 @@ import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
+import { useBooking } from "../../../context/bookingDetails/index.jsx";
 
-import {
-  airBnB,
-  Apartments,
-  bedAndBreakfast,
-  Hotels,
-  bathtub,
-  panicButton,
-  Resorts,
-  smartHome,
-  surveillance,
-  tv,
-  Villas,
-  waves,
-  wifi,
-} from "../../../assets";
+
+import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
+
 
 export const Lodging = () => {
   const {
@@ -48,6 +37,12 @@ export const Lodging = () => {
   useEffect(() => {
     console.log("Search results updated:", searchResults);
   }, [searchResults]);
+
+  const { bookingDetails, addBookingDetails } = useBooking(); 
+
+  const handleAddLodgingToCart = (lodgingDetails) => {
+    addBookingDetails({ lodging: lodgingDetails });
+    alert("Lodging details added to your cart!");
 
   return (
     <div className={design.container}>
@@ -199,4 +194,5 @@ export const Lodging = () => {
       </div>
     </div>
   );
+};
 };

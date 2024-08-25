@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AdminDashboard, Adminlodge, AdminRentals, Ai, BookingDetails, Disc, Home, Itineary, Recover, Signin, Trip, User } from "./pages";
+
+import { AdminDashboard, Adminlodge, AdminRentals, Ai, BookingDetails, Disc, Home, Itineary, Lodging, Recover, Signin, Trip, User } from "./pages";
+
 import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
@@ -42,6 +44,10 @@ const router = createBrowserRouter ([
         element: <Disc />
     },
     {
+
+        path: "/lodging",
+        element: <Lodging/>
+
         path: "/admin",
         element: <AdminDashboardLayout />,
         children: [
@@ -66,6 +72,7 @@ const router = createBrowserRouter ([
                 element: <AdminRentals />
             }
         ]
+
     }
 ])
 

@@ -19,7 +19,7 @@
 } 
 
 .destImage {
-  width: 250px;
+  width: 300px;
   height: 180px;
   border-radius: 48px 48px 0px 0px; 
 }
@@ -67,13 +67,20 @@
   bottom: 50px;
 }
 
-/* .cardDetail2 {
-  width: 400px;
-  height: 99px;
+.cardDetail2 {
   display: flex;
   flex-direction: column;
-  background-color: red;
+}
+
+/* .cardDetailInfo{
+  margin-top: 10px;
 } */
+
+.cardDetailTitle{
+  /* font-size: 42px; */
+  color: red;
+  /* margin-top: 30px; */
+}
 
 .destLocation {
   font-family: 'Satoshi';
