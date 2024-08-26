@@ -5,18 +5,22 @@ import { UserProvider } from './context/appContext'
 import { PopupProvider } from './context/popupContext'
 import { LodgingProvider } from './context/LodgingContext'
 import { SearchProvider } from './context/searchContext'
+
 import { Recover } from './pages'
+import { BookingProvider } from './context'
 
  const App = () => {
     return (
       <UserProvider>
         <PopupProvider>
-          <LodgingProvider>
-            <SearchProvider>
-              <RouterProvider router={router} />
-              <Recover />
-            </SearchProvider>
-          </LodgingProvider>
+          <BookingProvider>
+            <LodgingProvider>
+              <SearchProvider> 
+                <RouterProvider router={router} />
+                <Recover />
+              </SearchProvider>
+            </LodgingProvider>
+          </BookingProvider>
         </PopupProvider>    
       </UserProvider>
     );

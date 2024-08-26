@@ -1,0 +1,42 @@
+
+
+.note{
+      width: 715px;
+height:82px;
+gap: 8px;
+border-radius: 20px;
+opacity: 0.8px;
+}
+
+textarea{
+      background: #F3F4F5;
+      color: #130C2A;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.15000000596046448px;
+text-align: left;
+align-items: center;
+padding-left: 10px;
+border: none;
+}
+
+textarea::placeholder{
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.15000000596046448px;
+padding-left: 30px;
+padding-top: 30px;
+color: #130C2A;
+}
+
+.deleteBTN{
+      width: 80px;
+height: 92px;
+padding: 15px 25px ;
+gap: 0px;
+border-radius: 25px;
+ background: #F5F6F7;
+border: none;
+}

@@ -69,8 +69,15 @@ import visa from "./visa.png";
 import visa2 from "./visa2.png";
 import ratingS from "./ratingStarts1.png";
 import blackPlus from "./blackPlus.png";
-import profile from "./profile.png"
+
+import profile from "./profile.png";
+import ceramic from "./image.png";
+import best from "./image1.png";
+import lugard from "./lugard.png";
+import deleteBTN from "./deleteBTN.png"
+
 import hamburgericon from "./hamburgericon.png"
+
 
 export {
   hamburgericon,
@@ -144,8 +151,13 @@ export {
   visa,
   visa2,
   ratingS,
+
+  ceramic,
+  best, lugard, deleteBTN,
+
   slider4,
   slider5
+
 };
 
 export * from "./features";

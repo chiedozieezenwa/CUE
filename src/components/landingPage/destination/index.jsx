@@ -6,7 +6,7 @@ export const Destination = ({ destinationImage, description, title, subject, rat
   return (
     <div className={styles.destination}>
       <div className={styles.destinationCards}>
-        <div className={styles.cards}>
+        <div className={hasTag ? styles.cards : styles.cardDetail2}>
           <img
             src={destinationImage}
             alt=""
@@ -17,8 +17,8 @@ export const Destination = ({ destinationImage, description, title, subject, rat
               <p>{subject}</p>
             </div>
           )}
-          <div className={hasTag ? styles.cardDetails : styles.cardDetail2}>
-            <p className={styles.destTitle}>{name}</p>
+          <div className={hasTag ? styles.cardDetails : styles.cardDetailInfo }>
+            <p className={hasTag ? styles.destTitle : styles.cardDetailTitle }>{name}</p>
             <p className={styles.destTitle}>{title}</p>
             <p className={styles.destLocation}>{description}</p>
             <p className={styles.rating2}>

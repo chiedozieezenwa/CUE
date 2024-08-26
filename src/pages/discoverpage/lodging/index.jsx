@@ -1,34 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LodgingContext } from "../../../context/LodgingContext.jsx";
+import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-
 import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
-
-// =======
-// import {
-//   airBnB,
-//   Apartments,
-//   bathhub,
-//   bedAndBreakfast,
-//   Hotels,
-//   panicButton,
-//   Resorts,
-//   smartHome,
-//   surveillance,
-//   tv,
-//   Villas,
-//   waves,
-//   wifi,
-// } from "../../../assets";
-// >>>>>>> develop
+import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
 
 export const Lodging = () => {
   const {
     loading,
     count,
-    hotels,
     filters,
     setFilters,
     handleFilterChange,
@@ -37,17 +19,31 @@ export const Lodging = () => {
     fetchHotels,
   } = useContext(LodgingContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { searchResults } = useContext(SearchContext); // Get the search results from SearchContext
+
+  // Use searchResults if available, otherwise fall back to LodgingContext's hotels
+  const { hotels: contextHotels } = useContext(LodgingContext);
+  const hotels = searchResults?.length ? searchResults : contextHotels || [];
+  
+  useEffect(() => {
+    console.log("Filters updated:", filters);
     fetchHotels();
+  }, [filters, fetchHotels]);
+
+  useEffect(() => {
+    console.log("Search results updated:", searchResults);
+  }, [searchResults]);
+
+  const { addBookingDetails } = useBooking(); 
+
+  const handleAddLodgingToCart = (lodgingDetails) => {
+    addBookingDetails({ lodging: lodgingDetails });
+    alert("Lodging details added to your cart!");
   };
-  console.log(hotels);
 
   return (
     <div className={design.container}>
-      <SearchBar 
-        placeholder="search hotels"
-      />
+      <SearchBar placeholder="search hotels" />
       {loading && (
         <div className={design.loaderOverlay}>
           <FadeLoader
@@ -65,12 +61,16 @@ export const Lodging = () => {
       <div className={design.bookingCont}>
         <div className={design.filter}>
           <p>Filters</p>
-          <p className={design.filterReset} onClick={() => setFilters({})}>Reset</p>
+          <p className={design.filterReset} onClick={() => setFilters({})}>
+            Reset
+          </p>
         </div>
 
-        <div className={design.bookingSection}>       
-          <form className={design.bookingForm} onSubmit={handleSubmit}>
-
+        <div className={design.bookingSection}>
+          <form
+            className={design.bookingForm}
+            onSubmit={(e) => e.preventDefault()}
+          >
             {/* Price Range */}
             <div className={design.priceRange}>
               <p>Price</p>
@@ -174,15 +174,16 @@ export const Lodging = () => {
           </form>
 
           <section className={design.bookingReview}>
-       
             {hotels.map((hotel) => (
-              <div key={hotel._id} className={design.hotelCard}>
+              <div key={hotel._id} className={design.hotelCard} onClick={handleAddLodgingToCart}>
                 <img src={hotel.image_url[0]} alt={hotel.name} />
                 <p className={design.titleField}>{hotel.name}</p>
                 <p className={design.location}>{hotel.city}</p>
                 <p className={design.review}>Rating: {hotel.rating}</p>
                 <p className={design.status}>{hotel.type}</p>
-                <p className={design.price}>${hotel.price_per_night} per night</p>
+                <p className={design.price}>
+                  ${hotel.price_per_night} per night
+                </p>
               </div>
             ))}
           </section>
