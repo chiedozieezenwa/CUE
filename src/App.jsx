@@ -5,6 +5,7 @@ import { UserProvider } from './context/appContext'
 import { PopupProvider } from './context/popupContext'
 import { LodgingProvider } from './context/LodgingContext'
 import { SearchProvider } from './context/searchContext'
+import { Recover } from './pages'
 
  const App = () => {
     return (
@@ -13,6 +14,7 @@ import { SearchProvider } from './context/searchContext'
           <LodgingProvider>
             <SearchProvider>
               <RouterProvider router={router} />
+              <Recover />
             </SearchProvider>
           </LodgingProvider>
         </PopupProvider>    
