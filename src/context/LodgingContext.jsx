@@ -8,15 +8,12 @@ export const LodgingProvider = ({ children }) => {
   const [count, setCount] = useState(1);
   const [hotels, setHotels] = useState([]);
   const [filters, setFilters] = useState({
+    propertyType: [],
+    conveniences: [],
     minPrice: "",
     maxPrice: "",
-    type: "",
-    brand_new: "",
-    wifi: "",
-    smarthome: "",
-    surveillance: "",
-    panic_button: ""
   });
+  
 
   const fetchHotels = async () => {
     try {

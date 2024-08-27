@@ -19,12 +19,12 @@ import styles from './styles.module.css';
 import { calender } from '../../assets';
 
 export const CustomDateInput = React.forwardRef(({ value, onClick, placeholder }, ref) => (
-  <div className={styles.customDateInput} onClick={onClick} ref={ref}>
+  <div className={styles.customDateInput} id={styles.customInput} onClick={onClick} ref={ref}>
     {!value && (
       
-      <img src={calender} alt="calendar" className={styles.dateIcon} />
+      <img src={calender} alt="calendar" className={styles.dateIcon} id={styles.inputIcon} />
     )}
-    <span className={!value ? styles.placeholderText : ''}>
+    <span id={styles.placeholderText} className={!value ? styles.placeholderText : ''}>
       {value || placeholder}
     </span>
   </div>
