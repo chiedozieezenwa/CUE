@@ -4,7 +4,7 @@ import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-import { useBooking } from "../../../context/bookingDetails/index.jsx";
+// import { useBooking } from "../../../context/bookingDetails/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   airBnB,
@@ -22,6 +22,7 @@ import {
   wifi,
   naira,
 } from "../../../assets";
+import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
 
 export const Lodging = () => {
   const navigate = useNavigate();
