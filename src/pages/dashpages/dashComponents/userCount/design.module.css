@@ -3,6 +3,10 @@
     height: 81px;
     border-radius: 19px;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .userCard {
