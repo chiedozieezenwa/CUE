@@ -169,6 +169,11 @@ input::placeholder {
   padding-top: 330px;
   display: flex;
   justify-content: center;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .adventure2 p {

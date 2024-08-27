@@ -5,6 +5,7 @@ import {
   AdminRentals,
   Ai,
   BookingDetails,
+  BucketList,
   Disc,
   Home,
   Itineary,
@@ -13,6 +14,8 @@ import {
   Recover,
   RetailCart,
   Signin,
+  TopAttractions,
+  TopExperiences,
   Trip,
   User,
 } from "./pages";
@@ -63,6 +66,18 @@ const router = createBrowserRouter([
   {
     path: "/retailCart",
     element: <RetailCart />,
+  },
+  {
+    path: "/bucketlist",
+    element: <BucketList />,
+  },
+  {
+    path: "/topexperience",
+    element: <TopExperiences />,
+  },
+  {
+    path: "/topattractions",
+    element: <TopAttractions />,
   },
   {
     path: "/admin",
