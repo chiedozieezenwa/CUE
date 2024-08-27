@@ -71,3 +71,8 @@
     background-color: #5D3BE9; 
     color: white;
   }
+
+  .react_icon {
+    width: 24px;
+    height: 24px;
+  }
