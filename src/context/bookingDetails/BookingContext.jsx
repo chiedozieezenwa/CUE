@@ -1,6 +1,6 @@
-import  { createContext, useState, useContext } from "react";
+import  { createContext, useState } from "react";
 
-const BookingContext = createContext();
+export const BookingContext = createContext();
 
 export const BookingProvider = ({ children }) => {
   const [bookingDetails, setBookingDetails] = useState({});
@@ -19,7 +19,5 @@ export const BookingProvider = ({ children }) => {
   );
 };
 
-export const useBooking = () => {
-  return useContext(BookingContext);
-};
+
 

@@ -1,11 +1,11 @@
 .sidenav-container {
+    width: 18%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
     padding: 32px 30px 42px 10px;
     left: 0;
-    width: 272px;
     height: 100vh;
     overflow: hidden;
     background-color: #D4DCFB;
@@ -60,6 +60,10 @@
 .logout {
     text-decoration: none;
     color: var(--Light-Greyscale-Disabled-text, #8A8A8A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .active {

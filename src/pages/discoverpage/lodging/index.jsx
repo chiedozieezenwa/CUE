@@ -1,15 +1,11 @@
 import { useContext, useEffect } from "react";
 import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchContext } from "../../../context/searchContext";
-import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-import { useBooking } from "../../../context/bookingDetails/index.jsx";
-
-
 import { airBnB, Apartments, bedAndBreakfast, Hotels, bathtub, panicButton, Resorts, smartHome, surveillance, tv, Villas, waves, wifi } from "../../../assets";
-
+import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
 
 export const Lodging = () => {
   const {
@@ -26,24 +22,24 @@ export const Lodging = () => {
   const { searchResults } = useContext(SearchContext); // Get the search results from SearchContext
 
   // Use searchResults if available, otherwise fall back to LodgingContext's hotels
-  const hotels = searchResults?.length
-    ? searchResults
-    : useContext(LodgingContext).hotels || [];
-
+  const { hotels: contextHotels } = useContext(LodgingContext);
+  const hotels = searchResults?.length ? searchResults : contextHotels || [];
+  
   useEffect(() => {
     console.log("Filters updated:", filters);
     fetchHotels();
-  }, [filters]);
+  }, [filters, fetchHotels]);
 
   useEffect(() => {
     console.log("Search results updated:", searchResults);
   }, [searchResults]);
 
-  const { bookingDetails, addBookingDetails } = useBooking(); 
+  const { addBookingDetails } = useBooking(); 
 
   const handleAddLodgingToCart = (lodgingDetails) => {
     addBookingDetails({ lodging: lodgingDetails });
     alert("Lodging details added to your cart!");
+  };
 
   return (
     <div className={design.container}>
@@ -179,7 +175,7 @@ export const Lodging = () => {
 
           <section className={design.bookingReview}>
             {hotels.map((hotel) => (
-              <div key={hotel._id} className={design.hotelCard}>
+              <div key={hotel._id} className={design.hotelCard} onClick={handleAddLodgingToCart}>
                 <img src={hotel.image_url[0]} alt={hotel.name} />
                 <p className={design.titleField}>{hotel.name}</p>
                 <p className={design.location}>{hotel.city}</p>

@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Button, Navbar } from "../../../components";
-import { useBooking } from "../../../context/bookingDetails";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Tab } from "../nav";
 import { NavLink } from "react-router-dom";
+import { useBooking } from "../../../context/bookingDetails/useBooking";
 
 export const BookingDetails = () => {
   const location = useLocation();

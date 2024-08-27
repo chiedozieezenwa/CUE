@@ -1,9 +1,5 @@
 import { useContext, useState } from "react";
-<<<<<<< HEAD
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-=======
-import { NavLink } from "react-router-dom";
->>>>>>> 06e71aecc9c4af7bfc3f86a5e118eb079b940414
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
@@ -11,11 +7,8 @@ import divider from "../../../assets/images/divider.png";
 import { Button } from "../../button";
 import { Signup, Signin, Recover } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
-<<<<<<< HEAD
 import { SearchContext } from "../../../context/searchContext";
-=======
 import { hamburgericon } from "../../../assets";
->>>>>>> 06e71aecc9c4af7bfc3f86a5e118eb079b940414
 
 export const Navbar = () => {
   const { currentPopup, openPopup, closePopup } = useContext(PopupContext);
