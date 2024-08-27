@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import design from "./sidenav.module.css";
 import { logo } from "../../assets/images";
-import { adminIcon, dashboardIcon, lodgingIcon, userIcon } from "../../assets/icons/sideIcons";
+import { MdDashboard } from "react-icons/md";
+import { RiHotelLine, RiShieldUserLine } from "react-icons/ri";
+import { PiUsersThreeLight } from "react-icons/pi";
+import { IoCarSportOutline } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
 
 export const Sidenav = () => {
   return (
@@ -17,36 +21,39 @@ export const Sidenav = () => {
             to="/admin/dashboard" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={dashboardIcon} alt="Dashboard Icon" /> Dashboard
+            <MdDashboard />
+            Dashboard
           </NavLink>
           <NavLink 
             to="/admin/management" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={adminIcon} alt="Admin Icon" /> Admin Management
+            <RiShieldUserLine /> Admin Management
           </NavLink>
           <NavLink 
             to="/admin/user" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={userIcon} alt="User Icon" /> User
+            <PiUsersThreeLight /> User
           </NavLink>
           <NavLink 
             to="/admin/lodge" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={lodgingIcon} alt="Lodging Icon" /> Lodging
+            <RiHotelLine /> Lodging
           </NavLink>
           <NavLink 
             to="/admin/rental" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={lodgingIcon} alt="Lodging Icon" /> Rental
+            <IoCarSportOutline /> Rental
           </NavLink>
         </div>
       </nav>
       <footer className={design.Sidebar_footer}>
-        <NavLink to="/logout" className={design.logout}>Log out</NavLink>
+        <NavLink to="/" className={design.logout}>
+        <BiLogOut />
+        Log out</NavLink>
       </footer>
     </div>
   );

@@ -1,0 +1,12 @@
+.card {
+    width: 338px;
+    height: 81px;
+    border-radius: 19px;
+    background-color: #ffffff;
+}
+
+.userCard {
+    display: flex;
+    gap: 31px;
+    justify-content: center;
+}
