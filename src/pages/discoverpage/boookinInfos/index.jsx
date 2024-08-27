@@ -404,19 +404,21 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { marker01 } from "../../../assets";
 import { Button, Navbar } from "../../../components";
-import { useBooking } from "../../../context/bookingDetails";
-import { useCart } from '../../../context/cartContext'; // Import useCart hook
+// import { useBooking } from "../../../context/bookingDetails";
+// import { useCart } from '../../../context/cartContext'; // Import useCart hook
 import { Tab } from "../nav";
 import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CustomDateInput } from "../../../components";
 import GoogleMapWithDirections from "../../../components/button/googleMap2"; 
+import { useBooking } from '../../../context/bookingDetails/useBooking';
+import { UseCart } from '../../../context/cartContext';
 
 export const BookingPage = () => {
   const { bookingDetails } = useBooking();
-  const { addToCart } = useCart(); // Get addToCart function from cart context
-  const [selectedDate, setSelectedDate] = useState(null);
+  const { addToCart } = UseCart() // Get addToCart function from cart context
+  // const [selectedDate, setSelectedDate] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -432,7 +434,7 @@ export const BookingPage = () => {
     return <p>No booking details found!</p>;
   }
 
-  const { lodging, guests, conveniences } = bookingDetails;
+  const { lodging, conveniences } = bookingDetails;
 
   const numberOfDays =
     checkInDate && checkOutDate

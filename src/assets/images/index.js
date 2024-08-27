@@ -153,10 +153,7 @@ export {
   ratingS,
   ceramic,
   best, lugard, deleteBTN,
-
-  slider4,
   slider5
-
 };
 
 export * from "./features";

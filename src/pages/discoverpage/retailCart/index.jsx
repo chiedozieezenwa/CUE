@@ -1,5 +1,6 @@
+import { useBooking } from "../../../context/bookingDetails/useBooking";
 import styles from "./styles.module.css"
-import { useBooking } from "../../../context/bookingDetails";
+// import { useBooking } from "../../../context/bookingDetails";
 
 export const RetailCart = () => {
  const { bookingDetails } = useBooking();
