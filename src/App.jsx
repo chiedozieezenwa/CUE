@@ -5,6 +5,7 @@ import { UserProvider } from './context/appContext'
 import { PopupProvider } from './context/popupContext'
 import { LodgingProvider } from './context/LodgingContext'
 import { SearchProvider } from './context/searchContext'
+import {CartProvider} from './context/cartContext'
 
 import { Recover } from './pages'
 import { BookingProvider } from './context'
@@ -13,6 +14,7 @@ import { BookingProvider } from './context'
     return (
       <UserProvider>
         <PopupProvider>
+          <CartProvider>
           <BookingProvider>
             <LodgingProvider>
               <SearchProvider> 
@@ -21,6 +23,7 @@ import { BookingProvider } from './context'
               </SearchProvider>
             </LodgingProvider>
           </BookingProvider>
+          </CartProvider>
         </PopupProvider>    
       </UserProvider>
     );

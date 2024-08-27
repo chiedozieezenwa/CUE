@@ -8,8 +8,10 @@ import {
   Disc,
   Home,
   Itineary,
+  Lodging,
   Otp,
   Recover,
+  RetailCart,
   Signin,
   Trip,
   User,
@@ -17,6 +19,7 @@ import {
 import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
+import { BookingPage } from "./pages/discoverpage/boookinInfos";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "signin", element: <Signin /> },
       { path: "recover", element: <Recover /> },
-      {path: "otp", element: <Otp />}
+      { path: "otp", element: <Otp /> }
     ],
   },
   {
@@ -48,6 +51,18 @@ const router = createBrowserRouter([
   {
     path: "/disc",
     element: <Disc />,
+  },
+  {
+    path: "/lodging",
+    element: <Lodging />,
+  },
+  {
+    path: "/bookingPage",
+    element: <BookingPage />,
+  },
+  {
+    path: "/retailCart",
+    element: <RetailCart />,
   },
   {
     path: "/admin",
