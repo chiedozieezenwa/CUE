@@ -44,7 +44,7 @@ export const Lodging = () => {
 
   useEffect(() => {
     fetchHotels();
-  }, [filters]);
+  }, [filters, fetchHotels]);
 
   const { addBookingDetails } = useBooking();
   const [selectedHotel, setSelectedHotel] = useState(null);
@@ -254,3 +254,4 @@ export const Lodging = () => {
     </div>
   );
 };
+

@@ -82,10 +82,15 @@
     margin-top: -2rem;
   }
 
-  .signup-form > input {
+  .signup-form > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .signup-form > div > input {
     padding: 0 1rem;
-    width: 100%;
-    height: 56px;
+    width: 84px;
+    height: 84px;
     border-radius: 20px;
     box-sizing: border-box;
     border: 1px solid #7C8493;

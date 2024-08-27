@@ -4,8 +4,8 @@ import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
 import { useState } from "react";
-import { usePopUp } from "../../../context/usePopUp";
 import { Recover } from "../Recover";
+import { usePopUp } from "../../../context/usePopUp";
 
 export const Signin = () => {
   const { currentPopup, openPopup, closePopup } = usePopUp();
@@ -141,7 +141,7 @@ export const Signin = () => {
           </div>
         </div>
       )}
-      {currentPopup === 'recover' && <Recover />}
+      {currentPopup === "recover" && <Recover />}
     </>
   );
 };
