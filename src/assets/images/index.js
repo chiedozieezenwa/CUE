@@ -83,6 +83,7 @@ export {
   slider1,
   slider2,
   slider3,
+  slider4,
   slider7,
   slider8,
   slider9,
@@ -150,7 +151,6 @@ export {
   visa,
   visa2,
   ratingS,
-
   ceramic,
   best, lugard, deleteBTN,
 

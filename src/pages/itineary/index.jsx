@@ -24,16 +24,16 @@ import LiveDateTime from "../../components/liveDate";
 
 export const Itineary = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [itineraryPlaces, setItineraryPlaces] = useState([]); // Store the final list of places
+  const [itineraryPlaces, setItineraryPlaces] = useState([]); 
 
   const handlePlaceSelected = (place) => {
-    setSelectedPlace(place); // Store the place temporarily until the button is clicked
+    setSelectedPlace(place); 
   };
 
   const handleAddNewList = () => {
     if (selectedPlace) {
-      setItineraryPlaces([...itineraryPlaces, selectedPlace]); // Add the selected place to the itinerary list
-      setSelectedPlace(null); // Clear the temporary selected place
+      setItineraryPlaces([...itineraryPlaces, selectedPlace]);
+      setSelectedPlace(null); 
     }
   };
 
@@ -47,6 +47,7 @@ export const Itineary = () => {
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
   };
+
 
   const destinationLists = [
     {
