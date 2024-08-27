@@ -22,4 +22,4 @@ export const BookingProvider = ({ children }) => {
   );
 };
 
-export const useBooking = () => useContext(BookingContext);
+export const UseBooking = () => useContext(BookingContext);
