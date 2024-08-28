@@ -50,10 +50,9 @@ const router = createBrowserRouter([
   {
     path: "/disc",
     element: <Disc />,
-    children: [
-      { path: "trip", element: <Trip /> },
-    ],
   },
+  { path: "trip", element: <Trip /> },
+
   {
     path: "/lodging",
     element: <Lodging />,

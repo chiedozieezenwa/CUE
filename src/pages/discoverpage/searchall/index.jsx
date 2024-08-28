@@ -107,7 +107,7 @@ export const SearchAll = () => {
           img={leading}
           className={design.guideBTN}
           content="Plan new trip"
-          link="/disc/trip"
+          link="/trip"
         />
       </div>
 
