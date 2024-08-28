@@ -110,6 +110,12 @@
     border-radius: 10.21px;
     border: 1.052px solid rgba(93, 59, 233, 0.20);
     background: #FFF;
+    cursor: pointer;
+}
+
+.proptypelist :hover{
+    background: #5D3BE9;
+    color: #FEFEFE;
 }
 
 .proptypelist > div > p {

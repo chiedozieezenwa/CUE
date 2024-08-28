@@ -69,14 +69,21 @@ import visa from "./visa.png";
 import visa2 from "./visa2.png";
 import ratingS from "./ratingStarts1.png";
 import blackPlus from "./blackPlus.png";
-import profile from "./profile.png"
+import avatar from "./avatar.png"
+import profile from "./profile.png";
+import ceramic from "./image.png";
+import best from "./image1.png";
+import lugard from "./lugard.png";
+import deleteBTN from "./deleteBTN.png"
 import hamburgericon from "./hamburgericon.png"
 
 export {
+  avatar,
   hamburgericon,
   slider1,
   slider2,
   slider3,
+  slider4,
   slider7,
   slider8,
   slider9,
@@ -144,7 +151,8 @@ export {
   visa,
   visa2,
   ratingS,
-  slider4,
+  ceramic,
+  best, lugard, deleteBTN,
   slider5
 };
 

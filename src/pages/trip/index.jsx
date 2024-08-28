@@ -145,7 +145,7 @@ export const Trip = ({ data = [] }) => {
         </div>
         <Button
           content="Start Planning"
-          link="/itinerary"
+          link="/itineary"
           className={styles.planBTN}
           type="submit"
         />
