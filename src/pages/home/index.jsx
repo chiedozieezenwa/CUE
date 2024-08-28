@@ -39,12 +39,11 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
-
       <Proplan />
       
       <div className={styles.explore}>
         <div className={styles.explore2}>
-        <h1>Explore The Hidden Wonders Of Nigeria.</h1>
+        <p>Explore The Hidden Wonders Of Nigeria.</p>
         <Button
         content="See all"
         className={styles.exploreBTN}

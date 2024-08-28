@@ -3,9 +3,12 @@
   flex-direction: column;
   justify-content: center;
   font-family: "satoshi";
+  margin-top: 1rem;
 }
 
 .homeCards {
+  box-sizing: border-box;
+  padding: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -13,19 +16,21 @@
   gap: 18px;
 }
 
-.explore h1 {
-  font-family: Satoshi;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  text-align: start;
-  padding-left: 58px;
-  color: #130c2a;
-}
-
 .explore2{
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 2px solid red;
+}
+
+.explore2 > p {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: 'Satoshi';
+  line-height: 56px;
+  margin: 0;
+  border: 1px solid red;
 }
 
 .exploreBTN{
@@ -42,4 +47,23 @@ font-weight: 700;
 line-height: 20px;
 text-align: left;
 margin-top: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .homeCards {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .explore2 {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .explore2 > p {
+    font-size: 32px;
+    margin: 0;
+    line-height: 39px;
+    text-align: center;
+  }
 }
