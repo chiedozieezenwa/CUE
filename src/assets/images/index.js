@@ -74,8 +74,13 @@ import profile from "./profile.png";
 import ceramic from "./image.png";
 import best from "./image1.png";
 import lugard from "./lugard.png";
-import deleteBTN from "./deleteBTN.png"
-import hamburgericon from "./hamburgericon.png"
+import deleteBTN from "./deleteBTN.png";
+import hamburgericon from "./hamburgericon.png";
+import signUpYet from "./signUpYet.png";
+import currency from "./currency.png";
+import currency2 from "./currency2.png";
+import currencyeth from "./currency-ethereum.png";
+import paystack from "./paystack.png"
 
 export {
   avatar,
@@ -153,7 +158,12 @@ export {
   ratingS,
   ceramic,
   best, lugard, deleteBTN,
-  slider5
+  slider5,
+  signUpYet,
+  currency,
+  currencyeth,
+  currency2,
+  paystack
 };
 
 export * from "./features";

@@ -1,0 +1,112 @@
+/* src/components/PaymentModal.module.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 424px;
+  height: 325.19px;
+}
+
+.modal h4 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: #5d3be9;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paymentOption {
+  border: none;
+  background: #5d3be9;
+  color: white;
+  cursor: pointer;
+  width: 354px;
+  height: 56px;
+  padding: 16px 24px;
+  gap: 0px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.paymentOption1 {
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 354px;
+  height: 56px;
+  padding: 16px 24px;
+  gap: 0px;
+  border-radius: 20px;
+}
+
+.paymentOption1 img {
+  width: 159.12px;
+  height: 25.99px;
+}
+
+.paymentOption2 {
+  width: 354px;
+  height: 66px;
+  padding: 6.05px 138px 19.25px 151px;
+  border-radius: 7.64px;
+  box-shadow: 0px 1.53px 4.28px 0px #84848480;
+  border: none;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.paymentOption2 p {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: #130c2a;
+  padding-bottom: 6px;
+}
+
+.currency {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.selected {
+      background: #5d3be9;
+    }
+    
