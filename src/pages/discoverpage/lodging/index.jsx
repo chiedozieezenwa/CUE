@@ -4,7 +4,6 @@ import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { FadeLoader } from "react-spinners";
-// import { useBooking } from "../../../context/bookingDetails/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   airBnB,
@@ -23,6 +22,7 @@ import {
   naira,
 } from "../../../assets";
 import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
+import { Navbar } from "../../../components/index.js";
 
 export const Lodging = () => {
   const navigate = useNavigate();
@@ -82,7 +82,7 @@ export const Lodging = () => {
       conveniences: filters.convenience || [],
     });
 
-    navigate("/bookingPage"); // Navigate only when "Apply" is clicked
+    navigate("/bookingPage"); 
   };
 
   const filteredHotels = hotels.filter((hotel) => {
@@ -98,6 +98,7 @@ export const Lodging = () => {
 
   return (
     <div className={design.container}>
+      <Navbar/>
       <SearchBar placeholder="Search hotels" />
       {loading && (
         <div className={design.loaderOverlay}>
@@ -234,9 +235,9 @@ export const Lodging = () => {
               <div
                 key={hotel._id}
                 className={design.hotelCard}
-                onClick={() => setSelectedHotel(hotel)} // Set selected hotel
+                onClick={() => setSelectedHotel(hotel)}
                 style={{
-                  border: selectedHotel?._id === hotel._id ? "2px solid blue" : "none", // Highlight selected hotel
+                  border: selectedHotel?._id === hotel._id ? "2px solid blue" : "none", 
                 }}
               >
                 <img src={hotel.image_url[0]} alt={hotel.name} />
