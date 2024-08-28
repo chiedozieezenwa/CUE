@@ -36,10 +36,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/trip",
-    element: <Trip />,
-  },
-  {
     path: "/itineary",
     element: <Itineary />,
   },
@@ -54,6 +50,9 @@ const router = createBrowserRouter([
   {
     path: "/disc",
     element: <Disc />,
+    children: [
+      { path: "trip", element: <Trip /> },
+    ],
   },
   {
     path: "/lodging",
