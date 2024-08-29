@@ -1,16 +1,19 @@
-.discoveryHomeCards{
-  margin: 0;
+.discoveryHomeCards {
+  margin: 0 auto;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  width: 1236px;
-  gap: 18px;
+  width: 100%;
+  max-width: 1286px;
   font-family: 'Satoshi';
+  overflow: hidden;
 }
 
+
 .exploreDiscover{
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   font-family: 'Satoshi';
 }
 
@@ -20,4 +23,24 @@
   font-weight: 700;
   line-height: 56px;
   color: #130c2a;
+}
+
+.sliderItem {
+  height: 434px;
+}
+
+@media screen and (max-width: 600px) {
+  .exploreDiscover{
+      width: 100%;
+  } 
+
+  .exploreDiscover > p {
+    font-size: 22px;
+    line-height: 56px;
+    text-align: center;
+  }
+
+  .sliderItem {
+    width: 100%;
+  }
 }

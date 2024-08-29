@@ -255,7 +255,7 @@ export const Rentals = () => {
                   id={design.car2}
                 />
               </div>
-              <div>
+              <div className={design.sectionContainerDetails2}>
                 <h2>
                   {rental.brand} {rental.model}
                 </h2>

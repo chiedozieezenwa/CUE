@@ -52,7 +52,6 @@ export const DestinationCarousel = ({ destinationLists }) => {
               description={destinationList.description}
               rating={destinationList.rating}
               review={destinationList.review}
-              // destinationImg={destinationList.destinationImg}
             />
           </div>
         ))}

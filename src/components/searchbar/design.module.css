@@ -50,3 +50,13 @@
     position: absolute;
     right: 2%;
 }
+
+@media screen and (max-width: 600px) {
+    .searchBar, .searchContainer {
+        width: 317px;
+    }
+
+    .searchContainer > input::placeholder {
+        font-size: 10px;
+    }
+}
