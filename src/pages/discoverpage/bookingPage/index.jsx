@@ -16,11 +16,14 @@ export const BookingDetails = () => {
       alert("Car rental details added to your cart!");
     };
 
+
+ 
   if (!bookingDetails) {
     return (
       <p>No booking details available. Please return to the rentals page.</p>
     );
   }
+  console.log('details',bookingDetails);
 
   return (
     <div className={styles.bookingContainer}>
@@ -55,7 +58,7 @@ export const BookingDetails = () => {
                   {bookingDetails.airConditioned }
                 </p>
               </div>
-              <p className={styles.bookingPrice}>
+              <p className={styles.bookingPrice1}>
                 <img src={naira} alt="" />{" "}
                 {bookingDetails.price
                   ? bookingDetails.price.toLocaleString()
