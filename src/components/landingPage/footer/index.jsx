@@ -1,19 +1,13 @@
-import { apple, google, logo } from "../../../assets";
+import { apple, google, logoMobile } from "../../../assets";
 import styles from "./styles.module.css";
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      {/* <div className={styles.aboutUS}>
-        <h3>
-          {" "}
-          <img src={line1} alt="" className={styles.line1} /><span> ABOUT US </span><img src={line2} alt="" className={styles.line1}/>
-        </h3>
-      </div> */}
 
       <div className={styles.footterDetails}>
         <div className={styles.footerCue}>
-          <img src={logo} alt="" />
+          <img src={logoMobile} alt="" />
           <p id={styles.plan}>
             Let us plan a memorable travel experience for you in the comfort of
             one App. Book tours and get personalized tips. Download Cue now for

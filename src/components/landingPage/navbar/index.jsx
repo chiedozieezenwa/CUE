@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
@@ -68,7 +68,9 @@ export const Navbar = () => {
       <nav className={design.nav}>
         {/* Left Section */}
         <section className={design["left-section"]}>
-          <img src={Logo} alt="Logo Image" />
+          <Link to='/'>
+            <img src={Logo} alt="Logo Image" className={design.logoImg}/>
+          </Link>
           <span className={design.divider}>
             <img src={divider} alt="Divider Line" />
           </span>

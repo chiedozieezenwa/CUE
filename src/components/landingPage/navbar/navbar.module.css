@@ -57,6 +57,10 @@
   display: inline-block;
 }
 
+.links > li a:hover {
+  border-bottom: 2px solid #5d3be9;
+}
+
 .links > li a.active {
   color: #5d3be9;
   border-bottom: 2px solid #5d3be9;
@@ -212,8 +216,7 @@
   .nav {
     width: 100%;
     justify-content: space-between;
-    height: 80px;
-    padding: 0 10px;
+    padding: 0 1rem;
   }
 
   .middle-section {
@@ -245,7 +248,6 @@
 @media screen and (max-width: 915px) {
   .nav {
     justify-content: space-between;
-    height: 80px;
   }
 
   .middle-section {

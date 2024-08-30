@@ -29,7 +29,7 @@ export const Tab = ({ activeSection, setActiveSection }) => {
         >
           <img src={rentalIcon}/>
           <a href="/" onClick={(event) => handleLinkClick(event, "rentals")}>
-            Vacation Rentals
+            Car Rentals
           </a>
         </li>
         <li

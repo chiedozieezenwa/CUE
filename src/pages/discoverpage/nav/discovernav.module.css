@@ -37,5 +37,7 @@
 
 
 .navlist .active > a {
-    text-decoration: underline;
+    border-bottom: 3px solid #5d3be9;
+    color: #5d3be9;
+    padding-bottom: 4px;
 }
