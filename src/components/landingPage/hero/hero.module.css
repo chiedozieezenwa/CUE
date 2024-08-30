@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    margin-top: 4rem;
+    margin-top: 7rem;
     box-sizing: border-box;
     padding: 0 70px;
     gap: 20px;
@@ -88,20 +88,20 @@
 
 .airplane-path {
     position: absolute;
-    top: 180px; 
+    top: 160px; 
     left: 1050px; 
     z-index: -1;
 }
 
 .airplane-icon {
     position: absolute;
-    top: 150px; 
+    top: 130px; 
     left: 990px; 
 }
 
 .airplane-path2 {
     position: absolute;
-    top: 530px; 
+    top: 470px; 
     left: 970px; 
     z-index: -1;
 }
@@ -119,9 +119,9 @@
 
 /* Media Queries */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .container {
-        margin-top: 4rem;
+        margin-top: 6rem;
         flex-direction: column;
         gap: 4rem;
     }
@@ -138,8 +138,13 @@
         text-align: center;
     }
 
+    .header-txt {
+        font-size: 36px;
+    }
+
     .body-txt {
         width: 100%;
+        font-size: 16px;
     }
 
     .right-col {
@@ -157,6 +162,6 @@
     }
 
     .hero-btn {
-        width: 107px;
+        width: 342px;
     }
 }

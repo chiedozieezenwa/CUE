@@ -1,21 +1,19 @@
-body {
-  font-family: 'Satoshi', sans-serif;
-  box-sizing: border-box;
-}
-
 .container {
+  width: 100%;
+  height: 100px;
+  top: 0;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
+  position: fixed;
+  z-index: 10000;
+  background-color: white;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  width: 1238px;
-  padding: 0 20px;
 }
 
 .left-section {
@@ -47,21 +45,25 @@ body {
 
 .links > li {
   list-style-type: none;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 500;
   letter-spacing: 1.25px;
 }
 
 .links > li a {
   text-decoration: none;
-  color: #130C2A;
+  color: #130c2a;
   padding-bottom: 15px;
   display: inline-block;
 }
 
+.links > li a:hover {
+  border-bottom: 2px solid #5d3be9;
+}
+
 .links > li a.active {
-  color: #5D3BE9;
-  border-bottom: 2px solid #5D3BE9;
+  color: #5d3be9;
+  border-bottom: 2px solid #5d3be9;
 }
 
 .search-bar {
@@ -77,15 +79,15 @@ body {
   border-radius: 8px;
   border: 1px solid #000;
   opacity: 0.5;
-  padding: 8px 12px 8px 48px; 
+  padding: 8px 12px 8px 48px;
   box-sizing: border-box;
 }
 
 .search-bar > input::placeholder {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
   text-align: end;
-  color: #130C2A;
+  color: #130c2a;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -120,21 +122,21 @@ body {
   border: none;
   cursor: pointer;
   margin-right: 14px;
-  font-family: 'Satoshi', sans-serif;
-  color: #5D3BE9;
+  font-family: "Satoshi", sans-serif;
+  color: #5d3be9;
   font-weight: 700;
   font-size: 16px;
   width: 92px;
 }
 
 .signUp-btn {
-  background-color: #5D3BE9;
+  background-color: #5d3be9;
   border: none;
   width: 92px;
   height: 36px;
   border-radius: 8px;
   color: rgba(255, 255, 255, 1);
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -154,27 +156,120 @@ body {
 
 .nav-links {
   display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 9999;
 }
 
-@media screen and (max-width: 738px) {
+.nav-links.active {
+  display: flex;
+}
 
- .nav {
-  justify-content: space-between;
- }
+.nav-links li {
+  margin: 10px 0;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #130c2a;
+  font-family: "Satoshi", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.TlogIn-btn,
+.TsignUp-btn {
+  cursor: pointer;
+  margin-right: 14px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  width: 92px;
+  height: 36px;
+}
+
+.TlogIn-btn {
+  background-color: none;
+  color: #5d3be9;
+  border: 1px solid #5d3be9;
+}
+
+.TsignUp-btn {
+  background-color: #5d3be9;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 
   .middle-section {
     display: none;
   }
 
-  .divider {
-    display: none;
-  }
-
-  .divider, .signUp-btn, .logIn-btn {
+  .divider,
+  .signUp-btn,
+  .logIn-btn {
     display: none;
   }
 
   .togglemenu {
     display: flex;
+  }
+
+  .nav-links {
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links > li a.active {
+    color: #5d3be9;
+    border-bottom: 2px solid #5d3be9;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .nav {
+    justify-content: space-between;
+  }
+
+  .middle-section {
+    display: none;
+  }
+
+  .divider,
+  .signUp-btn,
+  .logIn-btn {
+    display: none;
+  }
+
+  .togglemenu {
+    display: flex;
+  }
+
+  .nav-links {
+    width: 100%;
+  }
+
+  .nav-links > li a.active {
+    color: #5d3be9;
+    border-bottom: 2px solid #5d3be9;
   }
 }

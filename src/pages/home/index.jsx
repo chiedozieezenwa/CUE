@@ -1,44 +1,20 @@
 import {
-  Button,
-  Destination,
   Footer,
   Hero,
   Keyfeatures,
   Navbar,
   // Proplan,
   Testimonial,
+  TopFeatures,
 } from "../../components";
-import styles from "./styles.module.css";
-import { useState, useEffect } from "react";
+import { Explore } from "../../components/landingPage/explore";
 
 export const Home = () => {
-  const [destinations, setDestinations] = useState([]);
-
-  useEffect(() => {
-    const url = "https://cue-api-3tyr.onrender.com/api/v1/destinations";
-
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-
-      .then((response) => {
-        console.log("fetch response: ", response);
-        console.log(response, "rrr");
-
-        setDestinations(response.data.destinations || []);
-      })
-
-      .catch((error) => {
-        console.error("An error occurred:", error);
-      });
-  }, []);
-
-  console.log("Destinations State:", destinations[0]);
   return (
     <div>
       <Navbar />
       <Hero />
+<<<<<<< HEAD
 
       {/* <Proplan /> */}
       
@@ -74,6 +50,11 @@ export const Home = () => {
           )}
         </div>
       </div>
+=======
+      <Proplan />
+      <Explore />
+      <TopFeatures />
+>>>>>>> 4a03df67507ef78fdff5e9e602227d0ee170fa49
       <Keyfeatures />
       <Testimonial />
       <Footer />

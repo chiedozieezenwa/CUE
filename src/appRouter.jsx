@@ -5,6 +5,7 @@ import {
   AdminRentals,
   Ai,
   BookingDetails,
+  BucketList,
   Disc,
   Home,
   Itineary,
@@ -13,6 +14,8 @@ import {
   Recover,
   RetailCart,
   Signin,
+  TopAttractions,
+  TopExperiences,
   Trip,
   User,
 } from "./pages";
@@ -35,10 +38,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/trip",
-    element: <Trip />,
-  },
-  {
     path: "/itineary",
     element: <Itineary />,
   },
@@ -54,6 +53,8 @@ const router = createBrowserRouter([
     path: "/disc",
     element: <Disc />,
   },
+  { path: "trip", element: <Trip /> },
+
   {
     path: "/lodging",
     element: <Lodging />,
@@ -65,6 +66,18 @@ const router = createBrowserRouter([
   {
     path: "/retailCart",
     element: <RetailCart />,
+  },
+  {
+    path: "/bucketlist",
+    element: <BucketList />,
+  },
+  {
+    path: "/topexperience",
+    element: <TopExperiences />,
+  },
+  {
+    path: "/topattractions",
+    element: <TopAttractions />,
   },
   {
     path: "/admin",
