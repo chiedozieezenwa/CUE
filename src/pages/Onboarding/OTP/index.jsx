@@ -29,6 +29,7 @@ export const Otp = () => {
           setSuccess("Successful");
           Navigate("/otp")
         }
+
       } catch (error) {
         if (error.response) {
           setError(

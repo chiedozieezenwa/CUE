@@ -80,7 +80,8 @@ import signUpYet from "./signUpYet.png";
 import currency from "./currency.png";
 import currency2 from "./currency2.png";
 import currencyeth from "./currency-ethereum.png";
-import paystack from "./paystack.png"
+import paystack from "./paystack.png";
+import featured from "./Featured icon.png"
 
 export {
   avatar,
@@ -163,7 +164,8 @@ export {
   currency,
   currencyeth,
   currency2,
-  paystack
+  paystack,
+  featured
 };
 
 export * from "./features";

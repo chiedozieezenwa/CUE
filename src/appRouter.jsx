@@ -20,6 +20,8 @@ import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
 import { BookingPage } from "./pages/discoverpage/boookinInfos";
+import { PaystackOverlay } from "./components/paymentComponent/paystack";
+import { CryptoOverlay } from "./components/paymentComponent/crypto";
 
 const router = createBrowserRouter([
   {
