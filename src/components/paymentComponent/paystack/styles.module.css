@@ -1,0 +1,113 @@
+/* styles.module.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  width: 470px;
+  max-width: 80%;
+  position: relative;
+  height: 450px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.paystckBTN {
+  width: 374px;
+  height: 80.1px;
+  padding: 27.6px 142.88px 31.51px 142px;
+  border-radius: 7.64px;
+  background: #5d3be9;
+  border: none;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid #ff8c00;
+  background-color: #fff8e1;
+}
+
+.paystackContent {
+  width: 374px;
+  top: 82.45px;
+  left: 99px;
+  gap: 24px;
+}
+
+.paystackContent1 {
+  display: flex;
+  justify-content: center;
+  width: 374px;
+  height: 106px;
+  gap: 16px;
+}
+
+.confirmButton {
+  background: #5d3be9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 374px;
+  padding: 16px 24px;
+  border-radius: 20px;
+}
+
+.paystackContentInfo {
+  width: 346px;
+  height: 70px;
+  gap: 6px;
+}
+
+.paystackContentInfo input {
+  width: 196px;
+  height: 44px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px;
+}
+
+.paystackContentInfo p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #344054;
+}
+
+.paystackContentInfo1 input {
+  width: 102px;
+  height: 44px;
+  padding: 10px 14px;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px;
+}
