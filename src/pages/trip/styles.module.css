@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
   align-items: center;
   font-family: "satoshi";
-  margin-top: 8rem;
+  margin: 8rem 0;
 }
 
 .plan h2 {
