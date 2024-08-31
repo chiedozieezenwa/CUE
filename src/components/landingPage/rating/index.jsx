@@ -1,7 +1,6 @@
 import design from "./design.module.css"
 
 const Rating = ({ rating }) => {
-  // Create an array with a length equal to the rating count
   const stars = Array.from({ length: 5 }, (_, index) => index < rating);
 
   return (
@@ -16,3 +15,5 @@ const Rating = ({ rating }) => {
 };
 
 export default Rating;
+
+

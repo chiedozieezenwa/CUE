@@ -74,13 +74,20 @@ export const Signup = () => {
 
             <section className={design["popup-card"]}>
               <div className={design.headertxt}>
-                Sign up to take your trip planning to the next level
+                Sign up
               </div>
 
               {error && <p className={design.error}>{error}</p>}
 
               <form className={design["signup-form"]} onSubmit={handleSubmit}>
                 <input
+                  type="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Full Name"
+                  required
+                />
+                   <input
                   type="email"
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}

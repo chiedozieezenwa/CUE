@@ -33,6 +33,7 @@ export const Signin = () => {
       console.log(response.data);
       if (response.status === 200) {
         closePopup();
+       localStorage.setItem('currentUser', JSON.stringify(response.data));
         navigate("/disc");
       }
       

@@ -11,42 +11,47 @@ export const Testimonial = () => {
         </div>
 
         <div className={styles.TestCard}>
-          <div className={styles.TestCards}>
-            <img src={lady} alt="" className={styles.images} />
+          <div className={styles.testCardContainer}>
+            <div className={styles.TestCards}>
+              <img src={lady} alt="" className={styles.images} />
 
-            <div className={styles.review}>
-              <p className={styles.content}>
-                I love Cue, this is the best place to plan your trip and find
-                your dream holiday home.
-              </p>
-              <img src={stars} alt="" className={styles.stars} />
-              <p className={styles.testiName}>Claire Alfred</p>
+              <div className={styles.review}>
+                <p className={styles.testiName}>Claire Alfred</p>
+                <img src={stars} alt="" className={styles.stars} />
+                <p className={styles.content}>
+                  I love Cue, this is the best place to plan your trip and find
+                  your dream holiday home.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className={styles.TestCards}>
-            <img src={man} alt="" className={styles.images} />
+          <div className={styles.testCardContainer1}>
+            <div className={styles.TestCards}>
+              <img src={man} alt="" className={styles.images} />
 
-            <div className={styles.review}>
-              <p className={styles.content}>
-                Their security feature is top notch, i really liked it
-              </p>
-              <img src={stars} alt="" className={styles.stars} />
-              <p className={styles.testiName}>Samuel Uche</p>
+              <div className={styles.review}>
+                <p className={styles.testiName}>Samuel Uche</p>
+                <img src={stars} alt="" className={styles.stars} />
+                <p className={styles.content}>
+                The process of booking through the application is incredibly smooth.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className={styles.TestCards}>
-            <img src={lady1} alt="" className={styles.images} />
+          <div className={styles.testCardContainer2}>
+            <div className={styles.TestCards}>
+              <img src={lady1} alt="" className={styles.images} />
 
-            <div className={styles.review}>
-              <p className={styles.content}>
-                As a family woman, this app helped me to plan all my trips on
-                one go without any stress and all in the comfort of one app.
-              </p>
-
-              <img src={stars} alt="" className={styles.stars} />
-              <p className={styles.testiName}>Claire Alfred</p>
+              <div className={styles.review}>
+                <p className={styles.testiName}>Ethel Ngerem</p>
+                <img src={stars} alt="" className={styles.stars} />
+                <p className={styles.content}>
+                  As a family woman, this app helped me to plan all my trips on
+                  one go without any stress and all in the comfort of one app.
+                </p>
+              </div>
             </div>
           </div>
         </div>

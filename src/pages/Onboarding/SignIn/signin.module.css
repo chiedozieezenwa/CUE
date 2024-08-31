@@ -164,3 +164,21 @@
   text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+  .popup {
+      width: 100%;
+  }
+
+  .popup_inner {
+      width: 340px;
+  }
+
+  .popup-card {
+      width: 300px;
+  }
+
+  .toggle-icon {
+      width: 300px;
+  }
+}
+

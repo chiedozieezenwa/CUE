@@ -81,6 +81,7 @@ import currency from "./currency.png";
 import currency2 from "./currency2.png";
 import currencyeth from "./currency-ethereum.png";
 import paystack from "./paystack.png";
+import featured from "./Featured icon.png"
 import greenframe from "./greenframe.png";
 import logoMobile from "./logoMobile.png"
 
@@ -170,6 +171,7 @@ export {
   currencyeth,
   currency2,
   paystack,
+  featured
 };
 
 export * from "./features";

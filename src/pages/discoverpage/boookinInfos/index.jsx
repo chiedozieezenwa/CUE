@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { marker01 } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { Tab } from "../nav";
@@ -7,9 +7,11 @@ import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CustomDateInput } from "../../../components";
-import GoogleMapWithDirections from "../../../components/button/googleMap2"; 
-import { useBooking } from '../../../context/bookingDetails/useBooking';
-import { UseCart } from '../../../context/cartContext';
+import GoogleMapWithDirections from "../../../components/button/googleMap2";
+import { useBooking } from "../../../context/bookingDetails/useBooking";
+import { UseCart } from "../../../context/cartContext";
+import { RatingReview } from "../../../components/reviewRating";
+// import Rating from "../../../components/landingPage/rating";
 
 export const BookingPage = () => {
   const { bookingDetails, addBookingItem } = useBooking();
@@ -19,16 +21,17 @@ export const BookingPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const origin = { lat: 6.5244, lng: 7.5086 };
   const navigate = useNavigate();
+  
 
   useEffect(() => {
-    console.log('BookingPage mounted');
+    console.log("BookingPage mounted");
   }, []);
 
   if (!bookingDetails || !bookingDetails.lodging) {
     return <p>No booking details found!</p>;
   }
 
-  const { lodging, conveniences, } = bookingDetails;
+  const { lodging, conveniences } = bookingDetails;
 
   const pricePerNight = Number(lodging.price_per_night) || 0;
 
@@ -41,26 +44,26 @@ export const BookingPage = () => {
 
   const handleAddToCart = () => {
     const bookingItem = {
-      lodgingId: lodging.id || "", 
+      lodgingId: lodging.id || "",
       name: lodging.name || "Unknown Lodging",
       address: lodging.address || "No address provided",
       checkInDate,
       checkOutDate,
       numberOfDays,
       totalPrice,
-      image: lodging.image_url?.[0] || "", 
+      image: lodging.image_url?.[0] || "",
       // Image: lodging.image_url,
       pricePerNight,
     };
     addBookingItem(bookingItem);
     addToCart(bookingItem);
-    console.log('Booking Item', bookingItem);
+    console.log("Booking Item", bookingItem);
     alert("Booking added to cart!");
-    navigate('/retailCart');
+    navigate("/retailCart");
   };
 
-  console.log('lodging ID:', lodging._id);
-  console.log("BOOKING", bookingDetails)
+  console.log("lodging ID:", lodging._id);
+  console.log("BOOKING", bookingDetails);
 
   const lodgingImages = lodging.image_url || [];
 
@@ -206,13 +209,14 @@ export const BookingPage = () => {
           />
         </div>
         <div className={styles.containerMap}>
-          <div style={{ height: '400px', marginTop: '20px' }}>
+          <div style={{ height: "400px", marginTop: "20px" }}>
             <GoogleMapWithDirections
               origin={origin}
               searchQuery={searchQuery}
             />
           </div>
         </div>
+        <RatingReview/>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 10000;
+  z-index: 1000;
   background-color: white;
 }
 
@@ -193,10 +193,11 @@
   font-size: 16px;
   width: 92px;
   height: 36px;
+  border-radius: 8px;
 }
 
 .TlogIn-btn {
-  background-color: none;
+  background: none;
   color: #5d3be9;
   border: 1px solid #5d3be9;
 }

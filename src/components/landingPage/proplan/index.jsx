@@ -40,10 +40,9 @@ export const Proplan = () => {
             <img src={safety} alt="Plan" />
           </div>
           <div className={design["planGridText"]}>
-            <p className={design.imageCap}>Safety Assured</p>
+            <p className={design.imageCap}>Book Conveniently</p>
             <p className={design.description}>
-              With our safety features, you can relax and enjoy your trip
-              knowing that you are safe.
+              Reserve your accommodation and rides swiftly and effortlessly.
             </p>
           </div>
         </div>
