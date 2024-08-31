@@ -1,8 +1,9 @@
 import darkman from "./darkman.png"
-import event from "./event.png"
- import Framebottomleft from "./Framebottomleft.png" 
- import Frametopright from "./Frametopright.png" 
- import lock04 from "./lock04.png" 
- import schedule from "./schedule.png"
+import planImg from "./plan.png"
+import ride from "./ride.png"
+import stay from "./stay.png"
+import testimonial from "./testimonial.png"
+import testimonial2 from "./testimonial2.png"
+import testimonial3 from "./testimonial3.png"
 
-export {darkman, event, Framebottomleft, Frametopright, lock04, schedule}
+export {darkman, ride, stay, testimonial, testimonial2, testimonial3, planImg}
