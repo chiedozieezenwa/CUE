@@ -81,12 +81,9 @@ import currency from "./currency.png";
 import currency2 from "./currency2.png";
 import currencyeth from "./currency-ethereum.png";
 import paystack from "./paystack.png";
-<<<<<<< HEAD
 import featured from "./Featured icon.png"
-=======
 import greenframe from "./greenframe.png";
 import logoMobile from "./logoMobile.png"
->>>>>>> 4a03df67507ef78fdff5e9e602227d0ee170fa49
 
 export {
   logoMobile,
@@ -174,10 +171,7 @@ export {
   currencyeth,
   currency2,
   paystack,
-<<<<<<< HEAD
   featured
-=======
->>>>>>> 4a03df67507ef78fdff5e9e602227d0ee170fa49
 };
 
 export * from "./features";
