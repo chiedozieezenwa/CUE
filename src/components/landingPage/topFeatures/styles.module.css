@@ -8,11 +8,21 @@
     background-color: #D4DFF7;
 }
 
+.hero-video {
+    height: 644px;
+    border-radius: 0 1000px 1000px 0;
+}
+
+.video {
+    height: 100%;
+    border-radius: 0 1000px 1000px 0;
+}
+
 .hero-content {
     display: flex;
     align-items: center;
     width: 1236px;
-    gap: 64px;
+    justify-content: space-between;
 }
 
 .hero-text {
@@ -62,6 +72,7 @@
     
     .hero-content {
         flex-direction: column-reverse;
+        gap: 2rem;
         width: 345px;
     }
 
@@ -96,5 +107,10 @@
     .stat > p {
         font-size: 12px;
         line-height: 24px;
+    }
+
+    .video, .hero-video {
+        width: 350px;
+        height: 274px;
     }
 }
