@@ -10,6 +10,7 @@ import { Signup, Signin } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
 import { SearchContext } from "../../../context/searchContext";
 import { hamburgericon } from "../../../assets";
+
 import axios from "axios";
 
 export const Navbar = () => {
@@ -18,12 +19,17 @@ export const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown menu
+=======
+
+
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
+
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -31,6 +37,12 @@ export const Navbar = () => {
 
   const getActiveClass = ({ isActive }) =>
     isActive ? design.active : undefined;
+
+
+  // function to get active class for NavLink
+ 
+
+  // Handlers to open specific popups
 
   const handleLoginClick = () => openPopup("signin");
   const handleSignupClick = () => openPopup("signup");
@@ -43,9 +55,12 @@ export const Navbar = () => {
     try {
       let endpoint = "";
       if (location.pathname.includes("hotels")) {
+
         endpoint = `https://cue-backend.onrender.com/api/v1/hotels?location=${searchInput}`;
       } else if (location.pathname.includes("rentals")) {
         endpoint = `https://cue-backend.onrender.com/api/v1/rentals?location=${searchInput}`;
+
+      
       }
 
       const response = await fetch(endpoint);
@@ -62,6 +77,7 @@ export const Navbar = () => {
         "An error occurred while fetching the search results:",
         error
       );
+
     }
   };
 
@@ -74,6 +90,7 @@ export const Navbar = () => {
       navigate("/disc");
     } catch (error) {
       console.log(error);
+
     }
   };
 
@@ -82,8 +99,10 @@ export const Navbar = () => {
       <nav className={design.nav}>
         {/* Left Section */}
         <section className={design["left-section"]}>
+
           <Link to="/">
             <img src={Logo} alt="Logo Image" className={design.logoImg} />
+
           </Link>
           <span className={design.divider}>
             <img src={divider} alt="Divider Line" />
@@ -99,7 +118,9 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li>
+
               <NavLink to="/itinerary" className={getActiveClass}>
+
                 Trip Itinerary
               </NavLink>
             </li>
@@ -134,6 +155,7 @@ export const Navbar = () => {
 
         {/* Onboard Section */}
         <section className={design["onboard"]}>
+
           {currentUser ? (
             <>
               <div className={design["profile-container"]} onClick={toggleDropdown}>
@@ -165,6 +187,7 @@ export const Navbar = () => {
               />
             </>
           )}
+
           <div className={design["menu-icon"]} onClick={toggleIsOpen}>
             <img
               src={hamburgericon}
@@ -185,7 +208,9 @@ export const Navbar = () => {
           </li>
           <li>
             <NavLink
+
               to="/itinerary"
+
               onClick={toggleIsOpen}
               className={getActiveClass}
             >
@@ -206,6 +231,7 @@ export const Navbar = () => {
               AI Assistant
             </NavLink>
           </li>
+
           {currentUser ? (
             <li>
               <div className={design["profile-container"]} onClick={toggleDropdown}>
@@ -247,6 +273,7 @@ export const Navbar = () => {
               </li>
             </>
           )}
+
         </ul>
       </nav>
 

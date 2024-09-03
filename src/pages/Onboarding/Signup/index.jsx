@@ -92,6 +92,13 @@ export const Signup = () => {
                   type="email"
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Full Name"
+                  required
+                />
+                   <input
+                  type="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                   required
                 />

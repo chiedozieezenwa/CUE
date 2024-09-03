@@ -165,11 +165,13 @@
   align-items: center;
   padding: 10px 0;
   z-index: 9999;
+
 }
 
 .nav-links.active {
   display: flex;
 }
+
 
 .nav-links li {
   margin: 10px 0;
@@ -255,6 +257,7 @@
     display: none;
   }
 
+
   .divider,
   .signUp-btn,
   .logIn-btn {
@@ -273,6 +276,7 @@
     color: #5d3be9;
     border-bottom: 2px solid #5d3be9;
   }
+
 }
 
 
@@ -312,4 +316,5 @@
 
 .dropdownItem:hover {
   background-color: #f0f0f0; /* Hover effect for dropdown items */
+
 }
