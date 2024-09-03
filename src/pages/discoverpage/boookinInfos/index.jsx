@@ -11,7 +11,7 @@ import GoogleMapWithDirections from "../../../components/button/googleMap2";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
 import { UseCart } from "../../../context/cartContext";
 import { RatingReview } from "../../../components/reviewRating";
-// import Rating from "../../../components/landingPage/rating";
+
 
 export const BookingPage = () => {
   const { bookingDetails, addBookingItem } = useBooking();
@@ -21,10 +21,17 @@ export const BookingPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const origin = { lat: 6.5244, lng: 7.5086 };
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     console.log("BookingPage mounted");
+
+    // Retrieve booking details from local storage
+    const storedBooking = localStorage.getItem("bookingItem");
+    if (storedBooking) {
+      const parsedBooking = JSON.parse(storedBooking);
+      setCheckInDate(new Date(parsedBooking.checkInDate));
+      setCheckOutDate(new Date(parsedBooking.checkOutDate));
+    }
   }, []);
 
   if (!bookingDetails || !bookingDetails.lodging) {
@@ -52,20 +59,24 @@ export const BookingPage = () => {
       numberOfDays,
       totalPrice,
       image: lodging.image_url?.[0] || "",
-      // Image: lodging.image_url,
       pricePerNight,
     };
     addBookingItem(bookingItem);
     addToCart(bookingItem);
+
+    // Save booking item to local storage
+    localStorage.setItem("bookingItem", JSON.stringify(bookingItem));
+
     console.log("Booking Item", bookingItem);
     alert("Booking added to cart!");
     navigate("/retailCart");
   };
 
-  console.log("lodging ID:", lodging._id);
-  console.log("BOOKING", bookingDetails);
+  console.log(localStorage.getItem("bookingItem"));
+
 
   const lodgingImages = lodging.image_url || [];
+
 
   return (
     <div>

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
@@ -17,6 +18,7 @@ export const RetailCart = () => {
 
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [isSignUpOverlayOpen, setSignUpOverlayOpen] = useState(false);
+
   const [isPaystackOverlayOpen, setPaystackOverlayOpen] = useState(false);
   const [isCryptoOverlayOpen, setCryptoOverlayOpen] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
@@ -30,8 +32,10 @@ export const RetailCart = () => {
       const parsedUser = JSON.parse(storedUser); 
       setCurrentUser(parsedUser); 
       setIsLoggedIn(true);
+      console.log("User is logged in.");
     } else {
       setIsLoggedIn(false);
+      console.log("User is not logged in.");
     }
 
     // Retrieve booking details from localStorage
@@ -53,14 +57,20 @@ export const RetailCart = () => {
   }, [bookingDetails]);
 
   const handleChoosePayment = () => {
+    console.log("handleChoosePayment called");
     if (isLoggedIn) {
+
+      console.log("Opening PaymentModal...");
       setPaymentModalOpen(true);
     } else {
+      console.log("Opening SignUpYet overlay...");
+
       setSignUpOverlayOpen(true);
     }
   };
 
   const handleOpenPaymentModal = () => {
+    console.log("Proceeding to PaymentModal...");
     setPaymentModalOpen(true);
     setSignUpOverlayOpen(false);
   };
@@ -68,6 +78,7 @@ export const RetailCart = () => {
   const handleClosePaymentModal = () => {
     setPaymentModalOpen(false);
   };
+
 
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
@@ -77,16 +88,51 @@ export const RetailCart = () => {
       setCryptoOverlayOpen(true);
     }
     setPaymentModalOpen(false);
+
   };
 
-  const handleClosePaystackOverlay = () => {
-    setPaystackOverlayOpen(false);
-    setCryptoOverlayOpen(false);
+ 
+  const handlePayment = async (method) => {
+    try {
+     
+      const fullname = bookingDetails?.user?.fullname || "Default Name"; 
+      const email = bookingDetails?.user?.email || "default@example.com";
+      const amount = bookingDetails?.bookingItem?.totalPrice || 0; 
+  
+      const response = await fetch("https://cue-backend.onrender.com/api/v1/payments/startPayment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          bookingDetails,
+          paymentMethod: method,
+          fullname,  
+          email,     
+          amount     
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to initiate payment.");
+      }
+  
+      const data = await response.json();
+      console.log("Payment initiation successful:", data);
+  
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl; 
+      }
+    } catch (error) {
+      console.error("Error initiating payment:", error);
+    }
   };
+  
 
   const lodgingTotal = bookingDetails?.bookingItem?.totalPrice || 0;
   const carRentalTotal = carRental?.price || 0;
   const subtotal = lodgingTotal + carRentalTotal;
+
 
   return (
     <div>
@@ -132,10 +178,16 @@ export const RetailCart = () => {
               </h2>
               <div className={styles.cartItemList1}>
                 <p>
-                  <img src={marker01} alt="" /> {bookingDetails.parking ? " Parking" : " Parking"}
+
+                  <img src={marker01} alt="" />{" "}
+                  {bookingDetails.parking ? " Parking" : " Parking"}
                 </p>
                 <p>
-                  <img src={phone} alt="" />4 {bookingDetails.seats ? `${bookingDetails.seats} Seats` : "Seats"}
+                  <img src={phone} alt="" />4{" "}
+                  {bookingDetails.seats
+                    ? `${bookingDetails.seats} Seats`
+                    : "Seats"}
+
                 </p>
                 <p>
                   <img src={fan} alt="" />
@@ -182,14 +234,16 @@ export const RetailCart = () => {
         </div>
       </section>
 
-      {isSignUpOverlayOpen && <SignUpYet onProceedToPayment={handleOpenPaymentModal} />}
-      <PaymentModal
-        isOpen={isPaymentModalOpen}
-        onClose={handleClosePaymentModal}
-        onSelectPaymentMethod={handleSelectPaymentMethod}
-      />
-      <CryptoOverlay isOpen={isCryptoOverlayOpen} onClose={handleClosePaymentModal} />
-      <PaystackOverlay isOpen={isPaystackOverlayOpen} onClose={handleClosePaystackOverlay} />
+      {isSignUpOverlayOpen && (
+        <SignUpYet onProceedToPayment={handleOpenPaymentModal} />
+      )}
+      {isPaymentModalOpen && (
+        <PaymentModal
+          isOpen={isPaymentModalOpen}
+          onClose={handleClosePaymentModal}
+          onSelectPaymentMethod={handleSelectPaymentMethod} 
+        />
+      )}
     </div>
   );
 };

@@ -12,8 +12,9 @@ export const PaymentModal = ({ isOpen, onClose, onSelectPaymentMethod }) => {
 
   const handlePaymentOptionClick = (method) => {
     setSelectedPaymentMethod(method);
-  };
 
+  };
+ 
   const handleNextClick = () => {
     if (selectedPaymentMethod) {
       setIsLoading(true); 

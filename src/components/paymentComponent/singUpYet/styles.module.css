@@ -29,14 +29,16 @@
     }
 
     .modalBTN{
-      width: 91px;
+width: 229px;
 height: 36px;
 padding: 8px 12px;
+border-radius: 15px;
 background: #5D3BE9;
 border: none;
 color: #ffffff;
 font-size: 14px;
 font-weight: 700;
 line-height: 16px;
+cursor: pointer;
     }
     

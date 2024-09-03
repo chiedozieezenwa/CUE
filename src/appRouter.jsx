@@ -23,8 +23,9 @@ import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
 import { BookingPage } from "./pages/discoverpage/boookinInfos";
-import { PaystackOverlay } from "./components/paymentComponent/paystack";
-import { CryptoOverlay } from "./components/paymentComponent/crypto";
+// import { PaystackOverlay } from "./components/paymentComponent/paystack";
+// import { CryptoOverlay } from "./components/paymentComponent/crypto";
+
 
 import PaymentConfirmation from "./pages/discoverpage/retailCart/confirmation/confirmation";
 import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/receipt";

@@ -52,7 +52,8 @@ export const RatingReview = () => {
                 const response = await axios.get(
                   `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
                 );
-                const location = response.data.results[0]?.formatted_address || "Location not found";
+                const location =
+                  response.data.results[0]?.formatted_address || "Location not found";
                 setNewReview((prevReview) => ({
                   ...prevReview,
                   location,
@@ -93,7 +94,7 @@ export const RatingReview = () => {
         setNewReview({ ...newReview, rating: newRating });
       };
     
-      const handleNoteSubmit = () => {
+      const handleNoteSubmit = async () => {
         if (
           note.trim() &&
           newReview.location &&
@@ -101,27 +102,48 @@ export const RatingReview = () => {
           newReview.stayType &&
           newReview.rating
         ) {
-          const updatedProgress = { ...progress };
-          if (updatedProgress[newReview.rating] !== undefined) {
-            updatedProgress[newReview.rating] = Math.min(
-              updatedProgress[newReview.rating] + 5,
-              100
+          try {
+            // Send the review data to the backend
+            const response = await axios.post(
+              "https://cue-api-3tyr.onrender.com/api/v1/reviews",
+              {
+                location: newReview.location,
+                date: newReview.date,
+                stayType: newReview.stayType,
+                rating: newReview.rating,
+                note,
+              }
             );
+    
+            if (response.status === 201) { // Assuming 201 is the status for successful creation
+              // Update state and local storage
+              const updatedProgress = { ...progress };
+              if (updatedProgress[newReview.rating] !== undefined) {
+                updatedProgress[newReview.rating] = Math.min(
+                  updatedProgress[newReview.rating] + 5,
+                  100
+                );
+              }
+    
+              const updatedReviews = [...submittedReviews, { ...newReview, note }];
+              const updatedTotalReviews = totalReviews + 1;
+    
+              setProgress(updatedProgress);
+              setTotalReviews(updatedTotalReviews);
+              setSubmittedReviews(updatedReviews);
+    
+              localStorage.setItem("submittedReviews", JSON.stringify(updatedReviews));
+              localStorage.setItem("progress", JSON.stringify(updatedProgress));
+              localStorage.setItem("totalReviews", updatedTotalReviews.toString());
+    
+              setNote("");
+              setNewReview({ location: "", date: "", stayType: "", rating: 0 });
+            } else {
+              console.error("Failed to submit review:", response.statusText);
+            }
+          } catch (error) {
+            console.error("Error submitting review:", error);
           }
-    
-          const updatedReviews = [...submittedReviews, { ...newReview, note }];
-          const updatedTotalReviews = totalReviews + 1;
-    
-          setProgress(updatedProgress);
-          setTotalReviews(updatedTotalReviews);
-          setSubmittedReviews(updatedReviews);
-    
-          localStorage.setItem("submittedReviews", JSON.stringify(updatedReviews));
-          localStorage.setItem("progress", JSON.stringify(updatedProgress));
-          localStorage.setItem("totalReviews", updatedTotalReviews.toString());
-    
-          setNote("");
-          setNewReview({ location: "", date: "", stayType: "", rating: 0 });
         }
       };
     
@@ -135,6 +157,7 @@ export const RatingReview = () => {
         localStorage.setItem("submittedReviews", JSON.stringify(updatedReviews));
         localStorage.setItem("totalReviews", updatedTotalReviews.toString());
       };
+    
   return (
     <div>
       <section className={styles.containerReview}>

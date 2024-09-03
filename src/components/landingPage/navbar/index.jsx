@@ -55,12 +55,10 @@ export const Navbar = () => {
     try {
       let endpoint = "";
       if (location.pathname.includes("hotels")) {
-
         endpoint = `https://cue-backend.onrender.com/api/v1/hotels?location=${searchInput}`;
       } else if (location.pathname.includes("rentals")) {
         endpoint = `https://cue-backend.onrender.com/api/v1/rentals?location=${searchInput}`;
 
-      
       }
 
       const response = await fetch(endpoint);

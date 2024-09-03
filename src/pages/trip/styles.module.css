@@ -79,6 +79,7 @@
   color: #fff;
   border: none;
   margin-top: 30px;
+  margin-bottom: 30px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -90,7 +91,7 @@
   padding: 0;
   list-style-type: none;
   position: absolute;
-  width: 100%;
+  width: 50%;
   max-height: 200px;
   overflow-y: auto;
   background-color: #fff;
@@ -129,8 +130,9 @@ margin-top: 30px;
 font-size: 14px;
 font-weight: 700;
 line-height: 16px;
-text-align: left;
+text-align: center;
 color: #130C2A;
+cursor: pointer;
 }
 
 .inviteBTN img{
@@ -142,7 +144,11 @@ color: #130C2A;
 }
 
 #invitebtn{
+
+  text-align: center;
+  cursor: pointer;
   padding-left: 1rem;
+
 }
 
 /* styles.module.css */
@@ -162,6 +168,10 @@ color: #130C2A;
 .sendInviteBTN {
   margin-top: 10px;
   border: none;
+
+  cursor: pointer;
+  /* Additional styles for the send button */
+
 }
 
 @media screen and (max-width: 600px) {
@@ -188,4 +198,5 @@ color: #130C2A;
   #invitebtn{
     padding-left: 1rem;
   }
+
 }

@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { logo } from "../../../assets";
 import { useNavigate } from "react-router-dom";
 
+
 export const Rentals = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -47,6 +48,8 @@ export const Rentals = () => {
       seats: car.number_of_seats,
       airConditioned: car.air_conditioned,
       parking: true,
+      driver_number: car.driver_number,
+      rental_plate_number: car.rental_plate_number,
     };
 
     setTimeout(() => {
@@ -289,6 +292,8 @@ export const Rentals = () => {
                       name: `${rental.brand} ${rental.model || ""}`,
                       price: rental.rental_amount,
                       image_url: rental.image_url,
+                      driver_number: rental.driver_number,
+                      rental_plate_number: rental.rental_plate_number,
                     })
                   }
                   className={design.sectionBTN}
@@ -300,9 +305,8 @@ export const Rentals = () => {
           ))}
         </article>
       </section>
-
       <div id={design.skipBtn}>
-        <Button content="Skip Rental" className={design.skipBtn} />
+        <Button content="Skip Rental" className={design.skipBtn}  onClick={() => navigate("/lodging")}/>
       </div>
     </div>
   );
