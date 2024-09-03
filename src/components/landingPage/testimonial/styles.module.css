@@ -58,6 +58,7 @@
   gap: 16px;
   border-radius: 8px;
   background: #e0e0e080;
+  cursor: pointer;
 }
 
 .content {

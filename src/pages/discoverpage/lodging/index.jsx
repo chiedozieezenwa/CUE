@@ -149,15 +149,15 @@ export const Lodging = () => {
             <div className={design.propertyType}>
               <p>Property Type</p>
               <div className={design.proptypelist}>
-                <div onClick={() => handleFilterClick("type", "Bed and Breakfast")}>
+                <div onClick={() => handleFilterClick("type", "bed and breakfast")}>
                   <img src={bedAndBreakfast} alt="Bed and Breakfast" />
                   <p>Bed and Breakfast</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Apartments")}>
+                <div onClick={() => handleFilterClick("type", "apartments")}>
                   <img src={Apartments} alt="Apartments" />
                   <p>Apartments</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Airbnb")}>
+                <div onClick={() => handleFilterClick("type", "airbnb")}>
                   <img src={airBnB} alt="Airbnb" />
                   <p>Airbnb</p>
                 </div>
@@ -169,7 +169,7 @@ export const Lodging = () => {
                   <img src={Hotels} alt="Hotels" />
                   <p>Hotels</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Resorts")}>
+                <div onClick={() => handleFilterClick("type", "resorts")}>
                   <img src={Resorts} alt="Resorts" />
                   <p>Resorts</p>
                 </div>
@@ -245,8 +245,8 @@ export const Lodging = () => {
                 <p className={design.location}>{hotel.city}</p>
                 <p className={design.review}>Rating: {hotel.rating}</p>
                 <p className={design.status}>{hotel.type}</p>
-                <p className={design.price}>
-                  <img src={naira} alt="" />{hotel.price_per_night} per night
+                <p className={design.price}><span>FROM</span> NGR &nbsp;
+                  {hotel.price_per_night}  per night
                 </p>
               </div>
             ))}

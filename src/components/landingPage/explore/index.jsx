@@ -7,7 +7,7 @@ export const Explore = () => {
     const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    const url = "https://cue-api-3tyr.onrender.com/api/v1/destinations";
+    const url = "https://cue-backend.onrender.com/api/v1/destinations";
 
     fetch(url)
       .then((response) => {

@@ -26,14 +26,14 @@ export const Signin = () => {
 
     try {
       const response = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/users/signin",
+        "https://cue-backend.onrender.com/api/v1/users/signin",
         { email, password },
         { withCredentials: true }
       );
       console.log(response.data);
       if (response.status === 200) {
         closePopup();
-       localStorage.setItem('currentUser', JSON.stringify(response.data));
+        localStorage.setItem('currentUser',JSON.stringify(response.data));
         navigate("/disc");
       }
       
