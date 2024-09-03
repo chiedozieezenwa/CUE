@@ -4,11 +4,14 @@ import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
 import searchIcon from "../../../assets/icons/search.svg";
 import divider from "../../../assets/images/divider.png";
+import avatarImage from "../../../assets/images/avatar.png"; 
 import { Button } from "../../button";
 import { Signup, Signin } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
 import { SearchContext } from "../../../context/searchContext";
 import { hamburgericon } from "../../../assets";
+
+import axios from "axios";
 
 export const Navbar = () => {
   const { currentPopup, openPopup, closePopup } = useContext(PopupContext);
@@ -18,32 +21,46 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown menu
+=======
+
+
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  // function to get active class for NavLink
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   const getActiveClass = ({ isActive }) =>
     isActive ? design.active : undefined;
 
+
+  // function to get active class for NavLink
+ 
+
   // Handlers to open specific popups
+
   const handleLoginClick = () => openPopup("signin");
   const handleSignupClick = () => openPopup("signup");
 
-  // Handle search form submission
   const handleSearch = async (e) => {
     e.preventDefault();
 
     setQuery(searchInput);
 
-    // Fetch results based on current page
     try {
       let endpoint = "";
       if (location.pathname.includes("hotels")) {
-        endpoint = `https://cue-api-3tyr.onrender.com/api/v1/hotels?location=${searchInput}`;
+
+        endpoint = `https://cue-backend.onrender.com/api/v1/hotels?location=${searchInput}`;
       } else if (location.pathname.includes("rentals")) {
-        endpoint = `https://cue-api-3tyr.onrender.com/api/v1/rentals?location=${searchInput}`;
+        endpoint = `https://cue-backend.onrender.com/api/v1/rentals?location=${searchInput}`;
+
+      
       }
 
       const response = await fetch(endpoint);
@@ -60,6 +77,20 @@ export const Navbar = () => {
         "An error occurred while fetching the search results:",
         error
       );
+
+    }
+  };
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("https://cue-backend.onrender.com/api/v1/users/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/disc");
+    } catch (error) {
+      console.log(error);
+
     }
   };
 
@@ -68,8 +99,10 @@ export const Navbar = () => {
       <nav className={design.nav}>
         {/* Left Section */}
         <section className={design["left-section"]}>
-          <Link to='/'>
-            <img src={Logo} alt="Logo Image" className={design.logoImg}/>
+
+          <Link to="/">
+            <img src={Logo} alt="Logo Image" className={design.logoImg} />
+
           </Link>
           <span className={design.divider}>
             <img src={divider} alt="Divider Line" />
@@ -85,7 +118,9 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/itineary" className={getActiveClass}>
+
+              <NavLink to="/itinerary" className={getActiveClass}>
+
                 Trip Itinerary
               </NavLink>
             </li>
@@ -120,16 +155,39 @@ export const Navbar = () => {
 
         {/* Onboard Section */}
         <section className={design["onboard"]}>
-          <Button
-            onClick={handleLoginClick}
-            content="Log in"
-            className={design["logIn-btn"]}
-          />
-          <Button
-            onClick={handleSignupClick}
-            content="Sign up"
-            className={design["signUp-btn"]}
-          />
+
+          {currentUser ? (
+            <>
+              <div className={design["profile-container"]} onClick={toggleDropdown}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&s"
+                  alt="User Avatar"
+                  className={design.avatar}
+                />
+                {dropdownOpen && (
+                  <div className={design.dropdownMenu}>
+                    <Link to="/settings" className={design.dropdownItem}>Profile</Link>
+                    <Link to="/profile" className={design.dropdownItem}>Settings</Link>
+                    <Link onClick={handleLogout} className={design.dropdownItem}>Logout</Link>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={handleLoginClick}
+                content="Log in"
+                className={design["logIn-btn"]}
+              />
+              <Button
+                onClick={handleSignupClick}
+                content="Sign up"
+                className={design["signUp-btn"]}
+              />
+            </>
+          )}
+
           <div className={design["menu-icon"]} onClick={toggleIsOpen}>
             <img
               src={hamburgericon}
@@ -150,7 +208,9 @@ export const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/itineary"
+
+              to="/itinerary"
+
               onClick={toggleIsOpen}
               className={getActiveClass}
             >
@@ -171,26 +231,49 @@ export const Navbar = () => {
               AI Assistant
             </NavLink>
           </li>
-          <li>
-            <Button
-              onClick={() => {
-                handleLoginClick();
-                toggleIsOpen();
-              }}
-              content="Log in"
-              className={design["TlogIn-btn"]}
-            />
-          </li>
-          <li>
-            <Button
-              onClick={() => {
-                handleSignupClick();
-                toggleIsOpen();
-              }}
-              content="Sign up"
-              className={design["TsignUp-btn"]}
-            />
-          </li>
+
+          {currentUser ? (
+            <li>
+              <div className={design["profile-container"]} onClick={toggleDropdown}>
+                <img
+                  src={avatarImage}
+                  alt="User Avatar"
+                  className={design.avatar}
+                />
+                {dropdownOpen && (
+                  <div className={design.dropdownMenu}>
+                    <Link to="/profile" className={design.dropdownItem}>Profile</Link>
+                    <Link to="/settings" className={design.dropdownItem}>Settings</Link>
+                    <button onClick={handleLogout} className={design.dropdownItem}>Logout</button>
+                  </div>
+                )}
+              </div>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Button
+                  onClick={() => {
+                    handleLoginClick();
+                    toggleIsOpen();
+                  }}
+                  content="Log in"
+                  className={design["TlogIn-btn"]}
+                />
+              </li>
+              <li>
+                <Button
+                  onClick={() => {
+                    handleSignupClick();
+                    toggleIsOpen();
+                  }}
+                  content="Sign up"
+                  className={design["TsignUp-btn"]}
+                />
+              </li>
+            </>
+          )}
+
         </ul>
       </nav>
 

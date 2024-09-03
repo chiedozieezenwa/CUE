@@ -72,7 +72,7 @@ export const Rentals = () => {
   };
 
   useEffect(() => {
-    const url = "https://cue-api-3tyr.onrender.com/api/v1/rentals";
+    const url = "https://cue-backend.onrender.com/api/v1/rentals";
     const params = new URLSearchParams();
 
     if (seats) {

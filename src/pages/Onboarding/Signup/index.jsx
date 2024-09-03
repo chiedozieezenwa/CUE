@@ -9,6 +9,7 @@ import { usePopUp } from "../../../context/usePopUp";
 export const Signup = () => {
   const { currentPopup, openPopup, closePopup } = usePopUp();
   const [email, setEmail] = useState("");
+  const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showP, setShowP] = useState(false);
@@ -24,8 +25,8 @@ export const Signup = () => {
 
     try {
       const res = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/users/signup",
-        { email, password },
+        "https://cue-backend.onrender.com/api/v1/users/signup",
+        { email, password ,fullname},
         { withCredentials: true }
       );
       localStorage.setItem("currentUser", JSON.stringify(res.data));
@@ -81,6 +82,13 @@ export const Signup = () => {
 
               <form className={design["signup-form"]} onSubmit={handleSubmit}>
                 <input
+                  type="text"
+                  name="fullname"
+                  onChange={(e) => setFullname(e.target.value)}
+                  placeholder="Full Name"
+                  required
+                />
+                   <input
                   type="email"
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
