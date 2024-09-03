@@ -51,12 +51,44 @@ import ai from "./ai.png";
 import slider1 from "./slider1.png";
 import slider2 from "./slider1.png";
 import slider3 from "./slider1.png";
-
+import slider4 from "./slider4.png";
+import slider5 from "./slider5.png";
+import slider7 from "./slider7.png";
+import slider8 from "./slider8.png";
+import slider9 from "./slider9.png";
+import slider10 from "./slider10.png";
+import slider11 from "./slider11.png";
+import car5 from "./car 5.png";
+import car2 from "./car2.png"
+import bmw from "./BMW.png";
+import gle from "./GLE.png";
+import phone from "./phone.png";
+import fan from "./fan.png";
+import naira from "./naira.png";
+import visa from "./visa.png";
+import visa2 from "./visa2.png";
+import ratingS from "./ratingStarts1.png";
+import blackPlus from "./blackPlus.png";
+import avatar from "./avatar.png"
+import profile from "./profile.png";
+import ceramic from "./image.png";
+import best from "./image1.png";
+import lugard from "./lugard.png";
+import deleteBTN from "./deleteBTN.png"
+import hamburgericon from "./hamburgericon.png"
 
 export {
+  avatar,
+  hamburgericon,
   slider1,
   slider2,
   slider3,
+  slider4,
+  slider7,
+  slider8,
+  slider9,
+  slider10,
+  slider11,
   ai,
   logo,
   lady,
@@ -74,6 +106,8 @@ export {
   todoIcon,
   image,
   leading,
+  blackPlus,
+  profile,
   ballon,
   lake,
   surfing,
@@ -94,7 +128,33 @@ export {
   hero3,
   calender,
   AIlogo,
-  component, component2, marker01, enuguLogo, frame1, art, bar, outdoor, lodge, car, time, plus, amico
+  component,
+  component2,
+  marker01,
+  enuguLogo,
+  frame1,
+  art,
+  bar,
+  outdoor,
+  lodge,
+  car,
+  time,
+  plus,
+  amico,
+  car5,
+  bmw,
+  gle,
+  phone,
+  fan,
+  naira,
+  car2,
+  visa,
+  visa2,
+  ratingS,
+  ceramic,
+  best, lugard, deleteBTN,
+  slider5
 };
 
-export * from "./features"
+export * from "./features";
+export * from "./proplan";

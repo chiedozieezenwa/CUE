@@ -1,4 +1,4 @@
-import { hotelIcon, rentalIcon, searchIcon, securityIcon } from '../../../assets';
+import { hotelIcon, rentalIcon } from '../../../assets';
 import design from './discovernav.module.css'
 import PropTypes from 'prop-types'
 
@@ -12,7 +12,7 @@ export const Tab = ({ activeSection, setActiveSection }) => {
   return (
     <nav className={design.container}>
       <ul className={design.navlist}>
-        <li
+        {/* <li
           className={`${design.navlistitem} ${
             activeSection === "searchall" ? design.active : ""
           }`}
@@ -21,17 +21,7 @@ export const Tab = ({ activeSection, setActiveSection }) => {
           <a href="/" onClick={(event) => handleLinkClick(event, "searchall")}>
             Search All
           </a>
-        </li>
-        <li
-          className={`${design.navlistitem} ${
-            activeSection === "lodging" ? design.active : ""
-          }`}
-        >
-          <img src={hotelIcon} />
-          <a href="/" onClick={(event) => handleLinkClick(event, "lodging")}>
-            Lodging
-          </a>
-        </li>
+        </li> */}
         <li
           className={`${design.navlistitem} ${
             activeSection === "rentals" ? design.active : ""
@@ -44,6 +34,16 @@ export const Tab = ({ activeSection, setActiveSection }) => {
         </li>
         <li
           className={`${design.navlistitem} ${
+            activeSection === "lodging" ? design.active : ""
+          }`}
+        >
+          <img src={hotelIcon} />
+          <a href="/" onClick={(event) => handleLinkClick(event, "lodging")}>
+            Lodging
+          </a>
+        </li>
+        {/* <li
+          className={`${design.navlistitem} ${
             activeSection === "security" ? design.active : ""
           }`}
         >
@@ -51,7 +51,7 @@ export const Tab = ({ activeSection, setActiveSection }) => {
           <a href="/" onClick={(event) => handleLinkClick(event, "security")}>
             Security
           </a>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

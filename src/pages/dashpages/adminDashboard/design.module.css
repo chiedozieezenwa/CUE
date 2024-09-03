@@ -1,0 +1,9 @@
+.dashcontainer {
+    background-color: #F8F8FD;
+    box-sizing: border-box;
+    width: 82%;
+    height: 100%;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

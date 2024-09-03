@@ -4,6 +4,12 @@
     flex-direction: column;
     place-items: center;  
     gap: 62px; 
+    font-family: "satoshi";
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
 }
 
 .inputContainer > input {
@@ -11,8 +17,8 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 1236px;
-  height: 92px;
+  width: 77rem;
+  height: 52px;
   padding: 16px 24px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.40);
@@ -32,14 +38,18 @@ input::placeholder {
 .button {
   background: #5d3be9;
   color: #ffffff;
-  width: 154px;
-  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 54px;
+  height: 14px;
   padding: 16px 24px;
   border-radius: 20px;
   border: none;
   position: absolute;
-  right: 80px;
-  top: 18.5rem;
+  right: 10rem;
+  top: 17rem;
 }
 
 .guide {
@@ -62,6 +72,10 @@ input::placeholder {
 .guideBTN {
   width: 166px;
   height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -155,6 +169,11 @@ input::placeholder {
   padding-top: 330px;
   display: flex;
   justify-content: center;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .adventure2 p {
@@ -196,6 +215,8 @@ input::placeholder {
   width: 1243px;
 height: 263px;
 border-radius: 24px;
+ background: #DCFFED;
+;
 }
 
 #trips {

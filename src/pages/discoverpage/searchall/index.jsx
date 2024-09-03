@@ -1,5 +1,5 @@
 import design from "./design.module.css";
-import {Button} from "../../../components"
+import { Button } from "../../../components";
 // import DestinationCarousel from "./DestinationCarousel";
 import {
   heart,
@@ -13,8 +13,11 @@ import {
   yankari,
   zuma,
   kambari,
+  plus,
 } from "../../../assets";
 import { DestinationCarousel } from "../carousel";
+import { SearchBar } from "../../../components/searchbar";
+import { Link } from "react-router-dom";
 
 export const SearchAll = () => {
   const destinationLists = [
@@ -85,27 +88,28 @@ export const SearchAll = () => {
 
   return (
     <div className={design.container}>
-            <div className={design.inputContainer}>
-              <input
+      <div className={design.inputContainer}>
+        {/* <input
                 type="text"
                 placeholder="Places to go, things to do, hotels..."
                 className={design.input}
               />
-              <Button content="Search" className={design.button} link="/" />
-            </div>
+              <Button content="Search" className={design.button} link="/" /> */}
+        <SearchBar placeholder="Places to go, things to do, hotels..." />
+      </div>
 
-          <div className={design.guide}>
-            <div>
-              <p id={design.guide}>Your Trips</p>
-              <p id={design.guide1}>You don’t have any trip planned yet.</p>
-            </div>
-            <Button
-              img={leading}
-              className={design.guideBTN}
-              content="Plan new trip"
-              link="/trip"
-            />
-          </div>
+      <div className={design.guide}>
+        <div>
+          <p id={design.guide}>Your Trips</p>
+          <p id={design.guide1}>You don’t have any trip planned yet.</p>
+        </div>
+        <Button
+          img={leading}
+          className={design.guideBTN}
+          content="Plan new trip"
+          link="/trip"
+        />
+      </div>
 
       <DestinationCarousel destinationLists={destinationLists} />
 
@@ -113,15 +117,21 @@ export const SearchAll = () => {
         <div className={design.exploreLIST}>
           <h1>Explore Adventures</h1>
           <div className={design.LIST}>
-            <div className={design.adventure1}>
-              <p>Top Experiences</p>
-            </div>
-            <div className={design.adventure2}>
-              <p>Top Attractions</p>
-            </div>
-            <div className={design.adventure3}>
-              <p>Bucket List</p>
-            </div>
+           <Link to="/topexperience">
+              <div className={design.adventure1}>
+                <p>Top Experiences</p>
+              </div>
+           </Link>
+           <Link to="/topattractions">
+              <div className={design.adventure2}>
+                <p>Top Attractions</p>
+              </div>
+            </Link>
+            <Link to="/bucketlist">
+              <div className={design.adventure3}>
+                <p>Bucket List</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -135,11 +145,10 @@ export const SearchAll = () => {
             </p>
           </div>
           <Button
-            img={leading}
+            img={plus}
             className={design.tripsBTN}
             content="Plan new trip"
           />
-          
         </div>
       </section>
       {/* <Footer/> */}
