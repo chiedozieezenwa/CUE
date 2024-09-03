@@ -85,6 +85,7 @@ import featured from "./Featured icon.png"
 import logoMobile from "./logoMobile.png"
 import  greenframe  from "./greenframe.png";
 
+
 export {
   logoMobile,
   greenframe,

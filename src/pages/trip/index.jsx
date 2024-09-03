@@ -7,9 +7,11 @@ import { CustomDateInput } from "../../components";
 import { blackPlus, profile } from "../../assets";
 
 export const Trip = ({ data = [] }) => {
+
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -79,8 +81,9 @@ export const Trip = ({ data = [] }) => {
             value={query}
             onChange={handleSearch}
             onFocus={() => setShowDropdown(true)}
-            onBlur={handleBlur}
-            placeholder="e.g. Kaduna, Enugu"
+
+            onBlur={handleBlur} 
+            placeholder="e.g. Abuja, Enugu"
             className={styles.planInput}
           />
           {showDropdown && filteredResults.length > 0 && (

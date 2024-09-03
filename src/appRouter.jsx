@@ -27,6 +27,12 @@ import { BookingPage } from "./pages/discoverpage/boookinInfos";
 // import { CryptoOverlay } from "./components/paymentComponent/crypto";
 
 
+import PaymentConfirmation from "./pages/discoverpage/retailCart/confirmation/confirmation";
+import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/receipt";
+import { SettingsPage } from "./pages/settings";
+import { ProfilePage } from "./pages/profile";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +75,24 @@ const router = createBrowserRouter([
     element: <RetailCart />,
   },
   {
+
+    path: "/paymentConfirmation",
+    element: <PaymentConfirmation />,
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/paymentReceipt",
+    element: <PaymentReceipt />,
+  },
+  {
+
     path: "/bucketlist",
     element: <BucketList />,
   },

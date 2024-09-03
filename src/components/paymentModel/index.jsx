@@ -2,10 +2,10 @@ import { useState } from "react";
 import { currency, currency2, currencyeth, logo, paystack } from "../../assets";
 import styles from "./design.module.css"
 
+
 export const PaymentModal = ({ isOpen, onClose, onSelectPaymentMethod }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
 
   if (!isOpen) return null;
 
@@ -18,7 +18,9 @@ export const PaymentModal = ({ isOpen, onClose, onSelectPaymentMethod }) => {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
-        onSelectPaymentMethod(selectedPaymentMethod); 
+
+        onSelectPaymentMethod(selectedPaymentMethod);
+
       }, 2000);
     } else {
       alert("Please select a payment method");

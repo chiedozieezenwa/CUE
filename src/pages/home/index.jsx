@@ -3,7 +3,7 @@ import {
   Hero,
   Keyfeatures,
   Navbar,
-  // Proplan,
+  Proplan,
   Testimonial,
   TopFeatures,
 } from "../../components";
@@ -14,7 +14,8 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
-      {/* <Proplan /> */}
+
+      <Proplan />
       <Explore />
       <TopFeatures />
       <Keyfeatures />

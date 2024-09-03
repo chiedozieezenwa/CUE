@@ -8,12 +8,21 @@
     background-color: #D4DFF7;
 }
 
+.hero-video {
+    height: 644px;
+    border-radius: 0 1000px 1000px 0;
+}
+
+.video {
+    height: 100%;
+    border-radius: 0 1000px 1000px 0;
+}
+
 .hero-content {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 1236px;
-    gap: 64px;
+    justify-content: space-between;
 }
 
 .hero-text {
@@ -63,28 +72,29 @@
     
     .hero-content {
         flex-direction: column-reverse;
-        width: 342px;
+        gap: 2rem;
+        width: 345px;
     }
 
     .hero-content > img {
-        width: 350px;
+        width: 345px;
     }
 
     .hero-text {
-        width: 342px;
+        width: 335px;
         gap: 48px;
     }
 
     .hero-text > h2 {
         font-size: 28px;
-        width: 342px;
+        width: 335px;
         text-align: center;
         margin: 0;
         line-height: 36px;
     }
 
     .stats-container {
-        width: 342px;
+        width: 335px;
         height: 184px;
         column-gap: 12px;
         row-gap: 24px;
@@ -97,5 +107,10 @@
     .stat > p {
         font-size: 12px;
         line-height: 24px;
+    }
+
+    .video, .hero-video {
+        width: 350px;
+        height: 274px;
     }
 }

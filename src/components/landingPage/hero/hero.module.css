@@ -1,167 +1,175 @@
 .container {
-    display: flex;
-    margin-top: 7rem;
-    box-sizing: border-box;
-    padding: 0 70px;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  margin-top: 7rem;
+  box-sizing: border-box;
+  padding: 0 70px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .left-section {
-    color: var(--Black, #10100F);
-    font-family: 'Satoshi', sans-serif; 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 469px;
+  color: var(--Black, #10100f);
+  font-family: "Satoshi", sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 469px;
 }
 
 .left-section > div {
-    width: 475px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-direction: column;
+  width: 475px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
 }
 
 .header-txt {
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 60px;
-    letter-spacing: -1.5px;
-    margin: 0;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -1.5px;
+  margin: 0;
 }
 
 .body-txt {
-    width: 407px;
-    font-size: 18.224px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 22.78px;
-    letter-spacing: 0.38px
+  width: 407px;
+  font-size: 18.224px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22.78px;
+  letter-spacing: 0.38px;
 }
 
 .hero-btn {
-    width: 107px;
-    height: 34px;
-    background-color: #5D3BE9;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    color: white;
-    font-family: 'Satoshi', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 18px;
-    text-decoration: none;
-    cursor: pointer;
+  width: 107px;
+  height: 34px;
+  background-color: #5d3be9;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: white;
+  font-family: "Satoshi", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .right-section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
 .right-col {
-    width: 356px;
-    height: 624px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 0; 
+  width: 356px;
+  height: 624px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
 }
 
 .left-col {
-    display: grid;
-    gap: 24px;
-    width: 356px;
-    z-index: 0;
+  display: grid;
+  gap: 24px;
+  width: 356px;
+  z-index: 0;
 }
 
 .airplane-path {
-    position: absolute;
-    top: 160px; 
-    left: 1050px; 
-    z-index: -1;
+  position: absolute;
+  top: 160px;
+  left: 1050px;
+  z-index: -1;
 }
 
 .airplane-icon {
-    position: absolute;
-    top: 130px; 
-    left: 990px; 
+  position: absolute;
+  top: 130px;
+  left: 990px;
 }
 
 .airplane-path2 {
-    position: absolute;
-    top: 470px; 
-    left: 970px; 
-    z-index: -1;
+  position: absolute;
+  top: 470px;
+  left: 970px;
+  z-index: -1;
 }
 
 .grid {
-    width: 356px;
-    height: 300px;
-    transition: 2s ease-in-out; 
-    opacity: 0;
+  width: 356px;
+  height: 300px;
+  transition: 2s ease-in-out;
+  opacity: 0;
 }
 
 .grid.active {
-  opacity: 5; 
+  opacity: 5;
 }
 
 /* Media Queries */
 
 @media (max-width: 600px) {
-    .container {
-        margin-top: 6rem;
-        flex-direction: column;
-        gap: 4rem;
-    }
+  .container {
+    margin-top: 6rem;
+    flex-direction: column;
+    gap: 4rem;
+  }
 
-    .left-section {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
+  .left-section {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .left-section > div {
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+  .left-section > div {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-    .header-txt {
-        font-size: 36px;
-    }
+  .header-txt {
+    font-size: 36px;
+  }
 
-    .body-txt {
-        width: 100%;
-        font-size: 16px;
-    }
+  .body-txt {
+    width: 100%;
+    font-size: 16px;
+  }
 
-    .right-col {
-        height: 100%;
-    }
+  .left-col {
+    width: 272px;
+  }
+  .right-col {
+    height: 100%;
+  }
 
-    .right-section {
-        grid-template-columns: 1fr;
-        place-items: center;
-        gap: 24px;
-    }
+  .right-section {
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 24px;
+  }
 
-    .airplane-container {
-        display: none;
-    }
+  .airplane-container {
+    display: none;
+  }
 
-    .hero-btn {
-        width: 342px;
-    }
+  .hero-btn {
+    width: 335px;
+  }
+
+  .grid {
+    width: 272px;
+    height: 272px;
+  }
 }
