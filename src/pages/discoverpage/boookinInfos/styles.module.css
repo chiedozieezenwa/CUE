@@ -1,0 +1,195 @@
+.container {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-family: "satoshi";
+}
+
+.containerH3 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  text-align: center;
+  color: #130c2a;
+}
+
+.containerIMG {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 1300px;
+  height: 30;
+  margin: auto;
+  gap: 20px;
+}
+
+.containerIMG1 {
+  width: 729px;
+  height: 75vh;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.containerIMG2 {
+  width: 469px;
+  height: 250px;
+  border-radius: 12px;
+}
+
+.containerIMGs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerIMG3 {
+  width: 224.79px;
+  height: 205px;
+  border-radius: 12.34px;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.containerSection {
+  width: 1240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.containerSection2 {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 20px;
+  gap: 230px;
+}
+
+.containerSectionName {
+  width: 539px;
+  height: auto;
+  text-align: left;
+}
+
+.containerSectionName h2 {
+  font-size: 46px;
+  font-weight: 900;
+  text-align: left;
+  color: #130c2a;
+  position: relative;
+  bottom: 30px;
+}
+
+.address {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: #130c2a;
+}
+
+.containerSectionName p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #000000;
+  position: relative;
+  bottom: 70px;
+}
+
+.containerSectionPayment {
+  width: 441px;
+  height: 328px;
+  border-radius: 14.62px;
+}
+
+.containerDatePickerDiv {
+  gap: 54.41px;
+  display: flex;
+}
+
+.containerDatePicker {
+  width: 126.49px;
+  padding: 14.41px;
+  gap: 10.81px;
+  border-radius: 5.41px;
+  border: 0.9px;
+  color: #ffffff;
+
+  border: 0.9px solid #d0d5dd;
+}
+
+.containerSchedule {
+  width: 437.4px;
+  gap: 14.62px;
+  border-radius: 7.31px 0px 0px 0px;
+  border: 1.22px 0px 0px 0px;
+  border: 1.22px solid #d0d5dd;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+
+.containerSchedule span {
+  padding-left: 11.2rem;
+}
+
+.containerBTN {
+  width: 28rem;
+  height: 56px;
+  top: 234px;
+  left: 27px;
+  padding: 16px 24px;
+  border: none;
+  margin-top: 20px;
+  background: #5d3be9;
+  color: #ffffff;
+}
+
+.sectionConeniences {
+  width: 739px;
+}
+
+.sectionConeniences h4 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #130c2a;
+}
+
+.sectionConeniences1 {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  padding: 10px;
+  margin: 8px;
+  text-align: center;
+  position: relative;
+  top: 0px;
+  box-shadow: 0px 0px 9.01px 0px #84848426;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchContainer input {
+  width: 1240px;
+  height: 56px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px;
+  opacity: 0.5px;
+  border: 1px solid #00000033;
+}
+
+.containerMap {
+  margin-left: 50px;
+  width: 93%;
+}
+

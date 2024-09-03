@@ -16,6 +16,9 @@
 
 #leaving {
   margin-left: 16px;
+  margin-top: 16px;
+  position: relative;
+  bottom: 16px;
 }
 
 #leavingInput{
@@ -87,6 +90,7 @@
   color: #130c2a;
   position: relative;
   bottom: 10px;
+  text-align: center;
 }
 
 .containerDate {
@@ -121,6 +125,7 @@
   font-weight: 700;
   line-height: 20px;
   margin-right: 8px;
+  margin-top: 16px;
 }
 
 .datepicker::placeholder {
@@ -138,6 +143,7 @@
   font-weight: 700;
   line-height: 20px;
   margin-right: 8px;
+  margin-top: 16px;
 }
 
 .datepicker2::placeholder {
@@ -222,13 +228,15 @@
   text-align: left;
   border-radius: 6px;
   border: 1px solid #d0d5dd;
+  margin-top: 20px;
 }
 
 #popular {
   font-size: 17.86px;
   font-weight: 500;
-  line-height: 21.44px;
+  line-height: 41.44px;
   letter-spacing: 0.1339694708585739px;
+  margin-top: 20px;
 }
 
 .sectionContainer2 {
@@ -241,7 +249,6 @@
   width: 840px;
   height: 96px;
   padding: 10px 20px;
-
   gap: 425px;
   border-radius: 10px;
   background: #ececec;
@@ -250,6 +257,7 @@
   line-height: 36px;
   text-align: left;
   color: #5d3be9;
+  margin-top: 10px;
 }
 
 .sectionContainerDetails {
@@ -268,15 +276,20 @@
   text-align: left;
   color: #130c2a;
   position: relative;
-  bottom: 60px;
+  bottom: 20px;
 }
 
-.sectionContainerDetails h2 {
+.sectionContainerDetails2 h2 {
   font-size: 32px;
   font-weight: 900;
   line-height: 40px;
   text-align: left;
   color: #130c2a;
+  margin-bottom: 40px;
+}
+
+.sectionContainerDetails2{
+  margin-bottom: 50px;
 }
 
 .sectionDetails {
@@ -297,7 +310,7 @@
 
 .sectionBTN {
   width: 125px;
-  height: 44px;
+  /* height: 44px; */
   padding: 12px 20px;
   border: none;
   border-radius: 20px;
@@ -312,6 +325,7 @@
 #car2 {
   width: 220px;
   height: auto;
+  margin-top: 10px;
 }
 
 .loaderContainer {

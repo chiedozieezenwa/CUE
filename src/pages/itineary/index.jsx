@@ -1,28 +1,65 @@
+import { useState } from "react";
 import {
-  AIlogo,
-  amico,
   art,
   bar,
-  car,
-  component,
-  component2,
+  best,
+  car5,
+  ceramic,
+  deleteBTN,
+  fan,
   heart,
-  lodge,
+  lugard,
   marker01,
-  outdoor,
+  naira,
+  phone,
   plus,
   ratingStars,
-  time,
 } from "../../assets";
 import { Button, Destination, Navbar } from "../../components";
+import LocationSearchInput from "../../components/searchLocation";
+import GoogleMapComponent from "../../components/googleMap";
+import { NoteSpace } from "../../components/todo/todo";
 import styles from "./styles.module.css";
+import LiveDateTime from "../../components/liveDate";
 
 export const Itineary = () => {
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [itineraryPlaces, setItineraryPlaces] = useState([]); 
+
+  const handlePlaceSelected = (place) => {
+    setSelectedPlace(place); 
+  };
+
+  const handleAddNewList = () => {
+    if (selectedPlace) {
+      setItineraryPlaces([...itineraryPlaces, selectedPlace]);
+      setSelectedPlace(null); 
+    }
+  };
+
+  const handleDeletePlace = (index) => {
+    const newPlaces = itineraryPlaces.filter((_, i) => i !== index);
+    setItineraryPlaces(newPlaces);
+  };
+
+  const [selectedTime, setSelectedTime] = useState("");
+
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+
+
   const destinationLists = [
     {
-      destinationImage: outdoor,
-      title: "Breeze Lounge",
-      description: "Enugu State",
+      destinationImage: ceramic,
+      title: "Top Things To Do In Enuguounge",
+      rating: ratingStars,
+      review: "5.0 (210 Reviews)",
+      destinationImg: heart,
+    },
+    {
+      destinationImage: best,
+      title: "Best Restaurants In Enugu",
       rating: ratingStars,
       review: "5.0 (210 Reviews)",
       destinationImg: heart,
@@ -30,7 +67,6 @@ export const Itineary = () => {
     {
       destinationImage: art,
       title: "Center For Memories",
-      description: "Enugu State",
       rating: ratingStars,
       review: "5.0 (109 Reviews)",
       destinationImg: heart,
@@ -38,7 +74,6 @@ export const Itineary = () => {
     {
       destinationImage: bar,
       title: "Stanford Laze ",
-      description: "Enugu State",
       rating: ratingStars,
       review: "5.0 (302 Reviews)",
       destinationImg: heart,
@@ -50,31 +85,6 @@ export const Itineary = () => {
       <Navbar />
 
       <main className={styles.ItinearyHome}>
-        <section className={styles.itinearyInfo}>
-          <ul id={styles.itinearyInfos}>
-            <li className={styles.itinearyInfos}>
-              <p>
-                <img src={AIlogo} alt="AI Assistant" /> AI Assistant
-              </p>
-            </li>
-            <li className={styles.itinearyInfos}>
-              <p>
-                <img src={component} alt="Notes" /> Notes
-              </p>
-            </li>
-            <li className={styles.itinearyInfos}>
-              <p>
-                <img src={component2} alt="Places to visit" /> Places to visit
-              </p>
-            </li>
-            <li className={styles.itinearyInfos}>
-              <p>
-                <img src={marker01} alt="Itinerary" /> Itinerary
-              </p>
-            </li>
-          </ul>
-        </section>
-
         <div>
           <article className={styles.enuguCity}>
             <header className={styles.coalCity}>
@@ -90,7 +100,6 @@ export const Itineary = () => {
                   hasTag={false}
                   destinationImage={destinationList.destinationImage}
                   title={destinationList.title}
-                  description={destinationList.description}
                   rating={destinationList.rating}
                   review={destinationList.review}
                   destinationImg={destinationList.destinationImg}
@@ -100,60 +109,166 @@ export const Itineary = () => {
           </section>
 
           <section className={styles.rentals}>
-            <h3>Reservations and Rentals</h3>
-            <div className={styles.rentalsCards}>
+            <div>
+              <h3>Reservations and Rentals</h3>
               <div>
-                <p>
-                  {" "}
-                  <img src={lodge} alt="" /> Lodging
-                </p>
-              </div>
-              <div>
-                <p>
-                  {" "}
-                  <img src={car} alt="" /> Vacation Rentals
-                </p>
-              </div>
-              <div>
-                <p>
-                  {" "}
-                  <img src={time} alt="" /> Security
-                </p>
+                <div className={styles.rentalsCards}>
+                  <img src={car5} alt="Car" />
+                  <div>
+                    <h4>BMW</h4>
+                    <div className={styles.rentalsCardsinfos}>
+                      <p>
+                        <img src={marker01} alt="Marker" /> Parking
+                      </p>
+                      <p>
+                        <img src={phone} alt="Phone" /> 4 Seats
+                      </p>
+                      <p>
+                        <img src={fan} alt="Fan" /> Air-Conditioning
+                      </p>
+                    </div>
+                    <p>
+                      <img src={naira} alt="Naira" /> 130,000
+                    </p>
+                  </div>
+                  <Button
+                    content="View Details"
+                    className={styles.rentalsCardsBTN}
+                  />
+                </div>
+
+                <div className={styles.rentalsCards}>
+                  <img src={lugard} alt="Lugard" />
+                  <div>
+                    <h4>BMW</h4>
+                    <div className={styles.rentalsCardsinfos}>
+                      <p>
+                        <img src={marker01} alt="Marker" /> Parking
+                      </p>
+                      <p>
+                        <img src={phone} alt="Phone" /> 4 Seats
+                      </p>
+                      <p>
+                        <img src={fan} alt="Fan" /> Air-Conditioning
+                      </p>
+                    </div>
+                    <p>
+                      <img src={naira} alt="Naira" /> 10,000
+                    </p>
+                  </div>
+                  <Button
+                    content="View Details"
+                    className={styles.rentalsCardsBTN}
+                  />
+                </div>
               </div>
             </div>
           </section>
 
           <section className={styles.reservation}>
             <h4>Itinerary</h4>
-            <time dateTime="2024-08-30">Friday, August 30th</time>
+            <LiveDateTime />
           </section>
 
-          <section className={styles.ItinearyNote}>
-            <h4>Note</h4>
-            <div>
-              <input type="text" placeholder="Write anything here" />
-            </div>
-          </section>
+          <section className={styles.itinearyReservations}>
+            <section>
+              <section className={styles.ItinearyNote}>
+                <div className={styles.ItinearyNote}>
+                  <NoteSpace />
+                </div>
+                <div>
+                  <LocationSearchInput onPlaceSelected={handlePlaceSelected} />
+                </div>
+              </section>
 
-          <section className={styles.reservationVisit}>
-            <h4>Places To Visit</h4>
-            <div>
-              <input type="text" placeholder="Add a place e.g restaurant" />
-            </div>
-          </section>
+              <section>
+                <Button
+                  content="Add new list"
+                  img={plus}
+                  className={styles.BTN}
+                  onClick={handleAddNewList}
+                />
+              </section>
 
-          <section>
-            <Button content="Add new list" img={plus} className={styles.BTN} />
-            <div className={styles.lodging}>
-              <div className={styles.lodgingDetails}>
-                <p id={styles.lodge}>Need a place to stay?</p>
-                <p id={styles.hotels}>
-                  Check out hotels and apartments in the city
-                </p>
-                <Button content="Book Lodging" className={styles.lodgingBTN} />
-              </div>
-              <img src={amico} alt="Lodging Image" />
-            </div>
+              <section className={styles.planSelectionDetails}>
+                {itineraryPlaces.map((place, index) => (
+                  <div key={index} className={styles.itineraryItem}>
+                    <div>
+                      <p className={styles.planDetailsTime}>
+                        <LiveDateTime />
+                      </p>
+                      <p className={styles.planTime}>Add Subheading</p>
+                    </div>
+                    <div className={styles.SelectionDetails}>
+                      <div className={styles.Details}>
+                        <div className={styles.DetailsH3}>
+                          <h3>{place.name}</h3>
+                          <input
+                            type="datetime-local"
+                            value={selectedTime}
+                            onChange={handleTimeChange}
+                            className={styles.timePicker}
+                            placeholder="Add Time"
+                          />
+                        </div>
+                        {place.image && (
+                          <img
+                            className={styles.Detailsimage}
+                            src={place.image}
+                            alt={place.name}
+                          />
+                        )}
+                      </div>
+
+                      <Button
+                        className={styles.deleteButton}
+                        onClick={() => handleDeletePlace(index)}
+                        img={deleteBTN}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </section>
+
+              <section>
+                <h4 className={styles.budgeting}>Budgeting</h4>
+                <div className={styles.budgetingInfo}>
+                  <div>
+                    <p id={styles.amount}>NGN 750,000</p>
+                    <p id={styles.amountEdit}>Edit Budget</p>
+                  </div>
+                  <Button
+                    content="Add Expense"
+                    className={styles.budgetingBTN}
+                  />
+                </div>
+              </section>
+
+              <section className={styles.Detailexpenses}>
+                <div className={styles.expenses}>
+                  <h5>Expenses</h5>
+                </div>
+                <div>
+                  <div className={styles.expensesInfo}>
+                    <p> Car Rental</p>
+                    <p>#130,000</p>
+                  </div>
+                  <div className={styles.expensesInfo}>
+                    <p>Lodging</p>
+                    <p>#110,000</p>
+                  </div>
+                  <div className={styles.expensesInfo}>
+                    <p>Drinks</p>
+                    <p>#12,000</p>
+                  </div>
+                </div>
+
+                <Button content="Download" className={styles.delete} />
+              </section>
+            </section>
+            <section className={styles.googleMap}>
+              <GoogleMapComponent selectedPlace={selectedPlace} />
+            </section>
           </section>
         </div>
       </main>

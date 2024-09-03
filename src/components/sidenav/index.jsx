@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import design from "./sidenav.module.css";
 import { logo } from "../../assets/images";
-import { adminIcon, dashboardIcon, lodgingIcon, userIcon } from "../../assets/icons/sideIcons";
+import { MdDashboard } from "react-icons/md";
+import { RiHotelLine, RiShieldUserLine } from "react-icons/ri";
+import { PiUsersThreeBold } from "react-icons/pi";
+import { IoCarSportOutline } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
 
 export const Sidenav = () => {
   return (
@@ -17,36 +21,39 @@ export const Sidenav = () => {
             to="/admin/dashboard" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={dashboardIcon} alt="Dashboard Icon" /> Dashboard
+            <MdDashboard className={design.react_icon}/>
+            Dashboard
           </NavLink>
           <NavLink 
             to="/admin/management" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={adminIcon} alt="Admin Icon" /> Admin Management
+            <RiShieldUserLine className={design.react_icon}/> Admin Management
           </NavLink>
           <NavLink 
             to="/admin/user" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={userIcon} alt="User Icon" /> User
+            <PiUsersThreeBold className={design.react_icon}/> User
           </NavLink>
           <NavLink 
             to="/admin/lodge" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={lodgingIcon} alt="Lodging Icon" /> Lodging
+            <RiHotelLine className={design.react_icon}/> Lodging
           </NavLink>
           <NavLink 
             to="/admin/rental" 
             className={({ isActive }) => isActive ? `${design.linkitem} ${design.active}` : design.linkitem}
           >
-            <img src={lodgingIcon} alt="Lodging Icon" /> Rental
+            <IoCarSportOutline className={design.react_icon}/> Rental
           </NavLink>
         </div>
       </nav>
       <footer className={design.Sidebar_footer}>
-        <NavLink to="/logout" className={design.logout}>Log out</NavLink>
+        <NavLink to="/" className={design.logout}>
+        <BiLogOut className={design.react_icon}/>
+        Log out</NavLink>
       </footer>
     </div>
   );

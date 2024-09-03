@@ -1,0 +1,152 @@
+.container {
+    font-family: 'Satoshi', sans-serif;
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+  
+  .popup_inner {
+    box-sizing: border-box;
+    position: relative;
+    width: 672px;
+    height: 581px;
+    background: #FFF;
+    border-radius: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    z-index: 1500;
+  }
+
+   .loaderOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+    z-index: 2000;
+  }
+
+  .popup-card {
+    width: 542px;
+    height: 437px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 44px;
+  }
+
+ .signup-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0;
+  }
+
+  .headertxt  {
+    font-family: 'Satoshi';
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0;
+  }
+
+  .herotxt {
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .signup-form {
+    margin-top: -2rem;
+  }
+
+  .signup-form > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .signup-form > div > input {
+    padding: 0 1rem;
+    width: 84px;
+    height: 84px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 1px solid #7C8493;
+  }
+
+::placeholder {
+    color: #7C8493;
+    font-family: Satoshi;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  .signUpbtn {
+    width: 100%;
+    height: 56px;
+    border-radius: 20px;
+    background-color: #5D3BE9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .popup-card > p {
+    color: #7C8493;
+    font-family: 'Satoshi';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  .popup-card > p a {
+    text-decoration: none;
+    color: #5D3BE9;
+  }
+
+  .toggle-icon {
+    width: 542px;
+    display: flex;
+    justify-content: end;
+  }
+
+  .toggle-icon > img:hover {
+    cursor: pointer;
+  }
+
+  .error, .success {
+    text-align: center;
+  }
+
+

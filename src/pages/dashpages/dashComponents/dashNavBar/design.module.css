@@ -1,0 +1,43 @@
+.container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 95px;
+    flex-wrap: wrap;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.userIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dp {
+    border-radius: 100%;
+}
+
+.userName {
+    font-family: 'Satoshi';
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.userEmail {
+    font-family: 'Satoshi';
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+}

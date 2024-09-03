@@ -2,21 +2,34 @@ import { useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Button, Navbar } from "../../../components";
 import { fan, marker01, naira, phone } from "../../../assets";
+import { Tab } from "../nav";
+import { NavLink } from "react-router-dom";
+import { useBooking } from "../../../context/bookingDetails/useBooking";
 
 export const BookingDetails = () => {
   const location = useLocation();
   const bookingDetails = location.state;
+  const { addBookingDetails } = useBooking();
 
+  const handleAddToCart = () => {
+      addBookingDetails(bookingDetails);
+      alert("Car rental details added to your cart!");
+    };
+
+
+ 
   if (!bookingDetails) {
     return (
       <p>No booking details available. Please return to the rentals page.</p>
     );
   }
+  console.log('details',bookingDetails);
 
   return (
     <div className={styles.bookingContainer}>
       <div>
         <Navbar />
+        <Tab/>
         <h1 className={styles.BookingH1}>
           Unlock Unique Rentals for Every Adventure
         </h1>
@@ -45,7 +58,7 @@ export const BookingDetails = () => {
                   {bookingDetails.airConditioned }
                 </p>
               </div>
-              <p className={styles.bookingPrice}>
+              <p className={styles.bookingPrice1}>
                 <img src={naira} alt="" />{" "}
                 {bookingDetails.price
                   ? bookingDetails.price.toLocaleString()
@@ -64,10 +77,13 @@ export const BookingDetails = () => {
             </div>
           </div>
            <div className={styles.bookingButton}>
+           <NavLink to="/lodging" >
            <Button
             content="Add to Payment Cart"
             className={styles.bookingBTN}
+            onClick={handleAddToCart}
             />
+          </NavLink>
            </div>
         </div>
       </div>

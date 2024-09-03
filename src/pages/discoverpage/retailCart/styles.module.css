@@ -1,0 +1,113 @@
+.retailCartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+#cartCar {
+  width: 515px;
+  height: 354px;
+}
+
+.cartItem {
+  display: flex;
+  width: 1240px;
+  height: 454px;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.cartItemList {
+  width: 661px;
+  height: 120px;
+  margin-bottom: 70px;
+}
+
+.cartItemList1 p {
+  width: 401.25px;
+  color: #130c2a;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.cartItemList h2 {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+  position: relative;
+  top: 10px;
+  color: #130c2a;
+}
+
+.cartItemList1 {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.cartItemList1 img {
+  width: 17.25px;
+  height: 21px;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.bookingPrice {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #130c2a;
+}
+
+.paymentMethod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.paymentMethod2 {
+  width: 873px;
+  height: 263px;
+  border-radius: 20px;
+}
+
+.paymentMethodInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 30px;
+}
+
+.payment2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 52px;
+  text-align: left;
+  color: #130C2A;
+}
+
+.paymentMethodBTN {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.paymentBTN {
+  width: 276px;
+  height: 56px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 20px;
+  background: #5d3be9;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}

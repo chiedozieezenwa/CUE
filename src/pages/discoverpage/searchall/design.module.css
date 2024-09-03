@@ -1,10 +1,11 @@
 .container {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    place-items: center;  
-    gap: 62px; 
-    font-family: "satoshi";
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 62px;
+  font-family: "satoshi";
+  margin-bottom: 2rem;
 }
 
 .inputContainer {
@@ -21,8 +22,8 @@
   height: 52px;
   padding: 16px 24px;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.40);
-  box-shadow: 0px 9px 20px 0px rgba(132, 132, 132, 0.20);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 9px 20px 0px rgba(132, 132, 132, 0.2);
   color: #130c2a;
   position: relative;
 }
@@ -54,19 +55,15 @@ input::placeholder {
 
 .guide {
   display: flex;
-  flex-wrap: wrap;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
   width: 1236px;
   height: 182px;
   padding: 32px;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1 0 0;
   border-radius: 8px;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.04);
-  background-color: rgba(124, 132, 147, 0.05);
+  background-color: #7c84930d;
 }
 
 .guideBTN {
@@ -75,17 +72,19 @@ input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   padding: 8px 12px;
   border-radius: 15px;
-  border: 1px;
-  background: transparent;
   color: #5d3be9;
   border: 1px solid #5d3be9;
   cursor: pointer;
+}
+
+.guideBTN:hover {
+  background-color: #5d3be9;
+  color: white;
 }
 
 .guideBTN img {
@@ -110,6 +109,7 @@ input::placeholder {
 }
 
 .explore {
+  margin-top: -5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -128,7 +128,7 @@ input::placeholder {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  column-gap: 30px;
+  gap: 30px;
 }
 
 .adventure1 {
@@ -169,6 +169,11 @@ input::placeholder {
   padding-top: 330px;
   display: flex;
   justify-content: center;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .adventure2 p {
@@ -194,60 +199,144 @@ input::placeholder {
 }
 
 .tripPlan {
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  margin: 40px;
+  justify-content: center;
 }
 
 .tripPlan1 {
+  background-image: url(../../../assets/images/greenframe.png);
+  width: 1281px;
+  height: 90%;
+  border-radius: 24px;
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 48px;
+}
+
+.tripPlan1 > div {
+  display: flex;
   align-items: center;
-  column-gap: 74px;
-  width: 1243px;
-height: 263px;
-border-radius: 24px;
- background: #DCFFED;
-;
+  justify-content: space-between;
 }
 
 #trips {
-  font-size: 35px;
+  font-family: "Satoshi";
+  font-size: 48px;
   font-weight: 700;
   line-height: 56px;
   color: #130c2a;
-  padding-right: 110px;
+  margin: 0;
 }
 
 #trips1 {
+  font-family: "Satoshi";
   font-size: 24px;
-  font-weight: 400;
   line-height: 32px;
-  color: #130c2a;
 }
 
-#trips1 span {
+#trips1 > #slink {
   color: #028000;
 }
 
 .tripsBTN {
-  width: 166px;
-  height: 36px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  padding: 8px 12px;
-  border-radius: 15px;
-  border: 1px;
-  color: #ffffff;
   background-color: #5d3be9;
   border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 198px;
+  height: 56px;
+  gap: 1rem;
+  font-family: "Satoshi";
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.tripsBTN:hover {
+  background-color: transparent;
+  border: 2px solid green;
+  color: green;
   cursor: pointer;
 }
 
-.tripsBTN img{
-   margin-right: 12px;
+@media screen and (max-width: 600px) {
+  .adventure1,
+  .adventure2,
+  .adventure3 {
+    width: 312px;
+  }
+
+  .adventure1 > p,
+  .adventure2 > p,
+  .adventure3 > p {
+    font-size: 31px;
+    padding-top: 370px;
+  }
+
+  .exploreLIST > h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .guide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 181px;
+    gap: 20px;
+  }
+
+  .guideText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .guideBTN {
+    width: 99px;
+    font-size: 10px;
+  }
+
+  .tripPlan {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .tripPlan1 > div {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .tripPlan1 {
+    flex-direction: column;
+    width: 342px;
+  }
+
+  #trips {
+    font-size: 20px;
+    text-align: center;
+    line-height: 28px;
+  }
+
+  .tripsBTN {
+    width: 170px;
+    height: 48px;
+    border-radius: 20px;
+  }
+
+  #trips1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+    line-height: 32px;
+  }
 }

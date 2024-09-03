@@ -34,3 +34,24 @@
 .datePicker {
   display: none; 
 }
+
+
+#customInput {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      width:176.49px ;
+    }
+    
+    #inputIcon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    #placeholderText {
+      color: black;
+    }

@@ -59,7 +59,7 @@ import slider9 from "./slider9.png";
 import slider10 from "./slider10.png";
 import slider11 from "./slider11.png";
 import car5 from "./car 5.png";
-import car2 from "./car2.png"
+import car2 from "./car2.png";
 import bmw from "./BMW.png";
 import gle from "./GLE.png";
 import phone from "./phone.png";
@@ -69,14 +69,31 @@ import visa from "./visa.png";
 import visa2 from "./visa2.png";
 import ratingS from "./ratingStarts1.png";
 import blackPlus from "./blackPlus.png";
-import profile from "./profile.png"
-import hamburgericon from "./hamburgericon.png"
+import avatar from "./avatar.png";
+import profile from "./profile.png";
+import ceramic from "./image.png";
+import best from "./image1.png";
+import lugard from "./lugard.png";
+import deleteBTN from "./deleteBTN.png";
+import hamburgericon from "./hamburgericon.png";
+import signUpYet from "./signUpYet.png";
+import currency from "./currency.png";
+import currency2 from "./currency2.png";
+import currencyeth from "./currency-ethereum.png";
+import paystack from "./paystack.png";
+import featured from "./Featured icon.png"
+import greenframe from "./greenframe.png";
+import logoMobile from "./logoMobile.png"
 
 export {
+  logoMobile,
+  greenframe,
+  avatar,
   hamburgericon,
   slider1,
   slider2,
   slider3,
+  slider4,
   slider7,
   slider8,
   slider9,
@@ -144,8 +161,17 @@ export {
   visa,
   visa2,
   ratingS,
-  slider4,
-  slider5
+  ceramic,
+  best,
+  lugard,
+  deleteBTN,
+  slider5,
+  signUpYet,
+  currency,
+  currencyeth,
+  currency2,
+  paystack,
+  featured
 };
 
 export * from "./features";

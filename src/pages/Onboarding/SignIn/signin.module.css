@@ -22,9 +22,11 @@
     width: 672px;
     height: 581px;
     background: #FFF;
-    border-radius: 52px;
-    display: grid;
-    place-items: center;
+    border-radius: 52px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
    .loaderOverlay {
@@ -42,11 +44,14 @@
   }
 
   .popup-card {
-    margin-top: -2rem;
+    box-sizing: border-box;
+    padding: 1rem;
     width: 542px;
     height: 437px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 24px;
   }
 
@@ -61,6 +66,7 @@
     font-size: 32px;
     font-weight: 900;
     text-align: center;
+    margin: 1rem;
   }
 
   .signup-form {
@@ -157,3 +163,23 @@
   margin: 0;
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  .popup {
+      width: 100%;
+  }
+
+  .popup_inner {
+      width: 340px;
+  }
+
+  .popup-card {
+      width: 300px;
+  }
+
+  .toggle-icon {
+      width: 300px;
+  }
+}
+
+

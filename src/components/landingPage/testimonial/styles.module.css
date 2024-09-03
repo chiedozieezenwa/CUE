@@ -1,69 +1,117 @@
-
-#testimonial{
-      background: #fbf0ff; 
-      font-family: 'Satoshi', sans-serif;
+#testimonial {
+  background: #fbf0ff;
+  font-family: "Satoshi", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 100px 102px;
+  display: flex;
+  justify-content: center;
 }
 
 .Testimonial {
-  margin: 0px 78px;
-  background: #fbf0ff;
-}
-
-#testicol{
-font-size: 32px;
-font-weight: 700; 
-color: #130C2A;
-position: relative;
-top: 20px;
-}
-
-.Testimonial h2{
-font-size: 48px;
-font-weight: 700; 
-color: #130C2A;
-}
-
- .TestCard {
+  width: 1236px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 80px;
+}
+
+#testicol {
+  font-size: 20px;
+  font-weight: 500;
+  color: #5d3be9;
+  font-family: "Satoshi";
+  margin: 0;
+}
+
+.trust {
+  font-family: "Satoshi";
+  font-size: 48px;
+  font-weight: 700;
+  color: #130c2a;
+  margin: 0;
+}
+
+.TestCard {
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .images {
-  width: 128px;
-  height: 128px;
-} 
+  width: 64px;
+  height: 64px;
+}
 
 .stars {
-      display: block;
+  display: block;
   width: 96px;
   height: 24px;
-  margin-top: 20px;
 }
 
 .TestCards {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 332px;
-  height: 192px;
-  padding: 24px 20px;
+  width: 324px;
+  height: 168px;
+  padding: 12px 24px;
   gap: 16px;
-  border-radius: 8px 0px 0px 0px;
-  background: #e0e0e080;
+  border-radius: 8px;
+  background: #FEFEFE;
+}
+
+.testCardContainer, .testCardContainer1, .testCardContainer2 {
+  width: 364px;
+  height: 292px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 8px;
+}
+
+.testCardContainer {
+  background-image: url("../../../assets/images/features/testimonial.png");
+}
+
+.testCardContainer1 {
+  background-image: url("../../../assets/images/features/testimonial2.png");
+}
+
+.testCardContainer2 {
+  background-image: url("../../../assets/images/features/testimonial3.png");
 }
 
 .content {
+  font-family: 'Satoshi';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #130c2a;
+}
+
+.testiName {
   font-size: 16px;
   font-weight: 500;
   color: #130c2a;
 }
 
-.testiName{
-font-size: 16px;
-font-weight: 500;
-color: #130C2A;
-position: relative;
-bottom: 10px;
+.review {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+@media screen and (max-width: 600px) {
+  #testimonial {
+    width: 100%;
+  }
+
+  .TestCard {
+    flex-direction: column;
+    gap: 1rem;
+    width: 335px;
+  }
+
+  .trust {
+    font-size: 32px;
+  }
 }

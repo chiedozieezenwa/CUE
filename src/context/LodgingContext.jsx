@@ -8,20 +8,17 @@ export const LodgingProvider = ({ children }) => {
   const [count, setCount] = useState(1);
   const [hotels, setHotels] = useState([]);
   const [filters, setFilters] = useState({
+    propertyType: [],
+    conveniences: [],
     minPrice: "",
     maxPrice: "",
-    type: "",
-    brand_new: "",
-    wifi: "",
-    smarthome: "",
-    surveillance: "",
-    panic_button: ""
   });
+  
 
   const fetchHotels = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://cue-api-3tyr.onrender.com/api/v1/hotels", {
+      const response = await axios.get("https://cue-backend.onrender.com/api/v1/hotels", {
         params: filters
       });
       setHotels(response.data.data.hotels);

@@ -20,6 +20,7 @@
     justify-content: space-between;
     align-items: center;
     height: 38px;
+    margin-bottom: 30px;
 }
 
 .filter > p {
@@ -72,6 +73,8 @@
     font-weight: 700;
     line-height: 24px;
     color: #101928;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .priceRange > div {
@@ -87,6 +90,7 @@
     border-radius: 6px;
     border: 1px solid var(--Grey-300, #D0D5DD);
     background: var(--Shade-White, #FFF);
+    margin-top: 10px;
 }
 
 /* -------------------------Property type---------------------- */
@@ -110,6 +114,12 @@
     border-radius: 10.21px;
     border: 1.052px solid rgba(93, 59, 233, 0.20);
     background: #FFF;
+    cursor: pointer;
+}
+
+.proptypelist :hover{
+    background: #5D3BE9;
+    color: #FEFEFE;
 }
 
 .proptypelist > div > p {
