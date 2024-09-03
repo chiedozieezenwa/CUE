@@ -76,6 +76,19 @@ import best from "./image1.png";
 import lugard from "./lugard.png";
 import deleteBTN from "./deleteBTN.png"
 import hamburgericon from "./hamburgericon.png"
+import bucketlist3 from "./bucketlist3.png";
+import bucketlist2 from "./bucketlist2.png";
+import bucketlist1 from "./bucketlist1.png";
+import bucketlistheader from "./bucketlistheader.png";
+import attract1 from "./attract1.png";
+import attract2 from "./attract2.png";
+import attract3 from "./attract3.png";
+import attractheader from "./attractheader.png" 
+import experienceheader from "./experienceheader.png";
+import experience1 from "./experience1.png";
+import experience2 from "./experience2.png";
+import experience3 from "./experience3.png";
+
 
 export {
   avatar,
@@ -153,7 +166,20 @@ export {
   ratingS,
   ceramic,
   best, lugard, deleteBTN,
-  slider5
+  slider5,
+  attractheader,
+  attract1,
+  attract2,
+  attract3,
+  bucketlistheader,
+  bucketlist1,
+  bucketlist2,
+  bucketlist3,
+ experienceheader,
+ experience1,
+ experience2,
+ experience3,
+
 };
 
 export * from "./features";

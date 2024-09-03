@@ -8,7 +8,6 @@ import {
   Proplan,
   Testimonial,
 } from "../../components";
-import { Plan } from "../../components/landingPage/plan";
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 
@@ -40,7 +39,6 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
-      <Plan/>
 
       <Proplan />
       
