@@ -38,7 +38,7 @@ export const RetailCart = () => {
 
   useEffect(() => {
     if (bookingDetails) {
-      setCarRental(bookingDetails.carRental || {});
+      setCarRental(bookingDetails || {});
       setLodging(bookingDetails.lodging || {});
       localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
     }
@@ -123,8 +123,8 @@ export const RetailCart = () => {
   const subtotal = lodgingTotal + carRentalTotal;
 
   return (
-    <div>
-      <Navbar />
+    <>
+    <Navbar />
       <div className={styles.retailCartContainer}>
         {lodging?.address && (
           <div className={styles.cartItem}>
@@ -232,6 +232,6 @@ export const RetailCart = () => {
           onSelectPaymentMethod={handleSelectPaymentMethod}
         />
       )}
-    </div>
+    </>
   );
 };
