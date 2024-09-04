@@ -3,7 +3,7 @@ import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
-import { FadeLoader } from "react-spinners";
+// import { FadeLoader } from "react-spinners";
 // import { useBooking } from "../../../context/bookingDetails/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {
@@ -23,12 +23,12 @@ import {
   naira,
 } from "../../../assets";
 import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
+import { Navbar } from "../../../components/index.js";
 
 export const Lodging = () => {
   const navigate = useNavigate();
 
   const {
-    loading,
     count,
     filters,
     setFilters,
@@ -82,7 +82,7 @@ export const Lodging = () => {
       conveniences: filters.convenience || [],
     });
 
-    navigate("/bookingPage"); // Navigate only when "Apply" is clicked
+    navigate("/bookingPage"); 
   };
 
   const filteredHotels = hotels.filter((hotel) => {
@@ -98,8 +98,9 @@ export const Lodging = () => {
 
   return (
     <div className={design.container}>
+      <Navbar/>
       <SearchBar placeholder="Search hotels" />
-      {loading && (
+      {/* {loading && (
         <div className={design.loaderOverlay}>
           <FadeLoader
             color="#1516a5"
@@ -111,7 +112,7 @@ export const Lodging = () => {
             margin={2}
           />
         </div>
-      )}
+      )} */}
 
       <div className={design.bookingCont}>
         <div className={design.filter}>
@@ -148,15 +149,15 @@ export const Lodging = () => {
             <div className={design.propertyType}>
               <p>Property Type</p>
               <div className={design.proptypelist}>
-                <div onClick={() => handleFilterClick("type", "Bed and Breakfast")}>
+                <div onClick={() => handleFilterClick("type", "bed and breakfast")}>
                   <img src={bedAndBreakfast} alt="Bed and Breakfast" />
                   <p>Bed and Breakfast</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Apartments")}>
+                <div onClick={() => handleFilterClick("type", "apartments")}>
                   <img src={Apartments} alt="Apartments" />
                   <p>Apartments</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Airbnb")}>
+                <div onClick={() => handleFilterClick("type", "airbnb")}>
                   <img src={airBnB} alt="Airbnb" />
                   <p>Airbnb</p>
                 </div>
@@ -168,7 +169,7 @@ export const Lodging = () => {
                   <img src={Hotels} alt="Hotels" />
                   <p>Hotels</p>
                 </div>
-                <div onClick={() => handleFilterClick("type", "Resorts")}>
+                <div onClick={() => handleFilterClick("type", "resorts")}>
                   <img src={Resorts} alt="Resorts" />
                   <p>Resorts</p>
                 </div>
@@ -234,9 +235,9 @@ export const Lodging = () => {
               <div
                 key={hotel._id}
                 className={design.hotelCard}
-                onClick={() => setSelectedHotel(hotel)} // Set selected hotel
+                onClick={() => setSelectedHotel(hotel)}
                 style={{
-                  border: selectedHotel?._id === hotel._id ? "2px solid blue" : "none", // Highlight selected hotel
+                  border: selectedHotel?._id === hotel._id ? "2px solid blue" : "none", 
                 }}
               >
                 <img src={hotel.image_url[0]} alt={hotel.name} />
@@ -244,8 +245,8 @@ export const Lodging = () => {
                 <p className={design.location}>{hotel.city}</p>
                 <p className={design.review}>Rating: {hotel.rating}</p>
                 <p className={design.status}>{hotel.type}</p>
-                <p className={design.price}>
-                  <img src={naira} alt="" />{hotel.price_per_night} per night
+                <p className={design.price}><span>FROM</span> NGR &nbsp;
+                  {hotel.price_per_night}  per night
                 </p>
               </div>
             ))}

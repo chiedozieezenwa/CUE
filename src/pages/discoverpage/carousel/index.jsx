@@ -1,16 +1,40 @@
-import design from './design.module.css'
+import { useState, useEffect } from "react";
+import design from "./design.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Destination } from "../../../components";
 
+export const DestinationCarousel = () => {
+  const [destinations, setDestinations] = useState([]);
 
-// eslint-disable-next-line react/prop-types
-export const DestinationCarousel = ({ destinationLists }) => {
+  useEffect(() => {
+    const url = "https://cue-backend.onrender.com/api/v1/destinations";
+
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((response) => {
+        console.log("fetch response: ", response);
+        console.log("fetch response data: ", response.data.destinations);
+        console.log(response, "rrr");
+
+        setDestinations(response.data.destinations || []);
+      })
+
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  }, []);
+
+  console.log("Destinations State:", destinations[0]);
+
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000,
+    speed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
     swipeToSlide: true,
@@ -40,23 +64,30 @@ export const DestinationCarousel = ({ destinationLists }) => {
   return (
     <div className={design.exploreDiscover}>
       <p>Popular Destinations</p>
-      <Slider {...settings} className={design.discoveryHomeCards}>
-        {destinationLists.map((destinationList, index) => (
-          <div key={index} className={design.sliderItem}>
-            <Destination
-            key={index}
-            hasTag={true}
-              destinationImage={destinationList.destinationImage}
-              subject={destinationList.subject}
-              title={destinationList.title}
-              description={destinationList.description}
-              rating={destinationList.rating}
-              review={destinationList.review}
-              // destinationImg={destinationList.destinationImg}
-            />
-          </div>
-        ))}
-      </Slider>
+      {
+        <Slider {...settings} className={design.discoveryHomeCards}>
+          {destinations.length > 0 ? (
+            destinations
+              .slice(0, 3)
+              .map((destination, index) => (
+                <Destination
+                  key={index}
+                  hasTag={true}
+                  destinationImage={destination.image_url}
+                  subject={destination.name}
+                  name={destination.name}
+                  title={destination.title}
+                  description={destination.state}
+                  rating={destination.ratingS}
+                  review={destination.review}
+                  destinationImg={destination.destinationImg}
+                />
+              ))
+          ) : (
+            <p>No destinations to display</p>
+          )}
+        </Slider>
+      }
     </div>
   );
 };

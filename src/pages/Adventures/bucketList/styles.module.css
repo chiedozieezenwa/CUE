@@ -25,11 +25,11 @@
     margin: 0;
     width: 600px;
     height: 150px;
-    top: 540px;
+    top: 500px;
 }
 
 .bucketlist h1 {
-/* font-family: Satoshi; */
+font-family: Satoshi;
 font-size: 56px;
 font-weight: 900;
 line-height: 60px;

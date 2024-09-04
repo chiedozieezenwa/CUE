@@ -26,13 +26,15 @@ export const Signin = () => {
 
     try {
       const response = await axios.post(
-        "https://cue-api-3tyr.onrender.com/api/v1/users/signin",
+        "https://cue-backend.onrender.com/api/v1/users/signin",
         { email, password },
         { withCredentials: true }
       );
       console.log(response.data);
       if (response.status === 200) {
         closePopup();
+        localStorage.setItem('currentUser',JSON.stringify(response.data));
+
         navigate("/disc");
       }
       
@@ -51,6 +53,8 @@ export const Signin = () => {
       setLoading(false);
     }
   };
+
+
 
   return (
     <>
@@ -77,7 +81,6 @@ export const Signin = () => {
             <section className={design["popup-card"]}>
               <div className={design.headertxt}>Log in</div>
 
-              {error && <p className={design.error}>{error}</p>}
 
               <form onSubmit={handleSubmit} className={design["signup-form"]}>
                 <input
@@ -136,6 +139,22 @@ export const Signin = () => {
                     Recover
                   </button>
                 </p>
+                {error && (
+  <p
+    className={design.error}
+    style={{
+      color: 'red', 
+      fontSize: '14px', 
+      marginTop: '10px', 
+      marginBottom: '10px', 
+      fontWeight: 'bold', 
+      textAlign: 'center', 
+    }}
+  >
+    {error}
+  </p>
+)}
+
               
             </section>
           </div>

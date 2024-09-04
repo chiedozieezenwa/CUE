@@ -14,20 +14,6 @@
   gap: 64px;
 }
 
-#leaving {
-  margin-left: 16px;
-}
-
-#leavingInput{
-  width: 200px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-}
-
 .containerRentals {
   justify-content: center;
   align-items: center;
@@ -80,20 +66,25 @@
 .containerCalender p {
   margin-top: 20px;
 }
-.containerTime {
+
+#leavingInput{
+  width: 196px;
+  border-radius: 5px;
+  padding: 5px;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  outline: none;
   color: #130c2a;
-  position: relative;
-  bottom: 10px;
+  text-align: center;
+  border: none;
 }
 
 .containerDate {
+  text-align: center;
   font-size: 10px;
   font-weight: 400;
   line-height: 16px;
-  padding-left: 30px;
 }
 
 .BTN {
@@ -115,6 +106,7 @@
 .datepicker {
   width: 80px;
   border: none;
+  outline: none;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -132,6 +124,7 @@
 .datepicker2 {
   width: 105px;
   border: none;
+  outline: none;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -152,14 +145,14 @@
 }
 
 #date1 {
-  position: relative;
-  top: 8px;
+  border: none;
+  outline: none;
   margin-left: 15px;
+  margin-top: 12px;
 }
 
 #date2 {
-  position: relative;
-  top: 8px;
+  margin-top: 12px;
   margin-left: 15px;
 }
 
@@ -177,16 +170,15 @@
 }
 
 .sectionContainer1 {
-  width: 268px;
+  width: 298px;
   height: 729px;
-  padding: 0px 20px 20px 20px;
   gap: 62px;
   box-shadow: 0px 2px 5.6px 0px #84848480;
 }
 
 .sectionFilter {
-  width: 228px;
-  height: 96px;
+  width: 260px;
+  height: 68px;
   padding: 10px 20px;
   gap: 10px;
   border-radius: 10px;
@@ -195,10 +187,9 @@
   line-height: 28px;
   background: #ececec;
   color: #101928;
-}
-
-.sectionFilter p {
-  padding-top: 10px;
+border-radius: 10px ;
+display: flex;
+align-items: center;
 }
 
 .sectionCategory {
@@ -209,12 +200,14 @@
   color: #101928;
   position: relative;
   top: 10px;
+  padding: 10px 20px;
 }
 
 .carSeat {
-  width: 228px;
+  width: 248px;
   height: 52px;
   padding: 16px;
+  margin-left: 8px;
   gap: 12px;
   font-size: 14px;
   font-weight: 400;
@@ -222,41 +215,46 @@
   text-align: left;
   border-radius: 6px;
   border: 1px solid #d0d5dd;
+  margin-top: 20px;
 }
 
 #popular {
   font-size: 17.86px;
   font-weight: 500;
-  line-height: 21.44px;
+  line-height: 41.44px;
   letter-spacing: 0.1339694708585739px;
+  margin-top: 20px;
+  padding: 10px 20px;
 }
 
 .sectionContainer2 {
-  width: 840px;
-  height: 742px;
+  width: 52rem;
+  height: 100hv;
   gap: 38px;
+  margin-bottom: 50px;
 }
 
 .sectionFilter1 {
-  width: 840px;
-  height: 96px;
-  padding: 10px 20px;
-
+  width: 50rem;
+height: 68px;
+  padding: 12px 20px;
   gap: 425px;
   border-radius: 10px;
   background: #ececec;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 900;
   line-height: 36px;
   text-align: left;
   color: #5d3be9;
+  display: flex;
+  align-items: center;
 }
 
 .sectionContainerDetails {
   display: flex;
-  width: 860px;
-  height: 172px;
-  padding: 20px 10px;
+  width: 51rem;
+  height: 11rem;
+  padding: 20px 15px;
   gap: 24px;
   box-shadow: 0px 0px 30px 0px #84848440;
 }
@@ -268,20 +266,25 @@
   text-align: left;
   color: #130c2a;
   position: relative;
-  bottom: 60px;
+  bottom: 20px;
 }
 
-.sectionContainerDetails h2 {
+.sectionContainerDetails2 h2 {
   font-size: 32px;
   font-weight: 900;
   line-height: 40px;
   text-align: left;
   color: #130c2a;
+  margin-bottom: 40px;
+}
+
+.sectionContainerDetails2{
+  margin-bottom: 50px;
 }
 
 .sectionDetails {
   display: flex;
-  width: 390px;
+  width: 25rem;
   gap: 28px;
   position: relative;
   bottom: 30px;
@@ -297,7 +300,6 @@
 
 .sectionBTN {
   width: 125px;
-  height: 44px;
   padding: 12px 20px;
   border: none;
   border-radius: 20px;
@@ -306,12 +308,14 @@
   font-weight: 700;
   line-height: 20px;
   color: #ffffff;
-  margin-top: 80px;
+  margin-top: 70px;
+  cursor: pointer;
 }
 
 #car2 {
   width: 220px;
   height: auto;
+  margin-top: 10px;
 }
 
 .loaderContainer {
@@ -347,14 +351,17 @@
 height: 46px;
 padding: 16px 24px;
 border-radius: 20px;
+margin-bottom: 40px;
 background: #5D3BE9;
 color: #ffffff;
 border: none;
+cursor: pointer;
 }
 
 #skipBtn{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 20px;
+  cursor: pointer;
 }

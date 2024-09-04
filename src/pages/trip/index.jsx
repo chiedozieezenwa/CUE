@@ -3,18 +3,19 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./styles.module.css";
-import { CustomDateInput } from "../../components"; 
+import { CustomDateInput } from "../../components";
 import { blackPlus, profile } from "../../assets";
 
 export const Trip = ({ data = [] }) => {
-  const [query, setQuery] = useState('Enugu'); 
-  const [filteredResults, setFilteredResults] = useState(data);
-  const [showDropdown, setShowDropdown] = useState(false); 
+
+  const [query, setQuery] = useState('');
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [email, setEmail] = useState('');
-  
 
   const states = [
     { id: 1, name: 'Enugu' },
@@ -31,21 +32,21 @@ export const Trip = ({ data = [] }) => {
       state.name.toLowerCase().includes(searchQuery)
     );
     setFilteredResults(results);
-    setShowDropdown(true); 
+    setShowDropdown(true);
   };
 
   const handleSelect = (name) => {
     setQuery(name);
-    setFilteredResults([]); 
+    setFilteredResults([]);
     setShowDropdown(false);
   };
 
   const handleBlur = () => {
-    setTimeout(() => setShowDropdown(false), 200); 
+    setTimeout(() => setShowDropdown(false), 200);
   };
 
   const handleInviteClick = () => {
-    setIsInputVisible(prev => !prev); 
+    setIsInputVisible((prev) => !prev);
   };
 
   const handleEmailChange = (event) => {
@@ -53,7 +54,19 @@ export const Trip = ({ data = [] }) => {
   };
 
   const handleSendInvite = () => {
-    console.log(`Sending invite to: ${email}`);
+    if (email) {
+      const message = encodeURIComponent(`You're invited! Click here to join: https://yourwebsite.com/invite?email=${email}`);
+      const whatsappUrl = `https://wa.me/?text=${message}`;
+
+      // Open WhatsApp with the pre-filled message
+      window.open(whatsappUrl, '_blank');
+    } else {
+      console.log('Please enter an email address.');
+    }
+  };
+
+  const handleDeleteEmail = () => {
+    setEmail(''); // Clear the email input field
   };
 
   return (
@@ -68,8 +81,9 @@ export const Trip = ({ data = [] }) => {
             value={query}
             onChange={handleSearch}
             onFocus={() => setShowDropdown(true)}
+
             onBlur={handleBlur} 
-            placeholder="e.g. Kaduna, Enugu"
+            placeholder="e.g. Abuja, Enugu"
             className={styles.planInput}
           />
           {showDropdown && filteredResults.length > 0 && (
@@ -129,6 +143,11 @@ export const Trip = ({ data = [] }) => {
                   content="Send Invite"
                   className={styles.sendInviteBTN}
                   onClick={handleSendInvite}
+                />
+                <Button
+                  content="Delete"
+                  className={styles.deleteEmailBTN}
+                  onClick={handleDeleteEmail}
                 />
               </div>
             )}
