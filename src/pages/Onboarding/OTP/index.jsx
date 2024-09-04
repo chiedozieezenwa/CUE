@@ -21,7 +21,9 @@ export const Otp = () => {
   
       try {
         const response = await axios.post(
-          "https://cue-api-3tyr.onrender.com/api/v1/users/otp",
+
+          "https://cue-backend.onrender.com/api/v1/users/otp",
+
           { otp },
           { withCredentials: true }
         );

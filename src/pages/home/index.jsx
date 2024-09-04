@@ -14,6 +14,7 @@ export const Home = () => {
     <div>
       <Navbar />
       <Hero />
+
       <Proplan />
       <Explore />
       <TopFeatures />
