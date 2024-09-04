@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { PaymentModal } from "../../../components/paymentComponent/paymentModal";
+
 import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
+
 
 export const RetailCart = () => {
   const navigate = useNavigate();

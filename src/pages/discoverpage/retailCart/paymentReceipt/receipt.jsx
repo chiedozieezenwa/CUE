@@ -1,5 +1,5 @@
 // PaymentReceipt.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PaymentReceipt = ({ reference }) => {
     const [paymentDetails, setPaymentDetails] = useState(null);
@@ -56,7 +56,7 @@ const PaymentReceipt = ({ reference }) => {
 
     return (
         <div style={containerStyle}>
-            <h1 style={headerStyle}>Payment Receipt</h1>
+            <h1 style={headerStyle}>Customer Receipt</h1>
             {paymentDetails ? (
                 <div style={detailsStyle}>
                     <p><span style={labelStyle}>Full Name:</span> {paymentDetails.full_name}</p>
