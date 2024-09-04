@@ -103,9 +103,8 @@ export const RatingReview = () => {
           newReview.rating
         ) {
           try {
-            // Send the review data to the backend
             const response = await axios.post(
-              "https://cue-api-3tyr.onrender.com/api/v1/reviews",
+              "https://cue-backend.onrender.com/api/v1/reviews",
               {
                 location: newReview.location,
                 date: newReview.date,
@@ -115,8 +114,7 @@ export const RatingReview = () => {
               }
             );
     
-            if (response.status === 201) { // Assuming 201 is the status for successful creation
-              // Update state and local storage
+            if (response.status === 201) {
               const updatedProgress = { ...progress };
               if (updatedProgress[newReview.rating] !== undefined) {
                 updatedProgress[newReview.rating] = Math.min(
@@ -146,6 +144,7 @@ export const RatingReview = () => {
           }
         }
       };
+      
     
       const handleDeleteReview = (index) => {
         const updatedReviews = submittedReviews.filter((_, i) => i !== index);

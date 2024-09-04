@@ -22,7 +22,7 @@ export const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown menu
-=======
+
 
 
 

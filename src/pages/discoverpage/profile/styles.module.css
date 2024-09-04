@@ -1,0 +1,209 @@
+/* .container {
+      max-Width: 600px;
+      margin: auto;
+      padding: 20px;
+      font-Family: "satoshi" sans-serif;
+    }
+
+    .header {
+      font-Size: 24px;
+      font-Weight: bold;
+      margin-Bottom: 20px;
+      text-Align: center;
+    }
+
+    .profileDetails {
+      border: 1px solid #ccc;
+      border-Radius: 8px;
+      padding: 20px;
+      margin-Bottom: 20px;
+      background-Color: #f9f9f9;
+    }
+
+    .detailItem {
+      margin-Bottom: 15px;
+    }
+
+    label {
+      font-Weight: bold;
+    }
+
+    .value {
+      margin-Left: 10px;
+    }
+
+    button {
+      display: block;
+      margin: auto;
+      padding: 10px 20px;
+      font-Size: 16px;
+      color: #fff;
+      background-Color: #007bff;
+      border: none;
+      border-Radius: 4px;
+      cursor: pointer;
+    } */
+
+    .container {
+      margin: auto;
+      font-Family: "satoshi" sans-serif; 
+      margin-top: 100px;
+      width: 1239px;
+height: 454px;
+border-radius: 12px ;
+      background-image: url(../../../assets/images/profilepics.png);
+      background-repeat: no-repeat;
+      
+    }
+
+    .profileSection{
+      display: flex;
+      width: 600px;
+      margin-left: 80px;
+      column-gap: 68;
+    }
+
+    .proAvatar {
+      width: 288px;
+height: 514px;
+gap: 24px;
+border-radius: 12px;
+border: 1px ;
+border: 1px solid #ECF0FF;
+position: relative;
+bottom: 80px;
+    }
+
+    .tripPlanSection{
+      width: 288px;
+      height: 514px;
+      gap: 24px;
+      border-radius: 12px;
+      border: 1px ;
+      margin-left: 68px;
+    }
+
+
+    .proAvatar img{
+      width: 250px;
+height: 250px;
+    }
+
+    .userDetails{
+      width: 248px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .email, .fullname{
+font-size: 18px;
+font-weight: 500;
+line-height: 24px;
+text-align: center;
+
+    }
+
+  .follower{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .follower p{
+font-size: 16px;
+font-weight: 400;
+line-height: 20px;
+
+  }
+
+    .tripPlanSection img{
+      width: 336px;
+height: 231px;
+border-radius: 12px;
+    }
+
+    #trip{
+      display: flex;
+      width: 118px;
+height: 24px;
+padding-top: 40px;
+padding-bottom: 40px;
+margin-left: 35px;
+    }
+
+    #trip p{
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+color: #000000;
+    }
+
+    #trip img{
+      width: 16px;
+height: 20px;
+border: 2px ;
+margin-right: 6px;
+    }
+
+    .editBTN{
+      width: 101px;
+height: 48px;
+padding: 12px 20px;
+border-radius: 15px ;
+border: 1px ;
+background: transparent;
+border: 1px solid #5D3BE9;
+color: #4759FF;
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+text-align: left;
+    }
+
+    .editBTN img{
+      width: 19.33px;
+height: 19.33px;
+border: 2px ;
+    }
+
+    .shareBTN{
+      width: 101px;
+height: 48px;
+padding: 12px 20px;
+border-radius: 15px ;
+border: 1px ;
+color: #FFFFFF;
+background: #5D3BE9;
+
+    }
+
+    .shareBTN img{
+      width: 18.23px;
+height: 16.83px;
+border: 2px ;
+    }
+
+    .editShareSection{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .planAtrip{
+      margin-left: 5px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    .planAtrip p{
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+color: #000000;
+    }
