@@ -23,11 +23,8 @@ import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
 import { BookingPage } from "./pages/discoverpage/boookinInfos";
-
 import PaymentConfirmation from "./pages/discoverpage/retailCart/confirmation/confirmation";
 import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/receipt";
-
-
 import { SettingsPage } from "./pages/discoverpage/ProfileSetings/settings";
 import { ProfilePage } from "./pages/discoverpage/profile/profile";
 import { SharePage } from "./pages/discoverpage/profileShare";
