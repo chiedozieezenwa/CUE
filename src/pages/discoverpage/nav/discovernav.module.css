@@ -2,42 +2,32 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-}
-
-.navlist {
-    width: 1236px;
-    height: 44px;
-    padding: 10px;
-    display: flex;
     gap: 48px;
-    justify-content: center;
-    align-items: center;
 }
 
-.navlist > li {
-    list-style-type: none;
-    display: flex;
-    gap: 8px;
-}
-
-.navlist > li > a {
-    color: black;
-    text-decoration: none;
+.linkitem {
     font-family: 'Satoshi';
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px
+    width: 127px;
+    height: 48px;
+    background-color: white;
+    border: 1px solid #5D3BE9;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #5D3BE9;
+    gap: 5px;
 }
 
-.navlist > li > img {
+.react_icon {
     width: 24px;
     height: 24px;
 }
 
-
-.navlist .active > a {
-    border-bottom: 3px solid #5d3be9;
-    color: #5d3be9;
-    padding-bottom: 4px;
+.active, .linkitem:hover {
+    background-color: #5D3BE9;
+    color: white;
 }

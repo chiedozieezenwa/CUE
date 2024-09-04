@@ -127,6 +127,7 @@
 .right_section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 68px;
 }
 
@@ -140,19 +141,9 @@
     padding-bottom: 133px;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
     background-color: #ffffff;
     position: relative;
 }
-
-/* .features-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1200px;
-    width: 50%;
-    gap: 20px; 
-} */
 
 .features-text {
     max-width: 500px;
@@ -255,6 +246,7 @@
     object-fit: cover;
     position: absolute;
     margin-top: 50px;
+}
   .cardText > p:first-child {
     font-size: 16px;
     line-height: 30px;
@@ -286,5 +278,4 @@
   .rightdown > img {
     width: 272px;
   }
-}
 }

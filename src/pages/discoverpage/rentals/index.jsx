@@ -306,7 +306,7 @@ export const Rentals = () => {
         </article>
       </section>
       <div id={design.skipBtn}>
-        <Button content="Skip Rental" className={design.skipBtn}  onClick={() => navigate("/lodging")}/>
+        <Button content="Skip Rental" className={design.skipBtn}  onClick={() => navigate("/disc/discovertab/lodging")}/>
       </div>
     </div>
   );
