@@ -1,312 +1,260 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { lady, lady1, man } from "../../assets";
-import Rating from "../landingPage/rating";
-import styles from "./styles.module.css";
-import { Button } from "../button";
-import Ratings from "../landingPage/rating2";
+import Web3 from "web3";
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from "./config";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-export const RatingReview = () => {
-      const [note, setNote] = useState("");
-      const [newReview, setNewReview] = useState({
-        location: "",
-        date: "",
-        stayType: "",
-        rating: 0,
-      });
-      const [submittedReviews, setSubmittedReviews] = useState([]);
-      const [totalReviews, setTotalReviews] = useState(320);
-      const [progress, setProgress] = useState({
-        5: 70,
-        4: 85,
-        3: 60,
-        2: 20,
-      });
-    
-      useEffect(() => {
-        const savedReviews = JSON.parse(localStorage.getItem("submittedReviews"));
-        const savedProgress = JSON.parse(localStorage.getItem("progress"));
-        const savedTotalReviews = localStorage.getItem("totalReviews");
-    
-        if (savedReviews) {
-          setSubmittedReviews(savedReviews);
-        }
-        if (savedProgress) {
-          setProgress(savedProgress);
-        }
-        if (savedTotalReviews) {
-          setTotalReviews(Number(savedTotalReviews));
-        }
-    
-        const currentDate = new Date().toISOString().substring(0, 7);
-        setNewReview((prevReview) => ({
-          ...prevReview,
-          date: currentDate,
-        }));
-    
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            async (position) => {
-              try {
-                const { latitude, longitude } = position.coords;
-                const response = await axios.get(
-                  `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-                );
-                const location =
-                  response.data.results[0]?.formatted_address || "Location not found";
-                setNewReview((prevReview) => ({
-                  ...prevReview,
-                  location,
-                }));
-              } catch (error) {
-                console.error("Error fetching location:", error);
-                setNewReview((prevReview) => ({
-                  ...prevReview,
-                  location: "Unknown Location",
-                }));
-              }
-            },
-            () => {
-              setNewReview((prevReview) => ({
-                ...prevReview,
-                location: "Unknown Location",
-              }));
-            }
+export const ReviewRating = () => {
+  const [web3, setWeb3] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [account, setAccount] = useState("");
+  const [serviceProvider, setServiceProvider] = useState("");
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
+  const [status, setStatus] = useState("");
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [trustLevel, setTrustLevel] = useState("");
+  const cachedReviews = useRef(new Map()); // Caching reviews for optimization
+
+  useEffect(() => {
+    const initWeb3 = async () => {
+      if (typeof window.ethereum !== "undefined") {
+        try {
+          await window.ethereum.request({ method: "eth_requestAccounts" });
+          const web3Instance = new Web3(window.ethereum);
+          setWeb3(web3Instance);
+
+          const accounts = await web3Instance.eth.getAccounts();
+          setAccount(accounts[0]);
+
+          const contractInstance = new web3Instance.eth.Contract(
+            CONTRACT_ABI,
+            CONTRACT_ADDRESS
           );
-        } else {
-          setNewReview((prevReview) => ({
-            ...prevReview,
-            location: "Geolocation not supported",
-          }));
+          setContract(contractInstance);
+
+          window.ethereum.on("accountsChanged", handleAccountsChanged);
+          window.ethereum.on("chainChanged", handleChainChanged);
+        } catch (error) {
+          console.error("Failed to connect to MetaMask", error);
+          setStatus("Failed to connect to MetaMask. Please try again.");
         }
-      }, []);
-    
-      const handleNoteChange = (e) => {
-        setNote(e.target.value);
-      };
-    
-      const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewReview({ ...newReview, [name]: value });
-      };
-    
-      const handleRatingChange = (newRating) => {
-        setNewReview({ ...newReview, rating: newRating });
-      };
-    
-      const handleNoteSubmit = async () => {
-        if (
-          note.trim() &&
-          newReview.location &&
-          newReview.date &&
-          newReview.stayType &&
-          newReview.rating
-        ) {
-          try {
-            // Send the review data to the backend
-            const response = await axios.post(
-              "https://cue-api-3tyr.onrender.com/api/v1/reviews",
-              {
-                location: newReview.location,
-                date: newReview.date,
-                stayType: newReview.stayType,
-                rating: newReview.rating,
-                note,
-              }
-            );
-    
-            if (response.status === 201) { // Assuming 201 is the status for successful creation
-              // Update state and local storage
-              const updatedProgress = { ...progress };
-              if (updatedProgress[newReview.rating] !== undefined) {
-                updatedProgress[newReview.rating] = Math.min(
-                  updatedProgress[newReview.rating] + 5,
-                  100
-                );
-              }
-    
-              const updatedReviews = [...submittedReviews, { ...newReview, note }];
-              const updatedTotalReviews = totalReviews + 1;
-    
-              setProgress(updatedProgress);
-              setTotalReviews(updatedTotalReviews);
-              setSubmittedReviews(updatedReviews);
-    
-              localStorage.setItem("submittedReviews", JSON.stringify(updatedReviews));
-              localStorage.setItem("progress", JSON.stringify(updatedProgress));
-              localStorage.setItem("totalReviews", updatedTotalReviews.toString());
-    
-              setNote("");
-              setNewReview({ location: "", date: "", stayType: "", rating: 0 });
-            } else {
-              console.error("Failed to submit review:", response.statusText);
-            }
-          } catch (error) {
-            console.error("Error submitting review:", error);
-          }
+      } else {
+        setStatus("Please install MetaMask to use this application.");
+      }
+    };
+
+    initWeb3();
+
+    return () => {
+      window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+      window.ethereum.removeListener("chainChanged", handleChainChanged);
+    };
+  }, []);
+
+  const handleAccountsChanged = (accounts) => {
+    setAccount(accounts[0]);
+    setStatus("Account changed. Please refresh the page.");
+  };
+
+  const handleChainChanged = () => {
+    window.location.reload();
+  };
+
+  const fetchReviews = useCallback(
+    async (address) => {
+      if (!contract || !address) return;
+
+      setLoading(true);
+
+      try {
+        const cacheKey = `${address}-${page}`;
+        if (cachedReviews.current.has(cacheKey)) {
+          setReviews(cachedReviews.current.get(cacheKey));
+          setLoading(false);
+          return;
         }
-      };
-    
-      const handleDeleteReview = (index) => {
-        const updatedReviews = submittedReviews.filter((_, i) => i !== index);
-        const updatedTotalReviews = totalReviews - 1;
-    
-        setSubmittedReviews(updatedReviews);
-        setTotalReviews(updatedTotalReviews);
-    
-        localStorage.setItem("submittedReviews", JSON.stringify(updatedReviews));
-        localStorage.setItem("totalReviews", updatedTotalReviews.toString());
-      };
-    
+
+        const reviewIds = await contract.methods
+          .getServiceProviderReviews(address)
+          .call();
+
+        const startIndex = (page - 1) * 10;
+        const endIndex = startIndex + 10;
+        const paginatedReviewIds = reviewIds.slice(startIndex, endIndex);
+
+        const fetchedReviews = await Promise.all(
+          paginatedReviewIds.map(async (id) => {
+            const review = await contract.methods.getReview(id).call();
+            const reviewerTrustLevel = await contract.methods
+              .getTrustLevel(review.reviewer)
+              .call();
+            return {
+              id: id.toString(),
+              reviewer: review.reviewer,
+              rating: Number(review.rating),
+              comment: review.comment,
+              timestamp: new Date(
+                Number(review.timestamp) * 1000
+              ).toLocaleString(),
+              trustLevel: reviewerTrustLevel,
+            };
+          })
+        );
+
+        setReviews(fetchedReviews);
+        cachedReviews.current.set(cacheKey, fetchedReviews);
+
+        const avgRating = await contract.methods
+          .getAverageRating(address)
+          .call();
+        setAverageRating(Number(avgRating));
+
+        const userTrustLevel = await contract.methods
+          .getTrustLevel(address)
+          .call();
+        setTrustLevel(userTrustLevel);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+        setStatus("Error fetching reviews. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [contract, page]
+  );
+
+  useEffect(() => {
+    if (serviceProvider && web3 && web3.utils.isAddress(serviceProvider)) {
+      fetchReviews(serviceProvider);
+    }
+  }, [serviceProvider, fetchReviews, web3]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Submitting review...");
+    setLoading(true);
+
+    try {
+      const ratingNumber = Number(rating);
+
+      if (!web3.utils.isAddress(serviceProvider)) {
+        throw new Error("Invalid service provider address");
+      }
+
+      const gasEstimate = await contract.methods
+        .submitReview(serviceProvider, ratingNumber, comment)
+        .estimateGas({ from: account });
+      const bufferedGas = Math.floor(Number(gasEstimate) * 1.2);
+      const result = await contract.methods
+        .submitReview(serviceProvider, ratingNumber, comment)
+        .send({ from: account, gas: bufferedGas });
+
+      setStatus(
+        "Review submitted successfully! You've been rewarded with CUE tokens."
+      );
+      console.log("Transaction hash:", result.transactionHash);
+
+      await fetchReviews(serviceProvider);
+
+      // Reset form
+      setServiceProvider("");
+      setRating(1);
+      setComment("");
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      if (error.code === -32603 && error.data) {
+        const errorMessage = error.data.message || error.message;
+        const refinedMessage = errorMessage.includes("gas required")
+          ? "Transaction failed due to insufficient gas."
+          : errorMessage;
+        setStatus(`Transaction failed: ${refinedMessage}`);
+      } else {
+        setStatus(`Error submitting review: ${error.message}`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!web3) {
+    return <div>Loading Web3, accounts, and contract...</div>;
+  }
+
   return (
     <div>
-      <section className={styles.containerReview}>
+      <h2>Submit a Review</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-          <h1>Customer Reviews ({totalReviews})</h1>
-          <div className={styles.containerReviewInfo}>
-            <div className={styles.containerReviewInfo1}>
-              <p id={styles.rating}>4.5</p>
-              <p className={styles.rating2}>
-                <Rating />
-              </p>
-              <p id={styles.verified}>All from verified purchases</p>
-            </div>
-            <div className={styles.containerReviewInfo2}>
-              {[5, 4, 3, 2].map((star) => (
-                <div key={star} className={styles.reviewItem}>
-                  <p>{star} Stars</p>
-                  <div className={styles.progressBar}>
-                    <div
-                      className={styles.filledBar}
-                      style={{ width: `${progress[star]}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <label>Service Provider Address:</label>
+          <input
+            type="text"
+            value={serviceProvider}
+            onChange={(e) => setServiceProvider(e.target.value)}
+            required
+          />
         </div>
-      </section>
+        <div>
+          <label>Rating (1-5):</label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            value={rating}
+            onChange={(e) => setRating(parseInt(e.target.value))}
+            required
+          />
+        </div>
+        <div>
+          <label>Comment:</label>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            maxLength="1000"
+            required
+          />
+        </div>
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Submit Review"}
+        </button>
+      </form>
+      {status && <p>{status}</p>}
 
-      <article className={styles.reviewTestimonial}>
-        <div className={styles.reviewTestimonialinfo}>
-          <div className={styles.reviewTestimonialinfo1}>
-            <img src={lady} alt="" />
-            <div className={styles.reviewRating}>
-              <p>Claire Alfred</p>
-              <p>Lagos, Nigeria</p>
-              <div id={styles.stayed}>
-                <p>
-                  <Rating />
-                </p>
-                <p>July 2024. Stayed with kids</p>
-              </div>
-              <p>
-                I loved our stay at this apartment, as a family woman it was
-                very conducive and accommodating for people with family.
-              </p>
-            </div>
-          </div>
-          <div className={styles.reviewTestimonialinfo1}>
-            <img src={man} alt="" />
-            <div className={styles.reviewRating}>
-              <p>Samuel Uche</p>
-              <p>Abuja, Nigeria</p>
-              <div id={styles.stayed}>
-                <p>
-                  <Rating />
-                </p>
-                <p>May 2024. Stayed with Friends</p>
-              </div>
-              <p>
-                Their security feature is top-notch, I really liked it. I also
-                like how serene the environment is.
-              </p>
-            </div>
-          </div>
-          <div>
-            {submittedReviews.map((review, index) => (
-              <div key={index} className={styles.reviewDynamic}>
-                <img src={lady1} alt="" />
-                <div className={styles.reviewRating}>
-                  <p>{review.location}</p>
-                  <div id={styles.stayed}>
-                    <p>
-                      <Ratings rating={review.rating} />
-                    </p>
-                    <p>
-                      {review.date}. {review.stayType}
-                    </p>
-                  </div>
-                  <p id={styles.reviewRating}>{review.note}</p>
-                </div>
-                  <button
-                  onClick={() => handleDeleteReview(index)}
-                    className={styles.deleteButton}
-                  >
-                     &times;
-                  </button>
-              </div>
+      <h2>Reviews for {serviceProvider}</h2>
+      <p>Average Rating: {averageRating}/5</p>
+      <p>Trust Level: {trustLevel}</p>
+      {loading ? (
+        <p>Loading reviews...</p>
+      ) : reviews.length > 0 ? (
+        <>
+          <ul>
+            {reviews.map((review) => (
+              <li key={review.id}>
+                <p>Reviewer: {review.reviewer}</p>
+                <p>Rating: {review.rating}/5</p>
+                <p>Comment: {review.comment}</p>
+                <p>Timestamp: {review.timestamp}</p>
+                <p>Reviewer Trust Level: {review.trustLevel}</p>
+              </li>
             ))}
-          </div>
-        </div>
-      </article>
-
-      <article className={styles.textareaTesti}>
-        <div className={styles.textareaInfo}>
-          <h5>Share your experience</h5>
-          <div>
-            <textarea
-              id="note"
-              value={note}
-              onChange={handleNoteChange}
-              placeholder="Write your review"
-              className={styles.reviewTextarea}
-            />
-          </div>
-          <div className={styles.formGroup}>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={newReview.location}
-              onChange={handleInputChange}
-              placeholder="Your location"
-              required
-            />
-          </div>
-          <div className={styles.formGroup}>
-            <select
-              id="stayType"
-              name="stayType"
-              value={newReview.stayType}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Select</option>
-              <option value="Stayed Solo">Stayed Solo</option>
-              <option value="Stayed with Partner">Stayed with Partner</option>
-              <option value="Stayed with Friends">Stayed with Friends</option>
-              <option value="Stayed with Kids">Stayed with Kids</option>
-              <option value="Stayed for Business">Stayed for Business</option>
-            </select>
-          </div>
-          <div className={styles.ratingBTN}>
-            <div>
-              <p>How would you like to rate us?</p>
-              <Ratings
-                rating={newReview.rating}
-                onRatingChange={handleRatingChange}
-              />
-            </div>
-            <Button
-              content="Submit Review"
-              onClick={handleNoteSubmit}
-              className={styles.textareaBTN}
-            />
-          </div>
-        </div>
-      </article>
+          </ul>
+          <button
+            onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+            disabled={page === 1 || loading}
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => setPage((prev) => prev + 1)}
+            disabled={reviews.length < 10 || loading}
+          >
+            Next
+          </button>
+        </>
+      ) : (
+        <p>No reviews available for this service provider.</p>
+      )}
     </div>
   );
 };
