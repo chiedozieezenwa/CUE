@@ -80,12 +80,12 @@ export const BookingPage = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.container}>
         <div className={styles.containerH3}>
           <h3>
             <p>Stay Somewhere Great!</p>
           </h3>
         </div>
+      <div className={styles.container}>
         <Tab />
         <section className={styles.containerIMG}>
           {lodgingImages.length > 0 && (
@@ -183,21 +183,25 @@ export const BookingPage = () => {
                   />
                 </div>
                 <div className={styles.containerSchedule}>
-                  <p>
-                    Pricing per night{" "}
-                    <span>
-                      <strong>From NGN</strong> {pricePerNight.toLocaleString()}
-                    </span>
-                  </p>
+                  <div className={styles.schedulePrice}>
+                    <div>
+                      <p>Pricing per night{" "}</p>
+                    </div>
+                    <div>
+                    <strong>From NGN</strong> {pricePerNight.toLocaleString()}
+                    </div>
+                  </div>
                   {numberOfDays > 0 && (
-                    <p>
-                      Total Price:{" "}
-                      <span>
-                        <strong>NGN</strong> {totalPrice.toLocaleString()}
-                      </span>{" "}
+                      <div className={styles.schedulePrice}>
+                        <div>
+                          <p> Total Price:{" "}</p>
+                        </div>
+                        <div>
+                          <p id={styles.schedulePrice1}><strong>NGN</strong> {totalPrice.toLocaleString()}</p>
+                        </div>
                       for {numberOfDays}{" "}
                       {numberOfDays === 1 ? "night" : "nights"}
-                    </p>
+                      </div>
                   )}
                 </div>
                 <Button

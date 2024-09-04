@@ -68,7 +68,7 @@ export const DestinationCarousel = () => {
         <Slider {...settings} className={design.discoveryHomeCards}>
           {destinations.length > 0 ? (
             destinations
-              .slice(0, 3)
+              .slice()
               .map((destination, index) => (
                 <Destination
                   key={index}
