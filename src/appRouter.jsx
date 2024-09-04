@@ -23,10 +23,14 @@ import { Signup } from "./pages/Onboarding/Signup";
 import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
 import { BookingPage } from "./pages/discoverpage/boookinInfos";
+
 import PaymentConfirmation from "./pages/discoverpage/retailCart/confirmation/confirmation";
 import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/receipt";
-import { SettingsPage } from "./pages/settings";
-import { ProfilePage } from "./pages/profile";
+
+
+import { SettingsPage } from "./pages/discoverpage/ProfileSetings/settings";
+import { ProfilePage } from "./pages/discoverpage/profile/profile";
+import { SharePage } from "./pages/discoverpage/profileShare";
 
 
 const router = createBrowserRouter([
@@ -68,7 +72,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/retailCart",
-    element: <RetailCart />,
+    element: <RetailCart/>,
   },
   {
 
@@ -81,7 +85,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <ProfilePage />,
+    element: <ProfilePage/>,
+  },
+  {
+    path: "/sharePage",
+    element: <SharePage/>,
   },
   {
     path: "/paymentReceipt",

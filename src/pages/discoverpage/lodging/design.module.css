@@ -7,6 +7,7 @@
     flex-direction: column;
     gap: 48px;
     margin: 0;
+    font-family: "satoshi";
 }
 
 .bookingCont {
@@ -48,10 +49,16 @@
 
 .bookingForm {
     width: 439px;
+  position: sticky;
+  top: 0; 
+  height: fit-content;
 }
 
 .bookingReview {
     width: 694px;
+  max-height: 80vh; 
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 /* -----------section containers-------------- */
@@ -205,6 +212,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
+    cursor: pointer;
 }
 
 /* ----------------Right Section --------------------- */

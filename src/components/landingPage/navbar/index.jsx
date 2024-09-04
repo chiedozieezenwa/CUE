@@ -20,6 +20,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   
   const [isOpen, setIsOpen] = useState(false);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   
   // Reference for handling clicks outside of the dropdown
@@ -36,7 +37,6 @@ export const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };

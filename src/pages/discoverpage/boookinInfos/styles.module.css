@@ -51,6 +51,12 @@
   gap: 20px;
 }
 
+/* .description {
+  display: flex;
+  text-align: justify;
+  border: 1px solid red;
+} */
+
 .containerSection {
   width: 1240px;
   display: flex;
@@ -126,15 +132,24 @@
 .containerSchedule {
   width: 437.4px;
   gap: 14.62px;
-  border-radius: 7.31px 0px 0px 0px;
+  border-radius: 7.31px;
   border: 1.22px 0px 0px 0px;
   border: 1.22px solid #d0d5dd;
   margin-top: 20px;
-  padding-left: 10px;
+  padding: 10px;
 }
 
 .containerSchedule span {
   padding-left: 11.2rem;
+}
+
+.schedulePrice{
+  display: flex;
+  justify-content: space-between;
+}
+
+#schedulePrice1{
+  margin-left: 170px;
 }
 
 .containerBTN {
@@ -147,6 +162,8 @@
   margin-top: 20px;
   background: #5d3be9;
   color: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .sectionConeniences {
