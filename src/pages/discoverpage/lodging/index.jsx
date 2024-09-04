@@ -3,8 +3,6 @@ import { LodgingContext } from "../../../context/LodgingContext.jsx";
 import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
-// import { FadeLoader } from "react-spinners";
-// import { useBooking } from "../../../context/bookingDetails/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   airBnB,
@@ -20,7 +18,6 @@ import {
   Villas,
   waves,
   wifi,
-  naira,
 } from "../../../assets";
 import { useBooking } from "../../../context/bookingDetails/useBooking.jsx";
 import { Navbar } from "../../../components/index.js";
@@ -100,19 +97,6 @@ export const Lodging = () => {
     <div className={design.container}>
       <Navbar/>
       <SearchBar placeholder="Search hotels" />
-      {/* {loading && (
-        <div className={design.loaderOverlay}>
-          <FadeLoader
-            color="#1516a5"
-            visible={true}
-            loading={loading}
-            height={15}
-            width={5}
-            radius={2}
-            margin={2}
-          />
-        </div>
-      )} */}
 
       <div className={design.bookingCont}>
         <div className={design.filter}>

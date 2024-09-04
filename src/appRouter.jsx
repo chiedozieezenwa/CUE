@@ -30,7 +30,7 @@ import { SettingsPage } from "./pages/discoverpage/ProfileSetings/settings";
 import { ProfilePage } from "./pages/discoverpage/profile/profile";
 import { SharePage } from "./pages/discoverpage/profileShare";
 import { ReviewRating } from "./components";
-
+import { DiscoverTab } from "./layout/discoverTab";
 
 const router = createBrowserRouter([
   {
@@ -40,12 +40,12 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "signin", element: <Signin /> },
       { path: "recover", element: <Recover /> },
-      { path: "otp", element: <Otp /> }
+      { path: "otp", element: <Otp /> },
     ],
   },
   {
     path: "/review",
-    element: <ReviewRating />
+    element: <ReviewRating />,
   },
   {
     path: "/itinerary",
@@ -62,14 +62,40 @@ const router = createBrowserRouter([
   {
     path: "/disc",
     element: <Disc />,
+    children: [
+      {
+        path: "discovertab",
+        element: <DiscoverTab />,
+        children: [
+          {
+            path: "rentals",
+            element: <Rentals />,
+          },
+          {
+            path: "lodging",
+            element: <Lodging />,
+          },
+        ],
+      },
+    ]
   },
-  { path: "trip", element: <Trip /> },
+  // {
+  //   path: "/discovertab",
+  //   element: <DiscoverTab />,
+  //   children: [
+  //     {
+  //       path: "rentals",
+  //       element: <Rentals />,
+  //     },
+  //     {
+  //       path: "lodging",
+  //       element: <Lodging />,
+  //     },
+  //   ],
+  // },
   {
-    path: "rentals", element: <Rentals />
-  },
-  {
-    path: "/lodging",
-    element: <Lodging />,
+    path: "trip",
+    element: <Trip />,
   },
   {
     path: "/bookingPage",
@@ -77,10 +103,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/retailCart",
-    element: <RetailCart/>,
+    element: <RetailCart />,
   },
   {
-
     path: "/paymentConfirmation",
     element: <PaymentConfirmation />,
   },
@@ -90,18 +115,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <ProfilePage/>,
+    element: <ProfilePage />,
   },
   {
     path: "/sharePage",
-    element: <SharePage/>,
+    element: <SharePage />,
   },
   {
     path: "/paymentReceipt",
     element: <PaymentReceipt />,
   },
   {
-
     path: "/bucketlist",
     element: <BucketList />,
   },
