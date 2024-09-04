@@ -12,6 +12,7 @@ import {
   Lodging,
   Otp,
   Recover,
+  Rentals,
   RetailCart,
   Signin,
   TopAttractions,
@@ -63,7 +64,9 @@ const router = createBrowserRouter([
     element: <Disc />,
   },
   { path: "trip", element: <Trip /> },
-
+  {
+    path: "rentals", element: <Rentals />
+  },
   {
     path: "/lodging",
     element: <Lodging />,

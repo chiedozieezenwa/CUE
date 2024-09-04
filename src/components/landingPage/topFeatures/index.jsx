@@ -30,7 +30,7 @@ export const TopFeatures = () => {
             </div>
             <div className={styles["stat"]}>
               <h3>500+</h3>
-              <p>Security Hotline</p>
+              <p>Luxury Rentals</p>
             </div>
           </div>
         </div>
