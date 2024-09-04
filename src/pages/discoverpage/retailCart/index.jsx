@@ -66,6 +66,7 @@ export const RetailCart = () => {
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
     setPaymentModalOpen(false);
+    handlePayment(method);
 
     // You can handle payment method-specific logic here if needed
     // if (method === "paystack") setPaystackOverlayOpen(true);

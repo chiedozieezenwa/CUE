@@ -6,6 +6,7 @@ import stars from "./Rating Stars.png";
 import line1 from "./Line 1.png";
 import line2 from "./Line 2.png";
 import apple from "./apple.png";
+import comingsoon from "./comingsoon.png"
 import google from "./google.png";
 import hotelIcon from "./hotelIcon.png";
 import rentalIcon from "./rentalIcon.png";
@@ -92,6 +93,7 @@ import penIcon from "./penIcon.png";
 import bookIcon from "./bookIcon.png"
 
 export {
+  comingsoon,
   logoMobile,
   greenframe,
   avatar,
