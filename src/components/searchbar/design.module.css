@@ -39,9 +39,9 @@
     width: 98px;
     height: 44px;
     border-radius: 20px;
-    background-color: #5D3BE9;
-    border: none;
-    color: white;
+    border: 1px solid #5d3bE9;
+    background-color: white;
+    color: #5d3bE9;
     font-family: 'Satoshi';
     font-size: 16px;
     font-style: normal;
