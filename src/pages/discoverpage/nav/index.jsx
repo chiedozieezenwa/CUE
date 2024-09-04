@@ -12,16 +12,6 @@ export const Tab = ({ activeSection, setActiveSection }) => {
   return (
     <nav className={design.container}>
       <ul className={design.navlist}>
-        {/* <li
-          className={`${design.navlistitem} ${
-            activeSection === "searchall" ? design.active : ""
-          }`}
-        >
-          <img src={searchIcon}/>
-          <a href="/" onClick={(event) => handleLinkClick(event, "searchall")}>
-            Search All
-          </a>
-        </li> */}
         <li
           className={`${design.navlistitem} ${
             activeSection === "rentals" ? design.active : ""
@@ -42,16 +32,6 @@ export const Tab = ({ activeSection, setActiveSection }) => {
             Lodging
           </a>
         </li>
-        {/* <li
-          className={`${design.navlistitem} ${
-            activeSection === "security" ? design.active : ""
-          }`}
-        >
-          <img src={securityIcon}/>
-          <a href="/" onClick={(event) => handleLinkClick(event, "security")}>
-            Security
-          </a>
-        </li> */}
       </ul>
     </nav>
   );

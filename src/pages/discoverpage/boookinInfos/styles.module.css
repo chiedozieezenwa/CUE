@@ -51,6 +51,12 @@
   gap: 20px;
 }
 
+/* .description {
+  display: flex;
+  text-align: justify;
+  border: 1px solid red;
+} */
+
 .containerSection {
   width: 1240px;
   display: flex;
@@ -156,6 +162,8 @@
   margin-top: 20px;
   background: #5d3be9;
   color: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .sectionConeniences {
