@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import design from "./navbar.module.css";
 import Logo from "../../../assets/images/Logo.png";
@@ -10,7 +10,6 @@ import { Signup, Signin } from "../../../pages/Onboarding";
 import { PopupContext } from "../../../context/popupContext";
 import { SearchContext } from "../../../context/searchContext";
 import { hamburgericon } from "../../../assets";
-
 import axios from "axios";
 
 export const Navbar = () => {
@@ -19,17 +18,28 @@ export const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-
+  
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown menu
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+  // Reference for handling clicks outside of the dropdown
+  const dropdownRef = useRef(null);
 
-
-
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -37,12 +47,6 @@ export const Navbar = () => {
 
   const getActiveClass = ({ isActive }) =>
     isActive ? design.active : undefined;
-
-
-  // function to get active class for NavLink
- 
-
-  // Handlers to open specific popups
 
   const handleLoginClick = () => openPopup("signin");
   const handleSignupClick = () => openPopup("signup");
@@ -58,7 +62,6 @@ export const Navbar = () => {
         endpoint = `https://cue-backend.onrender.com/api/v1/hotels?location=${searchInput}`;
       } else if (location.pathname.includes("rentals")) {
         endpoint = `https://cue-backend.onrender.com/api/v1/rentals?location=${searchInput}`;
-
       }
 
       const response = await fetch(endpoint);
@@ -75,7 +78,6 @@ export const Navbar = () => {
         "An error occurred while fetching the search results:",
         error
       );
-
     }
   };
 
@@ -85,10 +87,9 @@ export const Navbar = () => {
     try {
       await axios.post("https://cue-backend.onrender.com/api/v1/users/logout");
       localStorage.setItem("currentUser", null);
-      navigate("/disc");
+      navigate("/");
     } catch (error) {
       console.log(error);
-
     }
   };
 
@@ -97,10 +98,8 @@ export const Navbar = () => {
       <nav className={design.nav}>
         {/* Left Section */}
         <section className={design["left-section"]}>
-
           <Link to="/">
             <img src={Logo} alt="Logo Image" className={design.logoImg} />
-
           </Link>
           <span className={design.divider}>
             <img src={divider} alt="Divider Line" />
@@ -116,9 +115,7 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li>
-
               <NavLink to="/itinerary" className={getActiveClass}>
-
                 Trip Itinerary
               </NavLink>
             </li>
@@ -153,20 +150,32 @@ export const Navbar = () => {
 
         {/* Onboard Section */}
         <section className={design["onboard"]}>
-
           {currentUser ? (
             <>
-              <div className={design["profile-container"]} onClick={toggleDropdown}>
+              <div
+                className={design["profile-container"]}
+                onClick={toggleDropdown}
+                ref={dropdownRef}
+              >
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&s"
+                  src={avatarImage}
                   alt="User Avatar"
                   className={design.avatar}
                 />
                 {dropdownOpen && (
                   <div className={design.dropdownMenu}>
-                    <Link to="/settings" className={design.dropdownItem}>Profile</Link>
-                    <Link to="/profile" className={design.dropdownItem}>Settings</Link>
-                    <Link onClick={handleLogout} className={design.dropdownItem}>Logout</Link>
+                    <Link to="/settings" className={design.dropdownItem}>
+                      Profile
+                    </Link>
+                    <Link to="/profile" className={design.dropdownItem}>
+                      Settings
+                    </Link>
+                    <Link
+                      onClick={handleLogout}
+                      className={design.dropdownItem}
+                    >
+                      Logout
+                    </Link>
                   </div>
                 )}
               </div>
@@ -206,9 +215,7 @@ export const Navbar = () => {
           </li>
           <li>
             <NavLink
-
               to="/itinerary"
-
               onClick={toggleIsOpen}
               className={getActiveClass}
             >
@@ -225,7 +232,11 @@ export const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/ai" onClick={toggleIsOpen} className={getActiveClass}>
+            <NavLink
+              to="/ai"
+              onClick={toggleIsOpen}
+              className={getActiveClass}
+            >
               AI Assistant
             </NavLink>
           </li>
@@ -271,7 +282,6 @@ export const Navbar = () => {
               </li>
             </>
           )}
-
         </ul>
       </nav>
 

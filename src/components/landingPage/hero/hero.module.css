@@ -86,6 +86,10 @@
   z-index: 0;
 }
 
+.airplane-container {
+    display: none;
+}
+
 .airplane-path {
   position: absolute;
   top: 160px;

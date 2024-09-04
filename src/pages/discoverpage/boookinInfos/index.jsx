@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { marker01 } from "../../../assets";
-import { Button, Navbar } from "../../../components";
+import { Button, Navbar, ReviewRating } from "../../../components";
 import { Tab } from "../nav";
 import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
@@ -10,7 +10,6 @@ import { CustomDateInput } from "../../../components";
 import GoogleMapWithDirections from "../../../components/button/googleMap2";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
 import { UseCart } from "../../../context/cartContext";
-import { RatingReview } from "../../../components/reviewRating";
 
 
 export const BookingPage = () => {
@@ -231,7 +230,8 @@ export const BookingPage = () => {
             />
           </div>
         </div>
-        <RatingReview/>
+        
+        <ReviewRating />
       </div>
     </div>
   );

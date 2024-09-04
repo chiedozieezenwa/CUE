@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/itineary",
+    path: "/itinerary",
     element: <Itineary />,
   },
   {

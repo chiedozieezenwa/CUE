@@ -3,6 +3,7 @@ import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { PaymentModal } from "../../../components/paymentComponent/paymentModal";
 import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
+
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
@@ -12,6 +13,7 @@ export const RetailCart = () => {
   const { bookingDetails } = useBooking();
   const [carRental, setCarRental] = useState({});
   const [lodging, setLodging] = useState({});
+
   
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [isSignUpOverlayOpen, setSignUpOverlayOpen] = useState(false);
@@ -19,17 +21,18 @@ export const RetailCart = () => {
   const [currentUser, setCurrentUser] = useState(null); 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
 
+
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); 
-      setCurrentUser(parsedUser); 
+      const parsedUser = JSON.parse(storedUser);
+      setCurrentUser(parsedUser);
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
 
-    
+
     const storedBookingDetails = localStorage.getItem("bookingDetails");
     if (storedBookingDetails) {
       const parsedDetails = JSON.parse(storedBookingDetails);
@@ -46,19 +49,19 @@ export const RetailCart = () => {
     }
   }, [bookingDetails]);
 
-  const handleChoosePayment = () => {
-    console.log("handleChoosePayment called");
+  const handleChoosePaymentMethod = () => {
     if (isLoggedIn) {
+
       console.log("Opening PaymentModal...");
       setPaymentModalOpen(true);
     } else {
       console.log("Opening SignUpYet overlay...");
+
       setSignUpOverlayOpen(true);
     }
   };
 
   const handleOpenPaymentModal = () => {
-    console.log("Proceeding to PaymentModal...");
     setPaymentModalOpen(true);
     setSignUpOverlayOpen(false);
   };
@@ -67,14 +70,22 @@ export const RetailCart = () => {
     setPaymentModalOpen(false);
   };
 
- 
+
   const handleSelectPaymentMethod = (method) => {
-    setSelectedPaymentMethod(method); 
-    handlePayment(method); 
+    setSelectedPaymentMethod(method);
+    setPaymentModalOpen(false);
+
+    if (method === "paystack") {
+      setPaystackOverlayOpen(true);
+    } else if (method === "crypto") {
+      setCryptoOverlayOpen(true);
+    }
+
   };
 
   const handlePayment = async (method) => {
     try {
+
       console.log("User", currentUser?.user);
 
       const fullname = currentUser?.user?.fullname || "Solotech";
@@ -99,6 +110,7 @@ export const RetailCart = () => {
         }
       );
 
+
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Server responded with an error:", errorData);
@@ -106,6 +118,7 @@ export const RetailCart = () => {
       }
 
       const data = await response.json();
+
       console.log("Payment initiation successful1:", data);
       const authorizationUrl = data?.data?.data?.authorization_url;
       console.log("Payment initiation successful auth:", authorizationUrl);
@@ -114,6 +127,7 @@ export const RetailCart = () => {
         window.location.href = authorizationUrl;
       } else {
         navigate("/paymentConfirmation");
+
       }
     } catch (error) {
       console.error("Error initiating payment:", error);
@@ -124,13 +138,13 @@ export const RetailCart = () => {
   const carRentalTotal = carRental?.price || 0;
   const subtotal = lodgingTotal + carRentalTotal;
 
-
   return (
     <div>
       <Navbar />
       <div className={styles.retailCartContainer}>
-        {lodging && lodging.address ? (
+        {lodging?.address && (
           <div className={styles.cartItem}>
+
             <div className={styles.cartItemBTN}>
             <img src={lodging.image_url[0]} alt="Lodging_img" id={styles.cartCar} />
              </div>
@@ -151,6 +165,7 @@ export const RetailCart = () => {
                   <img src={phone} alt="" />
                   Number of Guests {bookingDetails?.guests || "N/A"}
                 </p>
+
               </div>
               <p className={styles.bookingPrice}>
                 <img src={naira} alt="" /> <strong>Total Price: </strong>{" "}
@@ -158,18 +173,21 @@ export const RetailCart = () => {
               </p>
             </div>
           </div>
-        ) : (
-          <p>No lodging details found.</p>
         )}
       </div>
 
       <div className={styles.retailCartContainer}>
+
         {carRental ? (
+
+        {bookingDetails && (
+
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
              <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
              </div>
             <div className={styles.cartItemList}>
+
               <h2>
                 <strong></strong> {carRental.car}
               </h2>
@@ -187,6 +205,7 @@ export const RetailCart = () => {
                   <img src={fan} alt="" />
                   Air Conditioning {carRental.airConditioned ? "Yes" : "No"}
                 </p>
+
               </div>
               <p className={styles.bookingPrice}>
                 <img src={naira} alt="" />{" "}
@@ -196,8 +215,6 @@ export const RetailCart = () => {
               </p>
             </div>
           </div>
-        ) : (
-          <p>No car rental details found.</p>
         )}
       </div>
 
@@ -227,7 +244,7 @@ export const RetailCart = () => {
             <Button
               content="Choose Payment Method"
               className={styles.paymentBTN}
-              onClick={handleChoosePayment}
+              onClick={handleChoosePaymentMethod}
             />
           </div>
         </div>
