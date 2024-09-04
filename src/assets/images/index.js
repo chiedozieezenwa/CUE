@@ -97,6 +97,12 @@ import experience1 from "./experience1.png";
 import experience2 from "./experience2.png";
 import experience3 from "./experience3.png";
 
+import image2 from "./profilepics.png";
+import proAvatar from "./Proavatar.png";
+import ebonyi from "./ebonyi.png";
+import arrowLeft from "./arrowLeft.png";
+import penIcon from "./penIcon.png";
+import bookIcon from "./bookIcon.png"
 
 export {
   logoMobile,
@@ -198,6 +204,12 @@ export {
  experience2,
  experience3,
 
+  image2,
+  proAvatar,
+  ebonyi,
+  penIcon,
+  arrowLeft,
+  bookIcon
 };
 
 export * from "./features";

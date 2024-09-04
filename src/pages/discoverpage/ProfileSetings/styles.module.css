@@ -1,0 +1,47 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: "satoshi", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerEdit {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroupInputDetails {
+  width: 474px;
+  padding: 29px;
+  border-radius: 20px;
+  border: 17px;
+  justify-content: center;
+  opacity: 0.8px;
+  border: 1px solid #7C8493
+}
+
+.formGroupBTN {
+  width: 534px;
+padding: 16px 24px ;
+border-radius: 20px ;
+background: #5D3BE9;
+color: #fff;
+cursor: pointer;
+border: none;
+margin-top: 40px;
+}
+
+#BTN1{
+  background-color: transparent;
+  width: 22px;
+  color: red;
+}

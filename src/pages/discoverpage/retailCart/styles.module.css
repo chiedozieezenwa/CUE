@@ -1,32 +1,39 @@
+.retailPage{
+  font-family: "satoshi";
+}
+
 .retailCartContainer {
+  font-family: 'Satoshi';
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin-top: 8rem;
 }
 
 #cartCar {
-  width: 515px;
-  height: 354px;
+  width: 100%;
+  height: auto;
 }
 
 .cartItem {
   display: flex;
   width: 1240px;
-  height: 454px;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+}
+
+.cartItemBTN{
+  flex: 1.2;
+  width: 515px;
+  /* height: 354px; */
 }
 
 .cartItemList {
   width: 661px;
-  height: 120px;
-  margin-bottom: 70px;
+
 }
 
 .cartItemList1 p {
-  width: 401.25px;
   color: #130c2a;
   font-size: 18px;
   font-weight: 400;
@@ -45,6 +52,7 @@
 .cartItemList1 {
   display: flex;
   margin-bottom: 20px;
+  column-gap: 20px;
 }
 
 .cartItemList1 img {

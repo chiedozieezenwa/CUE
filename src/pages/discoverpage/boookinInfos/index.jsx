@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { marker01 } from "../../../assets";
-import { Button, Navbar } from "../../../components";
+import { Button, Navbar, ReviewRating } from "../../../components";
 import { Tab } from "../nav";
 import styles from "./styles.module.css";
 import DatePicker from "react-datepicker";
@@ -10,7 +10,6 @@ import { CustomDateInput } from "../../../components";
 import GoogleMapWithDirections from "../../../components/button/googleMap2";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
 import { UseCart } from "../../../context/cartContext";
-import { RatingReview } from "../../../components/reviewRating";
 
 
 export const BookingPage = () => {
@@ -81,12 +80,12 @@ export const BookingPage = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.container}>
         <div className={styles.containerH3}>
           <h3>
             <p>Stay Somewhere Great!</p>
           </h3>
         </div>
+      <div className={styles.container}>
         <Tab />
         <section className={styles.containerIMG}>
           {lodgingImages.length > 0 && (
@@ -128,7 +127,7 @@ export const BookingPage = () => {
                 </strong>{" "}
                 {lodging.address}
               </p>
-              <p>
+              <p className={styles.description}>
                 <strong></strong> {lodging.description}
               </p>
               <article className={styles.sectionConeniences}>
@@ -184,21 +183,25 @@ export const BookingPage = () => {
                   />
                 </div>
                 <div className={styles.containerSchedule}>
-                  <p>
-                    Pricing per night{" "}
-                    <span>
-                      <strong>From NGN</strong> {pricePerNight.toLocaleString()}
-                    </span>
-                  </p>
+                  <div className={styles.schedulePrice}>
+                    <div>
+                      <p>Pricing per night{" "}</p>
+                    </div>
+                    <div>
+                    <strong>From NGN</strong> {pricePerNight.toLocaleString()}
+                    </div>
+                  </div>
                   {numberOfDays > 0 && (
-                    <p>
-                      Total Price:{" "}
-                      <span>
-                        <strong>NGN</strong> {totalPrice.toLocaleString()}
-                      </span>{" "}
+                      <div className={styles.schedulePrice}>
+                        <div>
+                          <p> Total Price:{" "}</p>
+                        </div>
+                        <div>
+                          <p id={styles.schedulePrice1}><strong>NGN</strong> {totalPrice.toLocaleString()}</p>
+                        </div>
                       for {numberOfDays}{" "}
                       {numberOfDays === 1 ? "night" : "nights"}
-                    </p>
+                      </div>
                   )}
                 </div>
                 <Button
@@ -227,7 +230,8 @@ export const BookingPage = () => {
             />
           </div>
         </div>
-        <RatingReview/>
+        
+        <ReviewRating />
       </div>
     </div>
   );

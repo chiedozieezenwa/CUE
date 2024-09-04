@@ -159,7 +159,6 @@
 
 .reviewTextarea {
   width: 1240px;
-  /* height: 121px; */
   padding: 16px;
   gap: 12px;
   border-radius: 6px;
@@ -167,10 +166,9 @@
 }
 
 .reviewTextarea::placeholder {
-  width: 58rem;
-  height: 18px;
-  gap: 8px;
-  margin: 10px 0;
+  position: relative;
+  bottom: 14px;
+  color: red;
 }
 
 .textareaInfo h5 {
@@ -204,6 +202,7 @@
   background: #5d3be9;
   color: #ffffff;
   border: none;
+  cursor: pointer;
 }
 
 .deleteButton{
@@ -211,6 +210,13 @@
       padding-bottom: 5px;
       border: none;
       color: red;
+}
+
+.formGroup select{
+      width: 16%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
 }
 
 @media screen and (max-width: 600px) {

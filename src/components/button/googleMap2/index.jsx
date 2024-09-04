@@ -1,54 +1,10 @@
-// import React, { useCallback, useRef } from 'react';
-// import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
-
-// const GoogleMapWithDirections = ({ origin, destination }) => {
-//   const [response, setResponse] = React.useState(null);
-
-//   const directionsCallback = useCallback((result, status) => {
-//     if (status === 'OK' && result) {
-//       setResponse(result);
-//     } else {
-//       console.error('Error fetching directions:', status, result);
-//     }
-//   }, []);
-
-//   return (
-//     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-//       <GoogleMap
-//         mapContainerStyle={{ width: '100%', height: '400px' }} // Ensure container has height and width
-//         center={origin}
-//         zoom={7}
-//       >
-//         <DirectionsService
-//           options={{
-//             destination: destination,
-//             origin: origin,
-//             travelMode: 'DRIVING'
-//           }}
-//           callback={directionsCallback}
-//         />
-
-//         {response && (
-//           <DirectionsRenderer
-//             options={{
-//               directions: response
-//             }}
-//           />
-//         )}
-//       </GoogleMap>
-//     </LoadScript>
-//   );
-// };
-
-// export default GoogleMapWithDirections;
-
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
 
 const GoogleMapWithDirections = ({ origin, destination, searchQuery }) => {
   const [response, setResponse] = useState(null);
   const [places, setPlaces] = useState([]);
+  const [center, setCenter] = useState(origin);
 
   const directionsCallback = useCallback((result, status) => {
     if (status === 'OK' && result) {
@@ -69,26 +25,34 @@ const GoogleMapWithDirections = ({ origin, destination, searchQuery }) => {
       service.findPlaceFromQuery(request, (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
           setPlaces(results);
-          if (results[0].geometry.location) {
-            // Optional: Re-center the map on the first result
+          if (results[0]?.geometry?.location) {
+            setCenter(results[0].geometry.location); // Re-center the map
           }
         }
       });
     }
   }, [searchQuery]);
 
+  // Memoize the map options to avoid unnecessary re-renders
+  const mapOptions = useMemo(() => ({
+    center: center,
+    zoom: 7,
+  }), [center]);
+
   return (
-    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} libraries={['places']}>
+    <LoadScript
+      googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}  // Ensure your API key is set here
+      libraries={['places']}
+    >
       <GoogleMap
         mapContainerStyle={{ width: '100%', height: '400px' }}
-        center={origin}
-        zoom={7}
+        {...mapOptions}
       >
         <DirectionsService
           options={{
             destination: destination,
             origin: origin,
-            travelMode: 'DRIVING'
+            travelMode: 'DRIVING',
           }}
           callback={directionsCallback}
         />
@@ -96,7 +60,7 @@ const GoogleMapWithDirections = ({ origin, destination, searchQuery }) => {
         {response && (
           <DirectionsRenderer
             options={{
-              directions: response
+              directions: response,
             }}
           />
         )}
