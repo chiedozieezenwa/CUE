@@ -24,16 +24,16 @@ export const ReviewRating = () => {
           await window.ethereum.request({ method: "eth_requestAccounts" });
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
-
+  
           const accounts = await web3Instance.eth.getAccounts();
           setAccount(accounts[0]);
-
+  
           const contractInstance = new web3Instance.eth.Contract(
             CONTRACT_ABI,
             CONTRACT_ADDRESS
           );
           setContract(contractInstance);
-
+  
           window.ethereum.on("accountsChanged", handleAccountsChanged);
           window.ethereum.on("chainChanged", handleChainChanged);
         } catch (error) {
@@ -44,15 +44,17 @@ export const ReviewRating = () => {
         setStatus("Please install MetaMask to use this application.");
       }
     };
-
+  
     initWeb3();
-
+  
     return () => {
-      window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
-      window.ethereum.removeListener("chainChanged", handleChainChanged);
+      if (window.ethereum) {  // Check if window.ethereum is defined
+        window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+        window.ethereum.removeListener("chainChanged", handleChainChanged);
+      }
     };
   }, []);
-
+  
   const handleAccountsChanged = (accounts) => {
     setAccount(accounts[0]);
     setStatus("Account changed. Please refresh the page.");
