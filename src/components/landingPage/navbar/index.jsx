@@ -21,6 +21,8 @@ export const Navbar = () => {
   
   const [isOpen, setIsOpen] = useState(false);
 
+
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   
   // Reference for handling clicks outside of the dropdown
