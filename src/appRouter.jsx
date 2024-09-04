@@ -28,6 +28,7 @@ import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/recei
 import { SettingsPage } from "./pages/discoverpage/ProfileSetings/settings";
 import { ProfilePage } from "./pages/discoverpage/profile/profile";
 import { SharePage } from "./pages/discoverpage/profileShare";
+import { ReviewRating } from "./components";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       { path: "recover", element: <Recover /> },
       { path: "otp", element: <Otp /> }
     ],
+  },
+  {
+    path: "/review",
+    element: <ReviewRating />
   },
   {
     path: "/itinerary",
