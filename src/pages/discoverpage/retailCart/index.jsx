@@ -1,36 +1,34 @@
-
 import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
 import { PaymentModal } from "../../../components/paymentComponent/paymentModal";
-import { SignUpYet } from "../../../components/paymentComponent/signUpYet";
-import { PaystackOverlay } from "../../../components/paymentComponent/paystack";
-import { CryptoOverlay } from "../../../components/paymentComponent/crypto";
+import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
+// import { PaystackOverlay } from "../../../components/paymentComponent/paystack";
+// import { CryptoOverlay } from "../../../components/paymentComponent/crypto";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 
 export const RetailCart = () => {
   const navigate = useNavigate();
   const { bookingDetails } = useBooking();
-  const carRental = bookingDetails?.carRental || {};
-  const lodging = bookingDetails?.lodging || {};
+  const [carRental, setCarRental] = useState({});
+  const [lodging, setLodging] = useState({});
 
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [isSignUpOverlayOpen, setSignUpOverlayOpen] = useState(false);
 
-  const [isPaystackOverlayOpen, setPaystackOverlayOpen] = useState(false);
-  const [isCryptoOverlayOpen, setCryptoOverlayOpen] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  // const [isPaystackOverlayOpen, setPaystackOverlayOpen] = useState(false);
+  // const [isCryptoOverlayOpen, setCryptoOverlayOpen] = useState(false);
+  // const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    // Retrieve user details from localStorage
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); 
-      setCurrentUser(parsedUser); 
+      const parsedUser = JSON.parse(storedUser);
+      setCurrentUser(parsedUser);
       setIsLoggedIn(true);
       console.log("User is logged in.");
     } else {
@@ -38,7 +36,6 @@ export const RetailCart = () => {
       console.log("User is not logged in.");
     }
 
-    // Retrieve booking details from localStorage
     const storedBookingDetails = localStorage.getItem("bookingDetails");
     if (storedBookingDetails) {
       const parsedDetails = JSON.parse(storedBookingDetails);
@@ -51,26 +48,19 @@ export const RetailCart = () => {
     if (bookingDetails) {
       setCarRental(bookingDetails.carRental || {});
       setLodging(bookingDetails.lodging || {});
-      // Save booking details to localStorage whenever they change
       localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
     }
   }, [bookingDetails]);
 
-  const handleChoosePayment = () => {
-    console.log("handleChoosePayment called");
+  const handleChoosePaymentMethod = () => {
     if (isLoggedIn) {
-
-      console.log("Opening PaymentModal...");
       setPaymentModalOpen(true);
     } else {
-      console.log("Opening SignUpYet overlay...");
-
       setSignUpOverlayOpen(true);
     }
   };
 
   const handleOpenPaymentModal = () => {
-    console.log("Proceeding to PaymentModal...");
     setPaymentModalOpen(true);
     setSignUpOverlayOpen(false);
   };
@@ -79,26 +69,23 @@ export const RetailCart = () => {
     setPaymentModalOpen(false);
   };
 
-
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
+    setPaymentModalOpen(false);
+
     if (method === "paystack") {
       setPaystackOverlayOpen(true);
     } else if (method === "crypto") {
       setCryptoOverlayOpen(true);
     }
-    setPaymentModalOpen(false);
-
   };
 
- 
   const handlePayment = async (method) => {
     try {
-     
-      const fullname = bookingDetails?.user?.fullname || "Default Name"; 
+      const fullname = bookingDetails?.user?.fullname || "Default Name";
       const email = bookingDetails?.user?.email || "default@example.com";
-      const amount = bookingDetails?.bookingItem?.totalPrice || 0; 
-  
+      const amount = bookingDetails?.bookingItem?.totalPrice || 0;
+
       const response = await fetch("https://cue-backend.onrender.com/api/v1/payments/startPayment", {
         method: "POST",
         headers: {
@@ -107,100 +94,69 @@ export const RetailCart = () => {
         body: JSON.stringify({
           bookingDetails,
           paymentMethod: method,
-          fullname,  
-          email,     
-          amount     
+          fullname,
+          email,
+          amount,
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to initiate payment.");
       }
-  
+
       const data = await response.json();
       console.log("Payment initiation successful:", data);
-  
+
       if (data.paymentUrl) {
-        window.location.href = data.paymentUrl; 
+        window.location.href = data.paymentUrl;
       }
     } catch (error) {
       console.error("Error initiating payment:", error);
     }
   };
-  
 
   const lodgingTotal = bookingDetails?.bookingItem?.totalPrice || 0;
   const carRentalTotal = carRental?.price || 0;
   const subtotal = lodgingTotal + carRentalTotal;
 
-
   return (
     <div>
       <Navbar />
       <div className={styles.retailCartContainer}>
-        {lodging && lodging.address ? (
+        {lodging?.address && (
           <div className={styles.cartItem}>
-            <img src={lodging.image_url[0]} alt="Lodging_img" id={styles.cartCar} />
+            <img src={lodging.image_url?.[0]} alt="Lodging_img" id={styles.cartCar} />
             <div className={styles.cartItemList}>
-              <h2>
-                <strong>Lodging Address: </strong> {lodging.address}
-              </h2>
+              <h2><strong>Lodging Address: </strong>{lodging.address}</h2>
               <div className={styles.cartItemList1}>
-                <p>
-                  <img src={marker01} alt="" /> {lodging.city}
-                </p>
-                <p>
-                  <img src={phone} alt="" />
-                  Number of Days {bookingDetails?.bookingItem?.numberOfDays || "N/A"}
-                </p>
-                <p>
-                  <img src={phone} alt="" />
-                  Number of Guests {bookingDetails?.guests || "N/A"}
-                </p>
+                <p><img src={marker01} alt="" /> {lodging.city}</p>
+                <p><img src={phone} alt="" /> Number of Days {bookingDetails?.bookingItem?.numberOfDays || "N/A"}</p>
+                <p><img src={phone} alt="" /> Number of Guests {bookingDetails?.guests || "N/A"}</p>
               </div>
               <p className={styles.bookingPrice}>
                 <img src={naira} alt="" /> <strong>Total Price: </strong> {lodgingTotal.toLocaleString()}
               </p>
             </div>
           </div>
-        ) : (
-          <p>No lodging details found.</p>
         )}
       </div>
 
       <div className={styles.retailCartContainer}>
-        {bookingDetails ? (
+        {bookingDetails && (
           <div className={styles.cartItem}>
             <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
             <div className={styles.cartItemList}>
-              <h2>
-                <strong></strong> {bookingDetails.car}
-              </h2>
+              <h2><strong>{bookingDetails.car}</strong></h2>
               <div className={styles.cartItemList1}>
-                <p>
-
-                  <img src={marker01} alt="" />{" "}
-                  {bookingDetails.parking ? " Parking" : " Parking"}
-                </p>
-                <p>
-                  <img src={phone} alt="" />4{" "}
-                  {bookingDetails.seats
-                    ? `${bookingDetails.seats} Seats`
-                    : "Seats"}
-
-                </p>
-                <p>
-                  <img src={fan} alt="" />
-                  Air Conditioning {bookingDetails.airConditioned}
-                </p>
+                <p><img src={marker01} alt="" /> {bookingDetails.parking ? " Parking" : " Parking"}</p>
+                <p><img src={phone} alt="" />4 {bookingDetails.seats ? `${bookingDetails.seats} Seats` : "Seats"}</p>
+                <p><img src={fan} alt="" /> Air Conditioning {bookingDetails.airConditioned}</p>
               </div>
               <p className={styles.bookingPrice}>
                 <img src={naira} alt="" /> {bookingDetails.price ? bookingDetails.price.toLocaleString() : "Price not available"}
               </p>
             </div>
           </div>
-        ) : (
-          <p>No car rental details found.</p>
         )}
       </div>
 
@@ -228,7 +184,7 @@ export const RetailCart = () => {
             <Button
               content="Choose Payment Method"
               className={styles.paymentBTN}
-              onClick={handleChoosePayment}
+              onClick={handleChoosePaymentMethod}
             />
           </div>
         </div>
@@ -241,7 +197,7 @@ export const RetailCart = () => {
         <PaymentModal
           isOpen={isPaymentModalOpen}
           onClose={handleClosePaymentModal}
-          onSelectPaymentMethod={handleSelectPaymentMethod} 
+          onSelectPaymentMethod={handleSelectPaymentMethod}
         />
       )}
     </div>
