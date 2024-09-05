@@ -22,6 +22,9 @@ import tv from './tv.png'
 import waves from './waves.png'
 import wifi from './wifi.png'
 import favicon from './favicon.svg'
+import socialicon from "./Socialicon.png";
+// import socialicon1 from "./Social icon1.png";
+import socialicon1  from "./Socialicon1.png";
 
 export { 
   favicon,
@@ -48,7 +51,9 @@ export {
   surveillance,
   tv,
   waves,
-  wifi
+  wifi,
+  socialicon,
+  socialicon1
 };
 
 export * from './convenience'

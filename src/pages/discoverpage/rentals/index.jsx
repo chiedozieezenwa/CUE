@@ -6,12 +6,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { logo } from "../../../assets";
 import { useNavigate } from "react-router-dom";
-
+import {motion} from "framer-motion"
 
 export const Rentals = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState();
   const [selectedFilter, setSelectedFilter] = useState("");
   const [location, setLocation] = useState("");
   const [carBrand, setCarBrand] = useState("");
@@ -36,7 +36,7 @@ export const Rentals = () => {
     }
 
     setSelectedCar(car);
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const bookingDetails = {
       car: car.name,
@@ -53,7 +53,7 @@ export const Rentals = () => {
     };
 
     setTimeout(() => {
-      setIsLoading(false);
+      // setIsLoading(false);
       navigate("/booking", { state: bookingDetails });
     }, 2000);
   };
@@ -75,7 +75,7 @@ export const Rentals = () => {
   };
 
   useEffect(() => {
-    const url = "https://cue-backend.onrender.com/api/v1/rentals";
+    const url = "https://cuedemo.onrender.com/api/v1/rentals";
     const params = new URLSearchParams();
 
     if (seats) {
@@ -113,13 +113,29 @@ export const Rentals = () => {
 
   console.log("Rentals state:", rentals);
 
+  const heroVariants = {
+    hide: {
+      opacity: 0,
+      y: -150,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        stiffness: 200,
+      },
+    },
+  };
+
+
   return (
     <div>
-      {isLoading && (
+      {/* {isLoading && (
         <div className={design.loaderContainer}>
           <img src={logo} alt="Loading..." className={design.loaderImage} />
         </div>
-      )}
+      )} */}
 
       <div className={design.container}>
         <div className={design.containerRental}>
@@ -263,20 +279,21 @@ export const Rentals = () => {
                   {rental.brand} {rental.model}
                 </h2>
                 <div className={design.sectionDetails}>
-                  <p>
-                    <img src={marker01} alt="" /> Parking
-                  </p>
-                  <p>
-                    <img src={phone} alt="" />{" "}
-                    {rental.number_of_seats + " " + "Seats" ||
-                      "Seats info not available"}
-                  </p>
-                  <p>
-                    <img src={fan} alt="" />{" "}
-                    {rental.air_conditioned
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={marker01} alt="" /></div>
+                    <div><p>Parking</p></div>
+                  </div>
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={phone} alt="" />{" "}</div>
+                    <div><p>{rental.number_of_seats + " " + "Seats" ||
+                      "Seats info not available"}</p></div>
+                  </div>
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={fan} alt="" />{" "}</div>
+                    <div><p> {rental.air_conditioned
                       ? "Air-Conditioning"
-                      : "No Air-Conditioning"}
-                  </p>
+                      : "No Air-Conditioning"}</p></div>
+                  </div>
                 </div>
                 <p className={design.rentalNaira}>
                   <img src={naira} alt="" />
@@ -285,7 +302,10 @@ export const Rentals = () => {
                     : "Price not available"}
                 </p>
               </div>
-              <div className={design.pageContainer}>
+              <motion.div className={design.pageContainer} variants={heroVariants}
+    initial={"hide"}
+    exit={"hide"}
+    whileInView={"show"}>
                 <button
                   onClick={() =>
                     handleOpenModal({
@@ -300,7 +320,7 @@ export const Rentals = () => {
                 >
                   Book Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           ))}
         </article>

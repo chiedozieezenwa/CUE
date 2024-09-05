@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://cue-backend.onrender.com/search?query=${query}`
+        `https://cuedemo.onrender.com/search?query=${query}`
       );
       const data = await response.json();
       setResults(data.results);

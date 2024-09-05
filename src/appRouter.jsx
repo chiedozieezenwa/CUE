@@ -8,7 +8,7 @@ import {
   BucketList,
   Disc,
   Home,
-  Itineary,
+  Itinerary,
   Lodging,
   Otp,
   Recover,
@@ -25,12 +25,12 @@ import { AdminDashboardLayout } from "./layout";
 import { AdminManagement } from "./pages/dashpages/adminManagement";
 import { BookingPage } from "./pages/discoverpage/boookinInfos";
 import PaymentConfirmation from "./pages/discoverpage/retailCart/confirmation/confirmation";
-import PaymentReceipt from "./pages/discoverpage/retailCart/paymentReceipt/receipt";
 import { SettingsPage } from "./pages/discoverpage/ProfileSetings/settings";
 import { ProfilePage } from "./pages/discoverpage/profile/profile";
 import { SharePage } from "./pages/discoverpage/profileShare";
 import { ReviewRating } from "./components";
 import { DiscoverTab } from "./layout/discoverTab";
+import { Receipt } from "./pages/discoverpage/retailCart/paymentReceipt";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/itinerary",
-    element: <Itineary />,
+    element: <Itinerary />,
   },
   {
     path: "/booking",
@@ -79,20 +79,6 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // {
-  //   path: "/discovertab",
-  //   element: <DiscoverTab />,
-  //   children: [
-  //     {
-  //       path: "rentals",
-  //       element: <Rentals />,
-  //     },
-  //     {
-  //       path: "lodging",
-  //       element: <Lodging />,
-  //     },
-  //   ],
-  // },
   {
     path: "trip",
     element: <Trip />,
@@ -122,8 +108,8 @@ const router = createBrowserRouter([
     element: <SharePage />,
   },
   {
-    path: "/paymentReceipt",
-    element: <PaymentReceipt />,
+    path: "/receipt",
+    element: <Receipt />,
   },
   {
     path: "/bucketlist",

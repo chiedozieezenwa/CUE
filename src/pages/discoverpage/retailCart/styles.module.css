@@ -20,6 +20,8 @@
   width: 1240px;
   align-items: center;
   justify-content: center;
+  column-gap: 68px;
+  margin: auto;
 }
 
 .cartItemBTN{
@@ -30,7 +32,6 @@
 
 .cartItemList {
   width: 661px;
-
 }
 
 .cartItemList1 p {

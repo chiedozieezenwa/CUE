@@ -24,6 +24,8 @@ export const ProfilePage = () => {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
+      console.log('User parser',parsedUser?.user);
+      console.log('User parser',parsedUser);
       setProfile({
         fullname: parsedUser?.user?.fullname || "N/A",
         email: parsedUser?.user?.email || "N/A",

@@ -1,7 +1,7 @@
+import { useState, useEffect, useCallback } from "react";
 import Web3 from "web3";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "./config";
-import { useCallback, useEffect, useRef, useState } from "react";
-import styles from "./styles.module.css";
+import design from "./styles.module.css"
 
 export const ReviewRating = () => {
   const [web3, setWeb3] = useState(null);
@@ -16,7 +16,6 @@ export const ReviewRating = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [trustLevel, setTrustLevel] = useState("");
-  const cachedReviews = useRef(new Map()); // Caching reviews for optimization
 
   useEffect(() => {
     const initWeb3 = async () => {
@@ -25,16 +24,16 @@ export const ReviewRating = () => {
           await window.ethereum.request({ method: "eth_requestAccounts" });
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
-
+  
           const accounts = await web3Instance.eth.getAccounts();
           setAccount(accounts[0]);
-
+  
           const contractInstance = new web3Instance.eth.Contract(
             CONTRACT_ABI,
             CONTRACT_ADDRESS
           );
           setContract(contractInstance);
-
+  
           window.ethereum.on("accountsChanged", handleAccountsChanged);
           window.ethereum.on("chainChanged", handleChainChanged);
         } catch (error) {
@@ -45,18 +44,12 @@ export const ReviewRating = () => {
         setStatus("Please install MetaMask to use this application.");
       }
     };
-
+  
     initWeb3();
-
+  
     return () => {
-      if (window.ethereum) {
-        // Check if window.ethereum is defined
-        window.ethereum.removeListener(
-          "accountsChanged",
-          handleAccountsChanged
-        );
-        window.ethereum.removeListener("chainChanged", handleChainChanged);
-      }
+      window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+      window.ethereum.removeListener("chainChanged", handleChainChanged);
     };
   }, []);
 
@@ -71,22 +64,13 @@ export const ReviewRating = () => {
 
   const fetchReviews = useCallback(
     async (address) => {
-      if (!contract || !address) return;
+      if (!contract) return;
 
       setLoading(true);
-
       try {
-        const cacheKey = `${address}-${page}`;
-        if (cachedReviews.current.has(cacheKey)) {
-          setReviews(cachedReviews.current.get(cacheKey));
-          setLoading(false);
-          return;
-        }
-
         const reviewIds = await contract.methods
           .getServiceProviderReviews(address)
           .call();
-
         const startIndex = (page - 1) * 10;
         const endIndex = startIndex + 10;
         const paginatedReviewIds = reviewIds.slice(startIndex, endIndex);
@@ -109,9 +93,7 @@ export const ReviewRating = () => {
             };
           })
         );
-
         setReviews(fetchedReviews);
-        cachedReviews.current.set(cacheKey, fetchedReviews);
 
         const avgRating = await contract.methods
           .getAverageRating(address)
@@ -153,7 +135,8 @@ export const ReviewRating = () => {
       const gasEstimate = await contract.methods
         .submitReview(serviceProvider, ratingNumber, comment)
         .estimateGas({ from: account });
-      const bufferedGas = Math.floor(Number(gasEstimate) * 1.2);
+      const bufferedGas = BigInt(Math.floor(Number(gasEstimate) * 1.2));
+
       const result = await contract.methods
         .submitReview(serviceProvider, ratingNumber, comment)
         .send({ from: account, gas: bufferedGas });
@@ -165,18 +148,13 @@ export const ReviewRating = () => {
 
       await fetchReviews(serviceProvider);
 
-      // Reset form
-      setServiceProvider("");
       setRating(1);
       setComment("");
     } catch (error) {
       console.error("Error submitting review:", error);
-      if (error.code === -32603 && error.data) {
-        const errorMessage = error.data.message || error.message;
-        const refinedMessage = errorMessage.includes("gas required")
-          ? "Transaction failed due to insufficient gas."
-          : errorMessage;
-        setStatus(`Transaction failed: ${refinedMessage}`);
+      if (error.message.includes("execution reverted")) {
+        const revertReason = await web3.eth.call(error.receipt);
+        setStatus(`Error submitting review: ${revertReason || error.message}`);
       } else {
         setStatus(`Error submitting review: ${error.message}`);
       }
@@ -190,21 +168,20 @@ export const ReviewRating = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>Submit a Review</p>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.address}>
-          {/* <label>Service Provider Address:</label> */}
-          <label htmlFor="address">Service Provider Address</label>
+    <div className={design.container}>
+      <p className={design.title}>Submit a Review</p>
+      <form onSubmit={handleSubmit} className={design.form}>
+        <div className={design.address}>
+          <label>Service Provider Address:</label>
           <input
-            type="text"
+            // type="text"
             value={serviceProvider}
             onChange={(e) => setServiceProvider(e.target.value)}
             required
           />
         </div>
-        <div className={styles.address}>
-          <label htmlFor="Rating">Rating (1-5)</label>
+        <div className={design.address}>
+          <label>Rating (1-5):</label>
           <input
             type="number"
             min="1"
@@ -214,8 +191,8 @@ export const ReviewRating = () => {
             required
           />
         </div>
-        <div className={styles.comment}>
-          <label htmlFor="textarea">Comment</label>
+        <div className={design.comment}>
+          <label>Comment:</label>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
@@ -223,7 +200,7 @@ export const ReviewRating = () => {
             required
           />
         </div>
-        <button type="submit" disabled={loading} className={styles.reviewBtn}>
+        <button type="submit" disabled={loading} className={design.reviewBtn}>
           {loading ? "Submitting..." : "Submit Review"}
         </button>
       </form>
@@ -249,13 +226,13 @@ export const ReviewRating = () => {
           </ul>
           <button
             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-            disabled={page === 1 || loading}
+            disabled={page === 1}
           >
             Previous
           </button>
           <button
             onClick={() => setPage((prev) => prev + 1)}
-            disabled={reviews.length < 10 || loading}
+            disabled={reviews.length < 10}
           >
             Next
           </button>

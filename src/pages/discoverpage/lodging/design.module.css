@@ -13,6 +13,7 @@
 .bookingCont {
     width: 1238px;
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .filter {
@@ -56,7 +57,7 @@
 
 .bookingReview {
     width: 694px;
-  max-height: 80vh; 
+  height: 90vh; 
   overflow-y: auto;
   padding-right: 10px;
 }
