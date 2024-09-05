@@ -68,7 +68,7 @@ export const Hero = () => {
           </p>
 
           <Button
-            content="Get Started"
+            content="Start Planning"
             className={design["hero-btn"]}
             link='/disc'
           />
