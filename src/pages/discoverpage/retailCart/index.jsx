@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { PaymentModal } from "../../../components/paymentComponent/paymentModal";
-import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
 
+import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
+
 
 export const RetailCart = () => {
   const navigate = useNavigate();
@@ -79,6 +80,7 @@ export const RetailCart = () => {
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
     setPaymentModalOpen(false);
+
     handlePayment(method)
      
     if (method === "paystack") {
@@ -86,6 +88,7 @@ export const RetailCart = () => {
     } else if (method === "crypto") {
       // Handle Crypto-specific logic if any
     }
+
   };
 
   const handlePayment = async (method) => {
@@ -139,8 +142,8 @@ export const RetailCart = () => {
   const subtotal = lodgingTotal + carRentalTotal;
 
   return (
-    <div>
-      <Navbar />
+    <>
+    <Navbar />
       <div className={styles.retailCartContainer}>
         {lodging?.address && (
           <div className={styles.cartItem}>
@@ -172,6 +175,7 @@ export const RetailCart = () => {
       </div>
 
       <div className={styles.retailCartContainer}>
+
         {carRental && (
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
@@ -179,6 +183,17 @@ export const RetailCart = () => {
             </div>
             <div className={styles.cartItemList}>
               <h2><strong>{carRental.car}</strong></h2>
+// =======
+//         {carRental && bookingDetails && (
+//           <div className={styles.cartItem}>
+//             <div className={styles.cartItemBTN}>
+//               <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
+//             </div>
+//             <div className={styles.cartItemList}>
+//               <h2>
+//                 <strong></strong> {carRental.car}
+//               </h2>
+// >>>>>>> develop
               <div className={styles.cartItemList1}>
                 <p>
                   <img src={marker01} alt="" /> {carRental.parking ? "Parking" : "No Parking"}
@@ -214,14 +229,12 @@ export const RetailCart = () => {
           <div className={styles.paymentMethodInfo}>
             <p className={styles.payment}>Tax</p>
             <p className={styles.payment2}>
-              {" "}
               <img src={naira} alt="" /> 0
             </p>
           </div>
           <div className={styles.paymentMethodInfo}>
             <p className={styles.payment}>Total</p>
             <p className={styles.payment2}>
-              {" "}
               <img src={naira} alt="" /> {subtotal.toLocaleString()}
             </p>
           </div>
@@ -245,6 +258,6 @@ export const RetailCart = () => {
           onSelectPaymentMethod={handleSelectPaymentMethod}
         />
       )}
-    </div>
+    </>
   );
 };

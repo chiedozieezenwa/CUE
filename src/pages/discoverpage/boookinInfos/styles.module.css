@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -7,6 +10,7 @@
 }
 
 .containerH3 {
+  margin-top: 8rem;
   font-size: 32px;
   font-weight: 900;
   line-height: 40px;
@@ -51,6 +55,12 @@
   margin-top: 10px;
   gap: 20px;
 }
+
+/* .description {
+  display: flex;
+  text-align: justify;
+  border: 1px solid red;
+} */
 
 .containerSection {
   width: 1240px;
@@ -165,6 +175,9 @@ color: red;
   margin-top: 20px;
   background: #5d3be9;
   color: #ffffff;
+
+  border-radius: 20px;
+
   cursor: pointer;
 }
 

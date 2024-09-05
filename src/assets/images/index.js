@@ -6,6 +6,7 @@ import stars from "./Rating Stars.png";
 import line1 from "./Line 1.png";
 import line2 from "./Line 2.png";
 import apple from "./apple.png";
+import comingsoon from "./comingsoon.png"
 import google from "./google.png";
 import hotelIcon from "./hotelIcon.png";
 import rentalIcon from "./rentalIcon.png";
@@ -84,6 +85,19 @@ import paystack from "./paystack.png";
 import featured from "./Featured icon.png"
 import logoMobile from "./logoMobile.png"
 import  greenframe  from "./greenframe.png";
+import bucketlist3 from "./bucketlist3.png";
+import bucketlist2 from "./bucketlist2.png";
+import bucketlist1 from "./bucketlist1.png";
+import bucketlistheader from "./bucketlistheader.png";
+import attract1 from "./attract1.png";
+import attract2 from "./attract2.png";
+import attract3 from "./attract3.png";
+import attractheader from "./attractheader.png" 
+import experienceheader from "./experienceheader.png";
+import experience1 from "./experience1.png";
+import experience2 from "./experience2.png";
+import experience3 from "./experience3.png";
+
 import image2 from "./profilepics.png";
 import proAvatar from "./Proavatar.png";
 import ebonyi from "./ebonyi.png";
@@ -93,6 +107,7 @@ import bookIcon from "./bookIcon.png";
 import ebonyi1 from "./ebonyi1.png"
 
 export {
+  comingsoon,
   logoMobile,
   greenframe,
   avatar,
@@ -180,6 +195,19 @@ export {
   currency2,
   paystack,
   featured,
+  attractheader,
+  attract1,
+  attract2,
+  attract3,
+  bucketlistheader,
+  bucketlist1,
+  bucketlist2,
+  bucketlist3,
+ experienceheader,
+ experience1,
+ experience2,
+ experience3,
+
   image2,
   proAvatar,
   ebonyi,
