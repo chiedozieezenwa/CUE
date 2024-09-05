@@ -87,7 +87,7 @@ export const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://cue-backend.onrender.com/api/v1/users/logout");
+      await axios.post("https://cuedemo.onrender.com/api/v1/users/logout");
       localStorage.setItem("currentUser", null);
       navigate("/");
     } catch (error) {

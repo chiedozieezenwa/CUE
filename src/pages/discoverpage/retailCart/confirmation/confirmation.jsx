@@ -13,7 +13,7 @@ const PaymentConfirmation = () => {
         const reference = queryParams.get('reference');
 
         if (reference) {
-            fetch(`https://cue-backend.onrender.com/api/v1/payments/createPayment?reference=${reference}`)
+            fetch(`https://cuedemo.onrender.com/api/v1/payments/createPayment?reference=${reference}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === "Success") {

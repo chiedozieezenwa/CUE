@@ -9,7 +9,7 @@ export const DestinationCarousel = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    const url = "https://cue-backend.onrender.com/api/v1/destinations";
+    const url = "https://cuedemo.onrender.com/api/v1/destinations";
 
     fetch(url)
       .then((response) => {

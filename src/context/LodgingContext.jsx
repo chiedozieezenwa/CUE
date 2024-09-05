@@ -18,7 +18,7 @@ export const LodgingProvider = ({ children }) => {
   const fetchHotels = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://cue-backend.onrender.com/api/v1/hotels", {
+      const response = await axios.get("https://cuedemo.onrender.com/api/v1/hotels", {
         params: filters
       });
       setHotels(response.data.data.hotels);
