@@ -81,7 +81,7 @@ export const BookingDetails = () => {
             </div>
           </div>
           <div className={styles.bookingButton}>
-            <NavLink to="/lodging">
+            <NavLink to="/disc/discovertab/lodging">
               <Button
                 content="Add to Payment Cart"
                 className={styles.bookingBTN}
