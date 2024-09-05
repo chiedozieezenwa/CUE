@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
@@ -14,6 +15,7 @@ export const RetailCart = () => {
   const { bookingDetails } = useBooking();
   const [carRental, setCarRental] = useState({});
   const [lodging, setLodging] = useState({});
+
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [isSignUpOverlayOpen, setSignUpOverlayOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +40,15 @@ export const RetailCart = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   if (bookingDetails) {
+  //     setCarRental(bookingDetails || {});
+  //     setLodging(bookingDetails.lodging || {});
+  //     localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
+  //   }
+  // }, [bookingDetails]);
+
+
   useEffect(() => {
     if (bookingDetails) {
       setCarRental(bookingDetails || {});
@@ -45,6 +56,7 @@ export const RetailCart = () => {
       localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
     }
   }, [bookingDetails]);
+  
 
   const handleChoosePaymentMethod = () => {
     if (isLoggedIn) {
@@ -68,11 +80,15 @@ export const RetailCart = () => {
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
     setPaymentModalOpen(false);
-    handlePayment(method);
 
-    // You can handle payment method-specific logic here if needed
-    // if (method === "paystack") setPaystackOverlayOpen(true);
-    // if (method === "crypto") setCryptoOverlayOpen(true);
+    handlePayment(method)
+     
+    if (method === "paystack") {
+      // Handle Paystack-specific logic if any
+    } else if (method === "crypto") {
+      // Handle Crypto-specific logic if any
+    }
+
   };
 
   const handlePayment = async (method) => {
@@ -135,9 +151,7 @@ export const RetailCart = () => {
               <img src={lodging.image_url[0]} alt="Lodging_img" id={styles.cartCar} />
             </div>
             <div className={styles.cartItemList}>
-              <h2>
-                <strong></strong> {lodging.name}
-              </h2>
+              <h2><strong>{lodging.name}</strong></h2>
               <div className={styles.cartItemList1}>
                 <p>
                   <img src={marker01} alt="" /> {lodging.city}
@@ -161,19 +175,28 @@ export const RetailCart = () => {
       </div>
 
       <div className={styles.retailCartContainer}>
-        {carRental && bookingDetails && (
+
+        {/* {carRental && (
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
-              <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
+              <img src={carRental.image_url} alt="Car_img" id={styles.cartCar} />
             </div>
             <div className={styles.cartItemList}>
+              <h2><strong>{carRental.car}</strong></h2> */}
+
+        {carRental && bookingDetails && (
+           <div className={styles.cartItem}>
+            <div className={styles.cartItemBTN}>
+              <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
+             </div>
+             <div className={styles.cartItemList}>
               <h2>
-                <strong></strong> {carRental.car}
+                 <strong></strong> {carRental.car}
               </h2>
+
               <div className={styles.cartItemList1}>
                 <p>
-                  <img src={marker01} alt="" />{" "}
-                  {carRental.parking ? " Parking" : " No Parking"}
+                  <img src={marker01} alt="" /> {carRental.parking ? "Parking" : "No Parking"}
                 </p>
                 <p>
                   <img src={phone} alt="" />

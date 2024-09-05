@@ -8,7 +8,7 @@ import {
   BucketList,
   Disc,
   Home,
-  Itineary,
+  Itinerary,
   Lodging,
   Otp,
   Recover,
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/itinerary",
-    element: <Itineary />,
+    element: <Itinerary />,
   },
   {
     path: "/booking",

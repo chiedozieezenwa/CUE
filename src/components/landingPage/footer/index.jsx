@@ -1,11 +1,30 @@
 import { apple, google, logoMobile } from "../../../assets";
 import styles from "./styles.module.css";
+import {motion} from "framer-motion"
+
+const footerVariants = {
+  hide: {
+    opacity: 0,
+    y: 50,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      stiffness: 200,
+    },
+  },
+};
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
 
-      <div className={styles.footterDetails}>
+      <motion.div className={styles.footterDetails}variants={footerVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
         <div className={styles.footerCue}>
           <img src={logoMobile} alt="" />
           <p id={styles.plan}>
@@ -42,7 +61,7 @@ export const Footer = () => {
             <p>Terms & Conditions</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

@@ -1,0 +1,52 @@
+.shareContainer{
+      font-family: "satoshi";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+
+      width: 474px;
+height: 304px;
+}
+
+
+
+.shareContainerinfo{
+      align-items: center;
+      
+}
+
+.shareinfo h1{
+font-size: 32px;
+font-weight: 900;
+line-height: 40px;
+text-align: center;
+color: #313131;
+}
+
+.shareinfo p{
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+color: #313131;
+}
+
+.shareLink{
+      width: 404px;
+padding: 10px ;
+border-radius: 20px ;
+border: 1px ;
+justify-content: space-between;
+opacity: 0.8px;
+border: 1px solid #7C8493;
+margin-top: 30px;
+}
+
+.socialButtons{
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+}
+

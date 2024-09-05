@@ -7,7 +7,7 @@
 }
 
 .enuguCity {
-  background-image: url(../../assets/images/enuguLogo.png);
+  background-image: url(../../assets/images/ebonyi1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100%;
@@ -42,6 +42,12 @@
 justify-content: space-between;
 }
 
+.itinearyExplo{
+  width: 1240px;
+margin-top: 30px;
+justify-content: space-between;
+}
+
 .itinearyCards{
        display: flex;
       gap: 14px; 
@@ -57,6 +63,7 @@ color: #130C2A;
 .rentals{
  justify-content: center;
  align-items: center;
+ margin-top: 50px;
 }
 
 .rentals h3{
@@ -65,6 +72,7 @@ font-weight: 900;
 line-height: 40px;
 text-align: center;
 color: #130C2A;
+margin-bottom: 60px;
 }
 
 .rentals p{
@@ -79,8 +87,53 @@ line-height: 24px;
   align-items: center;
 }
 
+.rentalsCards h4{
+font-size: 32px;
+font-weight: 900;
+line-height: 40px;
+text-align: left;
+color: #130C2A;
+}
+
+.rentalLodging{
+  width: 515px;
+}
+
+#cartCar{
+  width: 500px;
+  height: 300px;
+}
+
+.rentalsCardsinfosDetail{
+  display: flex;
+ margin-right: 20px;
+}
+
 .rentalsCardsinfos{
   display: flex;
+  flex: 1px;
+}
+
+.rentalsCardsinfosDetail img{
+  margin-right: 6px;
+}
+
+.nairaPrice{
+  display: flex;
+  margin-top: 20px;
+}
+
+.nairaPrice p{
+font-size: 20px;
+font-weight: 700;
+line-height: 32px;
+margin-bottom: 6px;
+}
+
+.nairaPrice img {
+  width: 16px;
+height: 15px;
+margin-top: 7.5px;
 }
 
 .rentalsCardsBTN{
@@ -257,6 +310,27 @@ font-weight: 400;
 line-height: 24px;
 }
 
+.budgetSection1{
+  width: 600px;
+}
+
+.budgetSectionCard{
+  width: 600px;
+  padding: 0px;
+  gap: 8px;
+  border-radius: 20px;
+  opacity: 0.8px;
+  }
+
+.budgetSectioninfo{
+  display: flex;
+  gap: 20px;
+}
+
+.budgetSection{
+  margin-left: 50px;
+}
+
 .budgeting{
 font-size: 32px;
 font-weight: 900;
@@ -265,13 +339,27 @@ color: #130C2A;
 }
 
 .budgetingInfo{
-  width: 400px;
+  /* width: 400px; */
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 29px;
 gap: 8px;
 border-radius: 20px ;
+opacity: 0.8px;
+background: #F3F4F5;
+}
+
+.expenseInput{
+  width: 120px;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px;
+gap: 8px;
+border: none;
+border-radius: 5px ;
 opacity: 0.8px;
 background: #F3F4F5;
 }
@@ -287,6 +375,20 @@ color: #FFFFFF;
 font-size: 16px;
 font-weight: 700;
 line-height: 16px;
+cursor: pointer;
+margin-top: 15px;
+margin-left: 70px;
+}
+
+.amountInput{
+  width: 100%;
+  height: auto;
+  padding: 6px;
+  border: none;
+}
+
+.amountInput:focus{
+  border: none;
 }
 
 #amount{
@@ -302,19 +404,22 @@ font-size: 16px;
 font-weight: 700;
 line-height: 16px;
 color: #130C2A;
+padding-top: 16px;
 }
 
 .Detailexpenses{
-  width: 715px;
-height:82px;
-gap: 8px;
+  width: 636px;
+/* gap: 8px; */
 border-radius: 20px;
 opacity: 0.8px;
 }
 
+
 .expensesInfo{
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
+
 }
 
 .expensesInfo p{
@@ -324,11 +429,27 @@ line-height: 16px;
 color: #130C2A;
 }
 
+.expenses{
+  position: relative;
+  top: 50px;
+}
+
 .expenses h5{
 font-size: 24px;
 font-weight: 700;
 line-height: 40px;
 color: #130C2A;
+}
+
+#expeBTN{
+  display: flex;
+  position: relative;
+  left: 69px;
+}
+
+.deleteButton{
+  width: 2px;
+  height: 0px;
 }
 
 .delete{
@@ -343,9 +464,27 @@ margin-bottom: 30px;
 font-size: 16px;
 font-weight: 700;
 line-height: 16px;
+margin-top: 30px;
 }
 
 .googleMap{
   border-radius: 24px 0px 0px 0px;
   margin-top: 60px;
+}
+
+.budgetSummary{
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.remaining{
+  padding-top: 10px;
+}
+
+.subtotal span{
+  font-weight: 900;
+}
+
+.remaining span{
+  font-weight: 900;
 }

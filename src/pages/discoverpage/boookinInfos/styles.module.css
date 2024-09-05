@@ -16,6 +16,7 @@
   line-height: 40px;
   text-align: center;
   color: #130c2a;
+  margin-top: 150px;
 }
 
 .containerIMG {
@@ -55,11 +56,19 @@
   gap: 20px;
 }
 
-/* .description {
-  display: flex;
+.description {
+  /* display: flex;
   text-align: justify;
-  border: 1px solid red;
-} */
+  border: 1px solid red; */
+
+  
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+
+  margin-top: 16px;
+}
 
 .containerSection {
   width: 1240px;
@@ -99,6 +108,14 @@
   line-height: 30px;
   text-align: left;
   color: #130c2a;
+}
+
+.lodgingDiscr{
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+margin-top: 10px;
+color: red;
 }
 
 .containerSectionName p {
@@ -166,7 +183,9 @@
   margin-top: 20px;
   background: #5d3be9;
   color: #ffffff;
+
   border-radius: 20px;
+
   cursor: pointer;
 }
 
