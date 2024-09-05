@@ -21,15 +21,16 @@ import styles from "./styles.module.css";
 import LiveDateTime from "../../components/liveDate";
 import { useBooking } from "../../context/bookingDetails/useBooking";
 
-export const Itineary = () => {
+export const Itinerary = () => {
   const { bookingDetails } = useBooking();
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [itineraryPlaces, setItineraryPlaces] = useState(() => {
-    
     const savedPlaces = localStorage.getItem("itineraryPlaces");
     return savedPlaces ? JSON.parse(savedPlaces) : [];
   });
-  const [currentLocation, setCurrentLocation] = useState("Fetching location...");
+  const [currentLocation, setCurrentLocation] = useState(
+    "Fetching location..."
+  );
   const [budget, setBudget] = useState(() => {
     const savedBudget = localStorage.getItem("budget");
     return savedBudget ? JSON.parse(savedBudget) : 750000;
@@ -43,17 +44,14 @@ export const Itineary = () => {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
-
   useEffect(() => {
     localStorage.setItem("itineraryPlaces", JSON.stringify(itineraryPlaces));
   }, [itineraryPlaces]);
 
-  
   useEffect(() => {
     localStorage.setItem("budget", JSON.stringify(budget));
   }, [budget]);
 
-  
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
@@ -140,37 +138,41 @@ export const Itineary = () => {
   };
 
   const lodging = bookingDetails?.lodging || null;
-const carRental = bookingDetails?.carRental || null;
+  const carRental = bookingDetails?.carRental || null;
 
-const handleDownload = () => {
-  const data = {
-    currentLocation,
-    itineraryPlaces,
-    budget,
-    expenses,
-    bookingDetails: {
-      lodging: bookingDetails?.lodging,
-      car: bookingDetails?.car,
-      price: bookingDetails?.price,
-      guests: bookingDetails?.guests,
-      totalPrice: bookingDetails?.bookingItem?.totalPrice,
-      numberOfDays: bookingDetails?.bookingItem?.numberOfDays,
-    },
+  const handleDownload = () => {
+    const data = {
+      currentLocation,
+      itineraryPlaces,
+      budget,
+      expenses,
+      bookingDetails: {
+        lodging: bookingDetails?.lodging,
+        car: bookingDetails?.car,
+        price: bookingDetails?.price,
+        guests: bookingDetails?.guests,
+        totalPrice: bookingDetails?.bookingItem?.totalPrice,
+        numberOfDays: bookingDetails?.bookingItem?.numberOfDays,
+      },
+    };
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "itinerary-details.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "itinerary-details.json";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+  const calculateSubtotal = () => {
+    return expenses.reduce((total, expense) => total + expense.amount, 0);
+  };
 
-
-
-
+  const remainingBudget = budget - calculateSubtotal();
 
   const destinationLists = [
     {
@@ -410,6 +412,7 @@ const handleDownload = () => {
               <section className={styles.budgetSectionCard}>
                 <h4 className={styles.budgeting}>Budgeting</h4>
                 <div className={styles.budgetingInfo}>
+                
                   <div className={styles.budgetSection1}>
                     {isEditingBudget ? (
                       <input
@@ -417,93 +420,105 @@ const handleDownload = () => {
                         value={budget}
                         onChange={handleBudgetChange}
                         className={styles.amountInput}
+                        placeholder="Enter your budget"
                       />
                     ) : (
-                      <p id={styles.amount}>NGN {budget.toLocaleString()}</p>
+                      <p id={styles.amount}>
+                         NGN {budget.toLocaleString()}
+                      </p>
                     )}
-                    <div></div>
                     <p
                       id={styles.amountEdit}
                       onClick={toggleEditBudget}
-                      style={{ cursor: "pointer", marginTop: "6px" }}
+                      className={styles.editButton}
                     >
                       {isEditingBudget ? "Save Budget" : "Edit Budget"}
                     </p>
                   </div>
+
                   <div className={styles.budgetSection}>
                     <div className={styles.budgetSectioninfo}>
+                      <input
+                        type="text"
+                        value={expenseName}
+                        onChange={handleExpenseNameChange}
+                        placeholder="Expense Name"
+                        className={styles.expenseInput}
+                        aria-label="Expense Name"
+                      />
 
-                    <input
-                      type="text"
-                      value={expenseName}
-                      onChange={handleExpenseNameChange}
-                      placeholder="Expense Name"
-                      className={styles.expenseInput}
-                    />
-
-                   
-                    <input
-                      type="number"
-                      value={expenseAmount}
-                      onChange={handleExpenseAmountChange}
-                      placeholder="Expense Amount"
-                      className={styles.expenseInput}
-                    />
+                      <input
+                        type="number"
+                        value={expenseAmount}
+                        onChange={handleExpenseAmountChange}
+                        placeholder="Expense Amount"
+                        className={styles.expenseInput}
+                        aria-label="Expense Amount"
+                      />
                     </div>
 
                     <Button
                       content="Add Expense"
                       className={styles.budgetingBTN}
                       onClick={handleAddExpense}
+                      disabled={expenseName.trim() === "" || expenseAmount <= 0}
                     />
                   </div>
                 </div>
+                <div className={styles.budgetSummary}>
+                  <p className={styles.subtotal}> <span>Subtotal:</span> &nbsp;
+                     NGN {calculateSubtotal().toLocaleString()}
+                  </p>
+                  <p className={styles.remaining}> <span> Remaining Amount:</span> &nbsp;
+                    NGN{" "}
+                    {(budget - calculateSubtotal()).toLocaleString()}
+                  </p>
+                </div>
               </section>
 
-              
               <section className={styles.Detailexpenses}>
-      <div className={styles.expenses}>
-        <h5>Expenses</h5>
-      </div>
-      <div className={styles.DetailexpensesInfo}>
-        {bookingDetails?.car && (
-          <div className={styles.expensesInfo}>
-            <p>Car Rental</p>
-            <p>#{bookingDetails.price?.toLocaleString()}</p>
-          </div>
-        )}
-        {bookingDetails?.lodging && (
-          <div className={styles.expensesInfo}>
-            <p>Lodging</p>
-            <p>#{bookingDetails.bookingItem.totalPrice?.toLocaleString()}</p>
-          </div>
-        )}
-        <div className={styles.expensesInfo}>
-          <p>Drinks</p>
-          <p>#12,000</p>
-        </div>
-        {expenses.map((expense, index) => (
-          <div key={index} className={styles.expensesInfo}>
-            <p>{expense.description}</p>
-            <div id={styles.expeBTN}>
-
-            <p>#{expense.amount.toLocaleString()}</p>
-            <button
-              className={styles.deleteButton}
-              onClick={() => handleDeleteExpense(index)}
-            >
-              
-            </button>
-            </div>
-            
-          </div>
-          
-        ))}
-        
-      </div>
-      <Button content="Download" className={styles.delete} onClick={handleDownload} />
-
-    </section>
+                <div className={styles.expenses}>
+                  <h5>Expenses</h5>
+                </div>
+                <div className={styles.DetailexpensesInfo}>
+                  {bookingDetails?.car && (
+                    <div className={styles.expensesInfo}>
+                      <p>Car Rental</p>
+                      <p>NGN{bookingDetails.price?.toLocaleString()}</p>
+                    </div>
+                  )}
+                  {bookingDetails?.lodging && (
+                    <div className={styles.expensesInfo}>
+                      <p>Lodging</p>
+                      <p>
+                      NGN
+                        {bookingDetails.bookingItem.totalPrice?.toLocaleString()}
+                      </p>
+                    </div>
+                  )}
+                  <div className={styles.expensesInfo}>
+                    <p>Drinks</p>
+                    <p>NGN12,000</p>
+                  </div>
+                  {expenses.map((expense, index) => (
+                    <div key={index} className={styles.expensesInfo}>
+                      <p>{expense.description}</p>
+                      <div id={styles.expeBTN}>
+                        <p>NGN{expense.amount.toLocaleString()}</p>
+                        <Button
+                          className={styles.deleteButton}
+                          onClick={() => handleDeleteExpense(index)}
+                        ></Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Button
+                  content="Download"
+                  className={styles.delete}
+                  onClick={handleDownload}
+                />
+              </section>
             </section>
             <section className={styles.googleMap}>
               <GoogleMapComponent selectedPlace={selectedPlace} />
