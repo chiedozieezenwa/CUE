@@ -18,6 +18,7 @@ import { DestinationCarousel } from "../carousel";
 import { SearchBar } from "../../../components/searchbar";
 import { Link } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
+import {motion} from "framer-motion"
 
 export const SearchAll = () => {
   const destinationLists = [
@@ -86,6 +87,22 @@ export const SearchAll = () => {
     },
   ];
 
+  const featuresVariants = {
+    hide: {
+      x: -40,
+      y: -20,
+      opacity: 0,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div className={design.container}>
       <div className={design.inputContainer}>
@@ -107,24 +124,33 @@ export const SearchAll = () => {
 
       <DestinationCarousel destinationLists={destinationLists} />
 
-      <section className={design.explore}>
+      <section className={design.explore} >
         <div className={design.exploreLIST}>
           <h1>Explore Adventures</h1>
           <div className={design.LIST}>
             <Link to="/topexperience">
-              <div className={design.adventure1}>
+              <motion.div className={design.adventure1} variants={featuresVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
                 <p>Top Experiences</p>
-              </div>
+              </motion.div>
             </Link>
             <Link to="/topattractions">
-              <div className={design.adventure2}>
+              <motion.div className={design.adventure2} variants={featuresVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
                 <p>Top Attractions</p>
-              </div>
+              </motion.div>
             </Link>
             <Link to="/bucketlist">
-              <div className={design.adventure3}>
+              <motion.div className={design.adventure3} variants={featuresVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
                 <p>Bucket List</p>
-              </div>
+              </motion.div>
             </Link>
           </div>
         </div>

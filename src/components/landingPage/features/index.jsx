@@ -4,6 +4,7 @@ import { PiBuildingApartment } from "react-icons/pi";
 import { CiCalendarDate } from "react-icons/ci";
 import { planImg, ride, stay } from "../../../assets/images/features";
 import { useEffect, useState } from "react";
+import {motion} from "framer-motion"
 
 export const Keyfeatures = () => {
   const [carousel, setCarousel] = useState(0);
@@ -18,8 +19,41 @@ export const Keyfeatures = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  const heroVariants = {
+    hide: {
+      opacity: 0,
+      y: -150,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        stiffness: 200,
+      },
+    },
+  };
+
+  const serviceVariants = {
+    hide: {
+      opacity: 0,
+      y: 50,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        stiffness: 200,
+      },
+    },
+  };
+
   return (
-    <div className={design.container}>
+    <motion.div className={design.container} variants={heroVariants}
+    initial={"hide"}
+    exit={"hide"}
+    whileInView={"show"}>
       <div className={design.title}>
         <p>Key Features</p>
         <p>We offer the best services</p>
@@ -42,18 +76,24 @@ export const Keyfeatures = () => {
           </div>
 
           <div className={design.cards}>
-            <div className={design.card}>
+            <motion.div className={design.card}variants={serviceVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
               <div className={design.Cardicon}>
                 <IoCarSportOutline className={design.react_icon} />
               </div>
-              <div className={design.cardText}>
+              <div className={design.cardText} > 
                 <p>Book A Ride</p>
                 <p>
                   Experience Luxury Behind The Wheel With Our Easy Car Booking
                 </p>
               </div>
-            </div>
-            <div className={design.card}>
+            </motion.div>
+            <motion.div className={design.card} variants={serviceVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
               <div className={design.Cardicon}>
                 <PiBuildingApartment className={design.react_icon} />
               </div>
@@ -61,8 +101,11 @@ export const Keyfeatures = () => {
                 <p>Find Your Perfect Stay</p>
                 <p>Find Apartments Tailored To your Highest Standards.</p>
               </div>
-            </div>
-            <div className={design.card}>
+            </motion.div>
+            <motion.div className={design.card} variants={serviceVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
               <div className={design.Cardicon}>
                 <CiCalendarDate className={design.react_icon} />
               </div>
@@ -70,7 +113,7 @@ export const Keyfeatures = () => {
                 <p>Plan your trip</p>
                 <p>Easily plan and manage your trip.</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -93,6 +136,6 @@ export const Keyfeatures = () => {
           </div>
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };

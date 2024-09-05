@@ -127,7 +127,9 @@ export const BookingPage = () => {
                 </strong>{" "}
                 {lodging.address}
               </p>
+
               <p className={styles.description}>
+
                 <strong></strong> {lodging.description}
               </p>
               <article className={styles.sectionConeniences}>

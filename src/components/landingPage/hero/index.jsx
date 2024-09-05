@@ -2,6 +2,7 @@ import design from './hero.module.css'
 import {hero1, hero2, hero3, plane, slider1, slider10, slider11, slider2, slider3, slider4, slider5, slider7, slider8, slider9} from '../../../assets/images'
 import { Button } from '../../button';
 import { useEffect, useState } from 'react';
+import {motion} from "framer-motion"
 
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -16,9 +17,47 @@ export const Hero = () => {
     return () => clearInterval(interval); 
   }, [images.length]);
 
+  const heroVariants = {
+    hide: {
+      opacity: 0,
+      y: -150,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        stiffness: 200,
+      },
+    },
+  };
+
+  const featuresVariants = {
+    hide: {
+      x: -40,
+      y: -20,
+      opacity: 0,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <div className={design.container}>
-      <section className={design["left-section"]}>
+    <motion.div className={design.container} variants={heroVariants}
+    initial={"hide"}
+    exit={"hide"}
+    whileInView={"show"}
+    >
+      <motion.section className={design["left-section"]} variants={featuresVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
         <div>
           <p className={design["header-txt"]}>
             A Step To An Unforgetable Journey And Experience
@@ -34,7 +73,7 @@ export const Hero = () => {
             link='/disc'
           />
         </div>
-      </section>
+      </motion.section>
 
       <section className={design["right-section"]}>
         <div className={design["left-col"]}>
@@ -89,6 +128,6 @@ export const Hero = () => {
           </svg>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }
