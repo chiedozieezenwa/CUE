@@ -25,7 +25,7 @@ export const Signup = () => {
 
     try {
       const res = await axios.post(
-        "https://cue-backend.onrender.com/api/v1/users/signup",
+        "https://cuedemo.onrender.com/api/v1/users/signup",
 
         { email, password ,fullname},
         { withCredentials: true }

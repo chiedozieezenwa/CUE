@@ -11,7 +11,7 @@ export const SearchBar = ({placeholder}) => {
     try {
       console.log("Search query:", query); // Log the query to ensure it's correct
   
-      const response = await fetch(`https://cue-api-3tyr.onrender.com/api/v1/hotels?name=${query}&location=${location}`);
+      const response = await fetch(`https://cuedemo.onrender.com/api/v1/hotels?name=${query}&location=${location}`);
       const data = await response.json();
       
       console.log("API response data:", data); // Log the entire response for debugging

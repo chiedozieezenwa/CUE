@@ -100,7 +100,7 @@ export const RetailCart = () => {
       const amount = bookingDetails?.bookingItem?.totalPrice || 0;
 
       const response = await fetch(
-        "https://cue-backend.onrender.com/api/v1/payments/startPayment",
+        "https://cuedemo.onrender.com/api/v1/payments/startPayment",
         {
           method: "POST",
           headers: {
