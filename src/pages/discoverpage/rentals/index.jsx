@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export const Rentals = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState();
   const [selectedFilter, setSelectedFilter] = useState("");
   const [location, setLocation] = useState("");
   const [carBrand, setCarBrand] = useState("");
@@ -36,7 +36,7 @@ export const Rentals = () => {
     }
 
     setSelectedCar(car);
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const bookingDetails = {
       car: car.name,
@@ -53,7 +53,7 @@ export const Rentals = () => {
     };
 
     setTimeout(() => {
-      setIsLoading(false);
+      // setIsLoading(false);
       navigate("/booking", { state: bookingDetails });
     }, 2000);
   };
@@ -115,11 +115,11 @@ export const Rentals = () => {
 
   return (
     <div>
-      {isLoading && (
+      {/* {isLoading && (
         <div className={design.loaderContainer}>
           <img src={logo} alt="Loading..." className={design.loaderImage} />
         </div>
-      )}
+      )} */}
 
       <div className={design.container}>
         <div className={design.containerRental}>
@@ -263,20 +263,21 @@ export const Rentals = () => {
                   {rental.brand} {rental.model}
                 </h2>
                 <div className={design.sectionDetails}>
-                  <p>
-                    <img src={marker01} alt="" /> Parking
-                  </p>
-                  <p>
-                    <img src={phone} alt="" />{" "}
-                    {rental.number_of_seats + " " + "Seats" ||
-                      "Seats info not available"}
-                  </p>
-                  <p>
-                    <img src={fan} alt="" />{" "}
-                    {rental.air_conditioned
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={marker01} alt="" /></div>
+                    <div><p>Parking</p></div>
+                  </div>
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={phone} alt="" />{" "}</div>
+                    <div><p>{rental.number_of_seats + " " + "Seats" ||
+                      "Seats info not available"}</p></div>
+                  </div>
+                  <div className={design.sectionDetailsinfos}>
+                    <div><img src={fan} alt="" />{" "}</div>
+                    <div><p> {rental.air_conditioned
                       ? "Air-Conditioning"
-                      : "No Air-Conditioning"}
-                  </p>
+                      : "No Air-Conditioning"}</p></div>
+                  </div>
                 </div>
                 <p className={design.rentalNaira}>
                   <img src={naira} alt="" />

@@ -89,7 +89,8 @@ import proAvatar from "./Proavatar.png";
 import ebonyi from "./ebonyi.png";
 import arrowLeft from "./arrowLeft.png";
 import penIcon from "./penIcon.png";
-import bookIcon from "./bookIcon.png"
+import bookIcon from "./bookIcon.png";
+import ebonyi1 from "./ebonyi1.png"
 
 export {
   logoMobile,
@@ -141,6 +142,7 @@ export {
   plane,
   hero1,
   hero2,
+  ebonyi1,
   hero3,
   calender,
   AIlogo,

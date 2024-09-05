@@ -244,7 +244,7 @@ export const Lodging = () => {
                 <p className={design.titleField}>{hotel.name}</p>
                 <p className={design.location}>{hotel.city}</p>
                 <p className={design.review}>Rating: {hotel.rating}</p>
-                <p className={design.status}>{hotel.type}</p>
+                {/* <p className={design.status}>{hotel.type}</p> */}
                 <p className={design.price}><span>FROM</span> NGR &nbsp;
                   {hotel.price_per_night}  per night
                 </p>

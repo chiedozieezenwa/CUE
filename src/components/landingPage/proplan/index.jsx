@@ -1,5 +1,21 @@
 import { plan, safety, search } from "../../../assets";
 import design from "./proplan.module.css";
+import { motion } from "framer-motion";
+
+const proplanVariants = {
+  hide: {
+    opacity: 0,
+    y: 50,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      stiffness: 200,
+    },
+  },
+};
 
 export const Proplan = () => {
   return (
@@ -11,7 +27,10 @@ export const Proplan = () => {
           updates, security and much more.
         </p>
       </div>
-      <section className={design["planGrid"]}>
+      <motion.section className={design["planGrid"]} variants={proplanVariants}
+          initial="hide"
+          whileInView="show"
+          exit="hide">
         <div>
           <div>
             <img src={search} alt="Plan" />
@@ -46,7 +65,7 @@ export const Proplan = () => {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

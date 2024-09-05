@@ -12,6 +12,7 @@
   line-height: 40px;
   text-align: center;
   color: #130c2a;
+  margin-top: 150px;
 }
 
 .containerIMG {
@@ -91,6 +92,14 @@
   color: #130c2a;
 }
 
+.lodgingDiscr{
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+margin-top: 10px;
+color: red;
+}
+
 .containerSectionName p {
   font-size: 18px;
   font-weight: 400;
@@ -156,6 +165,7 @@
   margin-top: 20px;
   background: #5d3be9;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .sectionConeniences {

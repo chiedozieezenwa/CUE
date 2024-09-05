@@ -250,6 +250,14 @@ height: 68px;
   align-items: center;
 }
 
+.sectionDetailsinfos{
+  display: flex;
+}
+
+.sectionDetailsinfos img{
+  padding-right: 6px;
+}
+
 .sectionContainerDetails {
   display: flex;
   width: 51rem;
