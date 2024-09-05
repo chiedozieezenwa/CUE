@@ -23,7 +23,8 @@ import waves from './waves.png'
 import wifi from './wifi.png'
 import favicon from './favicon.svg'
 import socialicon from "./Socialicon.png";
-import socialicon1 from "./Social icon1.png";
+// import socialicon1 from "./Social icon1.png";
+import socialicon1  from "./Socialicon1.png";
 
 export { 
   favicon,

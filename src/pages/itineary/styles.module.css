@@ -408,7 +408,7 @@ padding-top: 16px;
 }
 
 .Detailexpenses{
-  width: 606px;
+  width: 636px;
 /* gap: 8px; */
 border-radius: 20px;
 opacity: 0.8px;
@@ -441,10 +441,11 @@ line-height: 40px;
 color: #130C2A;
 }
 
-/* #expeBTN{
+#expeBTN{
   display: flex;
-  background-color: red;
-} */
+  position: relative;
+  left: 69px;
+}
 
 .deleteButton{
   width: 2px;
@@ -469,4 +470,21 @@ margin-top: 30px;
 .googleMap{
   border-radius: 24px 0px 0px 0px;
   margin-top: 60px;
+}
+
+.budgetSummary{
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.remaining{
+  padding-top: 10px;
+}
+
+.subtotal span{
+  font-weight: 900;
+}
+
+.remaining span{
+  font-weight: 900;
 }

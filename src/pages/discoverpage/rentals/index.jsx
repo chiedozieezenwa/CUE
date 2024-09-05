@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { logo } from "../../../assets";
 import { useNavigate } from "react-router-dom";
-
+import {motion} from "framer-motion"
 
 export const Rentals = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -112,6 +112,22 @@ export const Rentals = () => {
   }, [seats, carBrand, selectedFilter]);
 
   console.log("Rentals state:", rentals);
+
+  const heroVariants = {
+    hide: {
+      opacity: 0,
+      y: -150,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        stiffness: 200,
+      },
+    },
+  };
+
 
   return (
     <div>
@@ -286,7 +302,10 @@ export const Rentals = () => {
                     : "Price not available"}
                 </p>
               </div>
-              <div className={design.pageContainer}>
+              <motion.div className={design.pageContainer} variants={heroVariants}
+    initial={"hide"}
+    exit={"hide"}
+    whileInView={"show"}>
                 <button
                   onClick={() =>
                     handleOpenModal({
@@ -301,7 +320,7 @@ export const Rentals = () => {
                 >
                   Book Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           ))}
         </article>

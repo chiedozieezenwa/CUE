@@ -176,24 +176,24 @@ export const RetailCart = () => {
 
       <div className={styles.retailCartContainer}>
 
-        {carRental && (
+        {/* {carRental && (
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
               <img src={carRental.image_url} alt="Car_img" id={styles.cartCar} />
             </div>
             <div className={styles.cartItemList}>
-              <h2><strong>{carRental.car}</strong></h2>
-// =======
-//         {carRental && bookingDetails && (
-//           <div className={styles.cartItem}>
-//             <div className={styles.cartItemBTN}>
-//               <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
-//             </div>
-//             <div className={styles.cartItemList}>
-//               <h2>
-//                 <strong></strong> {carRental.car}
-//               </h2>
-// >>>>>>> develop
+              <h2><strong>{carRental.car}</strong></h2> */}
+
+        {carRental && bookingDetails && (
+           <div className={styles.cartItem}>
+            <div className={styles.cartItemBTN}>
+              <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
+             </div>
+             <div className={styles.cartItemList}>
+              <h2>
+                 <strong></strong> {carRental.car}
+              </h2>
+
               <div className={styles.cartItemList1}>
                 <p>
                   <img src={marker01} alt="" /> {carRental.parking ? "Parking" : "No Parking"}
