@@ -4,6 +4,7 @@ import { SearchContext } from "../../../context/searchContext";
 import { SearchBar } from "../../../components/searchbar";
 import design from "./design.module.css";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify"
 import {
   airBnB,
   Apartments,
@@ -69,7 +70,7 @@ export const Lodging = () => {
     e.preventDefault();
 
     if (!selectedHotel) {
-      alert("Please select a hotel before proceeding.");
+      toast.success("Please select a hotel before proceeding.");
       return;
     }
 
