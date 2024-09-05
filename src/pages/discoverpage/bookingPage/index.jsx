@@ -25,9 +25,10 @@ export const BookingDetails = () => {
   console.log("details", bookingDetails);
 
   return (
+    <>
+    <Navbar />
     <div className={styles.bookingContainer}>
       <div>
-        <Navbar />
         <Tab />
         <h1 className={styles.BookingH1}>
           Unlock Unique Rentals for Every Adventure
@@ -92,5 +93,6 @@ export const BookingDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
