@@ -1,4 +1,4 @@
-console.log("Raw VITE_CONTRACT_ABI:", import.meta.env.VITE_CONTRACT_ABI);
+// console.log("Raw VITE_CONTRACT_ABI:", import.meta.env.VITE_CONTRACT_ABI);
 let contractABI;
 try {
   contractABI = JSON.parse(import.meta.env.VITE_CONTRACT_ABI);
@@ -612,8 +612,6 @@ try {
     },
   ];
 }
-console.log("Contract Address:", import.meta.env.VITE_CONTRACT_ADDRESS);
-console.log("Contract ABI:", import.meta.env.VITE_CONTRACT_ABI);
 
 export const CONTRACT_ABI = contractABI;
 export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
