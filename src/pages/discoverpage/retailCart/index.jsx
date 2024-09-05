@@ -1,27 +1,24 @@
-
 import { useState, useEffect } from "react";
 import { fan, marker01, naira, phone } from "../../../assets";
 import { Button, Navbar } from "../../../components";
 import { PaymentModal } from "../../../components/paymentComponent/paymentModal";
-
 import { SignUpYet } from "../../../components/paymentComponent/singUpYet";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBooking } from "../../../context/bookingDetails/useBooking";
-
 
 export const RetailCart = () => {
   const navigate = useNavigate();
   const { bookingDetails } = useBooking();
   const [carRental, setCarRental] = useState({});
   const [lodging, setLodging] = useState({});
-
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [isSignUpOverlayOpen, setSignUpOverlayOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null); 
+  const [currentUser, setCurrentUser] = useState(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
 
+  // Load data from localStorage on component mount
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
@@ -35,35 +32,28 @@ export const RetailCart = () => {
     const storedBookingDetails = localStorage.getItem("bookingDetails");
     if (storedBookingDetails) {
       const parsedDetails = JSON.parse(storedBookingDetails);
-      setCarRental(parsedDetails.carRental || {});
-      setLodging(parsedDetails.lodging || {});
+      console.log("Stored Booking Details:", parsedDetails); // Debug log
+      setCarRental(parsedDetails?.carRental || {});
+      setLodging(parsedDetails?.lodging || {});
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (bookingDetails) {
-  //     setCarRental(bookingDetails || {});
-  //     setLodging(bookingDetails.lodging || {});
-  //     localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
-  //   }
-  // }, [bookingDetails]);
-
-
+console.log("BOOKING DETAILS DEMO",bookingDetails)
+console.log("BOOKING DETAILS DEMO lodging",bookingDetails.lodging)
+console.log("BOOKING DETAILS DEMO car",bookingDetails.carRental)
+  // Load booking details from context
   useEffect(() => {
     if (bookingDetails) {
+      console.log("Booking Details from Context:", bookingDetails); // Debug log
       setCarRental(bookingDetails || {});
       setLodging(bookingDetails.lodging || {});
       localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
     }
   }, [bookingDetails]);
-  
 
   const handleChoosePaymentMethod = () => {
     if (isLoggedIn) {
-      console.log("Opening PaymentModal...");
       setPaymentModalOpen(true);
     } else {
-      console.log("Opening SignUpYet overlay...");
       setSignUpOverlayOpen(true);
     }
   };
@@ -80,21 +70,11 @@ export const RetailCart = () => {
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
     setPaymentModalOpen(false);
-
-    handlePayment(method)
-     
-    if (method === "paystack") {
-      // Handle Paystack-specific logic if any
-    } else if (method === "crypto") {
-      // Handle Crypto-specific logic if any
-    }
-
+    handlePayment(method);
   };
 
   const handlePayment = async (method) => {
     try {
-      console.log("User", currentUser?.user);
-
       const fullname = currentUser?.user?.fullname || "Solotech";
       const email = currentUser?.user?.email || "u.ali@genesystechhub.com";
       const amount = bookingDetails?.bookingItem?.totalPrice || 0;
@@ -118,14 +98,11 @@ export const RetailCart = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Server responded with an error:", errorData);
         throw new Error("Failed to initiate payment.");
       }
 
       const data = await response.json();
-      console.log("Payment initiation successful1:", data);
       const authorizationUrl = data?.data?.data?.authorization_url;
-      console.log("Payment initiation successful auth:", authorizationUrl);
 
       if (authorizationUrl) {
         window.location.href = authorizationUrl;
@@ -137,28 +114,36 @@ export const RetailCart = () => {
     }
   };
 
+  // Calculate totals
   const lodgingTotal = bookingDetails?.bookingItem?.totalPrice || 0;
   const carRentalTotal = carRental?.price || 0;
   const subtotal = lodgingTotal + carRentalTotal;
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className={styles.retailCartContainer}>
-        {lodging?.address && (
+        {lodging?.address && lodging?.image_url && (
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
-              <img src={lodging.image_url[0]} alt="Lodging_img" id={styles.cartCar} />
+              <img
+                src={lodging.image_url[0]}
+                alt="Lodging_img"
+                id={styles.cartCar}
+              />
             </div>
             <div className={styles.cartItemList}>
-              <h2><strong>{lodging.name}</strong></h2>
+              <h2>
+                <strong>{lodging.name}</strong>
+              </h2>
               <div className={styles.cartItemList1}>
                 <p>
                   <img src={marker01} alt="" /> {lodging.city}
                 </p>
                 <p>
                   <img src={phone} alt="" />
-                  Number of Days {bookingDetails?.bookingItem?.numberOfDays || "N/A"}
+                  Number of Days{" "}
+                  {bookingDetails?.bookingItem?.numberOfDays || "N/A"}
                 </p>
                 <p>
                   <img src={phone} alt="" />
@@ -175,28 +160,23 @@ export const RetailCart = () => {
       </div>
 
       <div className={styles.retailCartContainer}>
-
-        {/* {carRental && (
+        {carRental && carRental.car && carRental.image_url ? (
           <div className={styles.cartItem}>
             <div className={styles.cartItemBTN}>
-              <img src={carRental.image_url} alt="Car_img" id={styles.cartCar} />
+              <img
+                src={carRental.image_url}
+                alt="Car_img"
+                id={styles.cartCar}
+              />
             </div>
             <div className={styles.cartItemList}>
-              <h2><strong>{carRental.car}</strong></h2> */}
-
-        {carRental && bookingDetails && (
-           <div className={styles.cartItem}>
-            <div className={styles.cartItemBTN}>
-              <img src={bookingDetails.image_url} alt="Car_img" id={styles.cartCar} />
-             </div>
-             <div className={styles.cartItemList}>
               <h2>
-                 <strong></strong> {carRental.car}
+                <strong>{carRental.car}</strong>
               </h2>
-
               <div className={styles.cartItemList1}>
                 <p>
-                  <img src={marker01} alt="" /> {carRental.parking ? "Parking" : "No Parking"}
+                  <img src={marker01} alt="" />{" "}
+                  {carRental.parking ? "Parking" : "No Parking"}
                 </p>
                 <p>
                   <img src={phone} alt="" />
@@ -215,6 +195,8 @@ export const RetailCart = () => {
               </p>
             </div>
           </div>
+        ) : (
+          <p>No car rental details available.</p>
         )}
       </div>
 

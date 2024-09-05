@@ -3,11 +3,11 @@ import design from "./signup.module.css";
 import axios from "../../../api/axios";
 import { closeIcon, hidePassword, showPassword } from "../../../assets";
 import { FadeLoader } from "react-spinners";
-import { Signin } from "../SignIn";
+// import { Signin } from "../SignIn";
 import { usePopUp } from "../../../context/usePopUp";
 
 export const Signup = () => {
-  const { currentPopup, openPopup, closePopup } = usePopUp();
+  const { currentPopup, closePopup } = usePopUp();
   const [email, setEmail] = useState("");
   const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,7 @@ export const Signup = () => {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       console.log(res.data);
       closePopup(); // Close signup popup
-      openPopup("signin"); // Open signin popup
+      // openPopup("signin"); // Open signin popup
 
     } catch (error) {
       if (error.response) {
@@ -122,7 +122,7 @@ export const Signup = () => {
                 <button
                   onClick={() => {
                     closePopup();
-                    openPopup("signin");
+                    // openPopup("signin");
                   }}
                   className={design["logIn-btn"]}
                 >
@@ -133,7 +133,7 @@ export const Signup = () => {
           </div>
         </div>
       )}
-      {currentPopup === "signin" && <Signin />}
+      {/* {currentPopup === "signin" && <Signin />} */}
     </>
   );
 };
